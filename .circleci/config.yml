@@ -32,10 +32,10 @@ jobs:
           command: 'conan remote add epitech https://api.bintray.com/conan/epitech/public-conan'
       - run:
           name: Install dependecies
-          command: 'mkdir build && cd build && conan install .. --build=missing'
+          command: 'mkdir build && cd build && conan install .. --build=missing && cd ..'
       - run:
           name: Creating Build Files
-          command: 'cmake -H.. -Bbuild'
+          command: 'cmake -H. -Bbuild'
       - run:
           name: Creating Binary Files
           command: 'cmake --build build'
