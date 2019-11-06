@@ -25,9 +25,6 @@ jobs:
           name: Install Connan
           command: 'sudo python3 -m pip install conan'
       - run:
-          name: Configure Remote Conan Repository Conan-center
-          command: 'conan remote add conan-center https://api.bintray.com/conan/conan/conan-center'
-      - run:
           name: Configure Remote Conan Repository Bincrafter
           command: 'conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan'
       - run:
