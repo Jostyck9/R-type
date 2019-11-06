@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(R-type VERSION 0.1.0)
 
-include(CTest)
-enable_testing()
+# include(CTest)
+# enable_testing()
 
 if (CMAKE_VERSION VERSION_LESS "3.1")
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
