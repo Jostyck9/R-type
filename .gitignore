@@ -1,4 +1,6 @@
 build/
+html/
+latex/
 
 # Prerequisites
 *.d
