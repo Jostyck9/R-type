@@ -27,7 +27,7 @@ namespace components
          * 
          * @return std::type_index 
          */
-        virtual std::type_index getType() = 0;
+        virtual const std::type_index getType() const = 0;
     };
 }
 
