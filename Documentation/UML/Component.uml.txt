@@ -17,8 +17,8 @@ class Gravity {
 }
 
 class Collision {
-    - x: 
-    - y: 
+    - x: int
+    - y: int
     - height: float
     - width: float
 }
@@ -125,7 +125,28 @@ GameLogic <|-- Item
 GameLogic <|-- Power
 
 
+class Health {
+    - value: float
+}
+class Damage {
+    - value: float
+}
+class Level {
+    - value: float
+}
+class Scale {
+    - value: float
+}
+class Item {
+    - value: float
+}
+class Power {
+    - value: float
+}
+
+
 ComponentManager --o Component
+
 
 
 @enduml
