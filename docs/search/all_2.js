@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['icomponent_2',['IComponent',['../classcomponents_1_1IComponent.html',1,'components::IComponent'],['../classcomponents_1_1IComponent.html#a3858e3fe735f7205b6fd5d6c4fa2da77',1,'components::IComponent::IComponent()']]],
-  ['icomponent_2ehpp_3',['IComponent.hpp',['../IComponent_8hpp.html',1,'']]]
+  ['componentmanager_11',['ComponentManager',['../classcomponents_1_1ComponentManager.html',1,'components::ComponentManager'],['../classcomponents_1_1ComponentManager.html#ae966ae897562408af4eb3b1ad9c2da3d',1,'components::ComponentManager::ComponentManager()']]],
+  ['componentmanager_2ecpp_12',['ComponentManager.cpp',['../ComponentManager_8cpp.html',1,'']]],
+  ['componentmanager_2ehpp_13',['ComponentManager.hpp',['../ComponentManager_8hpp.html',1,'']]],
+  ['components_14',['components',['../namespacecomponents.html',1,'']]]
 ];

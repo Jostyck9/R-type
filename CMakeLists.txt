@@ -30,10 +30,10 @@ endif()
 # Compilation
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
-include_directories(${CMAKE_INCLUDE_PATH})
+include_directories(${CMAKE_INCLUDE_PATH} src/Components/ComponentManager/ src/Components/)
 
 #r-type_client
-add_executable(r-type_client src/main_client.cpp)
+add_executable(r-type_client src/main_client.cpp src/Components/ComponentManager/ComponentManager.cpp)
 target_link_libraries(r-type_client ${CONAN_LIBS})
 
 #r-type_server

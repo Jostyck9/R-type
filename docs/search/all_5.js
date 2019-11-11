@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['_7eicomponent_9',['~IComponent',['../classcomponents_1_1IComponent.html#a56cfc03fbf9378c320c45275b1260741',1,'components::IComponent']]]
+  ['health_26',['Health',['../classcomponents_1_1Health.html',1,'components::Health'],['../classcomponents_1_1Health.html#a7461669d6ac1e6184060440e4d7909a2',1,'components::Health::Health()']]],
+  ['health_2ecpp_27',['Health.cpp',['../Health_8cpp.html',1,'']]],
+  ['health_2ehpp_28',['Health.hpp',['../Health_8hpp.html',1,'']]]
 ];
