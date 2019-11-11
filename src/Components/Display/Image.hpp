@@ -21,8 +21,8 @@ namespace components
 
     {
     public:
-        Image() = default;
-        virtual ~Image() = 0;
+        Image();
+        ~Image();
         void setId(const unsigned int &newId);
         const unsigned int getId(void) const;
 

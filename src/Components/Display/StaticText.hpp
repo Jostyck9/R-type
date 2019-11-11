@@ -21,8 +21,8 @@ namespace components
 
     {
     public:
-        StaticText() = default;
-        virtual ~StaticText() = 0;
+        StaticText();
+        ~StaticText();
     };
 }
 

@@ -21,8 +21,8 @@ namespace components
 
     {
     public:
-        Sprite() = default;
-        virtual ~Sprite() = 0;
+        Sprite();
+        ~Sprite();
         void setId(const unsigned int &newId);
         const unsigned int getId(void) const;
 

@@ -7,6 +7,14 @@
 
 #include "PopUp.hpp"
 
+components::PopUp::PopUp()
+{
+}
+
+components::PopUp::~PopUp()
+{    
+}
+
 void components::PopUp::setId(const unsigned int &newId)
 {
     this->_id = newId;

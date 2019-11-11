@@ -21,8 +21,8 @@ namespace components
 
     {
     public:
-        Animator() = default;
-        virtual ~Animator() = 0;
+        Animator();
+        ~Animator();
         void setId(const unsigned int &newId);
         const unsigned int getId(void) const;
 

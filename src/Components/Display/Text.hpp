@@ -21,8 +21,8 @@ namespace components
 
     {
     public:
-        Text() = default;
-        virtual ~Text() = 0;
+        Text();
+        ~Text();
         void setId(const unsigned int &newId);
         const unsigned int getId(void) const;
 

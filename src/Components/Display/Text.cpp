@@ -7,6 +7,14 @@
 
 #include "Text.hpp"
 
+components::Text::Text()
+{
+}
+
+components::Text::~Text()
+{    
+}
+
 void components::Text::setId(const unsigned int &newId)
 {
     this->_id = newId;

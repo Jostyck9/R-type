@@ -7,6 +7,15 @@
 
 #include "Button.hpp"
 
+components::Button::Button()
+{
+}
+
+components::Button::~Button()
+{    
+}
+
+
 void components::Button::setId(const unsigned int &newId)
 {
     this->_id = newId;

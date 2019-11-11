@@ -21,8 +21,8 @@ namespace components
 
     {
     public:
-        PopUp() = default;
-        virtual ~PopUp() = 0;
+        PopUp();
+        ~PopUp();
         void setId(const unsigned int &newId);
         const unsigned int getId(void) const;
 
