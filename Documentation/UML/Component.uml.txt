@@ -1,0 +1,131 @@
+@startuml
+
+title R-Type Component
+
+Interface Component
+
+Component <|-- Physics
+Component <|-- Display
+Component <|-- IO
+Component <|-- GameLogic
+Component <|-- Network
+
+interface Physics
+
+class Gravity {
+    - value: float
+}
+
+class Collision {
+    - x: 
+    - y: 
+    - height: float
+    - width: float
+}
+
+class Motion
+
+class Velocity {
+    - value: float
+}
+class Acceleration {
+    - value: float
+}
+
+class Transform {
+    - value: float
+}
+class Rotation {
+    - radAngle: float
+}
+
+
+Physics <|-- Gravity
+Physics <|-- Collision
+Physics <|-- Motion 
+Physics <|-- Transform
+Physics <|-- Rotation
+
+Motion <|-- Velocity
+Motion <|-- Acceleration
+
+
+interface Display
+
+Display <|-- UI
+Display <|-- Sprite
+Display <|-- Animator
+
+UI <|-- Button
+UI <|-- PopUp
+UI <|-- Text
+UI <|-- Image
+
+Text <|-- StaticText
+
+class UI {
+}
+
+class Button {
+    - id: uint
+}
+class PopUp {
+    - id: uint
+}
+class Text {
+    - id: uint
+}
+class Image {
+    - id: uint
+}
+
+class Sprite {
+    - id: uint
+}
+
+class Animator {
+    - id: uint
+}
+
+interface IO
+
+IO <|-- Input
+IO <|-- Output
+
+Output <|-- Sound
+
+Input <|-- Controller
+Input <|-- DummyInput
+
+Controller <|-- KeyBoard
+Controller <|-- GameController
+
+class Sound {
+    - id: uint
+}
+
+class Controller
+
+class KeyBoard {
+    - id: uint
+    - keyMap: map
+}
+class GameController {
+    - id: uint
+    - keyMap: map
+}
+
+interface GameLogic
+
+GameLogic <|-- Health
+GameLogic <|-- Damage
+GameLogic <|-- Level
+GameLogic <|-- Scale
+GameLogic <|-- Item
+GameLogic <|-- Power
+
+
+ComponentManager --o Component
+
+
+@enduml
