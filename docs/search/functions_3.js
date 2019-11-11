@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['setmytext_27',['setMyText',['../classClassA.html#a460da46fc47fc503995777925b941cfa',1,'ClassA']]],
-  ['setmyvalue_28',['setMyValue',['../classClassB.html#afb81e8561160eeb77842d53321b00055',1,'ClassB']]]
+  ['_7eicomponent_19',['~IComponent',['../classcomponents_1_1IComponent.html#a56cfc03fbf9378c320c45275b1260741',1,'components::IComponent']]]
 ];

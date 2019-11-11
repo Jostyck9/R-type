@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['getmytext_4',['getMyText',['../classClassA.html#a9cb04a83c56b5af3610ea4cb8397a428',1,'ClassA']]],
-  ['getmyvalue_5',['getMyValue',['../classClassB.html#a47a03298c73b1f560c616c6c5c8a1899',1,'ClassB']]]
+  ['gettype_1',['getType',['../classcomponents_1_1IComponent.html#a60312c5af7823c513a71dbfd98e39b16',1,'components::IComponent']]]
 ];

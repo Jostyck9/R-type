@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['classa_22',['ClassA',['../classClassA.html#acd165fa87ae77eeb9c715024c0301a6b',1,'ClassA']]],
-  ['classb_23',['ClassB',['../classClassB.html#a340d471e25b80ff60b6fe0fa94aa073b',1,'ClassB']]]
+  ['gettype_16',['getType',['../classcomponents_1_1IComponent.html#a60312c5af7823c513a71dbfd98e39b16',1,'components::IComponent']]]
 ];

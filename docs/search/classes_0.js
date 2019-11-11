@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['classa_15',['ClassA',['../classClassA.html',1,'']]],
-  ['classb_16',['ClassB',['../classClassB.html',1,'']]]
+  ['icomponent_10',['IComponent',['../classcomponents_1_1IComponent.html',1,'components']]]
 ];
