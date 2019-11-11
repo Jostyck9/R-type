@@ -2,11 +2,11 @@
 ** EPITECH PROJECT, 2019
 ** R-type
 ** File description:
-** Button.hpp
+** PopUp.hpp
 */
 
-#ifndef BUTTON_HPP
-#define BUTTON_HPP
+#ifndef POPUP_HPP
+#define POPUP_HPP
 
 #include <typeindex>
 #include "UserInterface.hpp"
@@ -14,15 +14,15 @@
 namespace components
 {
     /**
-     * @brief Button describes an attribute that is button. 
+     * @brief PopUp describes an attribute that is a popUp. 
      *
      */
-    class Button : public UserInterface
+    class PopUp : public UserInterface
 
     {
     public:
-        Button() = default;
-        virtual ~Button() = 0;
+        PopUp() = default;
+        virtual ~PopUp() = 0;
         void setId(unsigned int id);
         unsigned int getId(void);
 
@@ -31,4 +31,4 @@ namespace components
     };
 }
 
-#endif //BUTTON_HPP
+#endif //POPUP_HPP

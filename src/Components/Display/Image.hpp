@@ -2,11 +2,11 @@
 ** EPITECH PROJECT, 2019
 ** R-type
 ** File description:
-** Button.hpp
+** Image.hpp
 */
 
-#ifndef BUTTON_HPP
-#define BUTTON_HPP
+#ifndef IMAGE_HPP
+#define IMAGE_HPP
 
 #include <typeindex>
 #include "UserInterface.hpp"
@@ -14,15 +14,15 @@
 namespace components
 {
     /**
-     * @brief Button describes an attribute that is button. 
+     * @brief Image describes an attribute that is an Image. 
      *
      */
-    class Button : public UserInterface
+    class Image : public UserInterface
 
     {
     public:
-        Button() = default;
-        virtual ~Button() = 0;
+        Image() = default;
+        virtual ~Image() = 0;
         void setId(unsigned int id);
         unsigned int getId(void);
 
@@ -31,4 +31,4 @@ namespace components
     };
 }
 
-#endif //BUTTON_HPP
+#endif //IMAGE_HPP

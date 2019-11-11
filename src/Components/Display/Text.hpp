@@ -2,11 +2,11 @@
 ** EPITECH PROJECT, 2019
 ** R-type
 ** File description:
-** Button.hpp
+** Text.hpp
 */
 
-#ifndef BUTTON_HPP
-#define BUTTON_HPP
+#ifndef TEXT_HPP
+#define TEXT_HPP
 
 #include <typeindex>
 #include "UserInterface.hpp"
@@ -14,15 +14,15 @@
 namespace components
 {
     /**
-     * @brief Button describes an attribute that is part of the User Interface. 
+     * @brief Text describes an attribute that is a Text. 
      *
      */
-    class Button : public UserInterface
+    class Text : public UserInterface
 
     {
     public:
-        Button() = default;
-        virtual ~Button() = 0;
+        Text() = default;
+        virtual ~Text() = 0;
         void setId(unsigned int id);
         unsigned int getId(void);
 
@@ -31,4 +31,4 @@ namespace components
     };
 }
 
-#endif //BUTTON_HPP
+#endif //TEXT_HPP
