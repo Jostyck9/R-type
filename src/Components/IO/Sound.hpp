@@ -8,11 +8,11 @@
 #ifndef SOUND_HPP
 #define SOUND_HPP
 
-#include "Sound.hpp"
+#include "Output.hpp"
 
 namespace components
 {
-    class Sound : public
+    class Sound : public Output
     {
     private:
         unsigned int _id;

@@ -29,5 +29,5 @@ const unsigned int KeyBoard::getId() const
 
 const std::type_index KeyBoard::getType() const
 {
-    return (std::type_index(typeid(Gravity)));
+    return (std::type_index(typeid(KeyBoard)));
 }
