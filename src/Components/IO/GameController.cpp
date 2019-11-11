@@ -31,3 +31,10 @@ const std::type_index GameController::getType() const
 {
     return (std::type_index(typeid(GameController)));
 }
+
+bool GameController::operator==(GameController const& other)
+{
+    if (a.getId() != this->getId())
+        return false;
+    return true;
+}

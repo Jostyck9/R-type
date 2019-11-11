@@ -39,6 +39,9 @@ namespace components
          * @return const std::type_index 
          */
         const std::type_index getType() const override;
+
+
+        const bool operator==(Sound const& other) const;
     };
 }
 

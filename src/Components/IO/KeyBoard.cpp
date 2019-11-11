@@ -31,3 +31,10 @@ const std::type_index KeyBoard::getType() const
 {
     return (std::type_index(typeid(KeyBoard)));
 }
+
+bool Keyboard::operator==(KeyBoard const& other)
+{
+    if (a.getId() != this->getId())
+        return false;
+    return true;
+}
