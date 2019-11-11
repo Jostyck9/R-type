@@ -7,7 +7,7 @@
 
 #include "Animator.hpp"
 
-void components::Animator::setId(unsigned int newId)
+void components::Animator::setId(const unsigned int &newId)
 {
     this->_id = newId;
     return;

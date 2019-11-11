@@ -7,7 +7,7 @@
 
 #include "Image.hpp"
 
-void components::Image::setId(unsigned int newId)
+void components::Image::setId(const unsigned int &newId)
 {
     this->_id = newId;
     return;

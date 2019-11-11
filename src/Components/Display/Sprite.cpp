@@ -7,7 +7,7 @@
 
 #include "Sprite.hpp"
 
-void components::Sprite::setId(unsigned int newId)
+void components::Sprite::setId(const unsigned int &newId)
 {
     this->_id = newId;
     return;
