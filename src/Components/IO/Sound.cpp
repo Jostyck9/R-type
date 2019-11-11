@@ -31,3 +31,10 @@ const std::type_index Sound::getType() const
 {
     return (std::type_index(typeid(Sound)));
 }
+
+bool Sound::operator==(Sound const& other)
+{
+    if (a.getId() != this->getId())
+        return false;
+    return true;
+}
