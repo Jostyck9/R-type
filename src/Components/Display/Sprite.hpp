@@ -23,11 +23,11 @@ namespace components
     public:
         Sprite() = default;
         virtual ~Sprite() = 0;
-        void setId(unsigned int newId);
-        unsigned int getId(void);
+        void setId(const unsigned int newId);
+        const unsigned int getId(void) const;
 
     private:
-       unsigned int id;
+       unsigned int _id;
     };
 }
 

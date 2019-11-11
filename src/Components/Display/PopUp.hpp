@@ -23,11 +23,11 @@ namespace components
     public:
         PopUp() = default;
         virtual ~PopUp() = 0;
-        void setId(unsigned int id);
-        unsigned int getId(void);
+        void setId(const unsigned int newId);
+        const unsigned int getId(void) const;
 
     private:
-        unsigned int id;
+        unsigned int _id;
     };
 }
 

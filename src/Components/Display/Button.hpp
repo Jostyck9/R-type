@@ -23,11 +23,11 @@ namespace components
     public:
         Button() = default;
         virtual ~Button() = 0;
-        void setId(unsigned int id);
-        unsigned int getId(void);
+        void setId(const unsigned int newId);
+        const unsigned int getId(void) const;
 
     private:
-        unsigned int id;
+        unsigned int _id;
     };
 }
 
