@@ -23,6 +23,7 @@ namespace components
     public:
         Transform();
         ~Transform();
+        const bool operator==(Transform const &) const;
 
         /**
          * @brief Set the Value object

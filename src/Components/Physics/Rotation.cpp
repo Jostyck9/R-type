@@ -17,6 +17,14 @@ Rotation::~Rotation()
 {
 }
 
+const bool Rotation::operator==(Rotation const &other) const
+{
+    if (this->getRadAngle() != other.getRadAngle())
+        return (false);
+    return (true);
+}
+
+
 void Rotation::setRadAngle(const float &val)
 {
     this->_radAngle = val;

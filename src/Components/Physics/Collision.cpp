@@ -17,6 +17,13 @@ Collision::~Collision()
 {
 }
 
+const bool Collision::operator==(Collision const &other) const
+{
+    if (this->getX() != other.getX() || this->getY() != other.getY() || this->getHeight() != other.getHeight() || this->getWidth() != other.getWidth())
+        return (false);
+    return (true);
+}
+
 void Collision::setX(const int &val)
 {
     this->_x = val;

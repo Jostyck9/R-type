@@ -23,6 +23,8 @@ namespace components
     public:
         Acceleration();
         ~Acceleration();
+        const bool operator==(Acceleration const &) const;
+        
 
         /**
          * @brief Set the Value object

@@ -26,6 +26,7 @@ namespace components
     public:
         Collision();
         ~Collision();
+        const bool operator==(Collision const &) const;
 
         /**
          * @brief Set the X object

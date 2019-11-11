@@ -17,6 +17,13 @@ Transform::~Transform()
 {
 }
 
+const bool Transform::operator==(Transform const &other) const
+{
+    if (this->getValue() != other.getValue())
+        return (false);
+    return (true);
+}
+
 void Transform::setValue(const float &val)
 {
     this->_value = val;

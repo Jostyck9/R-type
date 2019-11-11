@@ -17,6 +17,13 @@ Velocity::~Velocity()
 {
 }
 
+const bool Velocity::operator==(Velocity const &other) const
+{
+    if (this->getValue() != other.getValue())
+        return (false);
+    return (true);
+}
+
 void Velocity::setValue(const float &val)
 {
     this->_value = val;

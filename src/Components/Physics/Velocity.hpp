@@ -23,6 +23,7 @@ namespace components
     public:
         Velocity();
         ~Velocity();
+        const bool operator==(Velocity const &) const;
 
         /**
          * @brief Set the Value object

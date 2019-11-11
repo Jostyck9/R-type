@@ -23,6 +23,7 @@ namespace components
     public:
         Rotation();
         ~Rotation();
+        const bool operator==(Rotation const &) const;
 
         /**
          * @brief Set the Rad Angle object

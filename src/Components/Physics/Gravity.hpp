@@ -23,6 +23,7 @@ namespace components
     public:
         Gravity();
         ~Gravity();
+        const bool operator==(Gravity const &) const;
         
         /**
          * @brief Set the Value object

@@ -17,6 +17,13 @@ Gravity::~Gravity()
 {
 }
 
+const bool Gravity::operator==(Gravity const &other) const
+{
+    if (this->getValue() != other.getValue())
+        return (false);
+    return (true);
+}
+
 void Gravity::setValue(const float &val)
 {
     this->_value = val;

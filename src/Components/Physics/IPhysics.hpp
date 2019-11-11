@@ -22,8 +22,6 @@ namespace components
     public:
         IPhysics() = default;
         virtual ~IPhysics() = 0;
-
-        std::type_index getType() override;
     };
 }
 
