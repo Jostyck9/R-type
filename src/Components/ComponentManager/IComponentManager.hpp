@@ -25,7 +25,7 @@ namespace components
          * @brief Get the Physic Components from an entity by his id
          * 
          * @param idEntity 
-         * @return std::list<std::shared_ptr<IComponent>&> 
+         * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
         virtual std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getPhysicComponent(size_t idEntity) = 0;
 
@@ -33,7 +33,7 @@ namespace components
          * @brief Get the Display Components from an entity by his id
          * 
          * @param idEntity 
-         * @return std::list<std::shared_ptr<IComponent>&> 
+         * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
         virtual std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getDisplayComponent(size_t idEntity) = 0;
 
@@ -41,7 +41,7 @@ namespace components
          * @brief Get The IO Components from an entity by his id
          * 
          * @param idEntity 
-         * @return std::list<std::shared_ptr<IComponent>&> 
+         * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
         virtual std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getIOComponent(size_t idEntity) = 0;
 
@@ -49,7 +49,7 @@ namespace components
          * @brief Get the Network Components from an entity by his id
          * 
          * @param idEntity 
-         * @return std::list<std::shared_ptr<IComponent>&> 
+         * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
         virtual std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getNetworkComponent(size_t idEntity) = 0;
 
@@ -57,7 +57,7 @@ namespace components
          * @brief Get the Game Logic Components from an entity by his id
          * 
          * @param idEntity 
-         * @return std::list<std::shared_ptr<IComponent>&> 
+         * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
         virtual std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getGameLogicComponent(size_t idEntity) = 0;
 

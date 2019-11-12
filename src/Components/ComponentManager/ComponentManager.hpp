@@ -35,7 +35,7 @@ namespace components
          * 
          * @param map 
          * @param idEntity 
-         * @return std::list<std::shared_ptr<IComponent>&> 
+         * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
         std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> extractComponentsFrom(std::multimap<size_t, std::shared_ptr<IComponent>> &map, size_t idEntity);
 
@@ -47,15 +47,14 @@ namespace components
          * @brief Get the Physic Components from an entity by his id 
          * 
          * @param idEntity 
-         * @return std::list<std::shared_ptr<IComponent>&> 
+         * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
         std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getPhysicComponent(size_t idEntity) override;
-
         /**
          * @brief Get the Display Components from an entity by his id
          * 
          * @param idEntity 
-         * @return std::list<std::shared_ptr<IComponent>&> 
+         * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
         std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getDisplayComponent(size_t idEntity) override;
 
@@ -63,7 +62,7 @@ namespace components
          * @brief Get the IO Components from an entity by his id
          * 
          * @param idEntity 
-         * @return std::list<std::shared_ptr<IComponent>&> 
+         * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
         std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getIOComponent(size_t idEntity) override;
 
@@ -71,7 +70,7 @@ namespace components
          * @brief Get the Network Components from an entity by his id
          * 
          * @param idEntity 
-         * @return std::list<std::shared_ptr<IComponent>&> 
+         * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
         std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getNetworkComponent(size_t idEntity) override;
 
@@ -79,7 +78,7 @@ namespace components
          * @brief Get the Game Logic Components from an entity by his id
          * 
          * @param idEntity 
-         * @return std::list<std::shared_ptr<IComponent>&> 
+         * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
         std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getGameLogicComponent(size_t idEntity) override;
 

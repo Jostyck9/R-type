@@ -19,9 +19,6 @@ namespace components
     class IComponent
     {
     public:
-        IComponent() = default;
-        virtual ~IComponent() = 0;
-
         /**
          * @brief Get the Type of the component
          * 
