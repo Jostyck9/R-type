@@ -23,9 +23,18 @@ namespace components
     public:
         Image();
         ~Image();
+         /**
+         * @brief Set new value to the component id
+         * 
+         * @param newId 
+         */
         void setId(const unsigned int &newId);
+         /**
+         * @brief return the component id
+         * 
+         */
         const unsigned int getId(void) const;
-
+        const bool operator==(Image &other);
     private:
         unsigned int _id;
     };

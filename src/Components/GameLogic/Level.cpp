@@ -25,3 +25,10 @@ const float components::Level::getValue(void) const
 {
     return(this->_value);
 }
+
+const bool components::Level::operator==(Level &other)
+{
+    if (other.getValue() == this->_value)
+        return true;
+    return false;
+}

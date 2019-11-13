@@ -25,3 +25,10 @@ const unsigned int components::Image::getId(void) const
 {
     return this->_id;
 }
+
+const bool components::Image::operator==(Image &other)
+{
+    if (other.getId() == this->_id)
+        return true;
+    return false;
+}

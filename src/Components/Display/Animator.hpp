@@ -23,9 +23,19 @@ namespace components
     public:
         Animator();
         ~Animator();
+         /**
+         * @brief Set new value to the component id
+         * 
+         * @param newId 
+         */
         void setId(const unsigned int &newId);
+         /**
+         * @brief return the component id
+         * 
+         */
         const unsigned int getId(void) const;
-
+        const bool operator==(Animator &other);
+        
     private:
         unsigned int _id;
     };

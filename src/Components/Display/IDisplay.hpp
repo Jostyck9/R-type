@@ -22,6 +22,7 @@ namespace components
     public:
         IDisplay() = default;
         virtual ~IDisplay() = 0;
+        const std::type_index getType() override;
     };
 }
 

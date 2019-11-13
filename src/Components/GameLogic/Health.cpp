@@ -25,3 +25,10 @@ const float components::Health::getValue(void) const
 {
     return(this->_value);
 }
+
+const bool components::Health::operator==(Health &other)
+{
+    if (other.getValue() == this->_value)
+        return true;
+    return false;
+}

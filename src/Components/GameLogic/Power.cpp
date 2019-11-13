@@ -25,3 +25,10 @@ const float components::Power::getValue(void) const
 {
     return(this->_value);
 }
+
+const bool components::Power::operator==(Power &other)
+{
+    if (other.getValue() == this->_value)
+        return true;
+    return false;
+}

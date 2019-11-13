@@ -25,7 +25,7 @@ namespace components
         ~Level();
         void setValue(const float &newValue);
         const float getValue(void) const;
-
+        const bool operator==(Level &other);
     private:
         float _value;
     };

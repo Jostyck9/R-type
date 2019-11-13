@@ -25,3 +25,10 @@ const float components::Scale::getValue(void) const
 {
     return(this->_value);
 }
+
+const bool components::Scale::operator==(Scale &other)
+{
+    if (other.getValue() == this->_value)
+        return true;
+    return false;
+}

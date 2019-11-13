@@ -25,3 +25,10 @@ const unsigned int components::Text::getId(void) const
 {
     return this->_id;
 }
+
+const bool components::Text::operator==(Text &other)
+{
+    if (other.getId() == this->_id)
+        return true;
+    return false;
+}

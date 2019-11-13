@@ -25,7 +25,7 @@ namespace components
         ~Damage();
         void setValue(const float &newValue);
         const float getValue(void) const;
-
+        const bool operator==(Damage &other);
     private:
         float _value;
     };

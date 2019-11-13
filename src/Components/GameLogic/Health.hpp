@@ -25,7 +25,7 @@ namespace components
         ~Health();
         void setValue(const float &newValue);
         const float getValue(void) const;
-
+        const bool operator==(Health &other);
     private:
         float _value;
     };

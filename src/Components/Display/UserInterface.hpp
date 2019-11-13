@@ -21,8 +21,8 @@ namespace components
 
     {
     public:
-        UserInterface() = default;
-        virtual ~UserInterface() = 0;
+        UserInterface();
+        ~UserInterface();
     };
 }
 

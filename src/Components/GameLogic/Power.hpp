@@ -25,7 +25,7 @@ namespace components
         ~Power();
         void setValue(const float &newValue);
         const float getValue(void) const;
-
+        const bool operator==(Power &other);
     private:
         float _value;
     };

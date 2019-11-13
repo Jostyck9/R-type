@@ -25,3 +25,10 @@ const float components::Damage::getValue(void) const
 {
     return(this->_value);
 }
+
+const bool components::Damage::operator==(Damage &other)
+{
+    if (other.getValue() == this->_value)
+        return true;
+    return false;
+}

@@ -25,3 +25,10 @@ const unsigned int components::PopUp::getId(void) const
 {
     return this->_id;
 }
+
+const bool components::PopUp::operator==(PopUp &other)
+{
+    if (other.getId() == this->_id)
+        return true;
+    return false;
+}

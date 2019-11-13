@@ -15,13 +15,20 @@ components::Item::~Item()
 {
 }
 
-void components::Item::setValue(const unsigned int &newValue)
+void components::Item::setValue(const float &newValue)
 {
     this->_value = newValue;
     return;
 }
 
-const unsigned int components::Item::getValue(void) const
+const float components::Item::getValue(void) const
 {
     return(this->_value);
+}
+
+const bool components::Item::operator==(Item &other)
+{
+    if (other.getValue() == this->_value)
+        return true;
+    return false;
 }
