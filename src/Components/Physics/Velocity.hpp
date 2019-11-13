@@ -23,7 +23,7 @@ namespace components
     public:
         Velocity();
         ~Velocity();
-        const bool operator==(Velocity const &) const;
+        bool operator==(Velocity const &) const;
 
         /**
          * @brief Set the Value object
@@ -36,7 +36,7 @@ namespace components
          * 
          * @return float 
          */
-        const float getValue() const;
+        float getValue() const;
         /**
          * @brief Get the Type object
          * 

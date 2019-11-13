@@ -23,7 +23,7 @@ namespace components
     public:
         Transform();
         ~Transform();
-        const bool operator==(Transform const &) const;
+        bool operator==(Transform const &) const;
 
         /**
          * @brief Set the Value object
@@ -36,7 +36,7 @@ namespace components
          * 
          * @return float 
          */
-        const float getValue() const;
+        float getValue() const;
         /**
          * @brief Get the Type object
          * 

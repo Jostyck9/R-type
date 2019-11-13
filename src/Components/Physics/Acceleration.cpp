@@ -17,7 +17,7 @@ Acceleration::~Acceleration()
 {
 }
 
-const bool Acceleration::operator==(Acceleration const &other) const
+bool Acceleration::operator==(Acceleration const &other) const
 {
     if (this->getValue() != other.getValue())
         return (false);
@@ -29,7 +29,7 @@ void Acceleration::setValue(const float &val)
     this->_value = val;
 }
 
-const float Acceleration::getValue() const
+float Acceleration::getValue() const
 {
     return (this->_value);
 }

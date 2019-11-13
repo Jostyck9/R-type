@@ -23,7 +23,7 @@ namespace components
     public:
         Acceleration();
         ~Acceleration();
-        const bool operator==(Acceleration const &) const;
+        bool operator==(Acceleration const &) const;
         
 
         /**
@@ -37,7 +37,7 @@ namespace components
          * 
          * @return float 
          */
-        const float getValue()const;
+        float getValue()const;
         /**
          * @brief Get the Type object
          * 

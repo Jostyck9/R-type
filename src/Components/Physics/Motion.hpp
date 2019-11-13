@@ -22,7 +22,7 @@ namespace components
     public:
         Motion();
         ~Motion();
-        const bool operator==(Motion const &) const;
+        bool operator==(Motion const &) const;
     };
 }
 

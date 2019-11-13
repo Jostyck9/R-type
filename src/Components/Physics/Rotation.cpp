@@ -17,7 +17,7 @@ Rotation::~Rotation()
 {
 }
 
-const bool Rotation::operator==(Rotation const &other) const
+bool Rotation::operator==(Rotation const &other) const
 {
     if (this->getRadAngle() != other.getRadAngle())
         return (false);
@@ -30,7 +30,7 @@ void Rotation::setRadAngle(const float &val)
     this->_radAngle = val;
 }
 
-const float Rotation::getRadAngle() const
+float Rotation::getRadAngle() const
 {
     return (this->_radAngle);
 }

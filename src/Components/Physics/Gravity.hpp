@@ -23,7 +23,7 @@ namespace components
     public:
         Gravity();
         ~Gravity();
-        const bool operator==(Gravity const &) const;
+        bool operator==(Gravity const &) const;
         
         /**
          * @brief Set the Value object
@@ -36,7 +36,7 @@ namespace components
          * 
          * @return const float 
          */
-        const float getValue() const;
+        float getValue() const;
         /**
          * @brief Get the Type object
          * 

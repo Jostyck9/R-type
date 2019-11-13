@@ -26,7 +26,7 @@ namespace components
     public:
         Collision();
         ~Collision();
-        const bool operator==(Collision const &) const;
+        bool operator==(Collision const &) const;
 
         /**
          * @brief Set the X object
@@ -54,25 +54,25 @@ namespace components
          * 
          * @return int 
          */
-        const int getX() const;
+        int getX() const;
         /**
          * @brief Get the Y object
          * 
          * @return int 
          */
-        const int getY() const;
+        int getY() const;
         /**
          * @brief Get the Height object
          * 
          * @return float 
          */
-        const float getHeight() const;
+        float getHeight() const;
         /**
          * @brief Get the Width object
          * 
          * @return float 
          */
-        const float getWidth() const;
+        float getWidth() const;
         /**
          * @brief Get the Type object
          * 
