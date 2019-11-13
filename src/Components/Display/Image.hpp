@@ -9,7 +9,7 @@
 #define IMAGE_HPP
 
 #include <typeindex>
-#include "UserInterface.hpp"
+#include "IUserInterface.hpp"
 
 namespace components
 {
@@ -17,7 +17,7 @@ namespace components
      * @brief Image describes an attribute that is an Image. 
      *
      */
-    class Image : public UserInterface
+    class Image : public IUserInterface
 
     {
     public:
@@ -33,8 +33,8 @@ namespace components
          * @brief return the component id
          * 
          */
-        const unsigned int getId(void) const;
-        const bool operator==(Image &other);
+        unsigned int getId(void) const;
+        bool operator==(Image &other);
     private:
         unsigned int _id;
     };

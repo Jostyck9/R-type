@@ -33,8 +33,8 @@ namespace components
          * @brief return the component id
          * 
          */
-        const unsigned int getId(void) const;
-        const bool operator==(Sprite &other);
+        unsigned int getId(void) const;
+        bool operator==(Sprite &other);
     private:
        unsigned int _id;
     };

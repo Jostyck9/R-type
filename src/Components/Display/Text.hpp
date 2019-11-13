@@ -9,7 +9,7 @@
 #define TEXT_HPP
 
 #include <typeindex>
-#include "UserInterface.hpp"
+#include "IUserInterface.hpp"
 
 namespace components
 {
@@ -17,7 +17,7 @@ namespace components
      * @brief Text describes an attribute that is a Text. 
      *
      */
-    class Text : public UserInterface
+    class Text : public IUserInterface
 
     {
     public:
@@ -33,8 +33,8 @@ namespace components
          * @brief return the component id
          * 
          */
-        const unsigned int getId(void) const;
-        const bool operator==(Text &other);
+        unsigned int getId(void) const;
+        bool operator==(Text &other);
 
     private:
         unsigned int _id;

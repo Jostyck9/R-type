@@ -21,12 +21,12 @@ void components::Sprite::setId(const unsigned int &newId)
     return;
 }
 
-const unsigned int components::Sprite::getId(void) const
+unsigned int components::Sprite::getId(void) const
 {
     return this->_id;
 }
 
-const bool components::Sprite::operator==(Sprite &other)
+bool components::Sprite::operator==(Sprite &other)
 {
     if (other.getId() == this->_id)
         return true;

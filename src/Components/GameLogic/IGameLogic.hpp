@@ -18,11 +18,7 @@ namespace components
      *
      */
     class IGameLogic : public IComponent
-    {
-    public:
-        IGameLogic() = default;
-        virtual ~IGameLogic() = 0;
-    };
+    {};
 }
 
 #endif //IGAMELOGIC_HPP

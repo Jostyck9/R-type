@@ -22,7 +22,7 @@ void Sound::setId(const unsigned int &val)
     this->_id = val;
 }
 
-const unsigned int Sound::getId() const
+unsigned int Sound::getId() const
 {
     return (this->_id);
 }
@@ -32,9 +32,9 @@ const std::type_index Sound::getType() const
     return (std::type_index(typeid(Sound)));
 }
 
-bool Sound::operator==(Sound const& other)
+bool Sound::operator==(Sound const& other) const
 {
-    if (a.getId() != this->getId())
+    if (other.getId() != this->getId())
         return false;
     return true;
 }

@@ -17,12 +17,7 @@ namespace components
      * @brief UserInterface describes an attribute that is part of the User Interface. 
      *
      */
-    class UserInterface : public IDisplay
-
-    {
-    public:
-        UserInterface();
-        ~UserInterface();
+    class IUserInterface : public IDisplay {
     };
 }
 

@@ -18,12 +18,7 @@ namespace components
      * 
      */
     class IIO : public IComponent
-    {
-    private:
-    public:
-        IIO() = default;
-        virtual ~IIO() = 0;
-    };
+    {};
 }
 
 #endif

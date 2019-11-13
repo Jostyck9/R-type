@@ -25,19 +25,50 @@ elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W -Wall")
 endif()
 
-
-
 # Compilation
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 include_directories(${CMAKE_INCLUDE_PATH} src/Components/ComponentManager/ src/Components/)
 
 #r-type_client
-add_executable(r-type_client src/main_client.cpp src/Components/ComponentManager/ComponentManager.cpp)
+set(SOURCE_CLIENT
+        "src/main_client.cpp"
+        "src/Components/ComponentManager/ComponentManager.cpp"
+        "src/Components/Display/Animator.cpp"
+        "src/Components/Display/Button.cpp"
+        "src/Components/Display/Image.cpp"
+        "src/Components/Display/PopUp.cpp"
+        "src/Components/Display/Sprite.cpp"
+        "src/Components/Display/StaticText.cpp"
+        "src/Components/Display/Text.cpp"
+        "src/Components/GameLogic/Damage.cpp"
+        "src/Components/GameLogic/Health.cpp"
+        "src/Components/GameLogic/Item.cpp"
+        "src/Components/GameLogic/Level.cpp"
+        "src/Components/GameLogic/Power.cpp"
+        "src/Components/GameLogic/Scale.cpp"
+        "src/Components/IO/Controller.cpp"
+        "src/Components/IO/DummyInput.cpp"
+        "src/Components/IO/GameController.cpp"
+        "src/Components/IO/Input.cpp"
+        "src/Components/IO/KeyBoard.cpp"
+        "src/Components/IO/Output.cpp"
+        "src/Components/IO/Sound.cpp"
+        "src/Components/Physics/Acceleration.cpp"
+        "src/Components/Physics/Collision.cpp"
+        "src/Components/Physics/Gravity.cpp"
+        "src/Components/Physics/Motion.cpp"
+        "src/Components/Physics/Rotation.cpp"
+        "src/Components/Physics/Transform.cpp"
+        "src/Components/Physics/Velocity.cpp")
+
+add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})
 
 #r-type_server
-add_executable(r-type_server src/main_server.cpp)
+set(SOURCE_SERVER
+        src/main_server.cpp)
+add_executable(r-type_server ${SOURCE_SERVER})
 target_link_libraries(r-type_server ${CONAN_LIBS})
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})

@@ -21,12 +21,12 @@ void components::Health::setValue(const float &newValue)
     return;
 }
 
-const float components::Health::getValue(void) const
+float components::Health::getValue(void) const
 {
     return(this->_value);
 }
 
-const bool components::Health::operator==(Health &other)
+bool components::Health::operator==(Health &other)
 {
     if (other.getValue() == this->_value)
         return true;

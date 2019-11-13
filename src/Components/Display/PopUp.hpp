@@ -9,7 +9,7 @@
 #define POPUP_HPP
 
 #include <typeindex>
-#include "UserInterface.hpp"
+#include "IUserInterface.hpp"
 
 namespace components
 {
@@ -17,7 +17,7 @@ namespace components
      * @brief PopUp describes an attribute that is a popUp. 
      *
      */
-    class PopUp : public UserInterface
+    class PopUp : public IUserInterface
 
     {
     public:
@@ -33,8 +33,8 @@ namespace components
          * @brief return the component id
          * 
          */
-        const unsigned int getId(void) const;
-        const bool operator==(PopUp &other);
+        unsigned int getId(void) const;
+        bool operator==(PopUp &other);
     private:
         unsigned int _id;
     };

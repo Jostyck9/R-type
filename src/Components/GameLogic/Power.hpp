@@ -9,7 +9,7 @@
 #define POWER_HPP
 
 #include <typeindex>
-#include "UserInterface.hpp"
+#include "IGameLogic.hpp"
 
 namespace components
 {
@@ -17,15 +17,15 @@ namespace components
      * @brief Power describes an attribute that stores a numeric value representing Power points. 
      *
      */
-    class Power : public UserInterface
+    class Power : public IGameLogic
 
     {
     public:
         Power();
         ~Power();
         void setValue(const float &newValue);
-        const float getValue(void) const;
-        const bool operator==(Power &other);
+        float getValue(void) const;
+        bool operator==(Power &other);
     private:
         float _value;
     };

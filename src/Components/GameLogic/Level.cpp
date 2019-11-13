@@ -21,12 +21,12 @@ void components::Level::setValue(const float &newValue)
     return;
 }
 
-const float components::Level::getValue(void) const
+float components::Level::getValue(void) const
 {
     return(this->_value);
 }
 
-const bool components::Level::operator==(Level &other)
+bool components::Level::operator==(Level &other)
 {
     if (other.getValue() == this->_value)
         return true;

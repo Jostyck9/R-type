@@ -21,12 +21,12 @@ void components::Item::setValue(const float &newValue)
     return;
 }
 
-const float components::Item::getValue(void) const
+float components::Item::getValue(void) const
 {
     return(this->_value);
 }
 
-const bool components::Item::operator==(Item &other)
+bool components::Item::operator==(Item &other)
 {
     if (other.getValue() == this->_value)
         return true;

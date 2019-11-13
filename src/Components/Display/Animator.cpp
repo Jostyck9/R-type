@@ -21,12 +21,12 @@ void components::Animator::setId(const unsigned int &newId)
     return;
 }
 
-const unsigned int components::Animator::getId(void) const
+unsigned int components::Animator::getId(void) const
 {
     return this->_id;
 }
 
-const bool components::Animator::operator==(Animator &other)
+bool components::Animator::operator==(Animator &other)
 {
     if (other.getId() == this->_id)
         return true;
