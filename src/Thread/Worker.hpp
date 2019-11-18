@@ -1,8 +1,11 @@
 #ifndef __WORKER_HPP__
 # define __WORKER_HPP__
 
+#include <thread>
+
 class Worker {
 private:
+    std::thread _worker;
 public:
     Worker() = default;
     Worker(const Worker&) = delete;
