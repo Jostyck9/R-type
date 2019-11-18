@@ -50,5 +50,5 @@ jobs:
           command: 'cmake --build build'
       - run:
           name: Launch Units Tests
-          command: '/root/project/build/test'
+          command: 'ls && pwd && tree && /root/project/build/test'
 
