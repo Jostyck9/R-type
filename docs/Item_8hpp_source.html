@@ -80,34 +80,36 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define ITEM_HPP</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;typeindex&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="UserInterface_8hpp.html">UserInterface.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="IGameLogic_8hpp.html">IGameLogic.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacecomponents.html">components</a></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classcomponents_1_1Item.html">   20</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classcomponents_1_1Item.html">Item</a> : <span class="keyword">public</span> <a class="code" href="classcomponents_1_1UserInterface.html">UserInterface</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classcomponents_1_1Item.html">   20</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classcomponents_1_1Item.html">Item</a> : <span class="keyword">public</span> <a class="code" href="classcomponents_1_1IGameLogic.html">IGameLogic</a></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="classcomponents_1_1Item.html#a75c1b66ad2143e0fb1a95d5048cc5ee2">Item</a>();</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="classcomponents_1_1Item.html#ab0981bcf9da7c83fb6f71cf26668dc0b">~Item</a>();</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classcomponents_1_1Item.html#a0a752555963d61f852e93011df665d62">setValue</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> &amp;newValue);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="classcomponents_1_1Item.html#a2fa3c5290625405f6e14a4ff09d498f9">getValue</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">float</span> _value;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    };</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif //ITEM_HPP</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">float</span> <a class="code" href="classcomponents_1_1Item.html#ab5988ae5328818ccb80b36bed10604a4">getValue</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classcomponents_1_1Item.html#a687d6ddfa06436c28bcd30d9ef04fff6">operator==</a>(<a class="code" href="classcomponents_1_1Item.html">Item</a> &amp;other);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">float</span> _value;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    };</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif //ITEM_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aIGameLogic_8hpp_html"><div class="ttname"><a href="IGameLogic_8hpp.html">IGameLogic.hpp</a></div></div>
 <div class="ttc" id="aclasscomponents_1_1Item_html_ab0981bcf9da7c83fb6f71cf26668dc0b"><div class="ttname"><a href="classcomponents_1_1Item.html#ab0981bcf9da7c83fb6f71cf26668dc0b">components::Item::~Item</a></div><div class="ttdeci">~Item()</div><div class="ttdef"><b>Definition:</b> Item.cpp:14</div></div>
 <div class="ttc" id="aclasscomponents_1_1Item_html"><div class="ttname"><a href="classcomponents_1_1Item.html">components::Item</a></div><div class="ttdoc">Item describes an attribute that stores a numeric value representing Item points.</div><div class="ttdef"><b>Definition:</b> Item.hpp:20</div></div>
 <div class="ttc" id="anamespacecomponents_html"><div class="ttname"><a href="namespacecomponents.html">components</a></div><div class="ttdef"><b>Definition:</b> ComponentManager.cpp:10</div></div>
-<div class="ttc" id="aUserInterface_8hpp_html"><div class="ttname"><a href="UserInterface_8hpp.html">UserInterface.hpp</a></div></div>
-<div class="ttc" id="aclasscomponents_1_1UserInterface_html"><div class="ttname"><a href="classcomponents_1_1UserInterface.html">components::UserInterface</a></div><div class="ttdoc">UserInterface describes an attribute that is part of the User Interface.</div><div class="ttdef"><b>Definition:</b> UserInterface.hpp:20</div></div>
-<div class="ttc" id="aclasscomponents_1_1Item_html_a2fa3c5290625405f6e14a4ff09d498f9"><div class="ttname"><a href="classcomponents_1_1Item.html#a2fa3c5290625405f6e14a4ff09d498f9">components::Item::getValue</a></div><div class="ttdeci">const float getValue(void) const</div><div class="ttdef"><b>Definition:</b> Item.cpp:24</div></div>
+<div class="ttc" id="aclasscomponents_1_1IGameLogic_html"><div class="ttname"><a href="classcomponents_1_1IGameLogic.html">components::IGameLogic</a></div><div class="ttdoc">IGameLogic describes an attribute of an Entity that represent an ingame value.</div><div class="ttdef"><b>Definition:</b> IGameLogic.hpp:20</div></div>
 <div class="ttc" id="aclasscomponents_1_1Item_html_a0a752555963d61f852e93011df665d62"><div class="ttname"><a href="classcomponents_1_1Item.html#a0a752555963d61f852e93011df665d62">components::Item::setValue</a></div><div class="ttdeci">void setValue(const float &amp;newValue)</div><div class="ttdef"><b>Definition:</b> Item.cpp:18</div></div>
+<div class="ttc" id="aclasscomponents_1_1Item_html_ab5988ae5328818ccb80b36bed10604a4"><div class="ttname"><a href="classcomponents_1_1Item.html#ab5988ae5328818ccb80b36bed10604a4">components::Item::getValue</a></div><div class="ttdeci">float getValue(void) const</div><div class="ttdef"><b>Definition:</b> Item.cpp:24</div></div>
 <div class="ttc" id="aclasscomponents_1_1Item_html_a75c1b66ad2143e0fb1a95d5048cc5ee2"><div class="ttname"><a href="classcomponents_1_1Item.html#a75c1b66ad2143e0fb1a95d5048cc5ee2">components::Item::Item</a></div><div class="ttdeci">Item()</div><div class="ttdef"><b>Definition:</b> Item.cpp:10</div></div>
+<div class="ttc" id="aclasscomponents_1_1Item_html_a687d6ddfa06436c28bcd30d9ef04fff6"><div class="ttname"><a href="classcomponents_1_1Item.html#a687d6ddfa06436c28bcd30d9ef04fff6">components::Item::operator==</a></div><div class="ttdeci">bool operator==(Item &amp;other)</div><div class="ttdef"><b>Definition:</b> Item.cpp:29</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

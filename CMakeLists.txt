@@ -33,7 +33,8 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Components/ 
         src/Entities/
         src/Systems/
-        src/Systems/Display)
+        src/Systems/Display
+        src/Systems/SystemManager)
 
 #r-type_client
 set(SOURCE_CLIENT
@@ -69,7 +70,8 @@ set(SOURCE_CLIENT
         "src/Entities/Entity.cpp"
         "src/Entities/EntityManager.cpp"
         "src/Systems/ASystem.cpp"
-        "src/Systems/Display/DisplaySystem.cpp")
+        "src/Systems/Display/DisplaySystem.cpp"
+        "src/Systems/SystemManager/SystemManager.cpp")
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})

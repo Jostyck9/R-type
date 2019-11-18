@@ -83,9 +83,8 @@ Inheritance diagram for components::Health:</div>
  <div class="center">
   <img src="classcomponents_1_1Health.png" usemap="#components::Health_map" alt=""/>
   <map id="components::Health_map" name="components::Health_map">
-<area href="classcomponents_1_1UserInterface.html" title="UserInterface describes an attribute that is part of the User Interface." alt="components::UserInterface" shape="rect" coords="0,112,161,136"/>
-<area href="classcomponents_1_1IDisplay.html" title="IDisplay describes an attribute of an Entity that is displayable." alt="components::IDisplay" shape="rect" coords="0,56,161,80"/>
-<area href="classcomponents_1_1IComponent.html" title="Icomponent describes an attribute of an Entity." alt="components::IComponent" shape="rect" coords="0,0,161,24"/>
+<area href="classcomponents_1_1IGameLogic.html" title="IGameLogic describes an attribute of an Entity that represent an ingame value." alt="components::IGameLogic" shape="rect" coords="0,56,151,80"/>
+<area href="classcomponents_1_1IComponent.html" title="Icomponent describes an attribute of an Entity." alt="components::IComponent" shape="rect" coords="0,0,151,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -97,26 +96,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a16e95ae9e546b42df1d57cd8a72c3fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15f35513bc382002b8ca76515a208bac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcomponents_1_1Health.html#a15f35513bc382002b8ca76515a208bac">setValue</a> (const float &amp;newValue)</td></tr>
 <tr class="separator:a15f35513bc382002b8ca76515a208bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8023ec2280d50d5f5c21fd92bcba28e1"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcomponents_1_1Health.html#a8023ec2280d50d5f5c21fd92bcba28e1">getValue</a> (void) const</td></tr>
-<tr class="separator:a8023ec2280d50d5f5c21fd92bcba28e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classcomponents_1_1UserInterface"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classcomponents_1_1UserInterface')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classcomponents_1_1UserInterface.html">components::UserInterface</a></td></tr>
-<tr class="memitem:ac95f0d21a5c67aefd134236d186b188a inherit pub_methods_classcomponents_1_1UserInterface"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcomponents_1_1UserInterface.html#ac95f0d21a5c67aefd134236d186b188a">UserInterface</a> ()=default</td></tr>
-<tr class="separator:ac95f0d21a5c67aefd134236d186b188a inherit pub_methods_classcomponents_1_1UserInterface"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d222457ea12c5ddf6403a2fe4bf2e28 inherit pub_methods_classcomponents_1_1UserInterface"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcomponents_1_1UserInterface.html#a6d222457ea12c5ddf6403a2fe4bf2e28">~UserInterface</a> ()=0</td></tr>
-<tr class="separator:a6d222457ea12c5ddf6403a2fe4bf2e28 inherit pub_methods_classcomponents_1_1UserInterface"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classcomponents_1_1IDisplay"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classcomponents_1_1IDisplay')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classcomponents_1_1IDisplay.html">components::IDisplay</a></td></tr>
-<tr class="memitem:a37364fb49169f12cdd7ec7b4ba36c383 inherit pub_methods_classcomponents_1_1IDisplay"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcomponents_1_1IDisplay.html#a37364fb49169f12cdd7ec7b4ba36c383">IDisplay</a> ()=default</td></tr>
-<tr class="separator:a37364fb49169f12cdd7ec7b4ba36c383 inherit pub_methods_classcomponents_1_1IDisplay"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac12f18f5d410113dbe40e66364b9dce4 inherit pub_methods_classcomponents_1_1IDisplay"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcomponents_1_1IDisplay.html#ac12f18f5d410113dbe40e66364b9dce4">~IDisplay</a> ()=0</td></tr>
-<tr class="separator:ac12f18f5d410113dbe40e66364b9dce4 inherit pub_methods_classcomponents_1_1IDisplay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa722c5a819726d2702db48057f4b8b9a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcomponents_1_1Health.html#aa722c5a819726d2702db48057f4b8b9a">getValue</a> (void) const</td></tr>
+<tr class="separator:aa722c5a819726d2702db48057f4b8b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f658a503754735afbba17e5cd9ec614"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcomponents_1_1Health.html#a8f658a503754735afbba17e5cd9ec614">operator==</a> (<a class="el" href="classcomponents_1_1Health.html">Health</a> &amp;other)</td></tr>
+<tr class="separator:a8f658a503754735afbba17e5cd9ec614"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classcomponents_1_1IComponent"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classcomponents_1_1IComponent')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classcomponents_1_1IComponent.html">components::IComponent</a></td></tr>
-<tr class="memitem:a3858e3fe735f7205b6fd5d6c4fa2da77 inherit pub_methods_classcomponents_1_1IComponent"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcomponents_1_1IComponent.html#a3858e3fe735f7205b6fd5d6c4fa2da77">IComponent</a> ()=default</td></tr>
-<tr class="separator:a3858e3fe735f7205b6fd5d6c4fa2da77 inherit pub_methods_classcomponents_1_1IComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56cfc03fbf9378c320c45275b1260741 inherit pub_methods_classcomponents_1_1IComponent"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcomponents_1_1IComponent.html#a56cfc03fbf9378c320c45275b1260741">~IComponent</a> ()=0</td></tr>
-<tr class="separator:a56cfc03fbf9378c320c45275b1260741 inherit pub_methods_classcomponents_1_1IComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60312c5af7823c513a71dbfd98e39b16 inherit pub_methods_classcomponents_1_1IComponent"><td class="memItemLeft" align="right" valign="top">virtual std::type_index&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcomponents_1_1IComponent.html#a60312c5af7823c513a71dbfd98e39b16">getType</a> ()=0</td></tr>
-<tr class="memdesc:a60312c5af7823c513a71dbfd98e39b16 inherit pub_methods_classcomponents_1_1IComponent"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Type of the component.  <a href="classcomponents_1_1IComponent.html#a60312c5af7823c513a71dbfd98e39b16">More...</a><br /></td></tr>
-<tr class="separator:a60312c5af7823c513a71dbfd98e39b16 inherit pub_methods_classcomponents_1_1IComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f0dddb3331450ec8e43fd5261098edc inherit pub_methods_classcomponents_1_1IComponent"><td class="memItemLeft" align="right" valign="top">virtual const std::type_index&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcomponents_1_1IComponent.html#a9f0dddb3331450ec8e43fd5261098edc">getType</a> () const =0</td></tr>
+<tr class="memdesc:a9f0dddb3331450ec8e43fd5261098edc inherit pub_methods_classcomponents_1_1IComponent"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Type of the component.  <a href="classcomponents_1_1IComponent.html#a9f0dddb3331450ec8e43fd5261098edc">More...</a><br /></td></tr>
+<tr class="separator:a9f0dddb3331450ec8e43fd5261098edc inherit pub_methods_classcomponents_1_1IComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classcomponents_1_1Health.html" title="Health describes an attribute that stores a numeric value representing Health points.">Health</a> describes an attribute that stores a numeric value representing <a class="el" href="classcomponents_1_1Health.html" title="Health describes an attribute that stores a numeric value representing Health points.">Health</a> points. </p>
@@ -160,14 +147,14 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8023ec2280d50d5f5c21fd92bcba28e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8023ec2280d50d5f5c21fd92bcba28e1">&#9670;&nbsp;</a></span>getValue()</h2>
+<a id="aa722c5a819726d2702db48057f4b8b9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa722c5a819726d2702db48057f4b8b9a">&#9670;&nbsp;</a></span>getValue()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const float components::Health::getValue </td>
+          <td class="memname">float components::Health::getValue </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -178,6 +165,29 @@ Public Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">return</span>(this-&gt;_value);</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8f658a503754735afbba17e5cd9ec614"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f658a503754735afbba17e5cd9ec614">&#9670;&nbsp;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool components::Health::operator== </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classcomponents_1_1Health.html">Health</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">if</span> (other.getValue() == this-&gt;_value)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>

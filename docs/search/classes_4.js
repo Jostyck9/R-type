@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['health_96',['Health',['../classcomponents_1_1Health.html',1,'components']]]
+  ['entity_206',['Entity',['../classentities_1_1Entity.html',1,'entities']]],
+  ['entitymanager_207',['EntityManager',['../classentities_1_1EntityManager.html',1,'entities']]]
 ];

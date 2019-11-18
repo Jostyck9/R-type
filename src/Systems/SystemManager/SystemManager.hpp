@@ -1,0 +1,56 @@
+/*
+** EPITECH PROJECT, 2019
+** R-type
+** File description:
+** SystemManager.hpp
+*/
+
+#ifndef SYSTEMMANGER_HPP__
+#define SYSTEMMANGER_HPP__
+
+#include <memory>
+#include <list>
+#include "IComponentManager.hpp"
+#include "IEntityManager.hpp"
+#include "ISystem.hpp"
+#include "ISystemManager.hpp"
+
+namespace ecs::system
+{
+    class SystemManager : public ISystemManager
+    {
+    private:
+        std::list<std::shared_ptr<ISystem>> _systems;
+        std::list<int> _entitiesToDelete;
+        std::shared_ptr<entities::IEntityManager> &_entityManager;
+        std::shared_ptr<components::IComponentManager> &_componentManager;
+
+    public:
+        /**
+         * @brief Construct a new System Manager object
+         * 
+         * @param entityManager 
+         * @param componentManager 
+         */
+        SystemManager(std::shared_ptr<entities::IEntityManager> &entityManager, std::shared_ptr<components::IComponentManager> &componentManager);
+        ~SystemManager();
+
+        /**
+         * @brief Get the Entities To Delete object
+         * 
+         * @return std::list<int>& 
+         */
+        std::list<int> &getEntitiesToDelete();
+
+        void updateAll() override;
+
+        /**
+         * @brief Add a system inside the system manager
+         * 
+         * @param system 
+         */
+        void addSystem(std::shared_ptr<ISystem> system);
+    };
+}
+
+#endif //SYSTEMMANGER_HPP__

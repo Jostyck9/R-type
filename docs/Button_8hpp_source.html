@@ -80,34 +80,35 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define BUTTON_HPP</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;typeindex&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="UserInterface_8hpp.html">UserInterface.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="IUserInterface_8hpp.html">IUserInterface.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacecomponents.html">components</a></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classcomponents_1_1Button.html">   20</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classcomponents_1_1Button.html">Button</a> : <span class="keyword">public</span> <a class="code" href="classcomponents_1_1UserInterface.html">UserInterface</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classcomponents_1_1Button.html">   20</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classcomponents_1_1Button.html">Button</a> : <span class="keyword">public</span> <a class="code" href="classcomponents_1_1IUserInterface.html">IUserInterface</a></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="classcomponents_1_1Button.html#a5a16839f0e7bceba2574192d9ba2432a">Button</a>();</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="classcomponents_1_1Button.html#adc2b2c43d833c3fa2812060f98734073">~Button</a>();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classcomponents_1_1Button.html#a95e5ed488b049ca5eae1644cfc572ae4">setId</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> &amp;newId);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classcomponents_1_1Button.html#acf12a0533e01174b23534781325e5408">getId</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _id;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    };</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif //BUTTON_HPP</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classcomponents_1_1Button.html#a95e5ed488b049ca5eae1644cfc572ae4">setId</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> &amp;newId);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classcomponents_1_1Button.html#a8ff0b17df066ae38892e2ae636074f5c">getId</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;         <span class="keywordtype">bool</span> <a class="code" href="classcomponents_1_1Button.html#af99d800f5854e1b649391cf0dd9b3308">operator==</a>(<a class="code" href="classcomponents_1_1Button.html">Button</a> &amp;other);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _id;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    };</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif //BUTTON_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclasscomponents_1_1Button_html"><div class="ttname"><a href="classcomponents_1_1Button.html">components::Button</a></div><div class="ttdoc">Button describes an attribute that is button.</div><div class="ttdef"><b>Definition:</b> Button.hpp:20</div></div>
+<div class="ttc" id="aclasscomponents_1_1Button_html_af99d800f5854e1b649391cf0dd9b3308"><div class="ttname"><a href="classcomponents_1_1Button.html#af99d800f5854e1b649391cf0dd9b3308">components::Button::operator==</a></div><div class="ttdeci">bool operator==(Button &amp;other)</div><div class="ttdef"><b>Definition:</b> Button.cpp:30</div></div>
+<div class="ttc" id="aclasscomponents_1_1Button_html_a8ff0b17df066ae38892e2ae636074f5c"><div class="ttname"><a href="classcomponents_1_1Button.html#a8ff0b17df066ae38892e2ae636074f5c">components::Button::getId</a></div><div class="ttdeci">unsigned int getId(void) const</div><div class="ttdoc">return the component id</div><div class="ttdef"><b>Definition:</b> Button.cpp:25</div></div>
 <div class="ttc" id="aclasscomponents_1_1Button_html_adc2b2c43d833c3fa2812060f98734073"><div class="ttname"><a href="classcomponents_1_1Button.html#adc2b2c43d833c3fa2812060f98734073">components::Button::~Button</a></div><div class="ttdeci">~Button()</div><div class="ttdef"><b>Definition:</b> Button.cpp:14</div></div>
 <div class="ttc" id="aclasscomponents_1_1Button_html_a5a16839f0e7bceba2574192d9ba2432a"><div class="ttname"><a href="classcomponents_1_1Button.html#a5a16839f0e7bceba2574192d9ba2432a">components::Button::Button</a></div><div class="ttdeci">Button()</div><div class="ttdef"><b>Definition:</b> Button.cpp:10</div></div>
 <div class="ttc" id="anamespacecomponents_html"><div class="ttname"><a href="namespacecomponents.html">components</a></div><div class="ttdef"><b>Definition:</b> ComponentManager.cpp:10</div></div>
-<div class="ttc" id="aUserInterface_8hpp_html"><div class="ttname"><a href="UserInterface_8hpp.html">UserInterface.hpp</a></div></div>
-<div class="ttc" id="aclasscomponents_1_1UserInterface_html"><div class="ttname"><a href="classcomponents_1_1UserInterface.html">components::UserInterface</a></div><div class="ttdoc">UserInterface describes an attribute that is part of the User Interface.</div><div class="ttdef"><b>Definition:</b> UserInterface.hpp:20</div></div>
-<div class="ttc" id="aclasscomponents_1_1Button_html_acf12a0533e01174b23534781325e5408"><div class="ttname"><a href="classcomponents_1_1Button.html#acf12a0533e01174b23534781325e5408">components::Button::getId</a></div><div class="ttdeci">const unsigned int getId(void) const</div><div class="ttdef"><b>Definition:</b> Button.cpp:25</div></div>
-<div class="ttc" id="aclasscomponents_1_1Button_html_a95e5ed488b049ca5eae1644cfc572ae4"><div class="ttname"><a href="classcomponents_1_1Button.html#a95e5ed488b049ca5eae1644cfc572ae4">components::Button::setId</a></div><div class="ttdeci">void setId(const unsigned int &amp;newId)</div><div class="ttdef"><b>Definition:</b> Button.cpp:19</div></div>
+<div class="ttc" id="aclasscomponents_1_1Button_html_a95e5ed488b049ca5eae1644cfc572ae4"><div class="ttname"><a href="classcomponents_1_1Button.html#a95e5ed488b049ca5eae1644cfc572ae4">components::Button::setId</a></div><div class="ttdeci">void setId(const unsigned int &amp;newId)</div><div class="ttdoc">Set new value to the component id.</div><div class="ttdef"><b>Definition:</b> Button.cpp:19</div></div>
+<div class="ttc" id="aclasscomponents_1_1IUserInterface_html"><div class="ttname"><a href="classcomponents_1_1IUserInterface.html">components::IUserInterface</a></div><div class="ttdoc">UserInterface describes an attribute that is part of the User Interface.</div><div class="ttdef"><b>Definition:</b> IUserInterface.hpp:20</div></div>
+<div class="ttc" id="aIUserInterface_8hpp_html"><div class="ttname"><a href="IUserInterface_8hpp.html">IUserInterface.hpp</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -14,6 +14,10 @@ namespace ecs::system
     class ISystem
     {
     public:
+        /**
+         * @brief update the game with this system
+         * 
+         */
         virtual void update() = 0;
     };
 
