@@ -48,7 +48,7 @@ namespace components
          * @param idEntity 
          * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
-        std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getPhysicComponent(size_t idEntity) override;
+        std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getPhysicComponents(size_t idEntity) override;
 
         /**
          * @brief Get the Physic Component object
@@ -56,7 +56,7 @@ namespace components
          * @param entity
          * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
-        virtual std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getPhysicComponent(const std::shared_ptr<entities::Entity> &entity) override;
+        virtual std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getPhysicComponents(const std::shared_ptr<entities::Entity> &entity) override;
 
         /**
          * @brief Get the Display Components from an entity by his id
@@ -64,7 +64,7 @@ namespace components
          * @param idEntity 
          * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
-        std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getDisplayComponent(size_t idEntity) override;
+        std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getDisplayComponents(size_t idEntity) override;
 
         /**
          * @brief Get the Display Component object
@@ -72,7 +72,7 @@ namespace components
          * @param entity 
          * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
-        virtual std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getDisplayComponent(const std::shared_ptr<entities::Entity> &entity) override;
+        virtual std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getDisplayComponents(const std::shared_ptr<entities::Entity> &entity) override;
 
         /**
          * @brief Get the IO Components from an entity by his id
@@ -80,7 +80,7 @@ namespace components
          * @param idEntity 
          * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
-        std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getIOComponent(size_t idEntity) override;
+        std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getIOComponents(size_t idEntity) override;
 
         /**
          * @brief Get The IO Components from an entity
@@ -88,7 +88,7 @@ namespace components
          * @param entity 
          * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
-        std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getIOComponent(const std::shared_ptr<entities::Entity> &entity) override;
+        std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getIOComponents(const std::shared_ptr<entities::Entity> &entity) override;
 
         /**
          * @brief Get the Game Logic Components from an entity by his id
@@ -96,7 +96,7 @@ namespace components
          * @param idEntity 
          * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
-        std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getGameLogicComponent(size_t idEntity) override;
+        std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getGameLogicComponents(size_t idEntity) override;
 
         /**
          * @brief Get the Game Logic Component object
@@ -104,7 +104,7 @@ namespace components
          * @param entity 
          * @return std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> 
          */
-        std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getGameLogicComponent(const std::shared_ptr<entities::Entity> &entity) override;
+        std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> getGameLogicComponents(const std::shared_ptr<entities::Entity> &entity) override;
 
         /**
          * @brief Add a Physic Component object
@@ -175,7 +175,7 @@ namespace components
          * 
          * @param idEntity 
          */
-        void removeComponent(size_t idEntity) override;
+        void removeComponents(size_t idEntity) override;
     };
 }
 
