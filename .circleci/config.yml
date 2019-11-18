@@ -19,6 +19,9 @@ jobs:
           name: Install Python3
           command: 'apt-get update && sudo apt-get install -y python3'
       - run:
+          name: Install WGet
+          command: 'apt-get update && sudo apt-get install -y wget'
+      - run:
           name: Install Pip3
           command: 'apt-get update && sudo apt-get -y install python3-pip'
       - run:
@@ -39,3 +42,16 @@ jobs:
       - run:
           name: Creating Binary Files
           command: 'cmake --build build'
+      - run:
+          name: Install Criterion
+          command: 'cd tests && sudo ./install_criterion.sh'
+      - run:
+          name: Creating Build tests files
+          command: 'cd tests && cmake -H. -Bbuild'
+      - run:
+          name: Creatin Binary Test file
+          command: 'cd tests && cmake --build build'
+      - run:
+          name: Launch Units Tests
+          command: 'cd tests && ./build/test'
+
