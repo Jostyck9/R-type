@@ -26,18 +26,22 @@ elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
 endif()
 
 
-
 # Compilation
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 include_directories(${CMAKE_INCLUDE_PATH} src/Components/ComponentManager/ src/Components/)
 
 #r-type_client
+
 add_executable(r-type_client src/main_client.cpp src/Components/ComponentManager/ComponentManager.cpp)
 target_link_libraries(r-type_client ${CONAN_LIBS})
 
 #r-type_server
-add_executable(r-type_server src/main_server.cpp)
+
+    # Server Sources files
+file(GLOB_RECURSE SRV_SRCS src/Components/*.cpp src/Components/*.hpp src/Thread/*.cpp src/Thread/*.hpp)
+
+add_executable(r-type_server src/main_server.cpp ${SRV_SRCS})
 target_link_libraries(r-type_server ${CONAN_LIBS})
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})

@@ -1,0 +1,44 @@
+@startuml
+
+title R-Type Entity
+
+Class EntityManager
+Interface Entity 
+
+EntityManager o-- Entity
+
+
+Entity <|-- Projectile
+
+Projectile <|-- Laser
+Projectile <|-- Bullet
+Projectile <|-- Rocket
+Projectile <|-- Plasma
+
+
+Entity <|-- Ennemy
+
+Entity <|-- Allie
+
+Entity <|-- Player
+
+Entity <|-- Object
+
+Entity <|-- Particle
+
+Particle <|-- Shot 
+Particle <|-- Explosion
+Particle <|-- Environnemental
+
+Entity <|-- Environnement
+
+Environnement <|-- Asteroid
+Environnement <|-- World
+
+World <|-- Ceiling
+World <|-- Ground
+World <|-- BackGround
+
+
+
+@enduml
