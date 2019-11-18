@@ -9,6 +9,7 @@
 #define IENTITYMANAGER__HPP__
 
 #include <memory>
+#include <vector>
 #include "Entity.hpp"
 
 namespace entities

@@ -28,7 +28,12 @@ endif()
 # Compilation
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
-include_directories(${CMAKE_INCLUDE_PATH} src/Components/ComponentManager/ src/Components/ src/Entities/)
+include_directories(${CMAKE_INCLUDE_PATH} 
+        src/Components/ComponentManager/ 
+        src/Components/ 
+        src/Entities/
+        src/Systems/
+        src/Systems/Display)
 
 #r-type_client
 set(SOURCE_CLIENT
@@ -62,7 +67,9 @@ set(SOURCE_CLIENT
         "src/Components/Physics/Transform.cpp"
         "src/Components/Physics/Velocity.cpp"
         "src/Entities/Entity.cpp"
-        "src/Entities/EntityManager.cpp")
+        "src/Entities/EntityManager.cpp"
+        "src/Systems/ASystem.cpp"
+        "src/Systems/Display/DisplaySystem.cpp")
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})
