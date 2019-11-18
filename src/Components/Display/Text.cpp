@@ -21,7 +21,14 @@ void components::Text::setId(const unsigned int &newId)
     return;
 }
 
-const unsigned int components::Text::getId(void) const
+unsigned int components::Text::getId(void) const
 {
     return this->_id;
+}
+
+bool components::Text::operator==(Text &other)
+{
+    if (other.getId() == this->_id)
+        return true;
+    return false;
 }

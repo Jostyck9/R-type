@@ -23,7 +23,7 @@ namespace components
     public:
         Rotation();
         ~Rotation();
-        const bool operator==(Rotation const &) const;
+        bool operator==(Rotation const &) const;
 
         /**
          * @brief Set the Rad Angle object
@@ -36,7 +36,7 @@ namespace components
          * 
          * @return float 
          */
-        const float getRadAngle() const;
+        float getRadAngle() const;
         /**
          * @brief Get the Type object
          * 

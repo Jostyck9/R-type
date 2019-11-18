@@ -21,7 +21,14 @@ void components::PopUp::setId(const unsigned int &newId)
     return;
 }
 
-const unsigned int components::PopUp::getId(void) const
+unsigned int components::PopUp::getId(void) const
 {
     return this->_id;
+}
+
+bool components::PopUp::operator==(PopUp &other)
+{
+    if (other.getId() == this->_id)
+        return true;
+    return false;
 }

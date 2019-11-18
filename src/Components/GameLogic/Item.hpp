@@ -9,7 +9,7 @@
 #define ITEM_HPP
 
 #include <typeindex>
-#include "UserInterface.hpp"
+#include "IGameLogic.hpp"
 
 namespace components
 {
@@ -17,15 +17,16 @@ namespace components
      * @brief Item describes an attribute that stores a numeric value representing Item points. 
      *
      */
-    class Item : public UserInterface
+    class Item : public IGameLogic
 
     {
     public:
         Item();
         ~Item();
         void setValue(const float &newValue);
-        const float getValue(void) const;
-
+        float getValue(void) const;
+        bool operator==(Item &other);
+        
     private:
         float _value;
     };

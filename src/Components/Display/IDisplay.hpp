@@ -21,7 +21,6 @@ namespace components
     {
     public:
         IDisplay() = default;
-        virtual ~IDisplay() = 0;
     };
 }
 

@@ -18,10 +18,6 @@ namespace components
      */
     class IPhysics : public IComponent
     {
-    private:
-    public:
-        IPhysics() = default;
-        virtual ~IPhysics() = 0;
     };
 }
 

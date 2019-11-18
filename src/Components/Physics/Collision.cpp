@@ -17,7 +17,7 @@ Collision::~Collision()
 {
 }
 
-const bool Collision::operator==(Collision const &other) const
+bool Collision::operator==(Collision const &other) const
 {
     if (this->getX() != other.getX() || this->getY() != other.getY() || this->getHeight() != other.getHeight() || this->getWidth() != other.getWidth())
         return (false);
@@ -44,21 +44,22 @@ void Collision::setWidth(const float &val)
     this->_width = val;
 }
 
-const int Collision::getX() const
+int Collision::getX() const
 {
     return (this->_x);
 }
 
-const int Collision::getY() const
+int Collision::getY() const
 {
     return (this->_y);
 }
 
-const float Collision::getHeight() const
+float Collision::getHeight() const
 {
     return (this->_height);
 }
-const float Collision::getWidth() const
+
+float Collision::getWidth() const
 {
     return (this->_width);
 }

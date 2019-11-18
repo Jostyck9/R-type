@@ -22,7 +22,7 @@ void GameController::setId(const unsigned int &val)
     this->_id = val;
 }
 
-const unsigned int GameController::getId() const
+unsigned int GameController::getId() const
 {
     return (this->_id);
 }
@@ -32,9 +32,9 @@ const std::type_index GameController::getType() const
     return (std::type_index(typeid(GameController)));
 }
 
-bool GameController::operator==(GameController const& other)
+bool GameController::operator==(GameController const& other) const
 {
-    if (a.getId() != this->getId())
+    if (other.getId() != this->getId())
         return false;
     return true;
 }

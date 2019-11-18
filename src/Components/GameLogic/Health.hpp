@@ -9,7 +9,7 @@
 #define HEALTH_HPP
 
 #include <typeindex>
-#include "UserInterface.hpp"
+#include "IGameLogic.hpp"
 
 namespace components
 {
@@ -17,15 +17,15 @@ namespace components
      * @brief Health describes an attribute that stores a numeric value representing Health points. 
      *
      */
-    class Health : public UserInterface
+    class Health : public IGameLogic
 
     {
     public:
         Health();
         ~Health();
         void setValue(const float &newValue);
-        const float getValue(void) const;
-
+        float getValue(void) const;
+        bool operator==(Health &other);
     private:
         float _value;
     };

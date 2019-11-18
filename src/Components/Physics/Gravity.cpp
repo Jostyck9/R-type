@@ -17,7 +17,7 @@ Gravity::~Gravity()
 {
 }
 
-const bool Gravity::operator==(Gravity const &other) const
+bool Gravity::operator==(Gravity const &other) const
 {
     if (this->getValue() != other.getValue())
         return (false);
@@ -29,7 +29,7 @@ void Gravity::setValue(const float &val)
     this->_value = val;
 }
 
-const float Gravity::getValue() const
+float Gravity::getValue() const
 {
     return (this->_value);
 }

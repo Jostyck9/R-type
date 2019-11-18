@@ -9,7 +9,7 @@
 #define BUTTON_HPP
 
 #include <typeindex>
-#include "UserInterface.hpp"
+#include "IUserInterface.hpp"
 
 namespace components
 {
@@ -17,15 +17,24 @@ namespace components
      * @brief Button describes an attribute that is button. 
      *
      */
-    class Button : public UserInterface
+    class Button : public IUserInterface
 
     {
     public:
         Button();
         ~Button();
+         /**
+         * @brief Set new value to the component id
+         * 
+         * @param newId 
+         */
         void setId(const unsigned int &newId);
-        const unsigned int getId(void) const;
-
+         /**
+         * @brief return the component id
+         * 
+         */
+         unsigned int getId(void) const;
+         bool operator==(Button &other);
     private:
         unsigned int _id;
     };

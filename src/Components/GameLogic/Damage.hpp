@@ -9,7 +9,7 @@
 #define DAMAGE_HPP
 
 #include <typeindex>
-#include "UserInterface.hpp"
+#include "IGameLogic.hpp"
 
 namespace components
 {
@@ -17,15 +17,14 @@ namespace components
      * @brief Damage describes an attribute that stores a numeric value representing Damage points. 
      *
      */
-    class Damage : public UserInterface
-
+    class Damage : public IGameLogic
     {
     public:
         Damage();
         ~Damage();
         void setValue(const float &newValue);
-        const float getValue(void) const;
-
+        float getValue(void) const;
+        bool operator==(Damage &other);
     private:
         float _value;
     };

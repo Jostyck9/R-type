@@ -17,7 +17,7 @@ Transform::~Transform()
 {
 }
 
-const bool Transform::operator==(Transform const &other) const
+bool Transform::operator==(Transform const &other) const
 {
     if (this->getValue() != other.getValue())
         return (false);
@@ -29,7 +29,7 @@ void Transform::setValue(const float &val)
     this->_value = val;
 }
 
-const float Transform::getValue() const
+float Transform::getValue() const
 {
     return (this->_value);
 }

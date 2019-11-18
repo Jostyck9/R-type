@@ -21,7 +21,14 @@ void components::Power::setValue(const float &newValue)
     return;
 }
 
-const float components::Power::getValue(void) const
+float components::Power::getValue(void) const
 {
     return(this->_value);
+}
+
+bool components::Power::operator==(Power &other)
+{
+    if (other.getValue() == this->_value)
+        return true;
+    return false;
 }

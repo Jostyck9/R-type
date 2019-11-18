@@ -17,7 +17,8 @@ Motion::~Motion()
 {
 }
 
-const bool Motion::operator==(Motion const &other) const
+
+bool Motion::operator==(Motion const &other) const
 {
     (void) other;
     return (true);

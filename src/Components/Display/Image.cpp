@@ -21,7 +21,14 @@ void components::Image::setId(const unsigned int &newId)
     return;
 }
 
-const unsigned int components::Image::getId(void) const
+unsigned int components::Image::getId(void) const
 {
     return this->_id;
+}
+
+bool components::Image::operator==(Image &other)
+{
+    if (other.getId() == this->_id)
+        return true;
+    return false;
 }

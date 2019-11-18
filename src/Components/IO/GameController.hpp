@@ -38,15 +38,15 @@ namespace components
          * 
          * @return const unsigned int 
          */
-        const unsigned int getId() const;
+        unsigned int getId() const;
         /**
          * @brief Get the Type object
          * 
          * @return const std::type_index 
          */
-        const std::type_index getType() const override;
+        const std::type_index getType() const;
 
-        const bool operator==(GameController const& other) const;
+        bool operator==(GameController const& other) const;
     };
 }
 

@@ -9,7 +9,7 @@
 #define SCALE_HPP
 
 #include <typeindex>
-#include "UserInterface.hpp"
+#include "IGameLogic.hpp"
 
 namespace components
 {
@@ -17,15 +17,16 @@ namespace components
      * @brief Scale describes an attribute that stores a numeric value representing Scale points. 
      *
      */
-    class Scale : public UserInterface
+    class Scale : public IGameLogic
 
     {
     public:
         Scale();
         ~Scale();
         void setValue(const float &newValue);
-        const float getValue(void) const;
-
+        float getValue(void) const;
+        bool operator==(Scale &other);
+        
     private:
         float _value;
     };
