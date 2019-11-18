@@ -25,6 +25,13 @@ namespace entities
         virtual const std::shared_ptr<Entity> &getEntityById(size_t idEntity) const = 0;
 
         /**
+         * @brief Get the All Entities object
+         * 
+         * @return const std::vector<std::shared_ptr<Entity>>& 
+         */
+        virtual const std::vector<std::shared_ptr<Entity>> &getAllEntities() const = 0;
+
+        /**
          * @brief Add en entity in the manager
          * 
          * @param entity 

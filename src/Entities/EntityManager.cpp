@@ -45,6 +45,11 @@ const std::shared_ptr<Entity> &EntityManager::getEntityById(size_t idEntity) con
     throw new std::exception();
 }
 
+const std::vector<std::shared_ptr<Entity>> &EntityManager::getAllEntities() const
+{
+    return (_entities);
+}
+
 void EntityManager::addEntity(std::shared_ptr<Entity> entity)
 {
     if (contains(entity))

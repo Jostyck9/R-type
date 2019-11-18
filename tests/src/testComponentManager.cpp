@@ -11,7 +11,7 @@
 #include "ComponentManager.hpp"
 #include "Acceleration.hpp"
 
-Test(sample, test) {
+Test(ComponentManager, test_physic) {
     std::unique_ptr<components::IComponentManager> manager = std::make_unique<components::ComponentManager>();
     std::shared_ptr<components::IComponent> component = std::make_shared<components::Acceleration>();
 

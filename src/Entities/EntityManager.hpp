@@ -40,6 +40,7 @@ namespace entities
         EntityManager();
         ~EntityManager();
 
+        const std::vector<std::shared_ptr<Entity>> &getAllEntities() const override;
         const std::shared_ptr<Entity> &getEntityById(size_t idEntity) const override;
         void addEntity(std::shared_ptr<Entity> entity) override;
         void deleteEntity(size_t idEntity) override;
