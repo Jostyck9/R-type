@@ -33,9 +33,19 @@ std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> ComponentManager:
     return extractComponentsFrom(_physic, idEntity);
 }
 
+std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> ComponentManager::getPhysicComponent(const std::shared_ptr<entities::Entity> &entity)
+{
+    return getPhysicComponent(entity->getID());
+}
+
 std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> ComponentManager::getDisplayComponent(size_t idEntity)
 {
     return extractComponentsFrom(_display, idEntity);
+}
+
+std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> ComponentManager::getDisplayComponent(const std::shared_ptr<entities::Entity> &entity)
+{
+    return getDisplayComponent(entity->getID());
 }
 
 std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> ComponentManager::getIOComponent(size_t idEntity)
@@ -43,9 +53,9 @@ std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> ComponentManager:
     return extractComponentsFrom(_io, idEntity);
 }
 
-std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> ComponentManager::getNetworkComponent(size_t idEntity)
+std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> ComponentManager::getIOComponent(const std::shared_ptr<entities::Entity> &entity)
 {
-    return extractComponentsFrom(_network, idEntity);
+    return getIOComponent(entity->getID());
 }
 
 std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> ComponentManager::getGameLogicComponent(size_t idEntity)
@@ -53,9 +63,19 @@ std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> ComponentManager:
     return extractComponentsFrom(_gameLogic, idEntity);
 }
 
+std::list<std::reference_wrapper<std::shared_ptr<IComponent>>> ComponentManager::getGameLogicComponent(const std::shared_ptr<entities::Entity> &entity)
+{
+    return getGameLogicComponent(entity->getID());
+}
+
 void ComponentManager::addPhysicComponent(std::shared_ptr<IComponent> component, size_t idEntity)
 {
     _physic.insert(std::make_pair(idEntity, component));
+}
+
+void ComponentManager::addPhysicComponent(std::shared_ptr<IComponent> component, const std::shared_ptr<entities::Entity> &entity)
+{
+    addPhysicComponent(component, entity->getID());
 }
 
 void ComponentManager::addDisplayComponent(std::shared_ptr<IComponent> component, size_t idEntity)
@@ -63,14 +83,19 @@ void ComponentManager::addDisplayComponent(std::shared_ptr<IComponent> component
     _display.insert(std::make_pair(idEntity, component));
 }
 
+void ComponentManager::addDisplayComponent(std::shared_ptr<IComponent> component, const std::shared_ptr<entities::Entity> &entity)
+{
+    addDisplayComponent(component, entity->getID());
+}
+
 void ComponentManager::addIOComponent(std::shared_ptr<IComponent> component, size_t idEntity)
 {
     _io.insert(std::make_pair(idEntity, component));
 }
 
-void ComponentManager::addNetworkComponent(std::shared_ptr<IComponent> component, size_t idEntity)
+void ComponentManager::addIOComponent(std::shared_ptr<IComponent> component, const std::shared_ptr<entities::Entity> &entity)
 {
-    _network.insert(std::make_pair(idEntity, component));
+    addIOComponent(component, entity->getID());
 }
 
 void ComponentManager::addGameLogicComponent(std::shared_ptr<IComponent> component, size_t idEntity)
@@ -78,12 +103,16 @@ void ComponentManager::addGameLogicComponent(std::shared_ptr<IComponent> compone
     _gameLogic.insert(std::make_pair(idEntity, component));
 }
 
+void ComponentManager::addGameLogicComponent(std::shared_ptr<IComponent> component, const std::shared_ptr<entities::Entity> &entity)
+{
+    addGameLogicComponent(component, entity->getID());
+}
+
 void ComponentManager::removeComponent(size_t idEntity)
 {
     _physic.erase(idEntity);
     _display.erase(idEntity);
     _io.erase(idEntity);
-    _network.erase(idEntity);
     _gameLogic.erase(idEntity);
 }
 
