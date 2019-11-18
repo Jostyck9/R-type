@@ -41,7 +41,7 @@ jobs:
           command: 'cmake --build build'
       - run:
           name: Install Criterion
-          command: 'cd tests && ./install_criterion.sh'
+          command: 'cd tests && sudo ./install_criterion.sh'
       - run:
           name: Creating Build tests files
           command: 'cmake -H. -Bbuild'
