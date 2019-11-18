@@ -44,11 +44,11 @@ jobs:
           command: 'cd tests && sudo ./install_criterion.sh'
       - run:
           name: Creating Build tests files
-          command: 'cmake -H. -Bbuild'
+          command: 'cd tests && cmake -H. -Bbuild'
       - run:
           name: Creatin Binary Test file
-          command: 'cmake --build build'
+          command: 'cd tests && cmake --build build'
       - run:
           name: Launch Units Tests
-          command: 'ls && pwd && tree && /root/project/build/test'
+          command: 'cd tests && ./build/test'
 
