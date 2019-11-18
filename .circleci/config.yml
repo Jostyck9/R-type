@@ -39,3 +39,16 @@ jobs:
       - run:
           name: Creating Binary Files
           command: 'cmake --build build'
+      - run:
+          name: Install Criterion
+          command: 'cd tests && ./install_criterion.sh'
+      - run:
+          name: Creating Build tests files
+          command: 'cmake -H. -Bbuild'
+      - run:
+          name: Creatin Binary Test file
+          command: 'cmake --build build'
+      - run:
+          name: Launch Units Tests
+          command: './build/test'
+
