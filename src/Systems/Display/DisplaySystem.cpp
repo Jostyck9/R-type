@@ -24,13 +24,13 @@ namespace ecs::system
     void DisplaySystem::update()
     {
         for (auto &it : _entityManager->getAllEntities()) {
-            auto components = _componentManager->getPhysicComponents(it.get()->getID());
+            auto components = _componentManager->getPhysicComponents(it->getID());
             for (auto &it2 : components) {
-                if (it2.get()->getType() == std::type_index(typeid(ecs::components::Velocity))) {
-                    auto speed = std::dynamic_pointer_cast<ecs::components::Velocity>(it2.get());
+                if (it2->getType() == std::type_index(typeid(ecs::components::Velocity))) {
+                    auto speed = std::dynamic_pointer_cast<ecs::components::Velocity>(it2);
                     for (auto &it3 : components) {
-                        if (it3.get()->getType() == std::type_index(typeid(ecs::components::Position))) {
-                            auto position = std::dynamic_pointer_cast<ecs::components::Position>(it3.get());
+                        if (it3->getType() == std::type_index(typeid(ecs::components::Position))) {
+                            auto position = std::dynamic_pointer_cast<ecs::components::Position>(it3);
 
                             position->setX(position->getX() + speed->getValue());
                             std::cout << "Update position : " << position->getX() << std::endl;
