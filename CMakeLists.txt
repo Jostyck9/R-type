@@ -12,6 +12,8 @@ else ()
     set (CMAKE_CXX_STANDARD 11)
 endif ()
 
+set (CMAKE_CXX_STANDARD 17)
+
 #compilation flags
 if(MSVC)
     # Force to always compile with W4
