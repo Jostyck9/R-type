@@ -5,6 +5,8 @@
 ** DisplaySystem.cpp
 */
 
+#include "Physics/Position.hpp"
+#include "Physics/Velocity.hpp"
 #include "DisplaySystem.hpp"
 #include <iostream>
 
@@ -21,6 +23,22 @@ namespace ecs::system
 
     void DisplaySystem::update()
     {
-        std::cout << "Update Display" << std::endl;
+        for (auto &it : _entityManager->getAllEntities()) {
+            auto components = _componentManager->getPhysicComponents(it.get()->getID());
+            for (auto &it2 : components) {
+                if (it2.get()->getType() == std::type_index(typeid(ecs::components::Velocity))) {
+                    auto speed = std::dynamic_pointer_cast<ecs::components::Velocity>(it2.get());
+                    for (auto &it3 : components) {
+                        if (it3.get()->getType() == std::type_index(typeid(ecs::components::Position))) {
+                            auto position = std::dynamic_pointer_cast<ecs::components::Position>(it3.get());
+
+                            position->setX(position->getX() + speed->getValue());
+                            std::cout << "Update position : " << position->getX() << std::endl;
+
+                        }
+                    }
+                }
+            }
+        }
     }
 }

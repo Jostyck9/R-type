@@ -30,7 +30,7 @@ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 include_directories(${CMAKE_INCLUDE_PATH} 
         src/Components/ComponentManager/ 
-        src/Components/ 
+        src/Components/
         src/Entities/
         src/Systems/
         src/Systems/Display

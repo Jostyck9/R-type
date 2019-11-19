@@ -9,7 +9,7 @@
 
 using namespace ecs::components;
 
-Velocity::Velocity()
+Velocity::Velocity(float value) : _value(value)
 {
 }
 

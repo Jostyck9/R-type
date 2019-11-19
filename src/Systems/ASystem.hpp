@@ -19,7 +19,7 @@ namespace ecs::system
 
     class ASystem : public ISystem
     {
-    private:
+    protected:
         std::shared_ptr<entities::IEntityManager> &_entityManager;
         std::shared_ptr<ecs::components::IComponentManager> &_componentManager;
         std::list<int> &_entitiesToDelete;
