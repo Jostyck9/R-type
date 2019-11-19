@@ -1,0 +1,43 @@
+name: C/C++ CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Installing SUDO
+      run:  apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*
+    - name: Installing GCC
+      run:  apt-get update && apt-get install -y gcc g++
+    - name: Install CMAKE
+      run:  apt-get update && sudo apt-get install -y cmake
+    - name: Install Python3
+      run:  apt-get update && sudo apt-get install -y python3
+    - name: Install wget
+      run:  apt-get update && sudo apt-get install -y wget
+    - name: Install Pip3
+      run:  apt-get update && sudo apt-get -y install python3-pip
+    - name: Install Connan
+      run:  sudo python3 -m pip install conan
+    - name: Configure Remote Conan Repository Bincrafter
+      run:  conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+    - name: Configure Remote Conan Repository Epitech
+      run:  conan remote add epitech https://api.bintray.com/conan/epitech/public-conan
+    - name: Install dependecies
+      run:  mkdir build && cd build && conan install .. --build=missing && cd ..
+    - name: Creating Build Files
+      run:  cmake -H. -Bbuild
+    - name: Creating Binary Files
+      run:  cmake --build build
+    - name: Install Criterion
+      run:  cd tests && sudo ./install_criterion.sh
+    - name: Creating Build tests files
+      run:  cd tests && cmake -H. -Bbuild
+    - name: Creatin Binary Test file
+      run:  cd tests && cmake --build build
+    - name: Launch Units Tests
+      run:  cd tests && ./build/test
