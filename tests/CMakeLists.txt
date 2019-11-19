@@ -4,7 +4,11 @@ project(R-type_test)
 set(PROJECT_ROOT "..")
 set(SOURCE_ROOT "${PROJECT_ROOT}/src")
 
-set (CMAKE_CXX_STANDARD 17)
+if(MSVC)
+    set (CMAKE_CXX_STANDARD 17)
+else()
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++17")
+endif()
 
 include_directories(
     ${SOURCE_ROOT}
