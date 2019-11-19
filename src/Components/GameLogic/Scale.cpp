@@ -11,6 +11,11 @@ ecs::components::Scale::Scale()
 {
 }
 
+ecs::components::Scale::Scale(const Scale &oldScale)
+{
+    this->_value = oldScale.getValue();
+}
+
 ecs::components::Scale::~Scale()
 {
 }

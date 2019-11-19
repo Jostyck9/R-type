@@ -22,6 +22,7 @@ namespace ecs::components
     {
     public:
         Scale();
+        Scale(const Scale &oldScale);
         ~Scale();
         void setValue(const float &newValue);
         float getValue(void) const;

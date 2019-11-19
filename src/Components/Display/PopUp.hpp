@@ -22,6 +22,7 @@ namespace ecs::components
     {
     public:
         PopUp();
+        PopUp(const PopUp &oldPopUp);
         ~PopUp();
          /**
          * @brief Set new value to the component id
@@ -41,6 +42,7 @@ namespace ecs::components
          */
         const std::type_index getType() const;
         bool operator==(PopUp &other);
+        
     private:
         unsigned int _id;
     };

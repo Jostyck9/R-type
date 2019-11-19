@@ -11,6 +11,11 @@ ecs::components::Damage::Damage()
 {
 }
 
+ecs::components::Damage::Damage(const Damage &oldDamage)
+{
+    this->_value = oldDamage.getValue();
+}
+
 ecs::components::Damage::~Damage()
 {
 }

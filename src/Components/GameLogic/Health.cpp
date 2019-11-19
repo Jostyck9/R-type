@@ -11,6 +11,11 @@ ecs::components::Health::Health()
 {
 }
 
+ecs::components::Health::Health(const Health &oldHealth)
+{
+    this->_value = oldHealth.getValue();
+}
+
 ecs::components::Health::~Health()
 {
 }

@@ -20,6 +20,7 @@ namespace ecs::components
         float _y;
     public:
         Position(float x = 0, float y = 0);
+        Position(const Position &oldPosition);
         ~Position();
 
         bool operator==(Position const &) const;

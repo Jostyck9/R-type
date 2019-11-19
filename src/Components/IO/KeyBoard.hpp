@@ -2,11 +2,11 @@
 ** EPITECH PROJECT, 2019
 ** R-type
 ** File description:
-** KeyBoard.hpp
+** Keyboard.hpp
 */
 
-#ifndef KEYBOARD_HPP
-#define KEYBOARD_HPP
+#ifndef Keyboard_HPP
+#define Keyboard_HPP
 
 #include <map>
 #include "Controller.hpp"
@@ -17,15 +17,16 @@ namespace ecs::components
      * @brief 
      * 
      */
-    class KeyBoard
+    class Keyboard
     {
     private:
         unsigned int _id;
         //std::map<> _keyMap;
 
     public:
-        KeyBoard();
-        ~KeyBoard();
+        Keyboard();
+        Keyboard(const Keyboard &oldKeyboard);
+        ~Keyboard();
 
         /**
          * @brief Set the Id object
@@ -47,7 +48,7 @@ namespace ecs::components
          */
         const std::type_index getType() const;
 
-        bool operator==(KeyBoard const& other) const;
+        bool operator==(Keyboard const& other) const;
     };
 }
 

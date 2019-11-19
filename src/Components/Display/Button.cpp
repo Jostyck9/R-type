@@ -11,6 +11,11 @@ ecs::components::Button::Button()
 {
 }
 
+ecs::components::Button::Button(const Button &oldButton)
+{
+    this->_id = oldButton.getId();
+}
+
 ecs::components::Button::~Button()
 {
 }

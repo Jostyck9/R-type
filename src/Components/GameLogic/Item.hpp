@@ -22,6 +22,7 @@ namespace ecs::components
     {
     public:
         Item();
+        Item(const Item &oldItem);
         ~Item();
         void setValue(const float &newValue);
         float getValue(void) const;

@@ -2,37 +2,42 @@
 ** EPITECH PROJECT, 2019
 ** R-type
 ** File description:
-** KeyBoard.cpp
+** Keyboard.cpp
 */
 
-#include "KeyBoard.hpp"
+#include "Keyboard.hpp"
 
 using namespace ecs::components;
 
-KeyBoard::KeyBoard()
+Keyboard::Keyboard()
 {
 }
 
-KeyBoard::~KeyBoard()
+ecs::components::Keyboard::Keyboard(const Keyboard &oldKeyboard)
+{
+    this->_id = oldKeyboard.getId();
+}
+
+Keyboard::~Keyboard()
 {
 }
 
-void KeyBoard::setId(const unsigned int &val)
+void Keyboard::setId(const unsigned int &val)
 {
     this->_id = val;
 }
 
-unsigned int KeyBoard::getId() const
+unsigned int Keyboard::getId() const
 {
     return (this->_id);
 }
 
-const std::type_index KeyBoard::getType() const
+const std::type_index Keyboard::getType() const
 {
-    return (std::type_index(typeid(KeyBoard)));
+    return (std::type_index(typeid(Keyboard)));
 }
 
-bool KeyBoard::operator==(KeyBoard const& other) const
+bool Keyboard::operator==(Keyboard const& other) const
 {
     if (other.getId() != this->getId())
         return false;

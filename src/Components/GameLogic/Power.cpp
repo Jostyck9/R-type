@@ -11,6 +11,11 @@ ecs::components::Power::Power()
 {
 }
 
+ecs::components::Power::Power(const Power &oldPower)
+{
+    this->_value = oldPower.getValue();
+}
+
 ecs::components::Power::~Power()
 {
 }

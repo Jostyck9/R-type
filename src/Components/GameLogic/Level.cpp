@@ -11,6 +11,11 @@ ecs::components::Level::Level()
 {
 }
 
+ecs::components::Level::Level(const Level &oldLevel)
+{
+    this->_value = oldLevel.getValue();
+}
+
 ecs::components::Level::~Level()
 {
 }

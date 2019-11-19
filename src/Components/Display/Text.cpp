@@ -11,6 +11,11 @@ ecs::components::Text::Text()
 {
 }
 
+ecs::components::Text::Text(const Text &oldText)
+{
+    this->_id = oldText.getId();
+}
+
 ecs::components::Text::~Text()
 {    
 }

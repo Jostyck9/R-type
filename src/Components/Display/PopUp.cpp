@@ -11,6 +11,11 @@ ecs::components::PopUp::PopUp()
 {
 }
 
+ecs::components::PopUp::PopUp(const PopUp &oldPopUp)
+{
+    this->_id = oldPopUp.getId();
+}
+
 ecs::components::PopUp::~PopUp()
 {    
 }

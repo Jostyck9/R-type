@@ -22,6 +22,7 @@ namespace ecs::components
     {
     public:
         Level();
+        Level(const Level &oldLevel);
         ~Level();
         void setValue(const float &newValue);
         float getValue(void) const;

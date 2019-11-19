@@ -13,6 +13,11 @@ Transform::Transform()
 {
 }
 
+Transform::Transform(const Transform &oldTransform)
+{
+    this->_value = oldTransform.getValue();
+}
+
 Transform::~Transform()
 {
 }

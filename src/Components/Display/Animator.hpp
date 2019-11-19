@@ -22,7 +22,9 @@ namespace ecs::components
     {
     public:
         Animator();
+        Animator(const Animator &oldAnimator); 
         ~Animator();
+
          /**
          * @brief Set new value to the component id
          * 

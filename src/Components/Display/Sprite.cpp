@@ -11,6 +11,11 @@ ecs::components::Sprite::Sprite()
 {
 }
 
+ecs::components::Sprite::Sprite(const Sprite &oldSprite)
+{
+    this->_id = oldSprite.getId();
+}
+
 ecs::components::Sprite::~Sprite()
 {    
 }

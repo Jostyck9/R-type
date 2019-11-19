@@ -23,6 +23,7 @@ namespace ecs {
 			float _value;
 		public:
 			Acceleration();
+			Acceleration(const Acceleration &oldAcceleration);
 			~Acceleration();
 			bool operator==(Acceleration const&) const;
 

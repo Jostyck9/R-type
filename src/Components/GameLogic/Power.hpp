@@ -22,6 +22,7 @@ namespace ecs::components
     {
     public:
         Power();
+        Power(const Power &oldPower);
         ~Power();
         void setValue(const float &newValue);
         float getValue(void) const;

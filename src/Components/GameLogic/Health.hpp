@@ -22,6 +22,7 @@ namespace ecs::components
     {
     public:
         Health();
+        Health(const Health &oldHealth);
         ~Health();
         void setValue(const float &newValue);
         float getValue(void) const;

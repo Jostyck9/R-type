@@ -21,7 +21,8 @@ namespace ecs::components
 
     {
     public:
-        Image();
+        Image();        
+        Image(const Image &oldImage); 
         ~Image();
          /**
          * @brief Set new value to the component id

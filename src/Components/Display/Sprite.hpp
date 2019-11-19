@@ -22,6 +22,7 @@ namespace ecs::components
     {
     public:
         Sprite();
+        Sprite(const Sprite &oldSprite);
         ~Sprite();
          /**
          * @brief Set new value to the component id
@@ -41,6 +42,7 @@ namespace ecs::components
          */
         const std::type_index getType() const;
         bool operator==(Sprite &other);
+        
     private:
        unsigned int _id;
     };

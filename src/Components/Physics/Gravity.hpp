@@ -22,6 +22,7 @@ namespace ecs::components
         float _value;
     public:
         Gravity();
+        Gravity(const Gravity &oldGravity);
         ~Gravity();
         bool operator==(Gravity const &) const;
         

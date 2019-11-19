@@ -11,6 +11,11 @@ ecs::components::Image::Image()
 {
 }
 
+ecs::components::Image::Image(const Image &oldImage)
+{
+    this->_id = oldImage.getId();
+}
+
 ecs::components::Image::~Image()
 {    
 }

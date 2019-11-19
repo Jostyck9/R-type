@@ -13,6 +13,11 @@ Sound::Sound()
 {
 }
 
+ecs::components::Sound::Sound(const Sound &oldSound)
+{
+    this->_id = oldSound.getId();
+}
+
 Sound::~Sound()
 {
 }

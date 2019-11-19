@@ -25,6 +25,7 @@ namespace ecs::components
         float _width;
     public:
         Collision();
+        Collision(const Collision &oldCollision);
         ~Collision();
         bool operator==(Collision const &) const;
 

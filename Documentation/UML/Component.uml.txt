@@ -97,7 +97,7 @@ Output <|-- Sound
 Input <|-- Controller
 Input <|-- DummyInput
 
-Controller <|-- KeyBoard
+Controller <|-- Keyboard
 Controller <|-- GameController
 
 class Sound {
@@ -106,7 +106,7 @@ class Sound {
 
 class Controller
 
-class KeyBoard {
+class Keyboard {
     - id: uint
     - keyMap: map
 }

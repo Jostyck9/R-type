@@ -22,6 +22,7 @@ namespace ecs::components
     {
     public:
         Text();
+        Text(const Text &oldText);
         ~Text();
          /**
          * @brief Set new value to the component id

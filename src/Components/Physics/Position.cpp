@@ -19,6 +19,12 @@ namespace ecs::components
     Position::Position(float x, float y) : _x(x), _y(y)
     {
     }
+
+    Position::Position(const Position &oldPosition)
+    {
+        this->_x = oldPosition.getX();
+        this->_y = oldPosition.getY();
+    }
     
     Position::~Position()
     {

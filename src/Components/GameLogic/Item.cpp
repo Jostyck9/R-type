@@ -11,6 +11,11 @@ ecs::components::Item::Item()
 {
 }
 
+ecs::components::Item::Item(const Item &oldItem)
+{
+    this->_value = oldItem.getValue();
+}
+
 ecs::components::Item::~Item()
 {
 }
