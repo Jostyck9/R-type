@@ -26,6 +26,11 @@ float ecs::components::Damage::getValue(void) const
     return(this->_value);
 }
 
+const std::type_index ecs::components::Damage::getType() const
+{
+    return (std::type_index(typeid(Damage)));
+}
+
 bool ecs::components::Damage::operator==(Damage &other)
 {
     if (other.getValue() == this->_value)

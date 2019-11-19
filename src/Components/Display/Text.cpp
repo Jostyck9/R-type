@@ -26,6 +26,11 @@ unsigned int ecs::components::Text::getId(void) const
     return this->_id;
 }
 
+const std::type_index ecs::components::Text::getType() const
+{
+    return (std::type_index(typeid(Text)));
+}
+
 bool ecs::components::Text::operator==(Text &other)
 {
     if (other.getId() == this->_id)

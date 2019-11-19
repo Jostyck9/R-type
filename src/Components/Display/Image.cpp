@@ -26,6 +26,11 @@ unsigned int ecs::components::Image::getId(void) const
     return this->_id;
 }
 
+const std::type_index ecs::components::Image::getType() const
+{
+    return (std::type_index(typeid(Image)));
+}
+
 bool ecs::components::Image::operator==(Image &other)
 {
     if (other.getId() == this->_id)

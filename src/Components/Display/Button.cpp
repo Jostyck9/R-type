@@ -27,6 +27,11 @@ unsigned int ecs::components::Button::getId(void) const
     return this->_id;
 }
 
+const std::type_index ecs::components::Button::getType() const
+{
+    return (std::type_index(typeid(Button)));
+}
+
 bool ecs::components::Button::operator==(Button &other)
 {
     if (other.getId() == this->_id)

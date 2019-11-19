@@ -26,6 +26,11 @@ float ecs::components::Health::getValue(void) const
     return(this->_value);
 }
 
+const std::type_index ecs::components::Health::getType() const
+{
+    return (std::type_index(typeid(Health)));
+}
+
 bool ecs::components::Health::operator==(Health &other)
 {
     if (other.getValue() == this->_value)

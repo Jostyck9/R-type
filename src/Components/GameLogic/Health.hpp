@@ -25,6 +25,12 @@ namespace ecs::components
         ~Health();
         void setValue(const float &newValue);
         float getValue(void) const;
+        /**
+         * @brief Get the Type object
+         * 
+         * @return const std::type_index 
+         */
+        const std::type_index getType() const;
         bool operator==(Health &other);
     private:
         float _value;

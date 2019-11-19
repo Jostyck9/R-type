@@ -26,6 +26,11 @@ float ecs::components::Power::getValue(void) const
     return(this->_value);
 }
 
+const std::type_index ecs::components::Power::getType() const
+{
+    return (std::type_index(typeid(Power)));
+}
+
 bool ecs::components::Power::operator==(Power &other)
 {
     if (other.getValue() == this->_value)
