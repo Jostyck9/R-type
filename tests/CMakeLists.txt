@@ -4,6 +4,8 @@ project(R-type_test)
 set(PROJECT_ROOT "..")
 set(SOURCE_ROOT "${PROJECT_ROOT}/src")
 
+set (CMAKE_CXX_STANDARD 17)
+
 include_directories(
     ${SOURCE_ROOT}
     ${SOURCE_ROOT}/Entities/
