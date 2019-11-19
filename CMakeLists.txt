@@ -29,58 +29,28 @@ endif()
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 include_directories(${CMAKE_INCLUDE_PATH} 
-        src/Components/ComponentManager/ 
         src/Components/
+        src/Components/ComponentManager
+        src/Components/Display
+        src/Components/GameLogic
+        src/Components/IO
+        src/Components/Physics
+        src/Components/RessourceManager
         src/Entities/
         src/Systems/
         src/Systems/Display
         src/Systems/SystemManager)
 
 #r-type_client
-set(SOURCE_CLIENT
-        "src/main_client.cpp"
-        "src/Components/ComponentManager/ComponentManager.cpp"
-        "src/Components/Display/Animator.cpp"
-        "src/Components/Display/Button.cpp"
-        "src/Components/Display/Image.cpp"
-        "src/Components/Display/PopUp.cpp"
-        "src/Components/Display/Sprite.cpp"
-        "src/Components/Display/StaticText.cpp"
-        "src/Components/Display/Text.cpp"
-        "src/Components/GameLogic/Damage.cpp"
-        "src/Components/GameLogic/Health.cpp"
-        "src/Components/GameLogic/Item.cpp"
-        "src/Components/GameLogic/Level.cpp"
-        "src/Components/GameLogic/Power.cpp"
-        "src/Components/GameLogic/Scale.cpp"
-        "src/Components/IO/Controller.cpp"
-        "src/Components/IO/DummyInput.cpp"
-        "src/Components/IO/GameController.cpp"
-        "src/Components/IO/Input.cpp"
-        "src/Components/IO/KeyBoard.cpp"
-        "src/Components/IO/Output.cpp"
-        "src/Components/IO/Sound.cpp"
-        "src/Components/Physics/Acceleration.cpp"
-        "src/Components/Physics/Collision.cpp"
-        "src/Components/Physics/Gravity.cpp"
-        "src/Components/Physics/Motion.cpp"
-        "src/Components/Physics/Rotation.cpp"
-        "src/Components/Physics/Transform.cpp"
-        "src/Components/Physics/Velocity.cpp"
-        "src/Components/Physics/Position.cpp"
-        "src/Entities/Entity.cpp"
-        "src/Entities/EntityManager.cpp"
-        "src/Systems/ASystem.cpp"
-        "src/Systems/Display/DisplaySystem.cpp"
-        "src/Systems/SystemManager/SystemManager.cpp")
+file(GLOB_RECURSE CLT_SRCS src/Components/*.cpp src/Entities/*.cpp src/Systems/*)
 
-add_executable(r-type_client ${SOURCE_CLIENT})
+add_executable(r-type_client src/main_client.cpp ${CLT_SRCS})
 target_link_libraries(r-type_client ${CONAN_LIBS})
 
 #r-type_server
-set(SOURCE_SERVER
-        src/main_server.cpp)
-add_executable(r-type_server ${SOURCE_SERVER})
+file(GLOB_RECURSE SRV_SRCS src/Components/*.cpp src/Components/*.hpp src/Thread/*.cpp src/Thread/*.hpp)
+
+add_executable(r-type_server src/main_server.cpp ${SRV_SRCS})
 target_link_libraries(r-type_server ${CONAN_LIBS})
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
