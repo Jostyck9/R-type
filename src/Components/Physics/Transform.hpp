@@ -10,7 +10,7 @@
 
 #include "IPhysics.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief Transform describes the Transform of an Entity

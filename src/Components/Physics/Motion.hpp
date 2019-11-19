@@ -10,7 +10,7 @@
 
 #include "IPhysics.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief Motion describes the Motion like the Velocity and the Acceleration of an Entity

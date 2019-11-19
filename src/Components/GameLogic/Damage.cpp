@@ -7,26 +7,26 @@
 
 #include "Damage.hpp"
 
-components::Damage::Damage()
+ecs::components::Damage::Damage()
 {
 }
 
-components::Damage::~Damage()
+ecs::components::Damage::~Damage()
 {
 }
 
-void components::Damage::setValue(const float &newValue)
+void ecs::components::Damage::setValue(const float &newValue)
 {
     this->_value = newValue;
     return;
 }
 
-float components::Damage::getValue(void) const
+float ecs::components::Damage::getValue(void) const
 {
     return(this->_value);
 }
 
-bool components::Damage::operator==(Damage &other)
+bool ecs::components::Damage::operator==(Damage &other)
 {
     if (other.getValue() == this->_value)
         return true;

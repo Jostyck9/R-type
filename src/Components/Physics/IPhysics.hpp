@@ -10,7 +10,7 @@
 
 #include "IComponent.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief IPhysics describes the physics of an Entity

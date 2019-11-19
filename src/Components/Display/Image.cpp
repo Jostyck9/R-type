@@ -7,26 +7,26 @@
 
 #include "Image.hpp"
 
-components::Image::Image()
+ecs::components::Image::Image()
 {
 }
 
-components::Image::~Image()
+ecs::components::Image::~Image()
 {    
 }
 
-void components::Image::setId(const unsigned int &newId)
+void ecs::components::Image::setId(const unsigned int &newId)
 {
     this->_id = newId;
     return;
 }
 
-unsigned int components::Image::getId(void) const
+unsigned int ecs::components::Image::getId(void) const
 {
     return this->_id;
 }
 
-bool components::Image::operator==(Image &other)
+bool ecs::components::Image::operator==(Image &other)
 {
     if (other.getId() == this->_id)
         return true;

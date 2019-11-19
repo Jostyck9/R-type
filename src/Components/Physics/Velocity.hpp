@@ -10,7 +10,7 @@
 
 #include "Motion.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief Velocity describes the Velocity of an Entity

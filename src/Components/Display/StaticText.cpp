@@ -8,12 +8,12 @@
 #include <typeindex>
 #include "StaticText.hpp"
 
-components::StaticText::StaticText()
+ecs::components::StaticText::StaticText()
 {
 
 }
 
-components::StaticText::~StaticText()
+ecs::components::StaticText::~StaticText()
 {
     
 }

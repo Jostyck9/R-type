@@ -13,10 +13,10 @@
 #include "IComponent.hpp"
 #include "IComponentManager.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
-     * @brief Manage all the components of the game
+     * @brief Manage all the ecs::components of the game
      * 
      */
     class ComponentManager : public IComponentManager
@@ -30,7 +30,7 @@ namespace components
         typedef std::multimap<size_t, std::shared_ptr<IComponent>>::iterator MMAPIterator;
 
         /**
-         * @brief Extract the components from the map given with the idEntity
+         * @brief Extract the ecs::components from the map given with the idEntity
          * 
          * @param map 
          * @param idEntity 
@@ -171,7 +171,7 @@ namespace components
         void addGameLogicComponent(std::shared_ptr<IComponent> component, const std::shared_ptr<entities::Entity> &entity) override;
 
         /**
-         * @brief Remove all the components from an entity
+         * @brief Remove all the ecs::components from an entity
          * 
          * @param idEntity 
          */

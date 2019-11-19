@@ -10,7 +10,7 @@
 
 #include "Motion.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief Acceleration describes the Acceleration of an Entity

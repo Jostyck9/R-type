@@ -9,7 +9,7 @@
 
 namespace ecs::system
 {
-    ASystem::ASystem(std::shared_ptr<entities::IEntityManager> &entityManager, std::shared_ptr<components::IComponentManager> &componentManager, std::list<int> &entitiesToDelete) :
+    ASystem::ASystem(std::shared_ptr<entities::IEntityManager> &entityManager, std::shared_ptr<ecs::components::IComponentManager> &componentManager, std::list<int> &entitiesToDelete) :
     _entityManager(entityManager),
     _componentManager(componentManager),
     _entitiesToDelete(entitiesToDelete)

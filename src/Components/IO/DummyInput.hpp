@@ -9,7 +9,7 @@
 #define DUMMYINPUT_HPP
 
 #include "Input.hpp"
-namespace components
+namespace ecs::components
 {
     /**
      * @brief DummyInput describes the DummyInput of the Input of an Component

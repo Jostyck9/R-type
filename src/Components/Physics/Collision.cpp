@@ -7,7 +7,7 @@
 
 #include "Collision.hpp"
 
-using namespace components;
+using namespace ecs::components;
 
 Collision::Collision()
 {

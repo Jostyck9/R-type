@@ -7,7 +7,7 @@
 
 #include "GameController.hpp"
 
-using namespace components;
+using namespace ecs::components;
 
 GameController::GameController()
 {

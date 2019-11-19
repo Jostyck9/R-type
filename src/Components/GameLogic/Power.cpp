@@ -7,26 +7,26 @@
 
 #include "Power.hpp"
 
-components::Power::Power()
+ecs::components::Power::Power()
 {
 }
 
-components::Power::~Power()
+ecs::components::Power::~Power()
 {
 }
 
-void components::Power::setValue(const float &newValue)
+void ecs::components::Power::setValue(const float &newValue)
 {
     this->_value = newValue;
     return;
 }
 
-float components::Power::getValue(void) const
+float ecs::components::Power::getValue(void) const
 {
     return(this->_value);
 }
 
-bool components::Power::operator==(Power &other)
+bool ecs::components::Power::operator==(Power &other)
 {
     if (other.getValue() == this->_value)
         return true;

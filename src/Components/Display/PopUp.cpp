@@ -7,26 +7,26 @@
 
 #include "PopUp.hpp"
 
-components::PopUp::PopUp()
+ecs::components::PopUp::PopUp()
 {
 }
 
-components::PopUp::~PopUp()
+ecs::components::PopUp::~PopUp()
 {    
 }
 
-void components::PopUp::setId(const unsigned int &newId)
+void ecs::components::PopUp::setId(const unsigned int &newId)
 {
     this->_id = newId;
     return;
 }
 
-unsigned int components::PopUp::getId(void) const
+unsigned int ecs::components::PopUp::getId(void) const
 {
     return this->_id;
 }
 
-bool components::PopUp::operator==(PopUp &other)
+bool ecs::components::PopUp::operator==(PopUp &other)
 {
     if (other.getId() == this->_id)
         return true;

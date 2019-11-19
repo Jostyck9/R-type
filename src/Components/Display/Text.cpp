@@ -7,26 +7,26 @@
 
 #include "Text.hpp"
 
-components::Text::Text()
+ecs::components::Text::Text()
 {
 }
 
-components::Text::~Text()
+ecs::components::Text::~Text()
 {    
 }
 
-void components::Text::setId(const unsigned int &newId)
+void ecs::components::Text::setId(const unsigned int &newId)
 {
     this->_id = newId;
     return;
 }
 
-unsigned int components::Text::getId(void) const
+unsigned int ecs::components::Text::getId(void) const
 {
     return this->_id;
 }
 
-bool components::Text::operator==(Text &other)
+bool ecs::components::Text::operator==(Text &other)
 {
     if (other.getId() == this->_id)
         return true;

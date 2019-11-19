@@ -10,7 +10,7 @@
 
 #include <typeindex>
 
-namespace components 
+namespace ecs::components 
 {
     /**
      * @brief Icomponent describes an attribute of an Entity

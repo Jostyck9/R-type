@@ -11,7 +11,7 @@
 #include <typeindex>
 #include "IDisplay.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief Sprite describes an attribute that contains an image id. 

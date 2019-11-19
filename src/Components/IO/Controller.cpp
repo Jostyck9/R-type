@@ -7,7 +7,7 @@
 
 #include "Controller.hpp"
 
-using namespace components;
+using namespace ecs::components;
 
 Controller::Controller()
 {

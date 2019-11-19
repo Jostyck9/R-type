@@ -7,7 +7,7 @@
 
 #include "KeyBoard.hpp"
 
-using namespace components;
+using namespace ecs::components;
 
 KeyBoard::KeyBoard()
 {

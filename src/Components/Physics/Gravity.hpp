@@ -10,7 +10,7 @@
 
 #include "IPhysics.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief Gravity describes the gravity of an Entity

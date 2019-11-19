@@ -11,7 +11,7 @@
 #include <typeindex>
 #include "IGameLogic.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief Damage describes an attribute that stores a numeric value representing Damage points. 

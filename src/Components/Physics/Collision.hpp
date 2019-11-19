@@ -10,7 +10,7 @@
 
 #include "IPhysics.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief Collision describes the collision of an Entity and an other Entity

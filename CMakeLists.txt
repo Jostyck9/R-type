@@ -67,6 +67,7 @@ set(SOURCE_CLIENT
         "src/Components/Physics/Rotation.cpp"
         "src/Components/Physics/Transform.cpp"
         "src/Components/Physics/Velocity.cpp"
+        "src/Components/Physics/Position.cpp"
         "src/Entities/Entity.cpp"
         "src/Entities/EntityManager.cpp"
         "src/Systems/ASystem.cpp"

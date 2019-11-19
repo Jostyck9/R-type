@@ -7,7 +7,7 @@
 
 #include "Transform.hpp"
 
-using namespace components;
+using namespace ecs::components;
 
 Transform::Transform()
 {

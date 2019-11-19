@@ -7,7 +7,7 @@
 
 #include "ComponentManager.hpp"
 
-namespace components
+namespace ecs::components
 {
     
 ComponentManager::ComponentManager()

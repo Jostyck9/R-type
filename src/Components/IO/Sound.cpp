@@ -7,7 +7,7 @@
 
 #include "Sound.hpp"
 
-using namespace components;
+using namespace ecs::components;
 
 Sound::Sound()
 {

@@ -11,7 +11,7 @@
 #include <typeindex>
 #include "Text.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief StaticText describes an attribute that is a StaticText. 

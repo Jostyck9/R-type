@@ -7,26 +7,26 @@
 
 #include "Item.hpp"
 
-components::Item::Item()
+ecs::components::Item::Item()
 {
 }
 
-components::Item::~Item()
+ecs::components::Item::~Item()
 {
 }
 
-void components::Item::setValue(const float &newValue)
+void ecs::components::Item::setValue(const float &newValue)
 {
     this->_value = newValue;
     return;
 }
 
-float components::Item::getValue(void) const
+float ecs::components::Item::getValue(void) const
 {
     return(this->_value);
 }
 
-bool components::Item::operator==(Item &other)
+bool ecs::components::Item::operator==(Item &other)
 {
     if (other.getValue() == this->_value)
         return true;

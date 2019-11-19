@@ -7,7 +7,7 @@
 
 #include "Rotation.hpp"
 
-using namespace components;
+using namespace ecs::components;
 
 Rotation::Rotation()
 {

@@ -10,7 +10,7 @@
 
 #include "IPhysics.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief Rotation describes the Rotation of an Entity

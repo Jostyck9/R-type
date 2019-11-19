@@ -13,10 +13,10 @@
 #include "IComponent.hpp"
 #include "Entity.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
-     * @brief Manage all the components of the game
+     * @brief Manage all the ecs::components of the game
      * 
      */
     class IComponentManager
@@ -151,7 +151,7 @@ namespace components
         virtual void addGameLogicComponent(std::shared_ptr<IComponent> component, const std::shared_ptr<entities::Entity> &entity) = 0;
 
         /**
-         * @brief Remove all the components from an entity
+         * @brief Remove all the ecs::components from an entity
          * 
          * @param idEntity 
          */

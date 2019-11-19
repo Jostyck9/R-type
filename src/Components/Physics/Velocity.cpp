@@ -7,7 +7,7 @@
 
 #include "Velocity.hpp"
 
-using namespace components;
+using namespace ecs::components;
 
 Velocity::Velocity()
 {

@@ -11,7 +11,7 @@
 #include "IComponent.hpp"
 
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief IIsO describes the input output of an Component

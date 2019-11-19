@@ -7,26 +7,26 @@
 
 #include "Scale.hpp"
 
-components::Scale::Scale()
+ecs::components::Scale::Scale()
 {
 }
 
-components::Scale::~Scale()
+ecs::components::Scale::~Scale()
 {
 }
 
-void components::Scale::setValue(const float &newValue)
+void ecs::components::Scale::setValue(const float &newValue)
 {
     this->_value = newValue;
     return;
 }
 
-float components::Scale::getValue(void) const
+float ecs::components::Scale::getValue(void) const
 {
     return(this->_value);
 }
 
-bool components::Scale::operator==(Scale &other)
+bool ecs::components::Scale::operator==(Scale &other)
 {
     if (other.getValue() == this->_value)
         return true;

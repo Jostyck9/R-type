@@ -7,26 +7,26 @@
 
 #include "Level.hpp"
 
-components::Level::Level()
+ecs::components::Level::Level()
 {
 }
 
-components::Level::~Level()
+ecs::components::Level::~Level()
 {
 }
 
-void components::Level::setValue(const float &newValue)
+void ecs::components::Level::setValue(const float &newValue)
 {
     this->_value = newValue;
     return;
 }
 
-float components::Level::getValue(void) const
+float ecs::components::Level::getValue(void) const
 {
     return(this->_value);
 }
 
-bool components::Level::operator==(Level &other)
+bool ecs::components::Level::operator==(Level &other)
 {
     if (other.getValue() == this->_value)
         return true;

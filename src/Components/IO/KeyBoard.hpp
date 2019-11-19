@@ -11,7 +11,7 @@
 #include <map>
 #include "Controller.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief 

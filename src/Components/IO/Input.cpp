@@ -7,7 +7,7 @@
 
 #include "Input.hpp"
 
-using namespace components;
+using namespace ecs::components;
 
 Input::Input()
 {

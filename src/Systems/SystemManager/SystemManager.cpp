@@ -10,7 +10,7 @@
 namespace ecs::system
 {
         
-    SystemManager::SystemManager(std::shared_ptr<entities::IEntityManager> &entityManager, std::shared_ptr<components::IComponentManager> &componentManager) :
+    SystemManager::SystemManager(std::shared_ptr<entities::IEntityManager> &entityManager, std::shared_ptr<ecs::components::IComponentManager> &componentManager) :
     _entityManager(entityManager),
     _componentManager(componentManager)
     {

@@ -13,8 +13,8 @@
 #include "Acceleration.hpp"
 
 Test(ComponentManager, test_physic) {
-    std::unique_ptr<components::IComponentManager> manager = std::make_unique<components::ComponentManager>();
-    std::shared_ptr<components::IComponent> component = std::make_shared<components::Acceleration>();
+    std::unique_ptr<ecs::components::IComponentManager> manager = std::make_unique<ecs::components::ComponentManager>();
+    std::shared_ptr<ecs::components::IComponent> component = std::make_shared<ecs::components::Acceleration>();
     std::shared_ptr<entities::Entity> entity = std::make_shared<entities::Entity>();
 
     manager->addPhysicComponent(component, 0);
@@ -42,8 +42,8 @@ Test(ComponentManager, test_physic) {
 }
 
 Test(ComponentManager, test_display) {
-    std::unique_ptr<components::IComponentManager> manager = std::make_unique<components::ComponentManager>();
-    std::shared_ptr<components::IComponent> component = std::make_shared<components::Acceleration>();
+    std::unique_ptr<ecs::components::IComponentManager> manager = std::make_unique<ecs::components::ComponentManager>();
+    std::shared_ptr<ecs::components::IComponent> component = std::make_shared<ecs::components::Acceleration>();
     std::shared_ptr<entities::Entity> entity = std::make_shared<entities::Entity>();
 
     manager->addDisplayComponent(component, 0);
@@ -71,8 +71,8 @@ Test(ComponentManager, test_display) {
 }
 
 Test(ComponentManager, test_io) {
-    std::unique_ptr<components::IComponentManager> manager = std::make_unique<components::ComponentManager>();
-    std::shared_ptr<components::IComponent> component = std::make_shared<components::Acceleration>();
+    std::unique_ptr<ecs::components::IComponentManager> manager = std::make_unique<ecs::components::ComponentManager>();
+    std::shared_ptr<ecs::components::IComponent> component = std::make_shared<ecs::components::Acceleration>();
     std::shared_ptr<entities::Entity> entity = std::make_shared<entities::Entity>();
 
     manager->addIOComponent(component, 0);
@@ -100,8 +100,8 @@ Test(ComponentManager, test_io) {
 }
 
 Test(ComponentManager, test_game_logic) {
-    std::unique_ptr<components::IComponentManager> manager = std::make_unique<components::ComponentManager>();
-    std::shared_ptr<components::IComponent> component = std::make_shared<components::Acceleration>();
+    std::unique_ptr<ecs::components::IComponentManager> manager = std::make_unique<ecs::components::ComponentManager>();
+    std::shared_ptr<ecs::components::IComponent> component = std::make_shared<ecs::components::Acceleration>();
     std::shared_ptr<entities::Entity> entity = std::make_shared<entities::Entity>();
 
     manager->addGameLogicComponent(component, 0);

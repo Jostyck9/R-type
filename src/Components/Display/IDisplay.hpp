@@ -11,7 +11,7 @@
 #include <typeindex>
 #include "IComponent.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief IDisplay describes an attribute of an Entity that is displayable

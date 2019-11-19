@@ -10,7 +10,7 @@
 
 #include "Output.hpp"
 
-namespace components
+namespace ecs::components
 {
     class Sound : public Output
     {

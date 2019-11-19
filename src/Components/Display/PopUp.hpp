@@ -11,7 +11,7 @@
 #include <typeindex>
 #include "IUserInterface.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief PopUp describes an attribute that is a popUp. 

@@ -10,7 +10,7 @@
 
 #include "IIO.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief Input describes the input of an Component

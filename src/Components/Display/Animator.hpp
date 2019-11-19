@@ -11,7 +11,7 @@
 #include <typeindex>
 #include "IDisplay.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief Animator describes that the entity is animated 

@@ -7,7 +7,7 @@
 
 #include "Output.hpp"
 
-using namespace components;
+using namespace ecs::components;
 
 Output::Output()
 {

@@ -10,7 +10,7 @@
 
 #include "IIO.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief Output describes the Output of an Component

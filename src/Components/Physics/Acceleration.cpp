@@ -7,7 +7,7 @@
 
 #include "Acceleration.hpp"
 
-using namespace components;
+using namespace ecs::components;
 
 Acceleration::Acceleration()
 {

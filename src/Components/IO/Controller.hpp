@@ -10,7 +10,7 @@
 
 #include "Input.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief Controller describes the Controller of the Input of an Component

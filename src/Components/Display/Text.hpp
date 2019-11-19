@@ -11,7 +11,7 @@
 #include <typeindex>
 #include "IUserInterface.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief Text describes an attribute that is a Text. 

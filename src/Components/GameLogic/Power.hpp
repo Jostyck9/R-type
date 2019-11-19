@@ -11,7 +11,7 @@
 #include <typeindex>
 #include "IGameLogic.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief Power describes an attribute that stores a numeric value representing Power points. 

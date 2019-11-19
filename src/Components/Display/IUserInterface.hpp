@@ -11,7 +11,7 @@
 #include <typeindex>
 #include "IDisplay.hpp"
 
-namespace components
+namespace ecs::components
 {
     /**
      * @brief UserInterface describes an attribute that is part of the User Interface. 

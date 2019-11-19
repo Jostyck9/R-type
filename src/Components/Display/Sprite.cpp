@@ -7,26 +7,26 @@
 
 #include "Sprite.hpp"
 
-components::Sprite::Sprite()
+ecs::components::Sprite::Sprite()
 {
 }
 
-components::Sprite::~Sprite()
+ecs::components::Sprite::~Sprite()
 {    
 }
 
-void components::Sprite::setId(const unsigned int &newId)
+void ecs::components::Sprite::setId(const unsigned int &newId)
 {
     this->_id = newId;
     return;
 }
 
-unsigned int components::Sprite::getId(void) const
+unsigned int ecs::components::Sprite::getId(void) const
 {
     return this->_id;
 }
 
-bool components::Sprite::operator==(Sprite &other)
+bool ecs::components::Sprite::operator==(Sprite &other)
 {
     if (other.getId() == this->_id)
         return true;
