@@ -17,3 +17,8 @@ ecs::components::StaticText::~StaticText()
 {
     
 }
+
+const std::type_index ecs::components::StaticText::getType() const
+{
+    return (std::type_index(typeid(StaticText)));
+}

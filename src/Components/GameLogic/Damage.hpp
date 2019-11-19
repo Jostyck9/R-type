@@ -24,6 +24,12 @@ namespace ecs::components
         ~Damage();
         void setValue(const float &newValue);
         float getValue(void) const;
+        /**
+         * @brief Get the Type object
+         * 
+         * @return const std::type_index 
+         */
+        const std::type_index getType() const;
         bool operator==(Damage &other);
     private:
         float _value;

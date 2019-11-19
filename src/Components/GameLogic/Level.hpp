@@ -25,6 +25,12 @@ namespace ecs::components
         ~Level();
         void setValue(const float &newValue);
         float getValue(void) const;
+        /**
+         * @brief Get the Type object
+         * 
+         * @return const std::type_index 
+         */
+        const std::type_index getType() const;
         bool operator==(Level &other);
     private:
         float _value;

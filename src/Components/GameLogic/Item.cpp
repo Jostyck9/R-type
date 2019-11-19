@@ -26,6 +26,11 @@ float ecs::components::Item::getValue(void) const
     return(this->_value);
 }
 
+const std::type_index ecs::components::Item::getType() const
+{
+    return (std::type_index(typeid(Item)));
+}
+
 bool ecs::components::Item::operator==(Item &other)
 {
     if (other.getValue() == this->_value)

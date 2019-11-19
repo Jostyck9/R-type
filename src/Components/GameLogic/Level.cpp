@@ -26,6 +26,11 @@ float ecs::components::Level::getValue(void) const
     return(this->_value);
 }
 
+const std::type_index ecs::components::Level::getType() const
+{
+    return (std::type_index(typeid(Level)));
+}
+
 bool ecs::components::Level::operator==(Level &other)
 {
     if (other.getValue() == this->_value)

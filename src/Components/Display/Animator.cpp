@@ -26,6 +26,11 @@ unsigned int ecs::components::Animator::getId(void) const
     return this->_id;
 }
 
+const std::type_index ecs::components::Animator::getType() const
+{
+    return (std::type_index(typeid(Animator)));
+}
+
 bool ecs::components::Animator::operator==(Animator &other)
 {
     if (other.getId() == this->_id)

@@ -26,6 +26,11 @@ float ecs::components::Scale::getValue(void) const
     return(this->_value);
 }
 
+const std::type_index ecs::components::Scale::getType() const
+{
+    return (std::type_index(typeid(Scale)));
+}
+
 bool ecs::components::Scale::operator==(Scale &other)
 {
     if (other.getValue() == this->_value)
