@@ -21,7 +21,7 @@ namespace ecs::components
     private:
         float _value;
     public:
-        Velocity();
+        Velocity(float value = 0);
         ~Velocity();
         bool operator==(Velocity const &) const;
 
