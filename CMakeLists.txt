@@ -13,6 +13,7 @@ else ()
         set (CMAKE_CXX_STANDARD 17)
     else()
         set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++17")
+    endif()
 endif ()
 
 #compilation flags
