@@ -19,7 +19,7 @@ class ComponentExceptions : public ECSExceptions
 {
 private:
 public:
-    ComponentExceptions(std::string);
+    ComponentExceptions(std::string, std::string);
     ~ComponentExceptions();
 
 };

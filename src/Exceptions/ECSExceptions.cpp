@@ -7,7 +7,7 @@
 
 #include "ECSExceptions.hpp"
 
-ECSExceptions::ECSExceptions(std::string str) : RTypeExceptions(str)
+ECSExceptions::ECSExceptions(std::string what, std::string where) : RTypeExceptions(what, where)
 {
 }
 

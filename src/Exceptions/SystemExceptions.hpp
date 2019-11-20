@@ -20,7 +20,7 @@ class SystemExceptions : public ECSExceptions
 {
 private:
 public:
-    SystemExceptions(std::string);
+    SystemExceptions(std::string, std::string);
     ~SystemExceptions();
 
 };

@@ -7,7 +7,7 @@
 
 #include "ComponentExceptions.hpp"
 
-ComponentExceptions::ComponentExceptions(std::string str) : ECSExceptions(str)
+ComponentExceptions::ComponentExceptions(std::string what, std::string where) : ECSExceptions(what, where)
 {
 }
 

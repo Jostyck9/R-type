@@ -7,7 +7,7 @@
 
 #include "EntityExceptions.hpp"
 
-EntityExceptions::EntityExceptions(std::string str) : ECSExceptions(str)
+EntityExceptions::EntityExceptions(std::string what, std::string where) : ECSExceptions(what, where)
 {
 }
 

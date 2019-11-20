@@ -17,9 +17,10 @@
 class RTypeExceptions : public std::exception 
 {
 private:
-    std::string _error;
+    std::string _what;
+    std::string _where;
 public:
-    RTypeExceptions(std::string);
+    RTypeExceptions(std::string, std::string);
     ~RTypeExceptions();
 
     /**
@@ -28,6 +29,12 @@ public:
      * @return const char* 
      */
     const char *what() const noexcept override;
+    /**
+     * @brief where exception for Server, System, Componenet, Entity and ECS
+     * 
+     * @return const char* 
+     */
+    const char *where() const noexcept;
 };
 
 #endif //RTYPEEXCEPTIONS_HPP

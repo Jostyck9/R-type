@@ -7,9 +7,10 @@
 
 #include "RTypeExceptions.hpp"
 
-RTypeExceptions::RTypeExceptions(std::string str)
+RTypeExceptions::RTypeExceptions(std::string what, std::string where)
 {
-    this->_error = str;
+    this->_what = what;
+    this->_where = where;
 }
 
 RTypeExceptions::~RTypeExceptions()
@@ -18,5 +19,10 @@ RTypeExceptions::~RTypeExceptions()
 
 const char* RTypeExceptions::what() const noexcept
 {
-    return (this->_error.c_str());
+    return (this->_what.c_str());
+}
+
+const char* RTypeExceptions::where() const noexcept
+{
+    return (this->_where.c_str());
 }
