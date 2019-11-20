@@ -6,13 +6,14 @@
 #define R_TYPE_TEXTURE_HPP
 
 #include <SFML/Graphics.hpp>
+#include "ITexture.hpp"
 
-class Texture {
+class Texture : public ITexture {
 public:
     Texture(const std::string& name, const std::string &filePath);
     ~Texture();
 
-    const std::string &getName();
+    const std::string &getName() override;
 
 private:
     std::string _name;

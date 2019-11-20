@@ -6,8 +6,9 @@
 #define R_TYPE_MUSIC_HPP
 
 #include <SFML/Audio.hpp>
+#include "IAudio.hpp"
 
-class Music {
+class Music : public IAudio {
 public:
     Music(const std::string& name, const std::string &filePath);
     ~Music();

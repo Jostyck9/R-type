@@ -6,13 +6,14 @@
 #define R_TYPE_FONT_HPP
 
 #include <SFML/Graphics.hpp>
+#include "IFont.hpp"
 
-class Font {
+class Font : public IFont {
 public:
     Font(const std::string& name, const std::string &filePath);
     ~Font();
 
-    const std::string &getName();
+    const std::string &getName() override;
 
 private:
     std::string _name;
