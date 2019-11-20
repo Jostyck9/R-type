@@ -13,7 +13,6 @@ public:
     ~Music();
 
     const std::string &getName();
-    const sf::Music &getMusic();
 
     void play();
     void stop();

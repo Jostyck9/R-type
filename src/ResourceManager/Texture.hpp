@@ -13,7 +13,6 @@ public:
     ~Texture();
 
     const std::string &getName();
-    const sf::Texture &getTexture();
 
 private:
     std::string _name;

@@ -13,7 +13,6 @@ public:
     ~Sound();
 
     const std::string &getName();
-    const sf::Sound &getSound();
 
 private:
     std::string _name;

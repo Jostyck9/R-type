@@ -15,11 +15,6 @@ Sound::~Sound()
 {
 }
 
-const sf::Sound &Sound::getSound()
-{
-    return _sound;
-}
-
 const std::string &Sound::getName()
 {
     return _name;

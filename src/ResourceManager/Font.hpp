@@ -13,7 +13,6 @@ public:
     ~Font();
 
     const std::string &getName();
-    const sf::Font &getFont();
 
 private:
     std::string _name;

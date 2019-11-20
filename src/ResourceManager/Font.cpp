@@ -14,11 +14,6 @@ Font::~Font()
 {
 }
 
-const sf::Font &Font::getFont()
-{
-    return _font;
-}
-
 const std::string &Font::getName()
 {
     return _name;

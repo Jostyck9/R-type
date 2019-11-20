@@ -14,11 +14,6 @@ Texture::~Texture()
 {
 }
 
-const sf::Texture &Texture::getTexture()
-{
-    return _texture;
-}
-
 const std::string &Texture::getName()
 {
     return _name;
