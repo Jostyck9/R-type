@@ -8,17 +8,18 @@
 #include <SFML/Graphics.hpp>
 #include "ITexture.hpp"
 
-class Texture : public ITexture {
-public:
-    Texture(const std::string& name, const std::string &filePath);
-    ~Texture();
+namespace ecs {
+    class Texture : public ITexture {
+    public:
+        Texture(const std::string& name, const std::string &filePath);
+        ~Texture();
 
-    const std::string &getName() override;
+        const std::string &getName() override;
 
-private:
-    std::string _name;
-    sf::Texture _texture;
-};
-
+    private:
+        std::string _name;
+        sf::Texture _texture;
+    };
+}
 
 #endif //R_TYPE_TEXTURE_HPP

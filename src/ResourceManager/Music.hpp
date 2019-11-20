@@ -8,22 +8,23 @@
 #include <SFML/Audio.hpp>
 #include "IAudio.hpp"
 
-class Music : public IAudio {
-public:
-    Music(const std::string& name, const std::string &filePath);
-    ~Music();
+namespace ecs {
+    class Music : public IAudio {
+    public:
+        Music(const std::string& name, const std::string &filePath);
+        ~Music();
 
-    const std::string &getName();
+        const std::string &getName();
 
-    void play();
-    void stop();
-    void pause();
-    void loop(bool state);
+        void play();
+        void stop();
+        void pause();
+        void loop(bool state);
 
-private:
-    std::string _name;
-    sf::Music _music;
-};
-
+    private:
+        std::string _name;
+        sf::Music _music;
+    };
+}
 
 #endif //R_TYPE_MUSIC_HPP

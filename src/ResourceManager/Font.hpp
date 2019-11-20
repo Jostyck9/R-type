@@ -8,17 +8,19 @@
 #include <SFML/Graphics.hpp>
 #include "IFont.hpp"
 
-class Font : public IFont {
-public:
-    Font(const std::string& name, const std::string &filePath);
-    ~Font();
+namespace ecs {
+    class Font : public IFont {
+    public:
+        Font(const std::string& name, const std::string &filePath);
+        ~Font();
 
-    const std::string &getName() override;
+        const std::string &getName() override;
 
-private:
-    std::string _name;
-    sf::Font _font;
-};
+    private:
+        std::string _name;
+        sf::Font _font;
+    };
+}
 
 
 #endif //R_TYPE_FONT_HPP

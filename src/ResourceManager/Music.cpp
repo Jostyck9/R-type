@@ -4,6 +4,8 @@
 
 #include "Music.hpp"
 
+namespace ecs {
+
 Music::Music(const std::string &name, const std::string &filePath)
 {
     _name = name;
@@ -38,4 +40,6 @@ void Music::loop(bool state)
 const std::string &Music::getName()
 {
     return _name;
+}
+
 }

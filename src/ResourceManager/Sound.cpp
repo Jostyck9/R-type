@@ -4,6 +4,8 @@
 
 #include "Sound.hpp"
 
+namespace ecs {
+
 Sound::Sound(const std::string &name, const std::string &filePath)
 {
     _name = name;
@@ -38,4 +40,6 @@ void Sound::loop(bool state)
 const std::string &Sound::getName()
 {
     return _name;
+}
+
 }

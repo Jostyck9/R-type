@@ -4,6 +4,8 @@
 
 #include "Font.hpp"
 
+namespace ecs {
+
 Font::Font(const std::string &name, const std::string &filePath)
 {
     _name = name;
@@ -17,4 +19,6 @@ Font::~Font()
 const std::string &Font::getName()
 {
     return _name;
+}
+
 }

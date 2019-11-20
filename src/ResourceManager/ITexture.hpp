@@ -5,10 +5,11 @@
 #ifndef R_TYPE_ITEXTURE_HPP
 #define R_TYPE_ITEXTURE_HPP
 
-class ITexture {
-public:
-    virtual const std::string &getName() = 0;
-};
-
+namespace ecs {
+    class ITexture {
+    public:
+        virtual const std::string &getName() = 0;
+    };
+}
 
 #endif //R_TYPE_TEXTURE_HPP

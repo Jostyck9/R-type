@@ -6,6 +6,8 @@
 #include <memory>
 #include "ResourceManager.hpp"
 
+namespace ecs {
+
 ResourceManager &ResourceManager::getInstance()
 {
     static ResourceManager ressourceManager;
@@ -76,4 +78,6 @@ std::shared_ptr<Font> ResourceManager::getFont(const std::string &name)
         if (i->getName() == name)
             return i;
     return nullptr;
+}
+
 }
