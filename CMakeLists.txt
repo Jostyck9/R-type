@@ -36,6 +36,8 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Components/ComponentManager/ 
         src/Components/
         src/Entities/
+        src/Entities/EntityConstructor/
+        src/Entities/EntityConstructor/TestEntity/
         src/Entities/EntityManager/
         src/Entities/Factories/
         src/Systems/
@@ -75,6 +77,7 @@ set(SOURCE_CLIENT
         "src/Components/Physics/Velocity.cpp"
         "src/Components/Physics/Position.cpp"
         "src/Entities/Entity.cpp"
+        "src/Entities/EntityConstructor/TestEntity/TestEntity.cpp"
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
         "src/Systems/ASystem.cpp"

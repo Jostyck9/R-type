@@ -10,6 +10,7 @@
 
 #include <string>
 #include <memory>
+#include "IEntityConstructor.hpp"
 #include "Entity.hpp"
 
 namespace ecs::entities
@@ -26,6 +27,13 @@ public:
     virtual std::shared_ptr<Entity> createEntity(const std::string &name) = 0;
 
     /**
+     * @brief Add an entityConstructor to use inside the factory
+     * 
+     * @param constructor 
+     */
+    virtual void addEntityConstructor(std::shared_ptr<IEntityConstructor> constructor) = 0;
+
+    /**
      * @brief Create a Entity object
      * 
      * @param description
@@ -33,6 +41,6 @@ public:
      */
     // virtual std::shared_ptr<Entity> createEntity(/* Buffer de la socket provenant du serveur (reflechir pour la clsse) */ description) = 0;
 };
-}
+} // namespace ecs::entities
 
 #endif //IENTITYFACTORY_HPP__

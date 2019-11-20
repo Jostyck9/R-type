@@ -15,29 +15,37 @@ EntityFactory::EntityFactory(std::shared_ptr<IEntityManager> entityManager, std:
 {
     _entityManager = entityManager;
     _componentManager = componentsManager;
-
-    _creationFunction["test"] = &ecs::entities::EntityFactory::testEntity;
 }
 
 EntityFactory::~EntityFactory()
 {
 }
 
-std::shared_ptr<Entity> EntityFactory::createEntity(const std::string &name)
+bool EntityFactory::isExisting(const std::string &name)
 {
-    if (_creationFunction.find(name) == _creationFunction.end()) {
+    if (_creationFunction.find(name) == _creationFunction.end())
+    {
+        return false;
+    }
+    return true;
+}
+
+void EntityFactory::addEntityConstructor(std::shared_ptr<IEntityConstructor> constructor)
+{
+    if (isExisting(constructor->getName()))
+    {
         // TODO Throw the wright exception
         throw std::exception();
     }
-    return (this->*(_creationFunction[name]))();
+    _creationFunction[constructor->getName()] = constructor;
 }
 
-std::shared_ptr<Entity> EntityFactory::testEntity()
+std::shared_ptr<Entity> EntityFactory::createEntity(const std::string &name)
 {
-    std::shared_ptr<Entity> toCreate = std::make_shared<Entity>();
-
-    _entityManager->addEntity(toCreate);
-    _componentManager->addPhysicComponent(std::make_shared<components::Position>(0, 0), toCreate);
-    _componentManager->addPhysicComponent(std::make_shared<components::Velocity>(10), toCreate);
-    return toCreate;
+    if (!isExisting(name))
+    {
+        // TODO Throw the wright exception
+        throw std::exception();
+    }
+    return (_creationFunction[name])->create(_entityManager, _componentManager);
 }
