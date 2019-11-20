@@ -14,6 +14,11 @@ public:
 
     const std::string &getName();
 
+    void play();
+    void stop();
+    void pause();
+    void loop(bool state);
+
 private:
     std::string _name;
     sf::Sound _sound;

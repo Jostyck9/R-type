@@ -24,22 +24,22 @@ private:
 
 public:
     void loadMusic(const std::string &name, const std::string &filename);
-    std::shared_ptr<Music> &getMusic(const std::string &name);
-/*
-    void loadsSound(const std::string &name, const std::string &filename);
-    const sf::Sound &getSound(const std::string &name);
+    std::shared_ptr<Music> getMusic(const std::string &name);
+
+    void loadSound(const std::string &name, const std::string &filename);
+    std::shared_ptr<Sound> getSound(const std::string &name);
 
     void loadTexture(const std::string &name, const std::string &filename);
-    const sf::Texture &getTexture(const std::string &name);
+    std::shared_ptr<Texture> getTexture(const std::string &name);
 
     void loadFont(const std::string &name, const std::string &filename);
-    const sf::Font &getFont(const std::string &name);*/
-
+    std::shared_ptr<Font> getFont(const std::string &name);
+    
 private:
     std::vector<std::shared_ptr<Music>> _musics;
-    std::vector<Sound> _sounds;
-    std::vector<Texture> _textures;
-    std::vector<Font> _fonts;
+    std::vector<std::shared_ptr<Sound>> _sounds;
+    std::vector<std::shared_ptr<Texture>> _textures;
+    std::vector<std::shared_ptr<Font>> _fonts;
 };
 
 #endif //R_TYPE_RESSOURCEMANAGER_H

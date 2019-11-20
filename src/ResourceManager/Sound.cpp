@@ -15,6 +15,26 @@ Sound::~Sound()
 {
 }
 
+void Sound::pause()
+{
+    _sound.pause();
+}
+
+void Sound::stop()
+{
+    _sound.stop();
+}
+
+void Sound::play()
+{
+    _sound.play();
+}
+
+void Sound::loop(bool state)
+{
+    _sound.setLoop(state);
+}
+
 const std::string &Sound::getName()
 {
     return _name;
