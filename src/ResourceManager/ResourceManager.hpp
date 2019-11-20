@@ -10,6 +10,7 @@
 #include "Sound.hpp"
 #include "Texture.hpp"
 #include "Font.hpp"
+#include "Text.hpp"
 
 namespace ecs {
     class ResourceManager {
@@ -35,12 +36,16 @@ namespace ecs {
 
         void loadFont(const std::string &name, const std::string &filename);
         std::shared_ptr<Font> getFont(const std::string &name);
+
+        void loadText(const std::string &name, const std::string &filename);
+        std::shared_ptr<Text> getText(const std::string &name);
     
     private:
         std::vector<std::shared_ptr<Music>> _musics;
         std::vector<std::shared_ptr<Sound>> _sounds;
         std::vector<std::shared_ptr<Texture>> _textures;
         std::vector<std::shared_ptr<Font>> _fonts;
+        std::vector<std::shared_ptr<Text>> _texts;
     };
 }
 

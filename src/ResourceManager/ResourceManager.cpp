@@ -80,4 +80,18 @@ std::shared_ptr<Font> ResourceManager::getFont(const std::string &name)
     return nullptr;
 }
 
+void ResourceManager::loadText(const std::string &name, const std::string &filename)
+{
+    std::shared_ptr<Text> text = std::make_shared<Text>(name, filename);
+    _texts.push_back(text);
+}
+
+std::shared_ptr<Text> ResourceManager::getText(const std::string &name)
+{
+    for (auto &i: _texts)
+        if (i->getName() == name)
+            return i;
+    return nullptr;
+}
+
 }

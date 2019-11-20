@@ -78,6 +78,7 @@ set(SOURCE_CLIENT
         "src/ResourceManager/Sound.cpp"
         "src/ResourceManager/Texture.cpp"
         "src/ResourceManager/Font.cpp"
+        "src/ResourceManager/Text.cpp"
         "src/Entities/Entity.cpp"
         "src/Entities/EntityManager.cpp"
         "src/Systems/ASystem.cpp"
