@@ -9,6 +9,7 @@
 #include "ComponentManager.hpp"
 #include "SystemManager.hpp"
 #include "Display/DisplaySystem.hpp"
+#include "Display/PhysicsSystem.hpp"
 #include "Physics/Position.hpp"
 #include "Physics/Velocity.hpp"
 
@@ -23,6 +24,8 @@ int main()
     componentManager->addPhysicComponent(std::make_shared<ecs::components::Position>(), entity);
     componentManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(2), entity);
     systemManager->addSystem(std::make_shared<ecs::system::DisplaySystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
+    systemManager->addSystem(std::make_shared<ecs::system::PhysicsSystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
+
     for (int i = 0; i < 10; i++) {
         systemManager->updateAll();
     }

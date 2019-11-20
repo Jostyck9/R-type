@@ -23,33 +23,6 @@ namespace ecs::system
 
     void DisplaySystem::update()
     {
-        for (auto &it : _entityManager->getAllEntities()) {
-            auto VelocityComponent = _componentManager->getPhysicComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Velocity)));
-            auto speed = std::dynamic_pointer_cast<ecs::components::Velocity>(VelocityComponent);
-            auto PosComponent = _componentManager->getPhysicComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Position)));
-            auto position = std::dynamic_pointer_cast<ecs::components::Position>(PosComponent);
-            position->setX(position->getX() + speed->getValue());
-            std::cout << "Update position : " << position->getX() << std::endl;
-        }
+        std::cout << "On affiche des trucs à l'écran :) + on devrait update tout le monde" << std::endl;
     }
-    // void DisplaySystem::update()
-    // {
-    //     for (auto &it : _entityManager->getAllEntities()) {
-    //         auto components = _componentManager->getPhysicComponents(it->getID());
-    //         for (auto &it2 : components) {
-    //             if (it2->getType() == std::type_index(typeid(ecs::components::Velocity))) {
-    //                 auto speed = std::dynamic_pointer_cast<ecs::components::Velocity>(it2);
-    //                 for (auto &it3 : components) {
-    //                     if (it3->getType() == std::type_index(typeid(ecs::components::Position))) {
-    //                         auto position = std::dynamic_pointer_cast<ecs::components::Position>(it3);
-
-    //                         position->setX(position->getX() + speed->getValue());
-    //                         std::cout << "Update position : " << position->getX() << std::endl;
-
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
 }

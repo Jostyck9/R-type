@@ -76,6 +76,7 @@ set(SOURCE_CLIENT
         "src/Entities/EntityManager.cpp"
         "src/Systems/ASystem.cpp"
         "src/Systems/Display/DisplaySystem.cpp"
+        "src/Systems/Display/PhysicsSystem.cpp"
         "src/Systems/SystemManager/SystemManager.cpp")
 
 add_executable(r-type_client ${SOURCE_CLIENT})
