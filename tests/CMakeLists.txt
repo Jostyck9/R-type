@@ -16,17 +16,25 @@ include_directories(
     ${SOURCE_ROOT}/Components/
     ${SOURCE_ROOT}/Components/Physics/
     ${SOURCE_ROOT}/Components/ComponentManager/
+    ${SOURCE_ROOT}/Exceptions/
 )
 
 add_executable(test
     ./src/testComponentManager.cpp
     ./src/testEntityManager.cpp
     ./src/testEntity.cpp
+    ./src/testExceptions
     ${SOURCE_ROOT}/Entities/Entity.cpp
     ${SOURCE_ROOT}/Entities/EntityManager.cpp
     ${SOURCE_ROOT}/Components/ComponentManager/ComponentManager.cpp
     ${SOURCE_ROOT}/Components/Physics/Acceleration.cpp
     ${SOURCE_ROOT}/Components/Physics/Motion.cpp
+    ${SOURCE_ROOT}/Exceptions/ComponentExceptions.cpp
+    ${SOURCE_ROOT}/Exceptions/ECSExceptions.cpp
+    ${SOURCE_ROOT}/Exceptions/EntityExceptions.cpp
+    ${SOURCE_ROOT}/Exceptions/RTypeExceptions.cpp
+    ${SOURCE_ROOT}/Exceptions/ServerExceptions.cpp
+    ${SOURCE_ROOT}/Exceptions/SystemExceptions.cpp
 )
 
 target_link_libraries(test
