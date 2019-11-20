@@ -23,6 +23,7 @@ namespace ecs::system
 
     void DisplaySystem::update()
     {
+        for (int i = 0; i < 50 ; i++);
         std::cout << "On affiche des trucs à l'écran :) + on devrait update tout le monde" << std::endl;
     }
 }
