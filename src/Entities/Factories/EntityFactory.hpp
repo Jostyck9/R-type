@@ -24,6 +24,13 @@ namespace ecs::entities
         std::map<std::string, std::shared_ptr<IEntityConstructor>> _creationFunction;
 
     private:
+        /**
+         * @brief Check if an Entity Constructor exist
+         * 
+         * @param name 
+         * @return true 
+         * @return false 
+         */
         bool isExisting(const std::string &name);
 
     public:
@@ -34,7 +41,20 @@ namespace ecs::entities
          */
         EntityFactory(std::shared_ptr<IEntityManager> entityManager, std::shared_ptr<components::IComponentManager> componentsManager);
         ~EntityFactory();
+
+        /**
+         * @brief Create a Entity object by his name
+         * 
+         * @param name 
+         * @return std::shared_ptr<Entity> 
+         */
         std::shared_ptr<Entity> createEntity(const std::string &name) override;
+
+        /**
+         * @brief Add an entity constructor that will be used in the entity factory
+         * 
+         * @param constructor 
+         */
         void addEntityConstructor(std::shared_ptr<IEntityConstructor> constructor) override;
     };
 }

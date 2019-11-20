@@ -1,25 +1,11 @@
 var searchData=
 [
-  ['scale_130',['Scale',['../classcomponents_1_1Scale.html',1,'components::Scale'],['../classcomponents_1_1Scale.html#aa99af5750b0786d081e875f3ffac03fd',1,'components::Scale::Scale()']]],
-  ['scale_2ecpp_131',['Scale.cpp',['../Scale_8cpp.html',1,'']]],
-  ['scale_2ehpp_132',['Scale.hpp',['../Scale_8hpp.html',1,'']]],
-  ['setheight_133',['setHeight',['../classcomponents_1_1Collision.html#a7c40cba933235326ce0de29f8743701e',1,'components::Collision']]],
-  ['setid_134',['setId',['../classcomponents_1_1Animator.html#a77d3aaceafeeacd47fa03b0825c7aa0e',1,'components::Animator::setId()'],['../classcomponents_1_1Button.html#a95e5ed488b049ca5eae1644cfc572ae4',1,'components::Button::setId()'],['../classcomponents_1_1Image.html#a35b59ffcfa8bba23dc2ee9d33be8e63d',1,'components::Image::setId()'],['../classcomponents_1_1PopUp.html#a3b72a2e80944a9b093acfd7d6fef6ff7',1,'components::PopUp::setId()'],['../classcomponents_1_1Sprite.html#aaa2811fc5cf3140164bb5e2263ce6ad3',1,'components::Sprite::setId()'],['../classcomponents_1_1Text.html#a49037670db2a8a09ffd6d04ed2457f61',1,'components::Text::setId()'],['../classcomponents_1_1GameController.html#a1c086e87953c07d724ab15e7fd242631',1,'components::GameController::setId()'],['../classcomponents_1_1Keyboard.html#ad09d294e96dd20697094bf8c796b862c',1,'components::Keyboard::setId()'],['../classcomponents_1_1Sound.html#a6ca09f712701ce0b45049315fc6d6795',1,'components::Sound::setId()']]],
-  ['setradangle_135',['setRadAngle',['../classcomponents_1_1Rotation.html#a24e701a6f22bb35830e7dbe11073e3de',1,'components::Rotation']]],
-  ['setvalue_136',['setValue',['../classcomponents_1_1Damage.html#a129cfd1c0154cb53f6e061db8c4d1d9f',1,'components::Damage::setValue()'],['../classcomponents_1_1Health.html#a15f35513bc382002b8ca76515a208bac',1,'components::Health::setValue()'],['../classcomponents_1_1Item.html#a0a752555963d61f852e93011df665d62',1,'components::Item::setValue()'],['../classcomponents_1_1Level.html#a64b48bf23b256b01bade953d38abd179',1,'components::Level::setValue()'],['../classcomponents_1_1Power.html#ab03715cb2b6ba7d4007e0097717b7f10',1,'components::Power::setValue()'],['../classcomponents_1_1Scale.html#a232012919c04e3906699ff9db2355422',1,'components::Scale::setValue()'],['../classcomponents_1_1Acceleration.html#a75eb4be38ad69cc8981fef51565a0ccf',1,'components::Acceleration::setValue()'],['../classcomponents_1_1Gravity.html#a23fc37eb14acd69115e2e4be3e6c6bda',1,'components::Gravity::setValue()'],['../classcomponents_1_1Transform.html#aa73f6741b47f2653eca20e65f9caa826',1,'components::Transform::setValue()'],['../classcomponents_1_1Velocity.html#acaa2ec9c08179e935dd098701b9a6223',1,'components::Velocity::setValue()']]],
-  ['setwidth_137',['setWidth',['../classcomponents_1_1Collision.html#af8d20ac3cea05271678faa08601f97e5',1,'components::Collision']]],
-  ['setx_138',['setX',['../classcomponents_1_1Collision.html#ab466c05f56989f194efd25c8047ccf81',1,'components::Collision']]],
-  ['sety_139',['setY',['../classcomponents_1_1Collision.html#a9d5f0d49d9d13aa111cbcd54c596879e',1,'components::Collision']]],
-  ['sound_140',['Sound',['../classcomponents_1_1Sound.html',1,'components::Sound'],['../classcomponents_1_1Sound.html#a539c205cdf06fe2c621fd77c37bcfac9',1,'components::Sound::Sound()']]],
-  ['sound_2ecpp_141',['Sound.cpp',['../Sound_8cpp.html',1,'']]],
-  ['sound_2ehpp_142',['Sound.hpp',['../Sound_8hpp.html',1,'']]],
-  ['sprite_143',['Sprite',['../classcomponents_1_1Sprite.html',1,'components::Sprite'],['../classcomponents_1_1Sprite.html#a0d1f8fde635b70a24a5db4591e06f0ed',1,'components::Sprite::Sprite()']]],
-  ['sprite_2ecpp_144',['Sprite.cpp',['../Sprite_8cpp.html',1,'']]],
-  ['sprite_2ehpp_145',['Sprite.hpp',['../Sprite_8hpp.html',1,'']]],
-  ['statictext_146',['StaticText',['../classcomponents_1_1StaticText.html',1,'components::StaticText'],['../classcomponents_1_1StaticText.html#ad08bc098616f98bc7b1c6433d1d26632',1,'components::StaticText::StaticText()']]],
-  ['statictext_2ecpp_147',['StaticText.cpp',['../StaticText_8cpp.html',1,'']]],
-  ['statictext_2ehpp_148',['StaticText.hpp',['../StaticText_8hpp.html',1,'']]],
-  ['systemmanager_149',['SystemManager',['../classecs_1_1system_1_1SystemManager.html',1,'ecs::system::SystemManager'],['../classecs_1_1system_1_1SystemManager.html#ad03826ec0d8fb69c97ea7b9e1f6959d2',1,'ecs::system::SystemManager::SystemManager()']]],
-  ['systemmanager_2ecpp_150',['SystemManager.cpp',['../SystemManager_8cpp.html',1,'']]],
-  ['systemmanager_2ehpp_151',['SystemManager.hpp',['../SystemManager_8hpp.html',1,'']]]
+  ['r_2dtype_157',['R-type',['../md_README.html',1,'']]],
+  ['readme_2emd_158',['README.md',['../README_8md.html',1,'']]],
+  ['rotation_159',['Rotation',['../classecs_1_1components_1_1Rotation.html',1,'ecs::components::Rotation'],['../classecs_1_1components_1_1Rotation.html#a13ea1d345ca0a92c0f09b4de544ca460',1,'ecs::components::Rotation::Rotation()'],['../classecs_1_1components_1_1Rotation.html#a6c1de311c4e7fc90cbd7a043e8199ff5',1,'ecs::components::Rotation::Rotation(const Rotation &amp;oldRotation)']]],
+  ['rotation_2ecpp_160',['Rotation.cpp',['../Rotation_8cpp.html',1,'']]],
+  ['rotation_2ehpp_161',['Rotation.hpp',['../Rotation_8hpp.html',1,'']]],
+  ['rtypeexceptions_162',['RTypeExceptions',['../classRTypeExceptions.html',1,'RTypeExceptions'],['../classRTypeExceptions.html#a9325ec751f241f06afcc24ce2d9bb15a',1,'RTypeExceptions::RTypeExceptions()']]],
+  ['rtypeexceptions_2ecpp_163',['RTypeExceptions.cpp',['../RTypeExceptions_8cpp.html',1,'']]],
+  ['rtypeexceptions_2ehpp_164',['RTypeExceptions.hpp',['../RTypeExceptions_8hpp.html',1,'']]]
 ];

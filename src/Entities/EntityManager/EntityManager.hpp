@@ -39,14 +39,54 @@ namespace ecs::entities
         bool contains(const Entity &entity) const;
 
     public:
+        /**
+         * @brief Construct a new Entity Manager object
+         * 
+         * @param componentManager 
+         */
         EntityManager(std::shared_ptr<components::IComponentManager> componentManager);
         ~EntityManager();
 
+        /**
+         * @brief Get All the Entities object
+         * 
+         * @return const std::vector<std::shared_ptr<Entity>>& 
+         */
         const std::vector<std::shared_ptr<Entity>> &getAllEntities() const override;
+
+        /**
+         * @brief Get the Entity By Id object
+         * 
+         * @param idEntity 
+         * @return const std::shared_ptr<Entity>& 
+         */
         const std::shared_ptr<Entity> &getEntityById(size_t idEntity) const override;
+
+        /**
+         * @brief Add an entity in the entity Manager
+         * 
+         * @param entity 
+         */
         void addEntity(std::shared_ptr<Entity> entity) override;
+
+        /**
+         * @brief Delete an entity and his associated components by his id
+         * 
+         * @param idEntity 
+         */
         void deleteEntity(size_t idEntity) override;
+
+        /**
+         * @brief Delete an entity and his associated components from his reference 
+         * 
+         * @param entity 
+         */
         void deleteEntity(const std::shared_ptr<Entity>& entity) override;
+
+        /**
+         * @brief Delete all the entities and their associated components
+         * 
+         */
         void deleteAll() override;
     };
 }
