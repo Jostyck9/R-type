@@ -6,6 +6,10 @@
 #define R_TYPE_RESSOURCEMANAGER_H
 
 #include <vector>
+#include "Music.hpp"
+#include "Sound.hpp"
+#include "Texture.hpp"
+#include "Font.hpp"
 
 class RessourceManager {
 public:
@@ -19,10 +23,10 @@ private:
     ~RessourceManager();
 
 private:
-//    std::vector<Music> *_musics;
-/*    std::vector<Sound> *_sounds;
-    std::vector<Texture> *_textures;
-    std::vector<Font> *_fonts;*/
+    std::vector<Music> _musics;
+    std::vector<Sound> _sounds;
+    std::vector<Texture> _textures;
+    std::vector<Font> _fonts;
 };
 
 
