@@ -19,7 +19,7 @@ class ECSExceptions : public RTypeExceptions
 {
 private:
 public:
-    ECSExceptions(std::string);
+    ECSExceptions(std::string, std::string);
     ~ECSExceptions();
 
 };

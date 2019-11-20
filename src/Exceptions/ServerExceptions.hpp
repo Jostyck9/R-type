@@ -18,7 +18,7 @@
 class ServerExceptions : public RTypeExceptions
 {
 public:
-    ServerExceptions(std::string);
+    ServerExceptions(std::string, std::string);
     ~ServerExceptions();
 private:
 };
