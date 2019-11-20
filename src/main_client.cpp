@@ -11,6 +11,7 @@
 #include "Display/DisplaySystem.hpp"
 #include "Physics/Position.hpp"
 #include "Physics/Velocity.hpp"
+#include "ResourceManager/ResourceManager.hpp"
 
 int main()
 {

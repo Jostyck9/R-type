@@ -15,6 +15,11 @@ public:
     const std::string &getName();
     const sf::Music &getMusic();
 
+    void play();
+    void stop();
+    void pause();
+    void loop(bool state);
+
 private:
     std::string _name;
     sf::Music _music;
