@@ -223,11 +223,24 @@ namespace ecs::components
         virtual void addGameLogicComponent(std::shared_ptr<IComponent> component, const std::shared_ptr<entities::Entity> &entity) = 0;
 
         /**
-         * @brief Remove all the ecs::components from an entity
+         * @brief Delete all the ecs::components from an entity
          * 
          * @param idEntity 
          */
-        virtual void removeComponents(size_t idEntity) = 0;
+        virtual void deleteComponents(size_t idEntity) = 0;
+
+        /**
+         * @brief Delete all the ecs::components from an entity
+         * 
+         * @param idEntity 
+         */
+        virtual void deleteComponents(const std::shared_ptr<entities::Entity> &entity) = 0;
+
+        /**
+         * @brief Delete all the components
+         * 
+         */
+        virtual void deleteAllComponents() = 0;
     };
 }
 

@@ -7,9 +7,9 @@
 
 #include "EntityManager.hpp"
 
-using namespace entities;
+using namespace ecs::entities;
 
-EntityManager::EntityManager()
+EntityManager::EntityManager(std::shared_ptr<components::IComponentManager> componentManager) : _componentManager(componentManager)
 {
 }
 
@@ -62,6 +62,7 @@ void EntityManager::deleteEntity(size_t idEntity)
     for (auto it = _entities.begin(); it != _entities.end(); it++) {
         if ((*it)->getID() == idEntity) {
             _entities.erase(it);
+            _componentManager->deleteComponents(idEntity);
             return;
         }
     }
@@ -69,15 +70,11 @@ void EntityManager::deleteEntity(size_t idEntity)
 
 void EntityManager::deleteEntity(const std::shared_ptr<Entity>& entity)
 {
-    for (auto it = _entities.begin(); it != _entities.end(); it++) {
-        if (**it == *entity) {
-            _entities.erase(it);
-            return;
-        }
-    }
+    deleteEntity(entity->getID());
 }
 
 void EntityManager::deleteAll()
 {
     _entities.clear();
+    _componentManager->deleteAllComponents();
 }

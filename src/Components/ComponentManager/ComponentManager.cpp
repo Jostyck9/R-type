@@ -161,12 +161,25 @@ void ComponentManager::addGameLogicComponent(std::shared_ptr<IComponent> compone
     addGameLogicComponent(component, entity->getID());
 }
 
-void ComponentManager::removeComponents(size_t idEntity)
+void ComponentManager::deleteComponents(size_t idEntity)
 {
     _physic.erase(idEntity);
     _display.erase(idEntity);
     _io.erase(idEntity);
     _gameLogic.erase(idEntity);
+}
+
+void ComponentManager::deleteComponents(const std::shared_ptr<entities::Entity> &entity)
+{
+    deleteComponents(entity->getID());
+}
+
+void ComponentManager::deleteAllComponents()
+{
+    _physic.clear();
+    _display.clear();
+    _io.clear();
+    _gameLogic.clear();
 }
 
 }

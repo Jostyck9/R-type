@@ -248,7 +248,20 @@ namespace ecs::components
          * 
          * @param idEntity 
          */
-        void removeComponents(size_t idEntity) override;
+        void deleteComponents(size_t idEntity) override;
+
+        /**
+         * @brief Delete all the ecs::components from an entity
+         * 
+         * @param idEntity 
+         */
+        void deleteComponents(const std::shared_ptr<entities::Entity> &entity) override;
+
+        /**
+         * @brief Delete all the components
+         * 
+         */
+        void deleteAllComponents() override;
     };
 }
 

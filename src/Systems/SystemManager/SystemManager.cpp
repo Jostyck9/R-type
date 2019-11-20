@@ -31,7 +31,7 @@ namespace ecs::system
             it->update();
         }
         for (auto &it : _entitiesToDelete) {
-            _componentManager->removeComponents(it);
+            _componentManager->deleteComponents(it);
             _entityManager->deleteEntity(it);
         }
         _entitiesToDelete.clear();

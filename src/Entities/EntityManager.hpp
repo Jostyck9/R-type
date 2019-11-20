@@ -9,14 +9,16 @@
 #define ENTITYMANAGER_HPP__
 
 #include <vector>
+#include "IComponentManager.hpp"
 #include "IEntityManager.hpp"
 
-namespace entities
+namespace ecs::entities
 {
     class EntityManager  : public IEntityManager
     {
     private:
         std::vector<std::shared_ptr<Entity>> _entities;
+        std::shared_ptr<components::IComponentManager> _componentManager;
 
         /**
          * @brief Check if an entity is contained inside the manager
@@ -37,7 +39,7 @@ namespace entities
         bool contains(const Entity &entity) const;
 
     public:
-        EntityManager();
+        EntityManager(std::shared_ptr<components::IComponentManager> componentManager);
         ~EntityManager();
 
         const std::vector<std::shared_ptr<Entity>> &getAllEntities() const override;

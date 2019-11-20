@@ -12,7 +12,7 @@
 #include <vector>
 #include "Entity.hpp"
 
-namespace entities
+namespace ecs::entities
 {
     class IEntityManager
     {

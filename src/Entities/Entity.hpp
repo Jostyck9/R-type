@@ -8,7 +8,7 @@
 #ifndef ENTITY_HPP__
 #define ENTITY_HPP__
 
-namespace entities
+namespace ecs::entities
 {
     /**
      * @brief Entity defined a object in the game with a simple id and his component

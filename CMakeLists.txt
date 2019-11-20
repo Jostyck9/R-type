@@ -36,6 +36,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Components/ComponentManager/ 
         src/Components/
         src/Entities/
+        src/Entities/Factories/
         src/Systems/
         src/Systems/Display
         src/Systems/SystemManager)
@@ -74,6 +75,7 @@ set(SOURCE_CLIENT
         "src/Components/Physics/Position.cpp"
         "src/Entities/Entity.cpp"
         "src/Entities/EntityManager.cpp"
+        "src/Entities/Factories/EntityFactory.cpp"
         "src/Systems/ASystem.cpp"
         "src/Systems/Display/DisplaySystem.cpp"
         "src/Systems/SystemManager/SystemManager.cpp")
