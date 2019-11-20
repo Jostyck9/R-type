@@ -11,6 +11,10 @@
 #include <string>
 #include "ECSExceptions.hpp"
 
+/**
+ * @brief Component Class Exceptions
+ * 
+ */
 class ComponentExceptions : public ECSExceptions
 {
 private:

@@ -11,6 +11,10 @@
 #include <string>
 #include "ECSExceptions.hpp"
 
+/**
+ * @brief Entity Class Exceptions
+ * 
+ */
 class EntityExceptions : public ECSExceptions
 {
 private:

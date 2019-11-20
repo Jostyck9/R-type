@@ -11,6 +11,10 @@
 #include <string>
 #include "RTypeExceptions.hpp"
 
+/**
+ * @brief ECS Class Esception which manage exceptions of Entity, Components and System
+ * 
+ */
 class ECSExceptions : public RTypeExceptions
 {
 private:

@@ -11,6 +11,11 @@
 #include <string>
 #include "ECSExceptions.hpp"
 
+
+/**
+ * @brief System class Exception
+ * 
+ */
 class SystemExceptions : public ECSExceptions
 {
 private:

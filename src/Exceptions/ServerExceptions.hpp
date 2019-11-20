@@ -11,6 +11,10 @@
 #include <string>
 #include "RTypeExceptions.hpp"
 
+/**
+ * @brief Server class Exception
+ * 
+ */
 class ServerExceptions : public RTypeExceptions
 {
 public:
