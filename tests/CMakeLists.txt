@@ -13,6 +13,7 @@ endif()
 include_directories(
     ${SOURCE_ROOT}
     ${SOURCE_ROOT}/Entities/
+    ${SOURCE_ROOT}/Entities/EntityManager/
     ${SOURCE_ROOT}/Components/
     ${SOURCE_ROOT}/Components/Physics/
     ${SOURCE_ROOT}/Components/ComponentManager/
@@ -25,7 +26,7 @@ add_executable(test
     ./src/testEntity.cpp
     ./src/testExceptions
     ${SOURCE_ROOT}/Entities/Entity.cpp
-    ${SOURCE_ROOT}/Entities/EntityManager.cpp
+    ${SOURCE_ROOT}/Entities/EntityManager/EntityManager.cpp
     ${SOURCE_ROOT}/Components/ComponentManager/ComponentManager.cpp
     ${SOURCE_ROOT}/Components/Physics/Acceleration.cpp
     ${SOURCE_ROOT}/Components/Physics/Motion.cpp

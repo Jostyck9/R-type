@@ -7,8 +7,8 @@
 
 #include <memory>
 #include <criterion/criterion.h>
-#include "Entities/IEntityManager.hpp"
-#include "Entities/EntityManager.hpp"
+#include "IEntityManager.hpp"
+#include "EntityManager.hpp"
 #include "ComponentManager.hpp"
 
 Test(EntityManager, test_addEntity)
