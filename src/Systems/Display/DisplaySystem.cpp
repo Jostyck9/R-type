@@ -5,16 +5,17 @@
 ** DisplaySystem.cpp
 */
 
+#include <iostream>
 #include "Physics/Position.hpp"
 #include "Physics/Velocity.hpp"
 #include "DisplaySystem.hpp"
-#include <iostream>
 
 namespace ecs::system
 {
     DisplaySystem::DisplaySystem(std::shared_ptr<entities::IEntityManager> &entityManager, std::shared_ptr<ecs::components::IComponentManager> &componentManager, std::list<int> &entitiesToDelete) : 
-    ASystem(entityManager, componentManager, entitiesToDelete)
+    ASystem(entityManager, componentManager, entitiesToDelete), _elapsedTime(0)
     {
+        this->_elapsedTime = time(NULL);
     }
     
     DisplaySystem::~DisplaySystem()
@@ -23,7 +24,11 @@ namespace ecs::system
 
     void DisplaySystem::update()
     {
-        for (int i = 0; i < 50 ; i++);
-        std::cout << "On affiche des trucs à l'écran :) + on devrait update tout le monde" << std::endl;
+        time_t currentTime = time(NULL);
+        while ((currentTime - this->_elapsedTime) < 5) {
+            currentTime = time(NULL);
+        }
+        this->_elapsedTime = time(NULL);
+        std::cout << " YEETUPDATED" << std::endl;
     }
 }

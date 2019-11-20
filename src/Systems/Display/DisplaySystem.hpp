@@ -8,6 +8,7 @@
 #ifndef DISPLAYSYSTEM_HPP__
 #define DISPLAYSYSTEM_HPP__
 
+#include <ctime>
 #include "ASystem.hpp"
 
 namespace ecs::system
@@ -19,6 +20,10 @@ namespace ecs::system
         ~DisplaySystem();
 
         void update() override;
+
+    private:
+
+    time_t _elapsedTime;
     };
 }
 
