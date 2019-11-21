@@ -1,10 +1,10 @@
 #include "ThreadPool.hpp"
 #include <iostream>
+    
+//==================================/       THREADPOOL      \====================================\\
 
-ThreadPool::ThreadPool(size_t size) : _poolSize(size), _poolThread(), _poolWorker()
+ThreadPool::ThreadPool(size_t size) : _poolSize(size), _poolThread(), _poolWorker(), _isStopped(true)
 {
-
-    std::cout << size << " " << _poolSize << std::endl;
 
     for (size_t i = 0; i < _poolSize; i++)
     {
@@ -12,7 +12,6 @@ ThreadPool::ThreadPool(size_t size) : _poolSize(size), _poolThread(), _poolWorke
         _poolWorker.emplace_back(nworker);
         _poolThread.emplace_back(std::thread(nworker));
     }
-
     for (auto& work : _poolWorker)
         work.start();
 }
@@ -25,6 +24,7 @@ ThreadPool::~ThreadPool()
 
 void ThreadPool::stop()
 {
+    _isStopped = false;
     for (auto& it : _poolWorker) {
         it.stop();
     }
@@ -32,8 +32,10 @@ void ThreadPool::stop()
 
 void ThreadPool::destroy()
 {
-    for (auto& it : _poolThread) {
-        it.join();
+    if (_isStopped == false) {
+        for (auto& it : _poolThread) {
+            it.join();
+        }
     }
 }
 
@@ -57,6 +59,7 @@ size_t ThreadPool::getFreeWorker()
     return fWorker.first;
 }
 
+//==================================/       WORKER      \====================================\\
 
 ThreadPool::Worker::Worker(ThreadPool *pool, size_t id) : _pool(pool), _id(id), _isStopped(true)
 {
@@ -113,6 +116,11 @@ bool ThreadPool::Worker::isQueueEmpty()
 size_t ThreadPool::Worker::getTaskQueueSize()
 {
     return _tasksQueue.size();
+}
+
+void ThreadPool::Worker::addTask(std::function<void()> const& f)
+{
+    _tasksQueue.push(f);
 }
 
 void ThreadPool::Worker::operator()()

@@ -8,6 +8,7 @@
 #include <memory>
 #include <utility>
 #include <type_traits>
+#include <functional>
 
 #define MAX_THREAD std::thread::hardware_concurency()
 
@@ -20,7 +21,7 @@ private:
         size_t _id;
         bool _isStopped;
 
-        std::queue<std::packaged_task<void()> > _tasksQueue;
+        std::queue<std::function<void()> > _tasksQueue;
 
         std::mutex _taskLock;
         std::condition_variable _condVar;
@@ -40,6 +41,8 @@ private:
         bool isQueueEmpty();
         size_t getTaskQueueSize();
 
+        void addTask(std::function<void()> const& f);
+
         void operator()();
 
     };
@@ -47,7 +50,7 @@ private:
     std::vector<std::thread> _poolThread;
     std::vector<Worker> _poolWorker;
     size_t _poolSize;
-    
+    bool _isStopped;
     
 public:
 
@@ -62,24 +65,10 @@ public:
 
     size_t getFreeWorker();
 
-    
-    template <typename T_>
-    using decay_t = typename std::decay<T_>::type;
-    template< class T >
-    using result_of_t = typename std::result_of<T>::type;
-
-    template<typename Function, typename ... Args>
-    auto run(Function&& f, Args&& ... args) -> std::future<typename std::result_of<Function(Args...)>>
-    {
-
-        auto task =
-            std::packaged_task<typename std::result_of<Function(Args...)>::type>(std::bind(std::forward<Function>(f), std::forward<Args>(args)...));
-        auto result = task.get_future();
-
+    void run(std::function<void()> const &f) {
         size_t id = getFreeWorker();
-
         auto worker = _poolWorker.at(id);
-       
+        worker.addTask(f);
     };
 
 };
