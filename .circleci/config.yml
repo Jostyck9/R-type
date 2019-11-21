@@ -47,7 +47,7 @@ jobs:
           command: 'cd tests && sudo ./install_criterion.sh'
       - run:
           name: Install dependecies
-          command: 'cd tests && conan install .. --build=missing && cd ..'
+          command: 'cd tests && mkdir build && cd build && conan install .. --build=missing && cd ..'
       - run:
           name: Creating Build tests files
           command: 'cd tests && cmake -H. -Bbuild'
@@ -57,4 +57,3 @@ jobs:
       - run:
           name: Launch Units Tests
           command: 'cd tests && ./build/test'
-
