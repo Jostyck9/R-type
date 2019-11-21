@@ -25,7 +25,7 @@ jobs:
           name: Install Pip3
           command: 'apt-get update && sudo apt-get -y install python3-pip'
       - run:
-          name: Install Connan
+          name: Install Conan
           command: 'sudo python3 -m pip install conan'
       - run:
           name: Configure Remote Conan Repository Bincrafter
@@ -47,7 +47,7 @@ jobs:
           command: 'cd tests && sudo ./install_criterion.sh'
       - run:
           name: Install dependecies
-          command: 'mkdir build && cd build && conan install .. --build=missing && cd ..'
+          command: 'cd tests && conan install .. --build=missing && cd ..'
       - run:
           name: Creating Build tests files
           command: 'cd tests && cmake -H. -Bbuild'
