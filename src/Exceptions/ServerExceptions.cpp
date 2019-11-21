@@ -7,7 +7,7 @@
 
 #include "ServerExceptions.hpp"
 
-ServerExceptions::ServerExceptions(std::string str) : RTypeExceptions(str)
+ServerExceptions::ServerExceptions(std::string what, std::string where) : RTypeExceptions(what, where)
 {
 
 }

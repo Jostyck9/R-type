@@ -7,7 +7,7 @@
 
 #include "SystemExceptions.hpp"
 
-SystemExceptions::SystemExceptions(std::string str) : ECSExceptions(str)
+SystemExceptions::SystemExceptions(std::string what, std::string where) : ECSExceptions(what, where)
 {
 
 }

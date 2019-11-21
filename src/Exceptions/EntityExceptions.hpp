@@ -19,7 +19,7 @@ class EntityExceptions : public ECSExceptions
 {
 private:
 public:
-    EntityExceptions(std::string);
+    EntityExceptions(std::string, std::string);
     ~EntityExceptions();
 
 };
