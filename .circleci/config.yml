@@ -46,6 +46,9 @@ jobs:
           name: Install Criterion
           command: 'cd tests && sudo ./install_criterion.sh'
       - run:
+          name: Install dependecies
+          command: 'mkdir build && cd build && conan install .. --build=missing && cd ..'
+      - run:
           name: Creating Build tests files
           command: 'cd tests && cmake -H. -Bbuild'
       - run:
