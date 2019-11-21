@@ -43,6 +43,8 @@ private:
 
         void addTask(std::function<void()> const& f);
 
+        std::function<void()>& fetchTask();
+
         void operator()();
 
     };
@@ -51,6 +53,9 @@ private:
     std::vector<Worker> _poolWorker;
     size_t _poolSize;
     bool _isStopped;
+
+    std::mutex _poolLock;
+    std::condition_variable _poolCondVar;
     
 public:
 
@@ -60,16 +65,18 @@ public:
     ~ThreadPool();
     ThreadPool &operator=(const ThreadPool&) = default;
 
+    void start();
     void stop();
     void destroy();
 
+    size_t getFirstFreeWorker();
+
+    size_t getBusyWorker();
     size_t getFreeWorker();
 
-    void run(std::function<void()> const &f) {
-        size_t id = getFreeWorker();
-        auto worker = _poolWorker.at(id);
-        worker.addTask(f);
-    };
+    
+
+    void run(std::function<void()> const& f);
 
 };
 

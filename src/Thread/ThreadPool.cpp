@@ -1,19 +1,18 @@
 #include "ThreadPool.hpp"
+#include <thread>
 #include <iostream>
     
 //==================================/       THREADPOOL      \====================================\\
 
 ThreadPool::ThreadPool(size_t size) : _poolSize(size), _poolThread(), _poolWorker(), _isStopped(true)
 {
-
+    
     for (size_t i = 0; i < _poolSize; i++)
     {
-        auto nworker = ThreadPool::Worker(this, i);
-        _poolWorker.emplace_back(nworker);
-        _poolThread.emplace_back(std::thread(nworker));
+        _poolWorker.emplace_back(ThreadPool::Worker(this, i));
+        _poolThread.emplace_back(std::thread(_poolWorker.at(i)));
     }
-    for (auto& work : _poolWorker)
-        work.start();
+    start();
 }
 
 ThreadPool::~ThreadPool()
@@ -22,9 +21,18 @@ ThreadPool::~ThreadPool()
     destroy();
 }
 
-void ThreadPool::stop()
+void ThreadPool::start()
 {
     _isStopped = false;
+    std::lock_guard<std::mutex> glock(_poolLock);
+    for (auto& work : _poolWorker)
+        work.start();
+}
+
+void ThreadPool::stop()
+{
+    _isStopped = true;
+    std::lock_guard<std::mutex> glock(_poolLock);
     for (auto& it : _poolWorker) {
         it.stop();
     }
@@ -32,17 +40,16 @@ void ThreadPool::stop()
 
 void ThreadPool::destroy()
 {
-    if (_isStopped == false) {
-        for (auto& it : _poolThread) {
-            it.join();
-        }
+    std::lock_guard<std::mutex> glock(_poolLock);
+    for (auto& it : _poolThread) {
+        it.join();
     }
 }
 
-size_t ThreadPool::getFreeWorker()
+size_t ThreadPool::getFirstFreeWorker()
 {
     std::pair<int, int> fWorker;
-
+    
     fWorker = std::make_pair(-1, -1);
     for (auto &it : _poolWorker) {
         if (fWorker.first == -1) {
@@ -57,6 +64,33 @@ size_t ThreadPool::getFreeWorker()
         }   
     }
     return fWorker.first;
+}
+
+size_t ThreadPool::getBusyWorker()
+{
+    size_t bworker = 0;
+    for (auto& w : _poolWorker)
+        if (!w.isStopped())
+            bworker++;
+    return bworker;
+}
+
+size_t ThreadPool::getFreeWorker()
+{
+    size_t bworker = 0;
+    for (auto& w : _poolWorker)
+        if (w.isStopped())
+            bworker++;
+    return bworker;
+}
+
+void ThreadPool::run(std::function<void()> const& f)
+{
+    size_t id = getFreeWorker();
+    auto worker = _poolWorker.at(id);
+    std::unique_lock<std::mutex> lock(_poolLock);
+    worker.addTask(f);
+  
 }
 
 //==================================/       WORKER      \====================================\\
@@ -80,15 +114,21 @@ ThreadPool::Worker::Worker() : _pool(nullptr), _id(0), _isStopped(true)
 
 void ThreadPool::Worker::start()
 {
-    std::lock_guard<std::mutex> lock(_taskLock);
-    _isStopped = false;
+    {
+        std::lock_guard<std::mutex> lock(_taskLock);
+        _isStopped = false;
+    }
+
     _condVar.notify_one();
 }
 
 void ThreadPool::Worker::stop()
 {
-    std::lock_guard<std::mutex> lock(_taskLock);
-    _isStopped = true;
+    std::cout << "Worker Stop\n";
+    {
+        std::lock_guard<std::mutex> lock(_taskLock);
+        _isStopped = true;
+    }
     _condVar.notify_one();
 }
 
@@ -105,7 +145,7 @@ const size_t ThreadPool::Worker::getId()
 void ThreadPool::Worker::waitForStart()
 {
     std::unique_lock<std::mutex> glock(_taskLock);
-    _condVar.wait(glock, [&]() {return _isStopped == false; });
+    _condVar.wait(glock);//, [&]() { return _isStopped == false; });
 }
 
 bool ThreadPool::Worker::isQueueEmpty()
@@ -120,18 +160,32 @@ size_t ThreadPool::Worker::getTaskQueueSize()
 
 void ThreadPool::Worker::addTask(std::function<void()> const& f)
 {
+    std::unique_lock<std::mutex> glock(_taskLock);
     _tasksQueue.push(f);
+    _condVar.notify_one();
+}
+
+std::function<void()>& ThreadPool::Worker::fetchTask()
+{
+    for (;;) {
+        std::unique_lock<std::mutex> lock(_taskLock);
+        _condVar.wait(lock);//, [&]() {            return !_pool->_isStopped || !_isStopped || !isQueueEmpty();            });
+        auto task = _tasksQueue.front();
+        _tasksQueue.pop();
+        return task;
+    }
 }
 
 void ThreadPool::Worker::operator()()
 {
+    std::cout << "Wait for start..." << std::endl;
     waitForStart();
+    std::cout << "Started" << std::endl;
 
-    std::unique_lock<std::mutex> lock(_taskLock);
-    _condVar.wait(lock, [&]() {
-        return _isStopped || !isQueueEmpty();
-        });
-    auto task = std::move(_tasksQueue.front());
-    _tasksQueue.pop();
-    task();
+    while (1) {
+    
+        auto task = fetchTask();
+        task();
+       
+    }
 }

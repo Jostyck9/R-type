@@ -12,17 +12,16 @@ void test1(std::string& str) {
 
 int main(int, char**) {
 
-    ThreadPool *pool = new ThreadPool(5);
-    std::cout << "Thread n° " << std::this_thread::get_id() << std::endl;
-    std::function<int(int, int)> f = test;
-    pool->run([&]() {std::cout << "Thread n° " << std::this_thread::get_id() << std::endl; });
-    pool->run([&]() {std::cout << "Thread n° " << std::this_thread::get_id() << std::endl; });
-    pool->run([&]() {std::cout << "Thread n° " << std::this_thread::get_id() << std::endl; });
-    pool->run([&]() {std::cout << "Thread n° " << std::this_thread::get_id() << std::endl; });
-    pool->run([&]() {std::cout << "Thread n° " << std::this_thread::get_id() << std::endl; });
-    pool->run([&]() {std::cout << "Thread n° " << std::this_thread::get_id() << std::endl; });
-    pool->run([&]() {std::cout << "Thread n° " << std::this_thread::get_id() << std::endl; });
-    pool->run([&]() {std::cout << "Thread n° " << std::this_thread::get_id() << std::endl; });
+    ThreadPool pool(1);
+    //std::cout << "Thread n° " << std::this_thread::get_id() << std::endl;
+    
+    pool.start();
+
+    pool.run([&]() {std::cout << "Thread n° " << std::this_thread::get_id() << std::endl; });
+    
+
+    
+    pool.destroy();
 
     return (0);
 }
