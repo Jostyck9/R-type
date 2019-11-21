@@ -56,4 +56,4 @@ jobs:
           command: 'cd tests && cmake --build build'
       - run:
           name: Launch Units Tests
-          command: 'cd tests && ./build/unit_test'
+          command: 'cd tests && ./build/bin/unit_test'
