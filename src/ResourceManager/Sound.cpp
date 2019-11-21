@@ -3,6 +3,7 @@
 //
 
 #include "Sound.hpp"
+#include "ECSExceptions.hpp"
 
 namespace ecs {
 
@@ -10,7 +11,8 @@ Sound::Sound(const std::string &name, const std::string &filePath)
 {
     _name = name;
     sf::SoundBuffer buffer;
-    buffer.loadFromFile(filePath);
+    if (!buffer.loadFromFile(filePath))
+        throw ECSExceptions("Error: Could not load sound \'" + name + '\'', std::string(__FILE__) + ' ' + std::to_string(__LINE__));
     _sound.setBuffer(buffer);}
 
 Sound::~Sound()

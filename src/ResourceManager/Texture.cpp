@@ -3,13 +3,15 @@
 //
 
 #include "Texture.hpp"
+#include "ECSExceptions.hpp"
 
 namespace ecs {
 
 Texture::Texture(const std::string &name, const std::string &filePath)
 {
     _name = name;
-    _texture.loadFromFile(filePath);
+    if (!_texture.loadFromFile(filePath))
+        throw ECSExceptions("Error: Could not load texture \'" + name + '\'', std::string(__FILE__) + ' ' + std::to_string(__LINE__));
 }
 
 Texture::~Texture()

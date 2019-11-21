@@ -39,7 +39,8 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/
         src/Systems/
         src/Systems/Display
-        src/Systems/SystemManager)
+        src/Systems/SystemManager
+        src/Exceptions)
 
 #r-type_client
 set(SOURCE_CLIENT
@@ -83,7 +84,13 @@ set(SOURCE_CLIENT
         "src/Entities/EntityManager.cpp"
         "src/Systems/ASystem.cpp"
         "src/Systems/Display/DisplaySystem.cpp"
-        "src/Systems/SystemManager/SystemManager.cpp")
+        "src/Systems/SystemManager/SystemManager.cpp"
+        "src/Exceptions/ComponentExceptions.cpp"
+        "src/Exceptions/ECSExceptions.cpp"
+        "src/Exceptions/EntityExceptions.cpp"
+        "src/Exceptions/RTypeExceptions.cpp"
+        "src/Exceptions/ServerExceptions.cpp"
+        "src/Exceptions/SystemExceptions.cpp")
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})

@@ -3,13 +3,15 @@
 //
 
 #include "Music.hpp"
+#include "ECSExceptions.hpp"
 
 namespace ecs {
 
 Music::Music(const std::string &name, const std::string &filePath)
 {
     _name = name;
-    _music.openFromFile(filePath);
+    if (!_music.openFromFile(filePath))
+        throw ECSExceptions("Error: Could not load music \'" + name + '\'', std::string(__FILE__) + ' ' + std::to_string(__LINE__));
 }
 
 Music::~Music()
