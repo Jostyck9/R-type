@@ -22,6 +22,7 @@ namespace ecs {
          * @return std::string 
          */
         virtual void setText(const std::string &text) = 0;
+    
     };
 }
  
