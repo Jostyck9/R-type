@@ -9,11 +9,20 @@
 #include "IFont.hpp"
 
 namespace ecs {
+    /**
+     * @brief Font for the game
+     * 
+     */
     class Font : public IFont {
     public:
         Font(const std::string& name, const std::string &filePath);
         ~Font();
 
+        /**
+         * @brief Get name of the front
+         * 
+         * @return std::string 
+         */
         const std::string &getName() override;
 
     private:

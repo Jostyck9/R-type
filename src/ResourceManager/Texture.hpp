@@ -9,11 +9,20 @@
 #include "ITexture.hpp"
 
 namespace ecs {
+    /**
+     * @brief
+     * 
+     */
     class Texture : public ITexture {
     public:
         Texture(const std::string& name, const std::string &filePath);
         ~Texture();
 
+        /**
+         * @brief Get name of the texture
+         * 
+         * @return std::string
+         */
         const std::string &getName() override;
 
     private:

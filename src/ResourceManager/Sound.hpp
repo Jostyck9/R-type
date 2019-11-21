@@ -9,17 +9,47 @@
 #include "IAudio.hpp"
 
 namespace ecs {
+    /**
+     * @brief Sound for the game
+     * 
+     */ 
     class Sound : public IAudio {
     public:
         Sound(const std::string& name, const std::string &filePath);
         ~Sound();
 
-        const std::string &getName();
+        /**
+         * @brief Get name of the sound
+         * 
+         * @return std::string
+         */
+        const std::string &getName() override;
 
-        void play();
-        void stop();
-        void pause();
-        void loop(bool state);
+        /**
+         * @brief Play the sound
+         * 
+         */
+        void play() override;
+        
+        /**
+         * @brief Stop the sound
+         * 
+         */
+        void stop() override;
+        
+        /**
+         * @brief Pause the sound
+         * 
+         */
+        void pause() override;
+        
+        /**
+         * @brief Loop the sound
+         * 
+         * @param state
+         * 
+         */
+        void loop(bool state) override;
 
     private:
         std::string _name;

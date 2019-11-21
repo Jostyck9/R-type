@@ -8,6 +8,12 @@
 namespace ecs {
     class ITexture {
     public:
+        
+        /**
+         * @brief Get name of the texture
+         * 
+         * @return std::string 
+         */
         virtual const std::string &getName() = 0;
     };
 }

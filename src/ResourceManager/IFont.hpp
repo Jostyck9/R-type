@@ -8,6 +8,12 @@
 namespace ecs {
     class IFont {
     public:
+    
+        /**
+         * @brief Get name of the music
+         * 
+         * @return std::string 
+         */
         virtual const std::string &getName() = 0;
     };
 }
