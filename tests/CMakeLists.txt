@@ -23,7 +23,6 @@ add_executable(unit_test
     ./src/testEntityManager.cpp
     ./src/testEntity.cpp
     ./src/testExceptions.cpp
-    ./src/testResourceManager.cpp
     ${SOURCE_ROOT}/Entities/Entity.cpp
     ${SOURCE_ROOT}/Entities/EntityManager.cpp
     ${SOURCE_ROOT}/Components/ComponentManager/ComponentManager.cpp
@@ -35,6 +34,13 @@ add_executable(unit_test
     ${SOURCE_ROOT}/Exceptions/RTypeExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/ServerExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/SystemExceptions.cpp
+)
+target_link_libraries(unit_test criterion)
+
+add_executable(unit_test_graphic
+    ./src/testResourceManager.cpp
+    ${SOURCE_ROOT}/Exceptions/ECSExceptions.cpp
+    ${SOURCE_ROOT}/Exceptions/RTypeExceptions.cpp
     ${SOURCE_ROOT}/ResourceManager/Font.cpp
     ${SOURCE_ROOT}/ResourceManager/Music.cpp
     ${SOURCE_ROOT}/ResourceManager/ResourceManager.cpp
@@ -42,5 +48,4 @@ add_executable(unit_test
     ${SOURCE_ROOT}/ResourceManager/Text.cpp
     ${SOURCE_ROOT}/ResourceManager/Texture.cpp
 )
-
-target_link_libraries(unit_test criterion ${CONAN_LIBS})
+target_link_libraries(unit_test_graphic criterion ${CONAN_LIBS})
