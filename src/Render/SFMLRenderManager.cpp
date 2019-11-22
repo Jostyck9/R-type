@@ -34,10 +34,11 @@ namespace ecs {
     //stop audio ?
     }
 
-    void SFMLRenderManager::graphicsUpdate(ecs::)
+    void SFMLRenderManager::graphicsUpdate(Entity &entity)
     {
-    _window->clear();
+    _sprite = Sprite(//get la texture de l'entity);
         //Render un sprite dans la window --> besoin de la window, de la texture et du sprite en question de sa pos etc
+    _sprite.setPosition(entity.getPosX(), entity.getPosY());
     _window->display();
     }
 
@@ -54,5 +55,9 @@ namespace ecs {
     void SFMLRenderManager::eventUpdate() 
     {
         //update les event SFML ?
+    }
+
+    void SFMLRenderManager::clear() {
+            _window->clear();
     }
 }

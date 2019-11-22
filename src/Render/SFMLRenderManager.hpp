@@ -32,6 +32,11 @@ namespace ecs {
         void audioUpdate() override;
         void textUpdate() override;
         void eventUpdate() override;
+        /**
+         * @brief clear the window of all rendered objects
+         * 
+         */
+        void clear();
         //key and input handler ?
     private:
         SFMLRenderManager();
@@ -42,6 +47,7 @@ namespace ecs {
         sf::RenderWindow *_window; /*!< Internal window used by SFML functions */
         sf::Music _music; /*!<Music of the program */
         sf::Event _event; /*!<Events of the program */
+        sf::Sprite _sprite; /*!<Sprite of the program */
     };
 }
 
