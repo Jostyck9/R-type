@@ -10,6 +10,10 @@ else()
     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++17")
 endif()
 
+# Compilation
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
+
 include_directories(
     ${SOURCE_ROOT}
     ${SOURCE_ROOT}/Entities/
@@ -20,9 +24,10 @@ include_directories(
     ${SOURCE_ROOT}/Components/Physics/
     ${SOURCE_ROOT}/Components/ComponentManager/
     ${SOURCE_ROOT}/Exceptions/
+    ${SOURCE_ROOT}/ResourceManager/
 )
 
-add_executable(test
+add_executable(unit_test
     ./src/testComponentManager.cpp
     ./src/testEntityManager.cpp
     ./src/testEntity.cpp
@@ -43,7 +48,17 @@ add_executable(test
     ${SOURCE_ROOT}/Exceptions/ServerExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/SystemExceptions.cpp
 )
+target_link_libraries(unit_test criterion)
 
-target_link_libraries(test
-    criterion
+add_executable(unit_test_graphic
+    ./src/testResourceManager.cpp
+    ${SOURCE_ROOT}/Exceptions/ECSExceptions.cpp
+    ${SOURCE_ROOT}/Exceptions/RTypeExceptions.cpp
+    ${SOURCE_ROOT}/ResourceManager/Font.cpp
+    ${SOURCE_ROOT}/ResourceManager/Music.cpp
+    ${SOURCE_ROOT}/ResourceManager/ResourceManager.cpp
+    ${SOURCE_ROOT}/ResourceManager/Sound.cpp
+    ${SOURCE_ROOT}/ResourceManager/Text.cpp
+    ${SOURCE_ROOT}/ResourceManager/Texture.cpp
 )
+target_link_libraries(unit_test_graphic criterion ${CONAN_LIBS})
