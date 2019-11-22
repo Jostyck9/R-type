@@ -11,6 +11,11 @@ ecs::components::Damage::Damage()
 {
 }
 
+ecs::components::Damage::Damage(const Damage &oldDamage)
+{
+    this->_value = oldDamage.getValue();
+}
+
 ecs::components::Damage::~Damage()
 {
 }
@@ -24,6 +29,11 @@ void ecs::components::Damage::setValue(const float &newValue)
 float ecs::components::Damage::getValue(void) const
 {
     return(this->_value);
+}
+
+const std::type_index ecs::components::Damage::getType() const
+{
+    return (std::type_index(typeid(Damage)));
 }
 
 bool ecs::components::Damage::operator==(Damage &other)

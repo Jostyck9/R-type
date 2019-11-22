@@ -22,6 +22,7 @@ namespace ecs::components
     {
     public:
         Text();
+        Text(const Text &oldText);
         ~Text();
          /**
          * @brief Set new value to the component id
@@ -34,6 +35,13 @@ namespace ecs::components
          * 
          */
         unsigned int getId(void) const;
+        /**
+         * @brief Get the Type object
+         * 
+         * @return const std::type_index 
+         */
+        const std::type_index getType() const;
+        
         bool operator==(Text &other);
 
     private:

@@ -11,6 +11,11 @@ ecs::components::Level::Level()
 {
 }
 
+ecs::components::Level::Level(const Level &oldLevel)
+{
+    this->_value = oldLevel.getValue();
+}
+
 ecs::components::Level::~Level()
 {
 }
@@ -24,6 +29,11 @@ void ecs::components::Level::setValue(const float &newValue)
 float ecs::components::Level::getValue(void) const
 {
     return(this->_value);
+}
+
+const std::type_index ecs::components::Level::getType() const
+{
+    return (std::type_index(typeid(Level)));
 }
 
 bool ecs::components::Level::operator==(Level &other)

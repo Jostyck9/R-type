@@ -13,6 +13,14 @@ Collision::Collision()
 {
 }
 
+Collision::Collision(const Collision &oldCollision)
+{
+    this->_height = oldCollision.getHeight();
+    this->_width = oldCollision.getWidth();
+    this->_x = oldCollision.getX();
+    this->_y = oldCollision.getY();
+}
+
 Collision::~Collision()
 {
 }

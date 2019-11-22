@@ -13,6 +13,11 @@ Rotation::Rotation()
 {
 }
 
+Rotation::Rotation(const Rotation &oldRotation)
+{
+    this->_radAngle = oldRotation.getRadAngle();
+}
+
 Rotation::~Rotation()
 {
 }

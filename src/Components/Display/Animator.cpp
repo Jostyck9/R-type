@@ -7,28 +7,41 @@
 
 #include "Animator.hpp"
 
-ecs::components::Animator::Animator()
+namespace ecs::components {
+
+Animator::Animator()
 {
 }
 
-ecs::components::Animator::~Animator()
+Animator::Animator(const Animator &oldAnimator)
+{
+    this->_id = oldAnimator.getId();
+}
+
+Animator::~Animator()
 {    
 }
 
-void ecs::components::Animator::setId(const unsigned int &newId)
+void Animator::setId(const unsigned int &newId)
 {
     this->_id = newId;
     return;
 }
 
-unsigned int ecs::components::Animator::getId(void) const
+unsigned int Animator::getId(void) const
 {
     return this->_id;
 }
 
-bool ecs::components::Animator::operator==(Animator &other)
+const std::type_index Animator::getType() const
+{
+    return (std::type_index(typeid(Animator)));
+}
+
+bool Animator::operator==(Animator &other)
 {
     if (other.getId() == this->_id)
         return true;
     return false;
+}
 }

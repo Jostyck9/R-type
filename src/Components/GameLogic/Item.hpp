@@ -22,9 +22,16 @@ namespace ecs::components
     {
     public:
         Item();
+        Item(const Item &oldItem);
         ~Item();
         void setValue(const float &newValue);
         float getValue(void) const;
+        /**
+         * @brief Get the Type object
+         * 
+         * @return const std::type_index 
+         */
+        const std::type_index getType() const;
         bool operator==(Item &other);
         
     private:

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['keyboard_224',['KeyBoard',['../classcomponents_1_1KeyBoard.html',1,'components']]]
+  ['keyboard_287',['Keyboard',['../classecs_1_1components_1_1Keyboard.html',1,'ecs::components']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['rotation_230',['Rotation',['../classcomponents_1_1Rotation.html',1,'components']]]
+  ['rotation_294',['Rotation',['../classecs_1_1components_1_1Rotation.html',1,'ecs::components']]],
+  ['rtypeexceptions_295',['RTypeExceptions',['../classRTypeExceptions.html',1,'']]]
 ];

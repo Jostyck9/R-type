@@ -22,9 +22,16 @@ namespace ecs::components
     {
     public:
         Scale();
+        Scale(const Scale &oldScale);
         ~Scale();
         void setValue(const float &newValue);
         float getValue(void) const;
+        /**
+         * @brief Get the Type object
+         * 
+         * @return const std::type_index 
+         */
+        const std::type_index getType() const;
         bool operator==(Scale &other);
         
     private:

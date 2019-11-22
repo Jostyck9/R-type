@@ -13,6 +13,11 @@ GameController::GameController()
 {
 }
 
+ecs::components::GameController::GameController(const GameController &oldGameController)
+{
+    this->_id = oldGameController.getId();
+}
+
 GameController::~GameController()
 {
 }
