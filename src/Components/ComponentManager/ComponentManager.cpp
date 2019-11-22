@@ -38,6 +38,7 @@ std::shared_ptr<IComponent> ComponentManager::extractComponentsOfType(std::multi
             res = (std::shared_ptr<IComponent>(it->second));
             return res;
         }
+    // TODO Throw an execption and do not return a null ptr
     return nullptr;
 }
 
