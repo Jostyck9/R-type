@@ -5,6 +5,7 @@
 #include "../Components/IComponent.hpp"
 #include "../Components/ComponentManager/ComponentManager.hpp"
 #include "../Entities/EntityManager.hpp"
+#include "../Entities/Entity.hpp"
 
 /*!
  * @namespace ecs
@@ -22,7 +23,7 @@ namespace ecs {
         virtual void ~IDisplayModule() = 0;
         virtual void init() = 0;
         virtual void terminate() = 0;
-        virtual void graphicsUpdate() = 0;
+        virtual void graphicsUpdate(Entity &entity) = 0;
         virtual void audioUpdate() = 0;
         virtual void textUpdate() = 0;
         virtual void eventUpdate() = 0;

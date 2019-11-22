@@ -34,7 +34,7 @@ namespace ecs {
     //stop audio ?
     }
 
-    void SFMLRenderManager::graphicsUpdate()
+    void SFMLRenderManager::graphicsUpdate(ecs::)
     {
     _window->clear();
         //Render un sprite dans la window --> besoin de la window, de la texture et du sprite en question de sa pos etc

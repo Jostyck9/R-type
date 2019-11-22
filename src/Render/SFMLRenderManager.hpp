@@ -28,7 +28,7 @@ namespace ecs {
         SFMLRenderManager operator=(const SFMLRenderManager &) = delete;
         void init() override;
         void terminate() override;
-        void graphicsUpdate() override;
+        void graphicsUpdate(Entity &entity) override;
         void audioUpdate() override;
         void textUpdate() override;
         void eventUpdate() override;
