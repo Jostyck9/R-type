@@ -32,9 +32,14 @@ endif()
 # Compilation
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
-include_directories(${CMAKE_INCLUDE_PATH} 
-        src/Components/ComponentManager/ 
+include_directories(${CMAKE_INCLUDE_PATH}
         src/Components/
+        src/Components/ComponentManager/
+        src/Components/Display/
+        src/Components/GameLogic/
+        src/Components/IO/
+        src/Components/Physics/
+        src/RessourceManager/
         src/Entities/
         src/Entities/EntityConstructor/
         src/Entities/EntityConstructor/TestEntity/
@@ -42,7 +47,8 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/Factories/
         src/Systems/
         src/Systems/Display
-        src/Systems/SystemManager)
+        src/Systems/SystemManager
+        src/Exceptions)
 
 #r-type_client
 set(SOURCE_CLIENT
@@ -76,13 +82,25 @@ set(SOURCE_CLIENT
         "src/Components/Physics/Transform.cpp"
         "src/Components/Physics/Velocity.cpp"
         "src/Components/Physics/Position.cpp"
+        "src/ResourceManager/ResourceManager.cpp"
+        "src/ResourceManager/Music.cpp"
+        "src/ResourceManager/Sound.cpp"
+        "src/ResourceManager/Texture.cpp"
+        "src/ResourceManager/Font.cpp"
+        "src/ResourceManager/Text.cpp"
         "src/Entities/Entity.cpp"
         "src/Entities/EntityConstructor/TestEntity/TestEntity.cpp"
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
         "src/Systems/ASystem.cpp"
         "src/Systems/Display/DisplaySystem.cpp"
-        "src/Systems/SystemManager/SystemManager.cpp")
+        "src/Systems/SystemManager/SystemManager.cpp"
+        "src/Exceptions/ComponentExceptions.cpp"
+        "src/Exceptions/ECSExceptions.cpp"
+        "src/Exceptions/EntityExceptions.cpp"
+        "src/Exceptions/RTypeExceptions.cpp"
+        "src/Exceptions/ServerExceptions.cpp"
+        "src/Exceptions/SystemExceptions.cpp")
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})
