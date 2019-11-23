@@ -102,7 +102,7 @@ void ThreadPool::run(std::function<void()> const &f)
 //==================================/       WORKER      \====================================\\
 
 ThreadPool::Worker::Worker(ThreadPool *pool, size_t id) : _pool(pool), _id(id),
-    _isStopped(true)
+    _isStopped(_pool->_isStopped)
 {
 }
 
