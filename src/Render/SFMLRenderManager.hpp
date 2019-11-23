@@ -1,26 +1,24 @@
-
 #ifndef R_TYPE_SFMLRENDERMANAGER_H
 #define R_TYPE_SFMLRENDERMANAGER_H
 
 #include "IRenderManager.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-
-
+#include "Input.hpp"
 namespace ecs {
     /**
      * @brief Manager gameRendering of the game
-     * 
+     *
      */
     #define WIDTH 800
     #define HEIGHT 600
     class SFMLRenderManager : public IRenderManager {
     public:
-        
+
         /**
          * @brief Get the instance of the RenderManager classe
-         * 
-         * @return SFMLRenderManager 
+         *
+         * @return SFMLRenderManager
          */
         static SFMLRenderManager &getInstance();
 
@@ -34,7 +32,7 @@ namespace ecs {
         void eventUpdate() override;
         /**
          * @brief clear the window of all rendered objects
-         * 
+         *
          */
         void clear();
         //key and input handler ?
@@ -48,7 +46,11 @@ namespace ecs {
         sf::Music _music; /*!<Music of the program */
         sf::Event _event; /*!<Events of the program */
         sf::Sprite _sprite; /*!<Sprite of the program */
+        std::map<int, ecs::input::Key> _keys; /*!<Key mapping*/
+        std::map<ecs::Color, sf::Color> _colors; /*!<Color mapping*/
     };
 }
+
+#include "Color.hpp"
 
 #endif //R_TYPE_RENDERMANAGER_H
