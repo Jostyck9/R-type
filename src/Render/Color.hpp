@@ -7,7 +7,7 @@
 
 /*!
  * @namespace ecs
- * @brief A namespace containing all the arcade project stuff
+ * @brief A namespace containing all the rtype project stuff
  */
 namespace ecs {
     /*!
