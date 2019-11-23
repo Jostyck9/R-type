@@ -10,8 +10,6 @@
 #include <type_traits>
 #include <functional>
 
-#define MAX_THREAD std::thread::hardware_concurency()
-
 class ThreadPool {
 private:
 
@@ -60,10 +58,8 @@ private:
 public:
 
     ThreadPool() = default;
-    ThreadPool(size_t size);
-    ThreadPool(const ThreadPool&) = default;
+    explicit ThreadPool(size_t size);
     ~ThreadPool();
-    ThreadPool &operator=(const ThreadPool&) = default;
 
     void start();
     void stop();
@@ -73,8 +69,6 @@ public:
 
     size_t getBusyWorker();
     size_t getFreeWorker();
-
-    
 
     void run(std::function<void()> const& f);
 

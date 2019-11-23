@@ -17,11 +17,10 @@ int main(int, char**) {
     
     pool.start();
 
+    //std::this_thread::sleep_for(std::chrono::seconds(5));
     pool.run([&]() {std::cout << "Thread n° " << std::this_thread::get_id() << std::endl; });
-    
-
-    
+    std::cout << "done\n";
     pool.destroy();
-
+    std::cout << "ending\n";
     return (0);
 }
