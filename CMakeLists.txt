@@ -94,6 +94,8 @@ set(SOURCE_CLIENT
         "src/Entities/Factories/EntityFactory.cpp"
         "src/Systems/ASystem.cpp"
         "src/Systems/Display/DisplaySystem.cpp"
+        "src/Systems/Display/PhysicsSystem.cpp"
+        "src/Systems/SystemManager/SystemManager.cpp")
         "src/Systems/SystemManager/SystemManager.cpp"
         "src/Exceptions/ComponentExceptions.cpp"
         "src/Exceptions/ECSExceptions.cpp"

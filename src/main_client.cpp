@@ -10,6 +10,7 @@
 #include "ComponentManager.hpp"
 #include "SystemManager.hpp"
 #include "Display/DisplaySystem.hpp"
+#include "Display/PhysicsSystem.hpp"
 #include "Physics/Position.hpp"
 #include "Physics/Velocity.hpp"
 #include "TestEntity.hpp"
