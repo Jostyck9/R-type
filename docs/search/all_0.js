@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['classa_0',['ClassA',['../classClassA.html',1,'ClassA'],['../classClassA.html#acd165fa87ae77eeb9c715024c0301a6b',1,'ClassA::ClassA()']]],
-  ['classa_2ehpp_1',['ClassA.hpp',['../ClassA_8hpp.html',1,'']]],
-  ['classb_2',['ClassB',['../classClassB.html',1,'ClassB'],['../classClassB.html#a340d471e25b80ff60b6fe0fa94aa073b',1,'ClassB::ClassB()']]],
-  ['classb_2ehpp_3',['ClassB.hpp',['../ClassB_8hpp.html',1,'']]]
+  ['_5fcomponentmanager_0',['_componentManager',['../classecs_1_1system_1_1ASystem.html#a2ad29ad58e1f7b3d29f930fe56dda885',1,'ecs::system::ASystem']]],
+  ['_5fentitiestodelete_1',['_entitiesToDelete',['../classecs_1_1system_1_1ASystem.html#a31ce04e4d0787336a7b07094c1bc5e55',1,'ecs::system::ASystem']]],
+  ['_5fentitymanager_2',['_entityManager',['../classecs_1_1system_1_1ASystem.html#af047c7f4e0f85e3f61b5c9fb844df383',1,'ecs::system::ASystem']]]
 ];

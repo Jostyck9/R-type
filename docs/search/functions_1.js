@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['getmytext_24',['getMyText',['../classClassA.html#a9cb04a83c56b5af3610ea4cb8397a428',1,'ClassA']]],
-  ['getmyvalue_25',['getMyValue',['../classClassB.html#a47a03298c73b1f560c616c6c5c8a1899',1,'ClassB']]]
+  ['button_420',['Button',['../classecs_1_1components_1_1Button.html#ad7a7359fa95fc46fb029db92012a70f5',1,'ecs::components::Button::Button()'],['../classecs_1_1components_1_1Button.html#a68577d46075606c8a02cad1ad5774cbc',1,'ecs::components::Button::Button(const Button &amp;oldButton)']]]
 ];

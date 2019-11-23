@@ -1,24 +1,38 @@
-#include <SFML/Graphics.hpp>
+/*
+** EPITECH PROJECT, 2019
+** R-type
+** File description:
+** main_client.cpp
+*/
+
+#include "EntityManager.hpp"
+#include "EntityFactory.hpp"
+#include "ComponentManager.hpp"
+#include "SystemManager.hpp"
+#include "Display/DisplaySystem.hpp"
+#include "Physics/Position.hpp"
+#include "Physics/Velocity.hpp"
+#include "TestEntity.hpp"
+
+using namespace ecs::components;
+using namespace ecs::system;
+using namespace ecs::entities;
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    std::shared_ptr<IComponentManager> componentManager = std::make_shared<ComponentManager>();
+    std::shared_ptr<IEntityManager> entityManager = std::make_shared<EntityManager>(componentManager);
+    std::shared_ptr<SystemManager> systemManager = std::make_shared<SystemManager>(entityManager, componentManager);
+    std::shared_ptr<IEntityFactory> factory = std::make_shared<EntityFactory>(entityManager, componentManager);
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+    factory->addEntityConstructor(std::make_shared<TestEntity>());
+    factory->createEntity("Test");
+    factory->createEntity("Test");
+    factory->createEntity("Test");
 
-        window.clear();
-        window.draw(shape);
-        window.display();
+    systemManager->addSystem(std::make_shared<DisplaySystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
+    for (int i = 0; i < 10; i++) {
+        systemManager->updateAll();
     }
-
     return 0;
 }

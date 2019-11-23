@@ -71,7 +71,14 @@ $(function() {
 <div class="title">main_client.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;SFML/Graphics.hpp&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="EntityManager_8hpp_source.html">EntityManager.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="EntityFactory_8hpp_source.html">EntityFactory.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ComponentManager_8hpp_source.html">ComponentManager.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="SystemManager_8hpp_source.html">SystemManager.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="DisplaySystem_8hpp_source.html">Display/DisplaySystem.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Position_8hpp_source.html">Physics/Position.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Velocity_8hpp_source.html">Physics/Velocity.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="TestEntity_8hpp_source.html">TestEntity.hpp</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -93,27 +100,23 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    sf::RenderWindow window(sf::VideoMode(200, 200), <span class="stringliteral">&quot;SFML works!&quot;</span>);</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    sf::CircleShape shape(100.f);</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    shape.setFillColor(sf::Color::Green);</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordflow">while</span> (window.isOpen())</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        sf::Event event;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordflow">while</span> (window.pollEvent(event))</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            <span class="keywordflow">if</span> (event.type == sf::Event::Closed)</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                window.close();</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        }</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        window.clear();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        window.draw(shape);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        window.display();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::shared_ptr&lt;IComponentManager&gt; componentManager = std::make_shared&lt;ComponentManager&gt;();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    std::shared_ptr&lt;IEntityManager&gt; entityManager = std::make_shared&lt;EntityManager&gt;(componentManager);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    std::shared_ptr&lt;SystemManager&gt; systemManager = std::make_shared&lt;SystemManager&gt;(entityManager, componentManager);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::shared_ptr&lt;IEntityFactory&gt; factory = std::make_shared&lt;EntityFactory&gt;(entityManager, componentManager);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    factory-&gt;addEntityConstructor(std::make_shared&lt;TestEntity&gt;());</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    factory-&gt;createEntity(<span class="stringliteral">&quot;Test&quot;</span>);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    factory-&gt;createEntity(<span class="stringliteral">&quot;Test&quot;</span>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    factory-&gt;createEntity(<span class="stringliteral">&quot;Test&quot;</span>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    systemManager-&gt;addSystem(std::make_shared&lt;DisplaySystem&gt;(entityManager, componentManager, systemManager-&gt;getEntitiesToDelete()));</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 10; i++) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        systemManager-&gt;updateAll();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
