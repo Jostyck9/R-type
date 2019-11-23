@@ -40,7 +40,7 @@ namespace ecs::system
          * 
          * @return std::list<int>& 
          */
-        std::list<int> &getEntitiesToDelete();
+        std::list<int> &getEntitiesToDelete() override;
 
         void updateAll() override;
 

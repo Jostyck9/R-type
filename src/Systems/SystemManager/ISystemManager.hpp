@@ -18,6 +18,7 @@ namespace ecs::system
          * 
          */
         virtual void updateAll() = 0;
+        virtual std::list<int> &getEntitiesToDelete() = 0;
     };
 }
 

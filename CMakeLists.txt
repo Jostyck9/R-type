@@ -48,7 +48,10 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/
         src/Systems/Display
         src/Systems/SystemManager
-        src/Exceptions)
+        src/Exceptions
+        src/Systems/SystemConstructor
+        src/Systems/SystemConstructor/testSystem
+        src/Systems/Factories)
 
 #r-type_client
 set(SOURCE_CLIENT
@@ -100,7 +103,10 @@ set(SOURCE_CLIENT
         "src/Exceptions/EntityExceptions.cpp"
         "src/Exceptions/RTypeExceptions.cpp"
         "src/Exceptions/ServerExceptions.cpp"
-        "src/Exceptions/SystemExceptions.cpp")
+        "src/Exceptions/SystemExceptions.cpp"
+        "src/Systems/SystemConstructor/testSystem/testSystem.cpp"
+        "src/Systems/Factories/SystemFactory.cpp"
+        )
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})
