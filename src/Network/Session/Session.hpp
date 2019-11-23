@@ -10,26 +10,22 @@
 
 #include "ISession.hpp"
 
-class Session : public ISession
+class Session : public std::enable_shared_from_this<Session>, public ISession
 {
 private:
-    boost::asio::io_context &_io_context;
-    boost::asio::ip::udp::socket _socket;
-    udp::endpoint &sender_endpoint_;
+    udp::endpoint &_sender_endpoint;
+    udp::socket &_socket;
+
     enum { max_length = 1024 };
-    char rawData[max_length];
+    size_t recv;
 
 public:
-    Session(boost::asio::io_context &io_context, boost::asio::ip::udp::endpoint &senderEndpoint);
+    Session(udp::socket &_socket, udp::endpoint &senderEndpoint);
     ~Session();
 
-    void do_read();
-    void handle_read(boost::system::error_code ec, std::size_t length);
-    void do_write();
+    void do_write(char data[max_length]);
     void handle_write(boost::system::error_code ec, std::size_t length);
 
-    bool start() override;
-    bool stop() override;
-    boost::asio::ip::udp::socket &getSocket() override;
+    void manage_data(char rawData[max_length]) override;
 };
 #endif //SESSION_HPP__

@@ -7,9 +7,10 @@
 
 #include <iostream>
 #include <memory>
+#include <boost/bind.hpp>
 #include "Session.hpp"
 
-Session::Session(boost::asio::io_context &io_context, boost::asio::ip::udp::endpoint &senderEndpoint) : _io_context(io_context), _socket(io_context), _sender_endpoint(senderEndpoint)
+Session::Session(udp::socket &socket, udp::endpoint &senderEndpoint) : _sender_endpoint(senderEndpoint), _socket(socket)
 {
 }
 
@@ -17,28 +18,14 @@ Session::~Session()
 {
 }
 
-void Session::do_read()
+void Session::do_write(char rawData[max_length])
 {
-    _socket.async_receive_from(boost::asio::buffer(rawData, max_length),
-                            std::bind(&Session::handle_read, shared_from_this(), std::placeholders::_1, std::placeholders::_2));
-    // boost::asio::async_read(_socket, boost::asio::buffer(rawData),
-    //                         std::bind(&Session::handle_read, shared_from_this(), std::placeholders::_1, std::placeholders::_2));
-}
-
-void Session::handle_read(boost::system::error_code ec, std::size_t length)
-{
-    if (ec)
-    {
-        std::cerr << "error : " << ec.category().name() << " : " << ec.value() << " : " << ec.message() << std::endl;
-    }
-    std::cout << length << " bytes received" << std::endl;
-    do_write();
-}
-
-void Session::do_write()
-{
-    boost::asio::async_write(_socket, boost::asio::buffer(rawData),
-                             std::bind(&Session::handle_write, shared_from_this(), std::placeholders::_1, std::placeholders::_2));
+    std::cout << "Ok here" << std::endl;
+    _socket.async_send_to(
+        boost::asio::buffer(rawData, max_length), _sender_endpoint,
+        boost::bind(&Session::handle_write, shared_from_this(), boost::asio::placeholders::error,
+        boost::asio::placeholders::bytes_transferred));
+        // std::bind(&Session::handle_write, shared_from_this(), std::placeholders::_1, std::placeholders::_2));
 }
 
 void Session::handle_write(boost::system::error_code ec, std::size_t length)
@@ -49,17 +36,9 @@ void Session::handle_write(boost::system::error_code ec, std::size_t length)
     }
 }
 
-bool Session::start()
+void Session::manage_data(char rawData[max_length])
 {
-    do_read();
-    return false;
-}
-
-bool Session::stop()
-{
-    return true;
-}
-boost::asio::ip::udp::socket &Session::getSocket()
-{
-    return _socket;
+    std::cout << "sent from :" << _sender_endpoint.address().to_string() << std::endl;
+    std::cout << "received : " << rawData << std::endl;
+    do_write(rawData);
 }

@@ -13,12 +13,11 @@
 
 using boost::asio::ip::udp;
 
-class ISession : public std::enable_shared_from_this<ISession>
+class ISession
 {
 public:
-    virtual bool start() = 0;
-    virtual bool stop() = 0;
-    virtual boost::asio::ip::udp::socket &getSocket() = 0;
+    enum { max_length = 1024 };
+    virtual void manage_data(char rawData[max_length]) = 0;
 };
 
 #endif //ISESSION__HPP__
