@@ -8,7 +8,7 @@
 #include <iostream>
 #include "Entity.hpp"
 
-using namespace entities;
+using namespace ecs::entities;
 
 Entity::Entity() : _id(0)
 {

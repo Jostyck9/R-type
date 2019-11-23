@@ -11,6 +11,11 @@ ecs::components::PopUp::PopUp()
 {
 }
 
+ecs::components::PopUp::PopUp(const PopUp &oldPopUp)
+{
+    this->_id = oldPopUp.getId();
+}
+
 ecs::components::PopUp::~PopUp()
 {    
 }
@@ -24,6 +29,11 @@ void ecs::components::PopUp::setId(const unsigned int &newId)
 unsigned int ecs::components::PopUp::getId(void) const
 {
     return this->_id;
+}
+
+const std::type_index ecs::components::PopUp::getType() const
+{
+    return (std::type_index(typeid(PopUp)));
 }
 
 bool ecs::components::PopUp::operator==(PopUp &other)

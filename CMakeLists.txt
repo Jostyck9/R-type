@@ -9,7 +9,11 @@ if (CMAKE_VERSION VERSION_LESS "3.1")
         set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
     endif ()
 else ()
-    set (CMAKE_CXX_STANDARD 11)
+    if(MSVC)
+        set (CMAKE_CXX_STANDARD 17)
+    else()
+        set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++17")
+    endif()
 endif ()
 
 #compilation flags
@@ -37,6 +41,10 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Components/Physics/
         src/RessourceManager/
         src/Entities/
+        src/Entities/EntityConstructor/
+        src/Entities/EntityConstructor/TestEntity/
+        src/Entities/EntityManager/
+        src/Entities/Factories/
         src/Systems/
         src/Systems/Display
         src/Systems/SystemManager
@@ -63,7 +71,7 @@ set(SOURCE_CLIENT
         "src/Components/IO/DummyInput.cpp"
         "src/Components/IO/GameController.cpp"
         "src/Components/IO/Input.cpp"
-        "src/Components/IO/KeyBoard.cpp"
+        "src/Components/IO/Keyboard.cpp"
         "src/Components/IO/Output.cpp"
         "src/Components/IO/Sound.cpp"
         "src/Components/Physics/Acceleration.cpp"
@@ -81,7 +89,9 @@ set(SOURCE_CLIENT
         "src/ResourceManager/Font.cpp"
         "src/ResourceManager/Text.cpp"
         "src/Entities/Entity.cpp"
-        "src/Entities/EntityManager.cpp"
+        "src/Entities/EntityConstructor/TestEntity/TestEntity.cpp"
+        "src/Entities/EntityManager/EntityManager.cpp"
+        "src/Entities/Factories/EntityFactory.cpp"
         "src/Systems/ASystem.cpp"
         "src/Systems/Display/DisplaySystem.cpp"
         "src/Systems/SystemManager/SystemManager.cpp"

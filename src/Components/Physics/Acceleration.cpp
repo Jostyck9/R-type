@@ -13,6 +13,11 @@ Acceleration::Acceleration()
 {
 }
 
+Acceleration::Acceleration(const Acceleration &oldAcceleration)
+{
+    this->_value = oldAcceleration.getValue();
+}
+
 Acceleration::~Acceleration()
 {
 }

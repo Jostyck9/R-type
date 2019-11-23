@@ -18,6 +18,7 @@ namespace ecs::components
         unsigned int _id;
     public:
         Sound();
+        Sound(const Sound &oldSound);
         ~Sound();
 
         /**

@@ -22,6 +22,7 @@ namespace ecs::components
         float _value;
     public:
         Transform();
+        Transform(const Transform &oldTransform);
         ~Transform();
         bool operator==(Transform const &) const;
 

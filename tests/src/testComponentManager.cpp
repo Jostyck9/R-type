@@ -10,12 +10,13 @@
 #include <criterion/criterion.h>
 #include "IComponentManager.hpp"
 #include "ComponentManager.hpp"
+#include "EntityManager.hpp"
 #include "Acceleration.hpp"
 
 Test(ComponentManager, test_physic) {
     std::unique_ptr<ecs::components::IComponentManager> manager = std::make_unique<ecs::components::ComponentManager>();
     std::shared_ptr<ecs::components::IComponent> component = std::make_shared<ecs::components::Acceleration>();
-    std::shared_ptr<entities::Entity> entity = std::make_shared<entities::Entity>();
+    std::shared_ptr<ecs::entities::Entity> entity = std::make_shared<ecs::entities::Entity>();
 
     manager->addPhysicComponent(component, 0);
     auto res = manager->getPhysicComponents(0); 
@@ -25,7 +26,7 @@ Test(ComponentManager, test_physic) {
     cr_assert(manager->getDisplayComponents(0).size() == 0);
     cr_assert_eq(component->getType(), (*res.begin()).get()->getType());
 
-    manager->removeComponents(0);
+    manager->deleteComponents(0);
     res = manager->getPhysicComponents(0);
     cr_assert(manager->getPhysicComponents(0).size() == 0);
     cr_assert(manager->getIOComponents(0).size() == 0);
@@ -44,7 +45,7 @@ Test(ComponentManager, test_physic) {
 Test(ComponentManager, test_display) {
     std::unique_ptr<ecs::components::IComponentManager> manager = std::make_unique<ecs::components::ComponentManager>();
     std::shared_ptr<ecs::components::IComponent> component = std::make_shared<ecs::components::Acceleration>();
-    std::shared_ptr<entities::Entity> entity = std::make_shared<entities::Entity>();
+    std::shared_ptr<ecs::entities::Entity> entity = std::make_shared<ecs::entities::Entity>();
 
     manager->addDisplayComponent(component, 0);
     auto res = manager->getDisplayComponents(0); 
@@ -54,7 +55,7 @@ Test(ComponentManager, test_display) {
     cr_assert(manager->getPhysicComponents(0).size() == 0);
     cr_assert_eq(component->getType(), (*res.begin()).get()->getType());
 
-    manager->removeComponents(0);
+    manager->deleteComponents(0);
     res = manager->getDisplayComponents(0);
     cr_assert(manager->getDisplayComponents(0).size() == 0);
     cr_assert(manager->getIOComponents(0).size() == 0);
@@ -73,7 +74,7 @@ Test(ComponentManager, test_display) {
 Test(ComponentManager, test_io) {
     std::unique_ptr<ecs::components::IComponentManager> manager = std::make_unique<ecs::components::ComponentManager>();
     std::shared_ptr<ecs::components::IComponent> component = std::make_shared<ecs::components::Acceleration>();
-    std::shared_ptr<entities::Entity> entity = std::make_shared<entities::Entity>();
+    std::shared_ptr<ecs::entities::Entity> entity = std::make_shared<ecs::entities::Entity>();
 
     manager->addIOComponent(component, 0);
     auto res = manager->getIOComponents(0); 
@@ -83,7 +84,7 @@ Test(ComponentManager, test_io) {
     cr_assert(manager->getPhysicComponents(0).size() == 0);
     cr_assert_eq(component->getType(), (*res.begin()).get()->getType());
 
-    manager->removeComponents(0);
+    manager->deleteComponents(0);
     res = manager->getIOComponents(0);
     cr_assert(manager->getIOComponents(0).size() == 0);
     cr_assert(manager->getDisplayComponents(0).size() == 0);
@@ -102,7 +103,7 @@ Test(ComponentManager, test_io) {
 Test(ComponentManager, test_game_logic) {
     std::unique_ptr<ecs::components::IComponentManager> manager = std::make_unique<ecs::components::ComponentManager>();
     std::shared_ptr<ecs::components::IComponent> component = std::make_shared<ecs::components::Acceleration>();
-    std::shared_ptr<entities::Entity> entity = std::make_shared<entities::Entity>();
+    std::shared_ptr<ecs::entities::Entity> entity = std::make_shared<ecs::entities::Entity>();
 
     manager->addGameLogicComponent(component, 0);
     auto res = manager->getGameLogicComponents(0); 
@@ -112,7 +113,7 @@ Test(ComponentManager, test_game_logic) {
     cr_assert(manager->getPhysicComponents(0).size() == 0);
     cr_assert_eq(component->getType(), (*res.begin()).get()->getType());
 
-    manager->removeComponents(0);
+    manager->deleteComponents(0);
     res = manager->getGameLogicComponents(0);
     cr_assert(manager->getGameLogicComponents(0).size() == 0);
     cr_assert(manager->getDisplayComponents(0).size() == 0);

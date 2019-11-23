@@ -13,6 +13,11 @@ Gravity::Gravity()
 {
 }
 
+Gravity::Gravity(const Gravity &oldGravity)
+{
+    this->_value = oldGravity.getValue();
+}
+
 Gravity::~Gravity()
 {
 }

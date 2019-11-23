@@ -21,7 +21,8 @@ namespace ecs::components
 
     {
     public:
-        Button();
+        Button();        
+        Button(const Button &oldButton); 
         ~Button();
          /**
          * @brief Set new value to the component id
@@ -34,7 +35,14 @@ namespace ecs::components
          * 
          */
          unsigned int getId(void) const;
-         bool operator==(Button &other);
+         /**
+         * @brief Get the Type object
+         * 
+         * @return const std::type_index 
+         */
+        const std::type_index getType() const;
+        bool operator==(Button &other);
+
     private:
         unsigned int _id;
     };

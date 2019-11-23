@@ -1,14 +1,18 @@
 var searchData=
 [
-  ['damage_29',['Damage',['../classcomponents_1_1Damage.html',1,'components::Damage'],['../classcomponents_1_1Damage.html#a77630be7e7a8dba9b870a4d24d6930ff',1,'components::Damage::Damage()']]],
-  ['damage_2ecpp_30',['Damage.cpp',['../Damage_8cpp.html',1,'']]],
-  ['damage_2ehpp_31',['Damage.hpp',['../Damage_8hpp.html',1,'']]],
-  ['deleteall_32',['deleteAll',['../classentities_1_1EntityManager.html#a971ed1a5c72b65a2362160208bc8bb97',1,'entities::EntityManager::deleteAll()'],['../classentities_1_1IEntityManager.html#abf78ccd46d859f7478cdb91cabc7f52a',1,'entities::IEntityManager::deleteAll()']]],
-  ['deleteentity_33',['deleteEntity',['../classentities_1_1EntityManager.html#a4dc70f26dfebca35af4ef0998ef4b6a9',1,'entities::EntityManager::deleteEntity(size_t idEntity) override'],['../classentities_1_1EntityManager.html#afb17a044566092c7ee4720faa1a66e61',1,'entities::EntityManager::deleteEntity(const std::shared_ptr&lt; Entity &gt; &amp;entity) override'],['../classentities_1_1IEntityManager.html#a3a98947bd489ec1bf33666afb1df104a',1,'entities::IEntityManager::deleteEntity(size_t idEntity)=0'],['../classentities_1_1IEntityManager.html#a8ac92708fd6a7e5dd08317241c202e07',1,'entities::IEntityManager::deleteEntity(const std::shared_ptr&lt; Entity &gt; &amp;idEntity)=0']]],
-  ['displaysystem_34',['DisplaySystem',['../classecs_1_1system_1_1DisplaySystem.html',1,'ecs::system::DisplaySystem'],['../classecs_1_1system_1_1DisplaySystem.html#a2507cdf89ef93417730e04eec4674ef6',1,'ecs::system::DisplaySystem::DisplaySystem()']]],
-  ['displaysystem_2ecpp_35',['DisplaySystem.cpp',['../DisplaySystem_8cpp.html',1,'']]],
-  ['displaysystem_2ehpp_36',['DisplaySystem.hpp',['../DisplaySystem_8hpp.html',1,'']]],
-  ['dummyinput_37',['DummyInput',['../classcomponents_1_1DummyInput.html',1,'components::DummyInput'],['../classcomponents_1_1DummyInput.html#a684e9e2d17f28086c4b1ec03fea8b26f',1,'components::DummyInput::DummyInput()']]],
-  ['dummyinput_2ecpp_38',['DummyInput.cpp',['../DummyInput_8cpp.html',1,'']]],
-  ['dummyinput_2ehpp_39',['DummyInput.hpp',['../DummyInput_8hpp.html',1,'']]]
+  ['collision_22',['Collision',['../classecs_1_1components_1_1Collision.html',1,'ecs::components::Collision'],['../classecs_1_1components_1_1Collision.html#aea8004fbf48b79b5db7b784688b23788',1,'ecs::components::Collision::Collision()'],['../classecs_1_1components_1_1Collision.html#a33a5d49f1242713cec18985589599bdf',1,'ecs::components::Collision::Collision(const Collision &amp;oldCollision)']]],
+  ['collision_2ecpp_23',['Collision.cpp',['../Collision_8cpp.html',1,'']]],
+  ['collision_2ehpp_24',['Collision.hpp',['../Collision_8hpp.html',1,'']]],
+  ['componentexceptions_25',['ComponentExceptions',['../classComponentExceptions.html',1,'ComponentExceptions'],['../classComponentExceptions.html#a39b0447b11096005d85cce4711250827',1,'ComponentExceptions::ComponentExceptions()']]],
+  ['componentexceptions_2ecpp_26',['ComponentExceptions.cpp',['../ComponentExceptions_8cpp.html',1,'']]],
+  ['componentexceptions_2ehpp_27',['ComponentExceptions.hpp',['../ComponentExceptions_8hpp.html',1,'']]],
+  ['componentmanager_28',['ComponentManager',['../classecs_1_1components_1_1ComponentManager.html',1,'ecs::components::ComponentManager'],['../classecs_1_1components_1_1ComponentManager.html#a47ab5a0c3bde20334a3ae1e2a3c133aa',1,'ecs::components::ComponentManager::ComponentManager()']]],
+  ['componentmanager_2ecpp_29',['ComponentManager.cpp',['../ComponentManager_8cpp.html',1,'']]],
+  ['componentmanager_2ehpp_30',['ComponentManager.hpp',['../ComponentManager_8hpp.html',1,'']]],
+  ['controler_5fhpp_31',['CONTROLER_HPP',['../Controller_8hpp.html#abeb93f32cac16731dc5eb788a722a578',1,'Controller.hpp']]],
+  ['controller_32',['Controller',['../classecs_1_1components_1_1Controller.html',1,'ecs::components::Controller'],['../classecs_1_1components_1_1Controller.html#a95c56822d667e94b031451729ce069a9',1,'ecs::components::Controller::Controller()']]],
+  ['controller_2ecpp_33',['Controller.cpp',['../Controller_8cpp.html',1,'']]],
+  ['controller_2ehpp_34',['Controller.hpp',['../Controller_8hpp.html',1,'']]],
+  ['create_35',['create',['../classecs_1_1entities_1_1IEntityConstructor.html#a590a5dc1ae90183b874c2c17c1c4d80f',1,'ecs::entities::IEntityConstructor::create()'],['../classecs_1_1entities_1_1TestEntity.html#acfa7a42109ce8fcbcf22285ee50140fb',1,'ecs::entities::TestEntity::create()']]],
+  ['createentity_36',['createEntity',['../classecs_1_1entities_1_1EntityFactory.html#ad857383fd77956a5d951e8a929bd160d',1,'ecs::entities::EntityFactory::createEntity()'],['../classecs_1_1entities_1_1IEntityFactory.html#a412d60d1391e332251b691dc59589d71',1,'ecs::entities::IEntityFactory::createEntity()']]]
 ];

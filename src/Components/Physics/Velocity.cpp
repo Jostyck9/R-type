@@ -13,6 +13,11 @@ Velocity::Velocity(float value) : _value(value)
 {
 }
 
+Velocity::Velocity(const Velocity &oldVelocity)
+{
+    this->_value = oldVelocity.getValue();
+}
+
 Velocity::~Velocity()
 {
 }

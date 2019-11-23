@@ -11,6 +11,11 @@ ecs::components::Health::Health()
 {
 }
 
+ecs::components::Health::Health(const Health &oldHealth)
+{
+    this->_value = oldHealth.getValue();
+}
+
 ecs::components::Health::~Health()
 {
 }
@@ -24,6 +29,11 @@ void ecs::components::Health::setValue(const float &newValue)
 float ecs::components::Health::getValue(void) const
 {
     return(this->_value);
+}
+
+const std::type_index ecs::components::Health::getType() const
+{
+    return (std::type_index(typeid(Health)));
 }
 
 bool ecs::components::Health::operator==(Health &other)

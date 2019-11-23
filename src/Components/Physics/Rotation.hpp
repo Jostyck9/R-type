@@ -22,6 +22,7 @@ namespace ecs::components
         float _radAngle;
     public:
         Rotation();
+        Rotation(const Rotation &oldRotation);
         ~Rotation();
         bool operator==(Rotation const &) const;
 

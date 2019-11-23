@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>R-type: src/Entities/IEntityManager.hpp Source File</title>
+<title>R-type: src/Entities/EntityManager/IEntityManager.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_093f3b7f7c7a61ef21fffb3d339f67e1.html">Entities</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_093f3b7f7c7a61ef21fffb3d339f67e1.html">Entities</a></li><li class="navelem"><a class="el" href="dir_7ef50f4d5f08318e733b1532da00e919.html">EntityManager</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -83,35 +83,35 @@ $(function() {
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Entity_8hpp.html">Entity.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceentities.html">entities</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceecs_1_1entities.html">ecs::entities</a></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classentities_1_1IEntityManager.html">   17</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classentities_1_1IEntityManager.html">IEntityManager</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classecs_1_1entities_1_1IEntityManager.html">   17</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classecs_1_1entities_1_1IEntityManager.html">IEntityManager</a></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">virtual</span> <span class="keyword">const</span> std::shared_ptr&lt;Entity&gt; &amp;<a class="code" href="classentities_1_1IEntityManager.html#a294bf5010c930108d81412f50807e376">getEntityById</a>(<span class="keywordtype">size_t</span> idEntity) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">virtual</span> <span class="keyword">const</span> std::shared_ptr&lt;Entity&gt; &amp;<a class="code" href="classecs_1_1entities_1_1IEntityManager.html#a1f36beb42433f41b78ef48e9b127c85e">getEntityById</a>(<span class="keywordtype">size_t</span> idEntity) <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">virtual</span> <span class="keyword">const</span> std::vector&lt;std::shared_ptr&lt;Entity&gt;&gt; &amp;<a class="code" href="classentities_1_1IEntityManager.html#a84cb554eeb238bc7191094085cafa4ef">getAllEntities</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">virtual</span> <span class="keyword">const</span> std::vector&lt;std::shared_ptr&lt;Entity&gt;&gt; &amp;<a class="code" href="classecs_1_1entities_1_1IEntityManager.html#a50ba69f23715e85c84befb3ae6ec2f6e">getAllEntities</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classentities_1_1IEntityManager.html#acd2615f7f2ba7da0f595fb70692d97db">addEntity</a>(std::shared_ptr&lt;Entity&gt; entity) = 0;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classecs_1_1entities_1_1IEntityManager.html#afd87fdbebee0eed4a6dfae54cccf5c26">addEntity</a>(std::shared_ptr&lt;Entity&gt; entity) = 0;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classentities_1_1IEntityManager.html#a3a98947bd489ec1bf33666afb1df104a">deleteEntity</a>(<span class="keywordtype">size_t</span> idEntity) = 0;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classecs_1_1entities_1_1IEntityManager.html#aaae190c0ae62d21b8effdf0f3153036d">deleteEntity</a>(<span class="keywordtype">size_t</span> idEntity) = 0;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classentities_1_1IEntityManager.html#a3a98947bd489ec1bf33666afb1df104a">deleteEntity</a>(<span class="keyword">const</span> std::shared_ptr&lt;Entity&gt;&amp; idEntity) = 0;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classecs_1_1entities_1_1IEntityManager.html#aaae190c0ae62d21b8effdf0f3153036d">deleteEntity</a>(<span class="keyword">const</span> std::shared_ptr&lt;Entity&gt;&amp; idEntity) = 0;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classentities_1_1IEntityManager.html#abf78ccd46d859f7478cdb91cabc7f52a">deleteAll</a>() = 0;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classecs_1_1entities_1_1IEntityManager.html#aea973450503250eb44ef8b00c3301a0b">deleteAll</a>() = 0;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    };</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif //IENTITYMANAGER__HPP__</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassentities_1_1IEntityManager_html_abf78ccd46d859f7478cdb91cabc7f52a"><div class="ttname"><a href="classentities_1_1IEntityManager.html#abf78ccd46d859f7478cdb91cabc7f52a">entities::IEntityManager::deleteAll</a></div><div class="ttdeci">virtual void deleteAll()=0</div><div class="ttdoc">Delete all the entities.</div></div>
+<div class="ttc" id="aclassecs_1_1entities_1_1IEntityManager_html_afd87fdbebee0eed4a6dfae54cccf5c26"><div class="ttname"><a href="classecs_1_1entities_1_1IEntityManager.html#afd87fdbebee0eed4a6dfae54cccf5c26">ecs::entities::IEntityManager::addEntity</a></div><div class="ttdeci">virtual void addEntity(std::shared_ptr&lt; Entity &gt; entity)=0</div><div class="ttdoc">Add en entity in the manager.</div></div>
+<div class="ttc" id="aclassecs_1_1entities_1_1IEntityManager_html_aaae190c0ae62d21b8effdf0f3153036d"><div class="ttname"><a href="classecs_1_1entities_1_1IEntityManager.html#aaae190c0ae62d21b8effdf0f3153036d">ecs::entities::IEntityManager::deleteEntity</a></div><div class="ttdeci">virtual void deleteEntity(size_t idEntity)=0</div><div class="ttdoc">Delete the correspondnat entity.</div></div>
 <div class="ttc" id="aEntity_8hpp_html"><div class="ttname"><a href="Entity_8hpp.html">Entity.hpp</a></div></div>
-<div class="ttc" id="aclassentities_1_1IEntityManager_html"><div class="ttname"><a href="classentities_1_1IEntityManager.html">entities::IEntityManager</a></div><div class="ttdef"><b>Definition:</b> IEntityManager.hpp:17</div></div>
-<div class="ttc" id="aclassentities_1_1IEntityManager_html_a294bf5010c930108d81412f50807e376"><div class="ttname"><a href="classentities_1_1IEntityManager.html#a294bf5010c930108d81412f50807e376">entities::IEntityManager::getEntityById</a></div><div class="ttdeci">virtual const std::shared_ptr&lt; Entity &gt; &amp; getEntityById(size_t idEntity) const =0</div><div class="ttdoc">Get the Entity By Id object.</div></div>
-<div class="ttc" id="aclassentities_1_1IEntityManager_html_acd2615f7f2ba7da0f595fb70692d97db"><div class="ttname"><a href="classentities_1_1IEntityManager.html#acd2615f7f2ba7da0f595fb70692d97db">entities::IEntityManager::addEntity</a></div><div class="ttdeci">virtual void addEntity(std::shared_ptr&lt; Entity &gt; entity)=0</div><div class="ttdoc">Add en entity in the manager.</div></div>
-<div class="ttc" id="aclassentities_1_1IEntityManager_html_a84cb554eeb238bc7191094085cafa4ef"><div class="ttname"><a href="classentities_1_1IEntityManager.html#a84cb554eeb238bc7191094085cafa4ef">entities::IEntityManager::getAllEntities</a></div><div class="ttdeci">virtual const std::vector&lt; std::shared_ptr&lt; Entity &gt; &gt; &amp; getAllEntities() const =0</div><div class="ttdoc">Get the All Entities object.</div></div>
-<div class="ttc" id="anamespaceentities_html"><div class="ttname"><a href="namespaceentities.html">entities</a></div><div class="ttdef"><b>Definition:</b> Entity.hpp:11</div></div>
-<div class="ttc" id="aclassentities_1_1IEntityManager_html_a3a98947bd489ec1bf33666afb1df104a"><div class="ttname"><a href="classentities_1_1IEntityManager.html#a3a98947bd489ec1bf33666afb1df104a">entities::IEntityManager::deleteEntity</a></div><div class="ttdeci">virtual void deleteEntity(size_t idEntity)=0</div><div class="ttdoc">Delete the correspondnat entity.</div></div>
+<div class="ttc" id="aclassecs_1_1entities_1_1IEntityManager_html_aea973450503250eb44ef8b00c3301a0b"><div class="ttname"><a href="classecs_1_1entities_1_1IEntityManager.html#aea973450503250eb44ef8b00c3301a0b">ecs::entities::IEntityManager::deleteAll</a></div><div class="ttdeci">virtual void deleteAll()=0</div><div class="ttdoc">Delete all the entities.</div></div>
+<div class="ttc" id="aclassecs_1_1entities_1_1IEntityManager_html_a50ba69f23715e85c84befb3ae6ec2f6e"><div class="ttname"><a href="classecs_1_1entities_1_1IEntityManager.html#a50ba69f23715e85c84befb3ae6ec2f6e">ecs::entities::IEntityManager::getAllEntities</a></div><div class="ttdeci">virtual const std::vector&lt; std::shared_ptr&lt; Entity &gt; &gt; &amp; getAllEntities() const =0</div><div class="ttdoc">Get the All Entities object.</div></div>
+<div class="ttc" id="aclassecs_1_1entities_1_1IEntityManager_html_a1f36beb42433f41b78ef48e9b127c85e"><div class="ttname"><a href="classecs_1_1entities_1_1IEntityManager.html#a1f36beb42433f41b78ef48e9b127c85e">ecs::entities::IEntityManager::getEntityById</a></div><div class="ttdeci">virtual const std::shared_ptr&lt; Entity &gt; &amp; getEntityById(size_t idEntity) const =0</div><div class="ttdoc">Get the Entity By Id object.</div></div>
+<div class="ttc" id="anamespaceecs_1_1entities_html"><div class="ttname"><a href="namespaceecs_1_1entities.html">ecs::entities</a></div><div class="ttdef"><b>Definition:</b> Entity.hpp:11</div></div>
+<div class="ttc" id="aclassecs_1_1entities_1_1IEntityManager_html"><div class="ttname"><a href="classecs_1_1entities_1_1IEntityManager.html">ecs::entities::IEntityManager</a></div><div class="ttdef"><b>Definition:</b> IEntityManager.hpp:17</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

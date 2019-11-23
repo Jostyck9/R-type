@@ -24,6 +24,7 @@ namespace ecs::components
 //        std::map<> _keyMap;
     public:
         GameController();
+        GameController(const GameController &oldGameController);
         ~GameController();
 
         /**

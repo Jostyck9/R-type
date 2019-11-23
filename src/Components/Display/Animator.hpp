@@ -22,7 +22,9 @@ namespace ecs::components
     {
     public:
         Animator();
+        Animator(const Animator &oldAnimator); 
         ~Animator();
+
          /**
          * @brief Set new value to the component id
          * 
@@ -34,6 +36,13 @@ namespace ecs::components
          * 
          */
         unsigned int getId(void) const;
+        /**
+         * @brief Get the Type object
+         * 
+         * @return const std::type_index 
+         */
+        const std::type_index getType() const;
+        
         bool operator==(Animator &other);
         
     private:
