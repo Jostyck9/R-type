@@ -18,6 +18,7 @@ include_directories(
     ${SOURCE_ROOT}
     ${SOURCE_ROOT}/Entities/
     ${SOURCE_ROOT}/Entities/EntityConstructor/
+    ${SOURCE_ROOT}/Entities/Factories/
     ${SOURCE_ROOT}/Entities/EntityConstructor/TestEntity/
     ${SOURCE_ROOT}/Entities/EntityManager/
     ${SOURCE_ROOT}/Components/
@@ -36,6 +37,7 @@ add_executable(unit_test
     ${SOURCE_ROOT}/Entities/Entity.cpp
     ${SOURCE_ROOT}/Entities/EntityConstructor/TestEntity/TestEntity.cpp
     ${SOURCE_ROOT}/Entities/EntityManager/EntityManager.cpp
+    ${SOURCE_ROOT}/Entities/Factories/EntityFactory.cpp
     ${SOURCE_ROOT}/Components/ComponentManager/ComponentManager.cpp
     ${SOURCE_ROOT}/Components/Physics/Acceleration.cpp
     ${SOURCE_ROOT}/Components/Physics/Motion.cpp
