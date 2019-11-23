@@ -48,7 +48,8 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/
         src/Systems/Display
         src/Systems/SystemManager
-        src/Exceptions)
+        src/Exceptions
+        src/Network/Session)
 
 #r-type_client
 set(SOURCE_CLIENT
@@ -107,7 +108,9 @@ target_link_libraries(r-type_client ${CONAN_LIBS})
 
 #r-type_server
 set(SOURCE_SERVER
-        src/main_server.cpp)
+        src/main_server.cpp
+        src/Network/Session/Session.cpp)
+
 add_executable(r-type_server ${SOURCE_SERVER})
 target_link_libraries(r-type_server ${CONAN_LIBS})
 
