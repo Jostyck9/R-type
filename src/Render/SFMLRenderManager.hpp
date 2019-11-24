@@ -5,13 +5,12 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "Input.hpp"
+
 namespace ecs {
     /**
      * @brief Manager gameRendering of the game
      *
      */
-    #define WIDTH 800
-    #define HEIGHT 600
     class SFMLRenderManager : public IRenderManager {
     public:
         SFMLRenderManager();
@@ -46,7 +45,5 @@ namespace ecs {
         // std::map<int, ecs::input::Key> _keys; /*!<Key mapping*/
     };
 }
-
-#include "Color.hpp"
 
 #endif //R_TYPE_RENDERMANAGER_H

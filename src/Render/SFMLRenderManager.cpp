@@ -129,7 +129,6 @@ namespace ecs {
         throw;
     }
     _window->setFramerateLimit(60);
-    _window->display();
         //init window audio etc
     }
 

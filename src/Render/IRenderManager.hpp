@@ -7,6 +7,10 @@
 #include "Entity.hpp"
 #include "EntityManager.hpp"
 
+
+
+#ifndef IRENDERMANAGER_HPP__
+#define IRENDERMANAGER_HPP__
 /*!
  * @namespace ecs
  * @brief A namespace containing all the ecs project stuff
@@ -29,3 +33,5 @@ namespace ecs {
         virtual void eventUpdate() = 0;
     };
 }
+
+#endif //IRENDERMANAGER_HPP

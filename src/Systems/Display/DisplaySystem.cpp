@@ -26,7 +26,7 @@ namespace ecs::system
     void DisplaySystem::update()
     {
         time_t currentTime = time(NULL);
-        while ((currentTime - this->_elapsedTime) < 25) {
+        while ((currentTime - this->_elapsedTime) < 15) {
             currentTime = time(NULL);
         }
         this->_elapsedTime = time(NULL);
