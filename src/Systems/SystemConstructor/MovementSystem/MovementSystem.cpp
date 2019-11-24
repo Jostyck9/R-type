@@ -5,6 +5,7 @@
 ** MovementSystem.cpp
 */
 
+#include <memory>
 #include <iostream>
 #include <cmath>
 #include "ComponentExceptions.hpp"
