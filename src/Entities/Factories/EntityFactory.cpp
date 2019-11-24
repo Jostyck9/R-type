@@ -8,10 +8,11 @@
 #include "Physics/Position.hpp"
 #include "Physics/Velocity.hpp"
 #include "EntityFactory.hpp"
+#include "EntityExceptions.hpp"
 
 using namespace ecs::entities;
 
-EntityFactory::EntityFactory(std::shared_ptr<IEntityManager> entityManager, std::shared_ptr<components::IComponentManager> componentsManager)
+EntityFactory::EntityFactory(std::shared_ptr<IEntityManager> entityManager, std::shared_ptr<ecs::components::IComponentManager> componentsManager)
 {
     _entityManager = entityManager;
     _componentManager = componentsManager;
@@ -34,8 +35,7 @@ void EntityFactory::addEntityConstructor(std::shared_ptr<IEntityConstructor> con
 {
     if (isExisting(constructor->getName()))
     {
-        // TODO Throw the wright exception
-        throw std::exception();
+        throw EntityExceptions("Error: Could not add Entity Constructor ", std::string(__FILE__) + ' ' + std::to_string(__LINE__));
     }
     _creationFunction[constructor->getName()] = constructor;
 }
@@ -44,8 +44,7 @@ std::shared_ptr<Entity> EntityFactory::createEntity(const std::string &name)
 {
     if (!isExisting(name))
     {
-        // TODO Throw the wright exception
-        throw std::exception();
+        throw EntityExceptions("Error: Could not add Entity \'" + name + '\'', std::string(__FILE__) + ' ' + std::to_string(__LINE__));
     }
     return (_creationFunction[name])->create(_entityManager, _componentManager);
 }

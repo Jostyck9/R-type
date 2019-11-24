@@ -9,7 +9,7 @@
 
 using namespace ecs::entities;
 
-EntityManager::EntityManager(std::shared_ptr<components::IComponentManager> componentManager) : _componentManager(componentManager)
+EntityManager::EntityManager(std::shared_ptr<ecs::components::IComponentManager> componentManager) : _componentManager(componentManager)
 {
 }
 
