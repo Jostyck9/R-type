@@ -3,7 +3,7 @@
 
 namespace ecs {
 
-    SFMLRenderManager::SFMLRenderManager() : _window(nullptr)
+    SFMLRenderManager::SFMLRenderManager() : _window(nullptr), _event(), aled(0)
     {
         // _keys[sf::Keyboard::A] = ecs::input::A;
         // _keys[sf::Keyboard::B] = ecs::input::B;
@@ -120,8 +120,8 @@ namespace ecs {
 
     // static SFMLRenderManager::SFMLRenderManager &getInstance();
 
-    void SFMLRenderManager::init()
-    {
+void SFMLRenderManager::init()
+{
     if (_window != nullptr)
         throw;
 	_window = new sf::RenderWindow(sf::VideoMode(800, 600), "rtype");
@@ -130,6 +130,18 @@ namespace ecs {
     }
     _window->setFramerateLimit(60);
         //init window audio etc
+    while (_window->isOpen())
+  // Event processing
+        while (_window->pollEvent(_event))
+        {
+       // Request for closing the _window
+            if (_event.type == sf::Event::Closed)
+                _window->close();
+        }
+   // Clear the whole _window before rendering a new frame
+   _window->clear();
+   // End the current frame and display its contents on screen
+   _window->display();
     }
 
     void SFMLRenderManager::terminate()

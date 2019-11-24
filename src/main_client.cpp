@@ -37,10 +37,10 @@ int main()
     factory->createEntity("Test");
     render.init();
 
-    systemManager->addSystem(std::make_shared<DisplaySystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
-    for (int i = 0; i < 10; i++) {
-        systemManager->updateAll();
-    }
+    // systemManager->addSystem(std::make_shared<DisplaySystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
+    // for (int i = 0; i < 10; i++) {
+    //     systemManager->updateAll();
+    // }
 
     render.terminate();
     return 0;
