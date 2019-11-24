@@ -27,7 +27,7 @@ Test(EntityConstructor, TestEntity)
     auto res = entityConstr->create(entityManager, compoManager);
 
     auto pos = compoManager->getPhysicComponents(res);
-    cr_assert_eq(pos.size(), 2);
+    cr_assert_eq(pos.size(), 3);
     cr_assert_none_throw(compoManager->getPhysicComponentOfSpecifiedType(res, std::type_index(typeid(Position))));
     cr_assert_none_throw(compoManager->getPhysicComponentOfSpecifiedType(res, std::type_index(typeid(Velocity))));
 }
@@ -42,7 +42,7 @@ Test(EntityConstructor, Factory)
     auto res = entityFactory->createEntity("Test");
 
     auto pos = compoManager->getPhysicComponents(res);
-    cr_assert_eq(pos.size(), 2);
+    cr_assert_eq(pos.size(), 3);
     cr_assert_none_throw(compoManager->getPhysicComponentOfSpecifiedType(res, std::type_index(typeid(Position))));
     cr_assert_none_throw(compoManager->getPhysicComponentOfSpecifiedType(res, std::type_index(typeid(Velocity))));
 }
