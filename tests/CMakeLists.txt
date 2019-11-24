@@ -26,6 +26,12 @@ include_directories(
     ${SOURCE_ROOT}/Components/ComponentManager/
     ${SOURCE_ROOT}/Exceptions/
     ${SOURCE_ROOT}/ResourceManager/
+    ${SOURCE_ROOT}/Systems/
+    ${SOURCE_ROOT}/Systems/Display/
+    ${SOURCE_ROOT}/Systems/Factories/
+    ${SOURCE_ROOT}/Systems/SystemConstructor/
+    ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/
+    ${SOURCE_ROOT}/Systems/SystemManager/
 )
 
 add_executable(unit_test
@@ -34,6 +40,7 @@ add_executable(unit_test
     ./src/testEntity.cpp
     ./src/testExceptions
     ./src/testEntityConstructor.cpp
+    ./src/testSystemConstructor.cpp
     ${SOURCE_ROOT}/Entities/Entity.cpp
     ${SOURCE_ROOT}/Entities/EntityConstructor/TestEntity/TestEntity.cpp
     ${SOURCE_ROOT}/Entities/EntityManager/EntityManager.cpp
@@ -49,6 +56,11 @@ add_executable(unit_test
     ${SOURCE_ROOT}/Exceptions/RTypeExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/ServerExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/SystemExceptions.cpp
+    ${SOURCE_ROOT}/Systems/ASystem.cpp
+    ${SOURCE_ROOT}/Systems/SystemManager/SystemManager.cpp
+    ${SOURCE_ROOT}/Systems/Factories/SystemFactory.cpp
+    ${SOURCE_ROOT}/Systems/Display/DisplaySystem.cpp
+    ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/testSystem.cpp
 )
 target_link_libraries(unit_test criterion)
 

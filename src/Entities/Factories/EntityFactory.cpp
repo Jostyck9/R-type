@@ -8,6 +8,7 @@
 #include "Physics/Position.hpp"
 #include "Physics/Velocity.hpp"
 #include "EntityFactory.hpp"
+#include "EntityExceptions.hpp"
 
 using namespace ecs::entities;
 
@@ -34,8 +35,7 @@ void EntityFactory::addEntityConstructor(std::shared_ptr<IEntityConstructor> con
 {
     if (isExisting(constructor->getName()))
     {
-        // TODO Throw the wright exception
-        throw std::exception();
+        throw EntityExceptions("Error: Could not add Entity Constructor ", std::string(__FILE__) + ' ' + std::to_string(__LINE__));
     }
     _creationFunction[constructor->getName()] = constructor;
 }
@@ -44,8 +44,7 @@ std::shared_ptr<Entity> EntityFactory::createEntity(const std::string &name)
 {
     if (!isExisting(name))
     {
-        // TODO Throw the wright exception
-        throw std::exception();
+        throw EntityExceptions("Error: Could not add Entity \'" + name + '\'', std::string(__FILE__) + ' ' + std::to_string(__LINE__));
     }
     return (_creationFunction[name])->create(_entityManager, _componentManager);
 }
