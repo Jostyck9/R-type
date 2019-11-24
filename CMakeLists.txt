@@ -51,7 +51,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Exceptions
         src/Systems/SystemConstructor
         src/Systems/SystemConstructor/testSystem
-        src/Systems/Factories)
+        src/Systems/Factories
         src/Render/)
 
 #r-type_client

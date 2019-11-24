@@ -14,19 +14,20 @@ namespace ecs {
     #define HEIGHT 600
     class SFMLRenderManager : public IRenderManager {
     public:
-
+        SFMLRenderManager();
+        ~SFMLRenderManager();
         /**
          * @brief Get the instance of the RenderManager classe
          *
          * @return SFMLRenderManager
          */
-        static SFMLRenderManager &getInstance();
+        // static SFMLRenderManager &getInstance();
 
-        SFMLRenderManager(const SFMLRenderManager &) = delete;
-        SFMLRenderManager operator=(const SFMLRenderManager &) = delete;
+        // SFMLRenderManager(const SFMLRenderManager &) = delete;
+        // SFMLRenderManager operator=(const SFMLRenderManager &) = delete;
         void init() override;
         void terminate() override;
-        void graphicsUpdate(Entity &entity) override;
+        void graphicsUpdate() override;
         void audioUpdate() override;
         void textUpdate() override;
         void eventUpdate() override;
@@ -36,18 +37,13 @@ namespace ecs {
          */
         void clear();
         //key and input handler ?
-    private:
-        SFMLRenderManager();
-        ~SFMLRenderManager();
-
-    public:
+      
     private:
         sf::RenderWindow *_window; /*!< Internal window used by SFML functions */
         sf::Music _music; /*!<Music of the program */
         sf::Event _event; /*!<Events of the program */
         sf::Sprite _sprite; /*!<Sprite of the program */
-        std::map<int, ecs::input::Key> _keys; /*!<Key mapping*/
-        std::map<ecs::Color, sf::Color> _colors; /*!<Color mapping*/
+        // std::map<int, ecs::input::Key> _keys; /*!<Key mapping*/
     };
 }
 

@@ -26,19 +26,20 @@ int main()
     std::shared_ptr<IEntityManager> entityManager = std::make_shared<EntityManager>(componentManager);
     std::shared_ptr<SystemManager> systemManager = std::make_shared<SystemManager>(entityManager, componentManager);
     std::shared_ptr<IEntityFactory> factory = std::make_shared<EntityFactory>(entityManager, componentManager);
-    std::shared_ptr<SFMLRenderManager> sfmlRenderer = std::make_shared<SFMLRenderManager>();
+	// SFMLRenderManager sfmlRenderer();
 
     factory->addEntityConstructor(std::make_shared<TestEntity>());
     factory->createEntity("Test");
     factory->createEntity("Test");
     factory->createEntity("Test");
-    sfmlRenderer->init();
+    // sfmlRenderer->init();
 
 
     systemManager->addSystem(std::make_shared<DisplaySystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
     for (int i = 0; i < 10; i++) {
         systemManager->updateAll();
     }
-    sfmlRenderer->terminate();
+
+    // sfmlRenderer->terminate();
     return 0;
 }

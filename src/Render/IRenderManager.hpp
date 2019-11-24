@@ -20,14 +20,12 @@ namespace ecs {
         /*!
          * @brief dtor
          */
-        ~IDisplayModule() = delete;
+		virtual ~IRenderManager() = default;
         virtual void init() = 0;
         virtual void terminate() = 0;
-        virtual void graphicsUpdate(Entity &entity) = 0;
+        virtual void graphicsUpdate() = 0;
         virtual void audioUpdate() = 0;
         virtual void textUpdate() = 0;
         virtual void eventUpdate() = 0;
     };
 }
-
-#endif //OOP_rtype_2019
