@@ -51,6 +51,7 @@ add_executable(unit_test
     ${SOURCE_ROOT}/Components/Physics/Velocity.cpp
     ${SOURCE_ROOT}/Components/Physics/Position.cpp
     ${SOURCE_ROOT}/Components/Physics/Collision.cpp
+    ${SOURCE_ROOT}/Components/Physics/Rotation.cpp
     ${SOURCE_ROOT}/Exceptions/ComponentExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/ECSExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/EntityExceptions.cpp
