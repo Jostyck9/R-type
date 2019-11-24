@@ -10,7 +10,7 @@
 
 using namespace ecs::system;
 
-SystemFactory::SystemFactory(std::shared_ptr<ecs::entities::IEntityManager> entityManager, std::shared_ptr<ISystemManager> systemManager, std::shared_ptr<components::IComponentManager> componentsManager)
+SystemFactory::SystemFactory(std::shared_ptr<ecs::entities::IEntityManager> entityManager, std::shared_ptr<ISystemManager> systemManager, std::shared_ptr<ecs::components::IComponentManager> componentsManager)
 {
     this->_entityManager = entityManager;
     this->_systemManager = systemManager;

@@ -12,7 +12,7 @@
 
 using namespace ecs::entities;
 
-EntityFactory::EntityFactory(std::shared_ptr<IEntityManager> entityManager, std::shared_ptr<components::IComponentManager> componentsManager)
+EntityFactory::EntityFactory(std::shared_ptr<IEntityManager> entityManager, std::shared_ptr<ecs::components::IComponentManager> componentsManager)
 {
     _entityManager = entityManager;
     _componentManager = componentsManager;
