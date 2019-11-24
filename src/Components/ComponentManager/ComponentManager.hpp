@@ -37,7 +37,7 @@ namespace ecs::components
          * @return std::list<std::shared_ptr<IComponent>> 
          */
         std::list<std::shared_ptr<IComponent>> extractComponentsFrom(std::multimap<size_t, std::shared_ptr<IComponent>> &map, size_t idEntity);
-        std::shared_ptr<IComponent> &extractComponentsOfType(std::multimap<size_t, std::shared_ptr<IComponent>> &map, size_t idEntity, const std::type_index type);
+        std::shared_ptr<IComponent> extractComponentsOfType(std::multimap<size_t, std::shared_ptr<IComponent>> &map, size_t idEntity, const std::type_index type);
 
     public:
         ComponentManager();
@@ -58,7 +58,7 @@ namespace ecs::components
          * @param type
          * @return std::shared_ptr<IComponent>
          */
-        std::shared_ptr<IComponent> &getPhysicComponentOfSpecifiedType(size_t idEntity, const std::type_index &type) override;
+        std::shared_ptr<IComponent> getPhysicComponentOfSpecifiedType(size_t idEntity, const std::type_index &type) override;
 
         /**
          * @brief Get the Physic Component object
@@ -75,7 +75,7 @@ namespace ecs::components
          * @param type
          * @return std::shared_ptr<IComponent>
          */
-        std::shared_ptr<IComponent> &getPhysicComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type) override;
+        std::shared_ptr<IComponent> getPhysicComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type) override;
 
         /**
          * @brief Get the Display Components from an entity by his id
@@ -92,7 +92,7 @@ namespace ecs::components
          * @param type
          * @return std::shared_ptr<IComponent>
          */
-        std::shared_ptr<IComponent> &getDisplayComponentOfSpecifiedType(size_t idEntity, const std::type_index &type) override;
+        std::shared_ptr<IComponent> getDisplayComponentOfSpecifiedType(size_t idEntity, const std::type_index &type) override;
 
         /**
          * @brief Get the Display Component object
@@ -109,7 +109,7 @@ namespace ecs::components
          * @param type
          * @return std::shared_ptr<IComponent>
          */
-        std::shared_ptr<IComponent> &getDisplayComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type) override;
+        std::shared_ptr<IComponent> getDisplayComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type) override;
 
         /**
          * @brief Get the IO Components from an entity by his id
@@ -126,7 +126,7 @@ namespace ecs::components
          * @param type
          * @return std::shared_ptr<IComponent>
          */
-        std::shared_ptr<IComponent> &getIOComponentOfSpecifiedType(size_t idEntity, const std::type_index &type) override;
+        std::shared_ptr<IComponent> getIOComponentOfSpecifiedType(size_t idEntity, const std::type_index &type) override;
     
         /**
          * @brief Get The IO Components from an entity
@@ -143,7 +143,7 @@ namespace ecs::components
          * @param type
          * @return std::shared_ptr<IComponent>
          */
-        std::shared_ptr<IComponent> &getIOComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type) override;
+        std::shared_ptr<IComponent> getIOComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type) override;
 
         /**
          * @brief Get the Game Logic Components from an entity by his id
@@ -160,7 +160,7 @@ namespace ecs::components
          * @param type
          * @return std::shared_ptr<IComponent>
          */
-        std::shared_ptr<IComponent> &getGameLogicComponentOfSpecifiedType(size_t idEntity, const std::type_index &type) override;
+        std::shared_ptr<IComponent> getGameLogicComponentOfSpecifiedType(size_t idEntity, const std::type_index &type) override;
 
         /**
          * @brief Get the Game Logic Component object
@@ -177,7 +177,7 @@ namespace ecs::components
          * @param type
          * @return std::shared_ptr<IComponent>
          */
-        std::shared_ptr<IComponent> &getGameLogicComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type) override;
+        std::shared_ptr<IComponent> getGameLogicComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type) override;
 
         /**
          * @brief Add a Physic Component object

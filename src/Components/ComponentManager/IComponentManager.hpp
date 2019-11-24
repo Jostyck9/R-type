@@ -37,7 +37,7 @@ namespace ecs::components
          * @param type
          * @return std::shared_ptr<IComponent>
          */
-        virtual std::shared_ptr<IComponent> &getPhysicComponentOfSpecifiedType(size_t idEntity, const std::type_index &type) = 0;
+        virtual std::shared_ptr<IComponent> getPhysicComponentOfSpecifiedType(size_t idEntity, const std::type_index &type) = 0;
 
         /**
          * @brief Get the Physic Component object
@@ -54,7 +54,7 @@ namespace ecs::components
          * @param type
          * @return std::shared_ptr<IComponent>
          */
-        virtual std::shared_ptr<IComponent> &getPhysicComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type) = 0;
+        virtual std::shared_ptr<IComponent> getPhysicComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type) = 0;
 
         /**
          * @brief Get the Display Components from an entity by his id
@@ -71,7 +71,7 @@ namespace ecs::components
          * @param type
          * @return std::shared_ptr<IComponent>
          */
-        virtual std::shared_ptr<IComponent> &getDisplayComponentOfSpecifiedType(size_t idEntity, const std::type_index &type) = 0;
+        virtual std::shared_ptr<IComponent> getDisplayComponentOfSpecifiedType(size_t idEntity, const std::type_index &type) = 0;
 
         /**
          * @brief Get the Display Component object
@@ -88,7 +88,7 @@ namespace ecs::components
          * @param type
          * @return std::shared_ptr<IComponent>
          */
-        virtual std::shared_ptr<IComponent> &getDisplayComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type) = 0;
+        virtual std::shared_ptr<IComponent> getDisplayComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type) = 0;
 
         /**
          * @brief Get The IO Components from an entity by his id
@@ -105,7 +105,7 @@ namespace ecs::components
          * @param type
          * @return std::shared_ptr<IComponent>
          */
-        virtual std::shared_ptr<IComponent> &getIOComponentOfSpecifiedType(size_t idEntity, const std::type_index &type) = 0;
+        virtual std::shared_ptr<IComponent> getIOComponentOfSpecifiedType(size_t idEntity, const std::type_index &type) = 0;
 
         /**
          * @brief Get The IO Components from an entity
@@ -122,7 +122,7 @@ namespace ecs::components
          * @param type
          * @return std::shared_ptr<IComponent>
          */
-        virtual std::shared_ptr<IComponent> &getIOComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type) = 0;
+        virtual std::shared_ptr<IComponent> getIOComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type) = 0;
 
         /**
          * @brief Get the Game Logic Components from an entity by his id
@@ -139,7 +139,7 @@ namespace ecs::components
          * @param type
          * @return std::shared_ptr<IComponent>
          */
-        virtual std::shared_ptr<IComponent> &getGameLogicComponentOfSpecifiedType(size_t idEntity, const std::type_index &type) = 0;
+        virtual std::shared_ptr<IComponent> getGameLogicComponentOfSpecifiedType(size_t idEntity, const std::type_index &type) = 0;
 
         /**
          * @brief Get the Game Logic Component object
@@ -156,7 +156,7 @@ namespace ecs::components
          * @param type
          * @return std::shared_ptr<IComponent>
          */
-        virtual std::shared_ptr<IComponent> &getGameLogicComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type) = 0;
+        virtual std::shared_ptr<IComponent> getGameLogicComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type) = 0;
 
         /**
          * @brief Add a Physic Component object

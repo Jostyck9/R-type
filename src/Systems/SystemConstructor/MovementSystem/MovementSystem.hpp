@@ -8,6 +8,9 @@
 #ifndef MOVEMENTSYSTEM_HPP__
 #define MOVEMENTSYSTEM_HPP__
 
+#include "Velocity.hpp"
+#include "Rotation.hpp"
+#include "Position.hpp"
 #include "ASystem.hpp"
 
 namespace ecs::system
@@ -23,6 +26,10 @@ public:
                    std::list<int> &entitiesToDelete);
     ~MovementSystem();
 
+    void updatePostion(
+        std::shared_ptr<ecs::components::Position> pos, 
+        std::shared_ptr<ecs::components::Rotation> rot, 
+        std::shared_ptr<ecs::components::Velocity> speed);
     void update() override;
 };
 

@@ -21,7 +21,12 @@ namespace ecs::components
     private:
         float _radAngle;
     public:
-        Rotation();
+        /**
+         * @brief Construct a new Rotation object
+         * 
+         * @param rotation in degree
+         */
+        Rotation(const float rotation = 0);
         Rotation(const Rotation &oldRotation);
         ~Rotation();
         bool operator==(Rotation const &) const;

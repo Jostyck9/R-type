@@ -58,7 +58,7 @@ namespace ecs::components
          * 
          * @param y 
          */
-        void serY(float y);
+        void setY(float y);
 
         /**
          * @brief Set the Position object

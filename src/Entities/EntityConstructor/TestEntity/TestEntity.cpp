@@ -6,6 +6,7 @@
 */
 
 #include "TestEntity.hpp"
+#include "Physics/Rotation.hpp"
 #include "Physics/Position.hpp"
 #include "Physics/Velocity.hpp"
 #include "Physics/Collision.hpp"
@@ -20,7 +21,8 @@ std::shared_ptr<ecs::entities::Entity> TestEntity::create(
 
     entityManager->addEntity(toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(0, 0), toCreate);
-    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(10), toCreate);
+    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(1, 1), toCreate);
+    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(0, 0, 10, 10), toCreate);
     return toCreate;
 }
