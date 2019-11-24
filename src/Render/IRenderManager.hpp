@@ -2,10 +2,10 @@
 #include <memory>
 #include <vector>
 #include <string>
-#include "../Components/IComponent.hpp"
-#include "../Components/ComponentManager/ComponentManager.hpp"
-#include "../Entities/EntityManager.hpp"
-#include "../Entities/Entity.hpp"
+#include "IComponent.hpp"
+#include "ComponentManager.hpp"
+#include "Entity.hpp"
+#include "EntityManager.hpp"
 
 /*!
  * @namespace ecs
@@ -20,7 +20,7 @@ namespace ecs {
         /*!
          * @brief dtor
          */
-        virtual void ~IDisplayModule() = 0;
+        ~IDisplayModule() = delete;
         virtual void init() = 0;
         virtual void terminate() = 0;
         virtual void graphicsUpdate(Entity &entity) = 0;

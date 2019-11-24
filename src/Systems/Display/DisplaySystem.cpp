@@ -8,6 +8,7 @@
 #include <iostream>
 #include "Physics/Position.hpp"
 #include "Physics/Velocity.hpp"
+#include "Display/Image.hpp"
 #include "DisplaySystem.hpp"
 
 namespace ecs::system
@@ -30,5 +31,10 @@ namespace ecs::system
         }
         this->_elapsedTime = time(NULL);
         std::cout << " YEETUPDATED" << std::endl;
+        // for (auto &it : _entityManager->getAllEntities()) {
+        //     auto ImageComponent = _componentManager->getDisplayComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Image)));
+        //     auto bruh = std::dynamic_pointer_cast<ecs::components::Image>(ImageComponent);
+        //     std::cout << "show image " << std::endl;
+        // }
     }
 }
