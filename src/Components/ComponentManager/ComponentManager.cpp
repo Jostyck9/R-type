@@ -5,6 +5,7 @@
 ** ComponentManager.hpp
 */
 
+#include "ComponentExceptions.hpp"
 #include "ComponentManager.hpp"
 
 namespace ecs::components
@@ -28,18 +29,18 @@ std::list<std::shared_ptr<IComponent>> ComponentManager::extractComponentsFrom(s
     return res;
 }
 
-std::shared_ptr<IComponent> ComponentManager::extractComponentsOfType(std::multimap<size_t, std::shared_ptr<IComponent>> &map, size_t idEntity, const std::type_index type)
+std::shared_ptr<IComponent> &ComponentManager::extractComponentsOfType(std::multimap<size_t, std::shared_ptr<IComponent>> &map, size_t idEntity, const std::type_index type)
 {
-    std::shared_ptr<IComponent> res;
-
     std::pair<MMAPIterator, MMAPIterator> result = map.equal_range(idEntity);
-    for (MMAPIterator it = result.first; it != result.second; it++)
+    for (MMAPIterator it = result.first; it != result.second; it++) {
         if (type == it->second->getType()) {
-            res = (std::shared_ptr<IComponent>(it->second));
-            return res;
+            return it->second;
         }
-    // TODO Throw an execption and do not return a null ptr
-    return nullptr;
+    }
+    std::string errorMsg = "No ";
+    errorMsg += type.name();
+    errorMsg += " component found for entity " + std::to_string(idEntity);
+    throw ComponentExceptions(errorMsg, "ExtractComponentsOfType");
 }
 
 std::list<std::shared_ptr<IComponent>> ComponentManager::getPhysicComponents(size_t idEntity)
@@ -47,7 +48,7 @@ std::list<std::shared_ptr<IComponent>> ComponentManager::getPhysicComponents(siz
     return extractComponentsFrom(_physic, idEntity);
 }
 
-std::shared_ptr<IComponent> ComponentManager::getPhysicComponentOfSpecifiedType(size_t idEntity, const std::type_index &type)
+std::shared_ptr<IComponent> &ComponentManager::getPhysicComponentOfSpecifiedType(size_t idEntity, const std::type_index &type)
 {
     return extractComponentsOfType(_physic, idEntity, type);
 }
@@ -57,7 +58,7 @@ std::list<std::shared_ptr<IComponent>> ComponentManager::getPhysicComponents(con
     return getPhysicComponents(entity->getID());
 }
 
-std::shared_ptr<IComponent> ComponentManager::getPhysicComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type)
+std::shared_ptr<IComponent> &ComponentManager::getPhysicComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type)
 {
     return getPhysicComponentOfSpecifiedType(entity->getID(), type);
 }
@@ -67,7 +68,7 @@ std::list<std::shared_ptr<IComponent>> ComponentManager::getDisplayComponents(si
     return extractComponentsFrom(_display, idEntity);
 }
 
-std::shared_ptr<IComponent> ComponentManager::getDisplayComponentOfSpecifiedType(size_t idEntity, const std::type_index &type)
+std::shared_ptr<IComponent> &ComponentManager::getDisplayComponentOfSpecifiedType(size_t idEntity, const std::type_index &type)
 {
     return extractComponentsOfType(_display, idEntity, type);
 }
@@ -77,7 +78,7 @@ std::list<std::shared_ptr<IComponent>> ComponentManager::getDisplayComponents(co
     return getDisplayComponents(entity->getID());
 }
 
-std::shared_ptr<IComponent> ComponentManager::getDisplayComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type)
+std::shared_ptr<IComponent> &ComponentManager::getDisplayComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type)
 {
     return getDisplayComponentOfSpecifiedType(entity->getID(), type);
 }
@@ -87,7 +88,7 @@ std::list<std::shared_ptr<IComponent>> ComponentManager::getIOComponents(size_t 
     return extractComponentsFrom(_io, idEntity);
 }
 
-std::shared_ptr<IComponent> ComponentManager::getIOComponentOfSpecifiedType(size_t idEntity, const std::type_index &type)
+std::shared_ptr<IComponent> &ComponentManager::getIOComponentOfSpecifiedType(size_t idEntity, const std::type_index &type)
 {
     return extractComponentsOfType(_io, idEntity, type);
 }
@@ -97,7 +98,7 @@ std::list<std::shared_ptr<IComponent>> ComponentManager::getIOComponents(const s
     return getIOComponents(entity->getID());
 }
 
-std::shared_ptr<IComponent> ComponentManager::getIOComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type)
+std::shared_ptr<IComponent> &ComponentManager::getIOComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type)
 {
     return getIOComponentOfSpecifiedType(entity->getID(), type);
 }
@@ -107,7 +108,7 @@ std::list<std::shared_ptr<IComponent>> ComponentManager::getGameLogicComponents(
     return extractComponentsFrom(_gameLogic, idEntity);
 }
 
-std::shared_ptr<IComponent> ComponentManager::getGameLogicComponentOfSpecifiedType(size_t idEntity, const std::type_index &type)
+std::shared_ptr<IComponent> &ComponentManager::getGameLogicComponentOfSpecifiedType(size_t idEntity, const std::type_index &type)
 {
     return extractComponentsOfType(_gameLogic, idEntity, type);
 }
@@ -117,7 +118,7 @@ std::list<std::shared_ptr<IComponent>> ComponentManager::getGameLogicComponents(
     return getGameLogicComponents(entity->getID());
 }
 
-std::shared_ptr<IComponent> ComponentManager::getGameLogicComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type)
+std::shared_ptr<IComponent> &ComponentManager::getGameLogicComponentOfSpecifiedType(const std::shared_ptr<entities::Entity> &entity, const std::type_index &type)
 {
     return getGameLogicComponentOfSpecifiedType(entity->getID(), type);
 }

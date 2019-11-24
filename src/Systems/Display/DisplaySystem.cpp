@@ -12,7 +12,7 @@
 
 namespace ecs::system
 {
-    DisplaySystem::DisplaySystem(std::shared_ptr<entities::IEntityManager> &entityManager, std::shared_ptr<ecs::components::IComponentManager> &componentManager, std::list<int> &entitiesToDelete) : 
+    DisplaySystem::DisplaySystem(std::shared_ptr<ecs::entities::IEntityManager> &entityManager, std::shared_ptr<ecs::components::IComponentManager> &componentManager, std::list<int> &entitiesToDelete) : 
     ASystem(entityManager, componentManager, entitiesToDelete)
     {
     }
