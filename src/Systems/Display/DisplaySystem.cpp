@@ -32,10 +32,10 @@ namespace ecs::system
         this->_elapsedTime = time(NULL);
         std::cout << " YEETUPDATED" << std::endl;
         //est ce qu'on rajoute un state pour savoir quelle entity doivent etre display ?
-        for (auto &it : _entityManager->getAllEntities()) {
-            auto ImageComponent = _componentManager->getDisplayComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Image)));
-            auto bruh = std::dynamic_pointer_cast<ecs::components::Image>(ImageComponent);
-            std::cout << "show image " << std::endl;
-        }
+        // for (auto &it : _entityManager->getAllEntities()) {
+        //     // auto ImageComponent = _componentManager->getDisplayComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Image)));
+        //     // auto bruh = std::dynamic_pointer_cast<ecs::components::Image>(ImageComponent);
+        //     std::cout << "show image " << std::endl;
+        // }
     }
 }
