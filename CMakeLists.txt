@@ -115,7 +115,7 @@ target_link_libraries(r-type_client ${CONAN_LIBS})
 
 #r-type_server
 set(SOURCE_SERVER
-        src/main_server.cpp)
+        src/main_server.cpp src/Room/RoomManager.cpp src/Room/RoomManager.hpp src/Room/Room.cpp src/Room/Room.hpp)
 add_executable(r-type_server ${SOURCE_SERVER})
 target_link_libraries(r-type_server ${CONAN_LIBS})
 
