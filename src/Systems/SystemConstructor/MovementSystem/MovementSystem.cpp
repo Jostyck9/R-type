@@ -33,17 +33,18 @@ void MovementSystem::updatePostion(std::shared_ptr<Position> pos, std::shared_pt
         return;
     std::pair<float, float> srcPos = pos->getPosition();
     std::pair<float, float> newPos = srcPos;
+    int directionX = 1;
 
+    if (speed->getVelocityX() < 0)
+       directionX = -1;
     newPos.first = newPos.first + (1 * speed->getVelocityX());
     newPos.second = newPos.second + (1 * speed->getVelocityY());
 
     float radius = std::sqrt(std::pow(newPos.first - srcPos.first, 2) + std::pow(newPos.second - srcPos.second, 2));
-
     float angle = rot->getRadAngle() + std::atan((newPos.second - srcPos.second) / (newPos.first - srcPos.first));
 
-
-    newPos.first = radius * std::cos(angle) + srcPos.first;
-    newPos.second = radius * std::sin(angle) + srcPos.second;
+    newPos.first = (directionX * radius * std::cos(angle)) + srcPos.first;
+    newPos.second = (radius * std::sin(angle)) + srcPos.second;
 
     pos->setX(newPos.first);
     pos->setY(newPos.second);

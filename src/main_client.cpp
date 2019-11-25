@@ -14,6 +14,7 @@
 #include "Physics/Position.hpp"
 #include "Physics/Velocity.hpp"
 #include "TestEntity.hpp"
+#include "TestEntity2.hpp"
 
 using namespace ecs::components;
 using namespace ecs::system;
@@ -27,7 +28,9 @@ int main()
     std::shared_ptr<IEntityFactory> factory = std::make_shared<EntityFactory>(entityManager, componentManager);
 
     factory->addEntityConstructor(std::make_shared<TestEntity>());
-    factory->createEntity("Test");
+    factory->addEntityConstructor(std::make_shared<TestEntity2>());
+    // factory->createEntity("Test");
+    factory->createEntity("Test2");
 
     systemManager->addSystem(std::make_shared<MovementSystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
     systemManager->addSystem(std::make_shared<DisplaySystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
