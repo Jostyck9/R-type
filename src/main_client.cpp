@@ -32,6 +32,7 @@ int main()
 	// ecs::SFMLRenderManager* render = new ecs::SFMLRenderManager();
     // std::shared_ptr<IRenderManager> render = std::make_shared<SFMLRenderManager>();
 
+    systemManager->addSystem(std::make_shared<DisplaySystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
     systemManager->setRenderManager(&render);
     isPlaying = true;
     factory->addEntityConstructor(std::make_shared<TestEntity>());
@@ -41,8 +42,8 @@ int main()
     render.init();
     render.graphicsUpdate();
     while (isPlaying == true) {
-        isPlaying = render.eventUpdate();
         systemManager->updateAll();
+        isPlaying = render.eventUpdate();
     }
     render.terminate();
     return 0;
