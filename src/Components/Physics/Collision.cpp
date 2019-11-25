@@ -5,11 +5,12 @@
 ** Collision.cpp
 */
 
+#include <string>
 #include "Collision.hpp"
 
 using namespace ecs::components;
 
-Collision::Collision(bool triggered, float x, float y, float width, float height) : _x(x), _y(y), _height(height), _width(width), _triggered(triggered), _collide(false)
+Collision::Collision(bool triggered, float x, float y, float width, float height, const std::string &tag) : _x(x), _y(y), _height(height), _width(width), _triggered(triggered), _collide(false), _tag(tag)
 {
 }
 
@@ -52,7 +53,7 @@ void Collision::setTriggered(bool isTriggered)
     _triggered = isTriggered;
 }
 
-const std::list<int> &Collision::getCollidedTags() const
+const std::map<size_t, std::string> &Collision::getCollidedTags() const
 {
     return _encounteredTag;
 }
@@ -62,9 +63,19 @@ void Collision::clearTags()
     _encounteredTag.clear();
 }
 
-void Collision::addTag(int tag)
+void Collision::addTag(const size_t idEntity, const std::string &tag)
 {
-    _encounteredTag.push_back(tag);
+    _encounteredTag[idEntity] = tag;
+}
+
+const std::string &Collision::getTag() const
+{
+    return _tag;
+}
+
+void Collision::setTag(const std::string &tag)
+{
+    _tag = tag;
 }
 
 void Collision::setX(const float &val)

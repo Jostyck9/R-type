@@ -8,7 +8,8 @@
 #ifndef COLLISION_HPP
 #define COLLISION_HPP
 
-#include <list>
+#include <string>
+#include <map>
 #include "IPhysics.hpp"
 
 namespace ecs::components
@@ -27,10 +28,11 @@ namespace ecs::components
 
         bool _triggered;
         bool _collide;
-        std::list<int> _encounteredTag;
+        std::map<size_t, std::string> _encounteredTag;
+        std::string _tag;
 
     public:
-        Collision(bool triggered = false, float x = 0, float y = 0, float width = 0, float height = 0);
+        Collision(bool triggered = false, float x = 0, float y = 0, float width = 0, float height = 0, const std::string &tag = "");
         Collision(const Collision &oldCollision);
         ~Collision();
         bool operator==(Collision const &) const;
@@ -68,9 +70,9 @@ namespace ecs::components
         /**
          * @brief Get the Collided Tags object
          * 
-         * @return const std::list<int>& 
+         * @return const std::map<size_t, const std::string>& 
          */
-        const std::list<int> &getCollidedTags() const;
+        const std::map<size_t, std::string> &getCollidedTags() const;
 
         /**
          * @brief Clear all the Collided Tags
@@ -79,11 +81,26 @@ namespace ecs::components
         void clearTags();
 
         /**
-         * @brief Add a tag inside the cencountered collider's tag
+         * @brief Add a tag in the encoutered collisions
+         * 
+         * @param idEntity 
+         * @param tag 
+         */
+        void addTag(const size_t idEntity, const std::string &tag);
+
+        /**
+         * @brief Get the Tag object
+         * 
+         * @return const std::string& 
+         */
+        const std::string &getTag() const;
+
+        /**
+         * @brief Set the Tag object
          * 
          * @param tag 
          */
-        void addTag(int tag);
+        void setTag(const std::string &tag);
 
         /**
          * @brief Set the X object

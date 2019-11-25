@@ -8,6 +8,7 @@
 #ifndef MOVEMENTSYSTEM_HPP__
 #define MOVEMENTSYSTEM_HPP__
 
+#include "Collision.hpp"
 #include "Velocity.hpp"
 #include "Rotation.hpp"
 #include "Position.hpp"
@@ -19,17 +20,30 @@ namespace ecs::system
 class MovementSystem : public ASystem
 {
 private:
-    /* data */
+    struct data {
+        std::shared_ptr<ecs::components::Position> pos;
+        std::shared_ptr<ecs::components::Rotation> rot;
+        std::shared_ptr<ecs::components::Velocity> speed;
+        std::shared_ptr<ecs::components::Collision> box;
+        std::pair<float, float> nextPos;
+        std::shared_ptr<ecs::entities::Entity> entity;
+    };
+
 public:
     MovementSystem(std::shared_ptr<entities::IEntityManager> &entityManager,
                    std::shared_ptr<ecs::components::IComponentManager> &componentManager,
                    std::list<int> &entitiesToDelete);
     ~MovementSystem();
 
-    void updatePostion(
-        std::shared_ptr<ecs::components::Position> pos, 
-        std::shared_ptr<ecs::components::Rotation> rot, 
-        std::shared_ptr<ecs::components::Velocity> speed);
+    bool isColliding(const data &box1, const data &box2) const;
+
+    std::pair<float, float> getNextPos(
+        std::shared_ptr<ecs::components::Position> &pos,
+        std::shared_ptr<ecs::components::Rotation> &rot,
+        std::shared_ptr<ecs::components::Velocity> &speed);
+
+    void updateAll(std::vector<data> &all);
+
     void update() override;
 };
 

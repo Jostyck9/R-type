@@ -29,7 +29,7 @@ int main()
 
     factory->addEntityConstructor(std::make_shared<TestEntity>());
     factory->addEntityConstructor(std::make_shared<TestEntity2>());
-    // factory->createEntity("Test");
+    factory->createEntity("Test");
     factory->createEntity("Test2");
 
     systemManager->addSystem(std::make_shared<MovementSystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
