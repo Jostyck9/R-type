@@ -6,7 +6,7 @@ project(R-type VERSION 0.1.0)
 
 if (CMAKE_VERSION VERSION_LESS "3.1")
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-        set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
+        set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++17")
     endif ()
 else ()
     if(MSVC)
@@ -28,6 +28,8 @@ elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
     # Update if necessary
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W -Wall")
 endif()
+
+
 
 # Compilation
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
@@ -115,8 +117,10 @@ target_link_libraries(r-type_client ${CONAN_LIBS})
 
 #r-type_server
 set(SOURCE_SERVER
-        src/main_server.cpp src/Room/RoomManager.cpp src/Room/RoomManager.hpp src/Room/Room.cpp src/Room/Room.hpp)
+        src/main_server.cpp src/Room/RoomManager.cpp src/Room/Room.cpp
+        src/Thread/ThreadPool.cpp)
 add_executable(r-type_server ${SOURCE_SERVER})
+
 target_link_libraries(r-type_server ${CONAN_LIBS})
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
