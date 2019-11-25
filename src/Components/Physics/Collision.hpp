@@ -8,6 +8,7 @@
 #ifndef COLLISION_HPP
 #define COLLISION_HPP
 
+#include <list>
 #include "IPhysics.hpp"
 
 namespace ecs::components
@@ -23,11 +24,66 @@ namespace ecs::components
         float _y;
         float _height;
         float _width;
+
+        bool _triggered;
+        bool _collide;
+        std::list<int> _encounteredTag;
+
     public:
-        Collision(float x = 0, float y = 0, float width = 0, float height = 0);
+        Collision(bool triggered = false, float x = 0, float y = 0, float width = 0, float height = 0);
         Collision(const Collision &oldCollision);
         ~Collision();
         bool operator==(Collision const &) const;
+
+        /**
+         * @brief Returns if the box is colliding with another
+         * 
+         * @return true if collinding
+         * @return false if not collinding
+         */
+        bool isColliding() const;
+
+        /**
+         * @brief Set the Collinding object
+         * 
+         * @param isColliding 
+         */
+        void setCollinding(bool isColliding);
+
+        /**
+         * @brief Returns if it's a triggered collision box
+         * 
+         * @return true 
+         * @return false 
+         */
+        bool isTriggered() const;
+
+        /**
+         * @brief Set the Triggered object
+         * 
+         * @param isTriggered 
+         */
+        void setTriggered(bool isTriggered);
+
+        /**
+         * @brief Get the Collided Tags object
+         * 
+         * @return const std::list<int>& 
+         */
+        const std::list<int> &getCollidedTags() const;
+
+        /**
+         * @brief Clear all the Collided Tags
+         * 
+         */
+        void clearTags();
+
+        /**
+         * @brief Add a tag inside the cencountered collider's tag
+         * 
+         * @param tag 
+         */
+        void addTag(int tag);
 
         /**
          * @brief Set the X object

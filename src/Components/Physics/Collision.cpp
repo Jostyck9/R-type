@@ -9,7 +9,7 @@
 
 using namespace ecs::components;
 
-Collision::Collision(float x, float y, float width, float height) : _x(x), _y(y), _height(height), _width(width)
+Collision::Collision(bool triggered, float x, float y, float width, float height) : _x(x), _y(y), _height(height), _width(width), _triggered(triggered), _collide(false)
 {
 }
 
@@ -30,6 +30,41 @@ bool Collision::operator==(Collision const &other) const
     if (this->getX() != other.getX() || this->getY() != other.getY() || this->getHeight() != other.getHeight() || this->getWidth() != other.getWidth())
         return (false);
     return (true);
+}
+
+bool Collision::isColliding() const
+{
+    return _collide;
+}
+
+void Collision::setCollinding(bool isColliding)
+{
+    _collide = isColliding;
+}
+
+bool Collision::isTriggered() const
+{
+    return _triggered;
+}
+
+void Collision::setTriggered(bool isTriggered)
+{
+    _triggered = isTriggered;
+}
+
+const std::list<int> &Collision::getCollidedTags() const
+{
+    return _encounteredTag;
+}
+
+void Collision::clearTags()
+{
+    _encounteredTag.clear();
+}
+
+void Collision::addTag(int tag)
+{
+    _encounteredTag.push_back(tag);
 }
 
 void Collision::setX(const float &val)
