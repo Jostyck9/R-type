@@ -23,6 +23,7 @@ include_directories(
     ${SOURCE_ROOT}/Entities/EntityManager/
     ${SOURCE_ROOT}/Components/
     ${SOURCE_ROOT}/Components/Physics/
+    ${SOURCE_ROOT}/Components/Display/
     ${SOURCE_ROOT}/Components/ComponentManager/
     ${SOURCE_ROOT}/Exceptions/
     ${SOURCE_ROOT}/ResourceManager/
@@ -32,6 +33,7 @@ include_directories(
     ${SOURCE_ROOT}/Systems/SystemConstructor/
     ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/
     ${SOURCE_ROOT}/Systems/SystemManager/
+    ${SOURCE_ROOT}/Render/
 )
 
 add_executable(unit_test
@@ -50,6 +52,7 @@ add_executable(unit_test
     ${SOURCE_ROOT}/Components/Physics/Motion.cpp
     ${SOURCE_ROOT}/Components/Physics/Velocity.cpp
     ${SOURCE_ROOT}/Components/Physics/Position.cpp
+    ${SOURCE_ROOT}/Components/Display/Image.cpp
     ${SOURCE_ROOT}/Exceptions/ComponentExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/ECSExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/EntityExceptions.cpp

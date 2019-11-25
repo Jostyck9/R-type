@@ -9,7 +9,6 @@
 
 namespace ecs::system
 {
-        
     SystemManager::SystemManager(std::shared_ptr<entities::IEntityManager> &entityManager, std::shared_ptr<ecs::components::IComponentManager> &componentManager) :
     _entityManager(entityManager),
     _componentManager(componentManager)
@@ -40,5 +39,10 @@ namespace ecs::system
     void SystemManager::addSystem(std::shared_ptr<ISystem> system)
     {
         _systems.push_back(system);
+    }
+
+    void SystemManager::setRenderManager(IRenderManager *renderManager)
+    {
+        _renderManager = renderManager;
     }
 }

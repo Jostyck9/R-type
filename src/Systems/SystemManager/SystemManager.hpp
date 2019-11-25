@@ -14,6 +14,7 @@
 #include "IEntityManager.hpp"
 #include "ISystem.hpp"
 #include "ISystemManager.hpp"
+#include "IRenderManager.hpp"
 
 namespace ecs::system
 {
@@ -24,6 +25,7 @@ namespace ecs::system
         std::list<int> _entitiesToDelete;
         std::shared_ptr<entities::IEntityManager> &_entityManager;
         std::shared_ptr<ecs::components::IComponentManager> &_componentManager;
+        IRenderManager *_renderManager;
 
     public:
         /**
@@ -50,6 +52,13 @@ namespace ecs::system
          * @param system 
          */
         void addSystem(std::shared_ptr<ISystem> system);
+        
+        /**
+         * @brief Add a system inside the system manager
+         * 
+         * @param renderManager 
+         */
+        void setRenderManager(IRenderManager *renderManager);
     };
 }
 
