@@ -154,12 +154,14 @@ void SFMLRenderManager::graphicsUpdate()
         std::cout << "good file" << std::endl;
         _sprite.setTexture(texture);
         _window->draw(_sprite);
+        _window->display();
     }
      // _sprite.setPosition(entity.getPosX(), entity.getPosY());
 }
 
 void SFMLRenderManager::audioUpdate() 
 {
+    std::cout << "DO YOU COPY ?" << std::endl;
     // play/pause en fonction du state de l'audio
 }
   
