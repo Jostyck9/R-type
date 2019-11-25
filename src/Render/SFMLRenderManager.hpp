@@ -29,7 +29,7 @@ namespace ecs {
         void graphicsUpdate() override;
         void audioUpdate() override;
         void textUpdate() override;
-        void eventUpdate() override;
+        bool eventUpdate() override;
         /**
          * @brief clear the window of all rendered objects
          *

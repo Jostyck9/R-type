@@ -23,6 +23,7 @@ using namespace ecs::entities;
 
 int main()
 {
+    bool isPlaying = false;
     std::shared_ptr<IComponentManager> componentManager = std::make_shared<ComponentManager>();
     std::shared_ptr<IEntityManager> entityManager = std::make_shared<EntityManager>(componentManager);
     std::shared_ptr<SystemManager> systemManager = std::make_shared<SystemManager>(entityManager, componentManager);
@@ -31,17 +32,20 @@ int main()
 	ecs::SFMLRenderManager render;
     // std::shared_ptr<IRenderManager> render = std::make_shared<SFMLRenderManager>();
 
+    isPlaying = true;
     factory->addEntityConstructor(std::make_shared<TestEntity>());
     factory->createEntity("Test");
     factory->createEntity("Test");
     factory->createEntity("Test");
     render.init();
-
+    while (isPlaying == true) {
+        isPlaying = render.eventUpdate();
     // systemManager->addSystem(std::make_shared<DisplaySystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
     // for (int i = 0; i < 10; i++) {
     //     systemManager->updateAll();
     // }
 
+    }
     render.terminate();
     return 0;
 }

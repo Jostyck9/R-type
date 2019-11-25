@@ -30,7 +30,7 @@ namespace ecs {
         virtual void graphicsUpdate() = 0;
         virtual void audioUpdate() = 0;
         virtual void textUpdate() = 0;
-        virtual void eventUpdate() = 0;
+        virtual bool eventUpdate() = 0;
     };
 }
 

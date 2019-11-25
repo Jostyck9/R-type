@@ -114,11 +114,11 @@ namespace ecs {
         // _colors[ecs::Color::MAGENTA] = sf::Color::Magenta;
     }
     
-    SFMLRenderManager::~SFMLRenderManager()
-    {
-    }
+SFMLRenderManager::~SFMLRenderManager()
+{
+}
 
-    // static SFMLRenderManager::SFMLRenderManager &getInstance();
+// static SFMLRenderManager::SFMLRenderManager &getInstance();
 
 void SFMLRenderManager::init()
 {
@@ -129,53 +129,51 @@ void SFMLRenderManager::init()
         throw;
     }
     _window->setFramerateLimit(60);
-        //init window audio etc
-    while (_window->isOpen())
-  // Event processing
-        while (_window->pollEvent(_event))
-        {
-       // Request for closing the _window
-            if (_event.type == sf::Event::Closed)
-                _window->close();
-        }
-   // Clear the whole _window before rendering a new frame
-   _window->clear();
-   // End the current frame and display its contents on screen
-   _window->display();
-    }
+    _window->clear();
+    _window->display();
+}
 
-    void SFMLRenderManager::terminate()
-    {
+void SFMLRenderManager::terminate()
+{
     if (_window != nullptr) {
         _window->close();
         _window = nullptr;
     }
     //stop audio ?
-    }
+}
 
-    void SFMLRenderManager::graphicsUpdate()
-    {
+void SFMLRenderManager::graphicsUpdate()
+{
     // _sprite = Sprite(//get la texture de l'entity);
     //     //Render un sprite dans la window --> besoin de la window, de la texture et du sprite en question de sa pos etc
     // _sprite.setPosition(entity.getPosX(), entity.getPosY());
-    }
+}
 
-    void SFMLRenderManager::audioUpdate() 
-    {
-        // play/pause en fonction du state de l'audio
-    }
-    
-    void SFMLRenderManager::textUpdate() 
-    {
-        //Render le texte dans la window --> besoin de window, texte , pos 
-    }
+void SFMLRenderManager::audioUpdate() 
+{
+    // play/pause en fonction du state de l'audio
+}
+  
+void SFMLRenderManager::textUpdate() 
+{
+       //Render le texte dans la window --> besoin de window, texte , pos 
+}
 
-    void SFMLRenderManager::eventUpdate() 
+bool SFMLRenderManager::eventUpdate() 
+{
+    while (_window->pollEvent(_event))
     {
-        //update les event SFML ?
+        if (_event.type == sf::Event::Closed) {
+            _window->close();
+            return false;
+        }
     }
+    return true;
+}
 
-    void SFMLRenderManager::clear() {
+void SFMLRenderManager::clear() 
+{
             _window->clear();
-    }
+}
+
 }
