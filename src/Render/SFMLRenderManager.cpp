@@ -144,7 +144,6 @@ void SFMLRenderManager::terminate()
 
 void SFMLRenderManager::graphicsUpdate()
 {    
-    sf::Texture texture;
     if (!texture.loadFromFile("../sprite/test00.jpg", sf::IntRect(300, 300, 200, 200)))
     {
         std::cout << "wrong file" << std::endl;

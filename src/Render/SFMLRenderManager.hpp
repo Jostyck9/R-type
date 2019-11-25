@@ -65,6 +65,7 @@ namespace ecs {
         int aled;
         sf::Sprite _sprite; /*!<Sprite of the program */
         std::map<int, ecs::input::Key> _keys; /*!<Key mapping*/
+        sf::Texture texture;
     };
 }
 
