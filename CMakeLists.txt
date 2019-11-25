@@ -52,7 +52,8 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/SystemConstructor
         src/Systems/SystemConstructor/testSystem
         src/Systems/Factories
-        src/Render/)
+        src/Render/
+        src/)
 
 #r-type_client
 set(SOURCE_CLIENT
@@ -109,7 +110,8 @@ set(SOURCE_CLIENT
         "src/Exceptions/SystemExceptions.cpp"
         "src/Systems/SystemConstructor/testSystem/testSystem.cpp"
         "src/Systems/Factories/SystemFactory.cpp"
-        "src/Render/SFMLRenderManager.cpp")
+        "src/Render/SFMLRenderManager.cpp"
+        "src/Rtype.cpp")
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})
