@@ -32,6 +32,7 @@ include_directories(
     ${SOURCE_ROOT}/Systems/SystemConstructor/
     ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/
     ${SOURCE_ROOT}/Systems/SystemManager/
+    ${SOURCE_ROOT}/Render/
 )
 
 add_executable(unit_test
