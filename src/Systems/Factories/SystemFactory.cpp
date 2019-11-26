@@ -10,7 +10,7 @@
 
 using namespace ecs::system;
 
-SystemFactory::SystemFactory(std::shared_ptr<ManagerWrapper> &_managerWrapper, std::shared_ptr<ISystemManager> systemManager) : _managerWrapper(_managerWrapper),
+SystemFactory::SystemFactory(std::shared_ptr<ecs::ManagerWrapper> &_managerWrapper, std::shared_ptr<ISystemManager> systemManager) : _managerWrapper(_managerWrapper),
                                                                                                                   _systemManager(systemManager)
 {
 }

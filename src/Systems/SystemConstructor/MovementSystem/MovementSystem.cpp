@@ -18,7 +18,7 @@
 using namespace ecs::system;
 using namespace ecs::components;
 
-MovementSystem::MovementSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete) : ASystem(managerWrapper, entitiesToDelete)
+MovementSystem::MovementSystem(std::shared_ptr<ecs::ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete) : ASystem(managerWrapper, entitiesToDelete)
 {
 }
 
