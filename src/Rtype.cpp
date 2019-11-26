@@ -9,10 +9,9 @@
 
 Rtype::Rtype()
 {
-    _componentManager = std::make_shared<ComponentManager>();
-    _entityManager = std::make_shared<EntityManager>(_componentManager);
-    _systemManager = std::make_shared<SystemManager>(_entityManager, _componentManager);
-    _entityFactory = std::make_shared<EntityFactory>(_entityManager, _componentManager);
+    _managerWrapper = std::make_shared<ecs::ManagerWrapper>();
+    _systemManager = std::make_shared<SystemManager>(_managerWrapper);
+    _entityFactory = std::make_shared<EntityFactory>(_managerWrapper->getEntityManager(), _managerWrapper->getComponentManager());
     _renderManager = std::make_shared<SFMLRenderManager>();
 }
 
