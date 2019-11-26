@@ -97,6 +97,7 @@ set(SOURCE_CLIENT
         "src/ResourceManager/Texture.cpp"
         "src/ResourceManager/Font.cpp"
         "src/ResourceManager/Text.cpp"
+        "src/ResourceManager/RtypeResources.cpp"
         "src/Entities/Entity.cpp"
         "src/Entities/EntityConstructor/TestEntity/TestEntity.cpp"
         "src/Entities/EntityConstructor/TestEntity2/TestEntity2.cpp"
