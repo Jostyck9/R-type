@@ -39,7 +39,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Components/GameLogic/
         src/Components/IO/
         src/Components/Physics/
-        src/RessourceManager/
+        src/ResourceManager/
         src/Entities/
         src/Entities/EntityConstructor/
         src/Entities/EntityConstructor/TestEntity/
