@@ -6,8 +6,10 @@
 */
 
 #include <iostream>
+#include <cmath>
 #include "RTypeExceptions.hpp"
 #include "Rtype.hpp"
+#include "Timer.hpp"
 
 int main()
 {
@@ -16,6 +18,15 @@ int main()
 
         rtype.start();
         rtype.stop();
+
+        /*Timer timer(5000);
+        timer.start();
+        while(!timer.checkEndTimer()) {}
+        timer.stop();
+
+        std::cout << "Seconds: " << timer.getElapsedSeconds() << std::endl;
+        std::cout << "Milliseconds: " << timer.getElapsedMilliseconds() << std::endl;*/
+
     } catch (const RTypeExceptions &e) {
         std::cerr << e.what() << std::endl;
         std::cerr << "In file: " << e.where() << std::endl;

@@ -75,6 +75,7 @@ set(SOURCE_CLIENT
         "src/Components/GameLogic/Level.cpp"
         "src/Components/GameLogic/Power.cpp"
         "src/Components/GameLogic/Scale.cpp"
+        "src/Components/GameLogic/Timer.cpp"
         "src/Components/IO/Controller.cpp"
         "src/Components/IO/DummyInput.cpp"
         "src/Components/IO/GameController.cpp"
