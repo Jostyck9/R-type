@@ -14,12 +14,17 @@
 #include "Position.hpp"
 #include "ASystem.hpp"
 
+
 namespace ecs::system
 {
-
 class MovementSystem : public ASystem
 {
 private:
+
+    /**
+     * @brief Wrapper for an entity's components
+     * 
+     */
     struct data {
         std::shared_ptr<ecs::components::Position> pos;
         std::shared_ptr<ecs::components::Rotation> rot;
@@ -30,18 +35,49 @@ private:
     };
 
 public:
+    /**
+     * @brief Construct a new Movement System object, Check the colision and move the entities
+     * 
+     * @param managerWrapper 
+     * @param entitiesToDelete 
+     */
     MovementSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete);
     ~MovementSystem();
 
+    /**
+     * @brief Check if 2 boxColision are colliding
+     * 
+     * @param box1 
+     * @param box2 
+     * @return true 
+     * @return false 
+     */
     bool isColliding(const data &box1, const data &box2) const;
 
+    /**
+     * @brief Get the Next Pos for the entity
+     * 
+     * @param pos 
+     * @param rot 
+     * @param speed 
+     * @return std::pair<float, float> (x,y)
+     */
     std::pair<float, float> getNextPos(
         std::shared_ptr<ecs::components::Position> &pos,
         std::shared_ptr<ecs::components::Rotation> &rot,
         std::shared_ptr<ecs::components::Velocity> &speed);
 
+    /**
+     * @brief Update all the entities that are passed in parameters
+     * 
+     * @param all 
+     */
     void updateAll(std::vector<data> &all);
 
+    /**
+     * @brief Update the position and the colisions
+     * 
+     */
     void update() override;
 };
 
