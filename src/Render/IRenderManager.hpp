@@ -7,8 +7,6 @@
 #include "Entity.hpp"
 #include "EntityManager.hpp"
 
-
-
 #ifndef IRENDERMANAGER_HPP__
 #define IRENDERMANAGER_HPP__
 /*!
@@ -28,6 +26,7 @@ namespace ecs {
         virtual void init() = 0;
         virtual void terminate() = 0;
         virtual void graphicsUpdate() = 0;
+        // virtual void graphicsUpdate(std::shared_ptr<IComponent> &comp) = 0;
         virtual void audioUpdate() = 0;
         virtual void textUpdate() = 0;
         virtual bool eventUpdate() = 0;

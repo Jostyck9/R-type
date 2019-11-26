@@ -37,6 +37,7 @@ namespace ecs {
          *
          */
         void graphicsUpdate() override;
+        // void graphicsUpdate(std::shared_ptr<IComponent> &comp) override;
         /**
          * @brief update audio
          *
