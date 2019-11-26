@@ -9,12 +9,6 @@
 
 namespace ecs {
 
-ResourceManager &ResourceManager::getInstance()
-{
-    static ResourceManager resourceManager;
-    return resourceManager;
-}
-
 ResourceManager::ResourceManager()
 {
 

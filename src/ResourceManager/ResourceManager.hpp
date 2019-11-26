@@ -19,18 +19,6 @@ namespace ecs {
      */
     class ResourceManager {
     public:
-        
-        /**
-         * @brief Get the instance of the Resource Manager classe
-         * 
-         * @return ResourceManager 
-         */
-        static ResourceManager &getInstance();
-
-        ResourceManager(const ResourceManager &) = delete;
-        ResourceManager operator=(const ResourceManager &) = delete;
-
-    private:
         ResourceManager();
         ~ResourceManager();
 
