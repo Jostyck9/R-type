@@ -55,7 +55,8 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/SystemConstructor/testSystem
         src/Systems/Factories
         src/Render/
-        src/ManagerWrapper)
+        src/ManagerWrapper
+        src/)
 
 #r-type_client
 set(SOURCE_CLIENT
@@ -114,7 +115,8 @@ set(SOURCE_CLIENT
         "src/Systems/Factories/SystemFactory.cpp"
         "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
         "src/Render/SFMLRenderManager.cpp"
-        "src/ManagerWrapper/ManagerWrapper.cpp")
+        "src/ManagerWrapper/ManagerWrapper.cpp"
+        "src/Rtype.cpp")
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})
