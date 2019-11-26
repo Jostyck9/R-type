@@ -14,6 +14,10 @@
 
 namespace ecs::components
 {
+    /**
+     * @brief Timer for all the game
+     *
+     */
     class Timer : public IGameLogic
     {
     public:
@@ -24,17 +28,47 @@ namespace ecs::components
 
         bool operator==(Timer &other);
 
+        /**
+         * @brief Start timer
+         *
+         */
         void start();
+        /**
+         * @brief Stop timer
+         *
+         */
         void stop();
+        /**
+         * @brief Restart timer
+         *
+         */
         void restart();
+        /**
+         * @brief Restart timer with end time
+         *
+         * @param endTime
+         */
         void restart(double endTime);
+        /**
+         * @brief Get time elapsed since the begin in milliseconds
+         *
+         */
         double getElapsedMilliseconds();
+        /**
+         * @brief Get time elapsed since the begin in seconds
+         *
+         */
         double getElapsedSeconds();
 
         const std::chrono::time_point<std::chrono::system_clock> &getStart() const;
         const std::chrono::time_point<std::chrono::system_clock> &getStop() const;
         double getEndTime() const;
 
+        /**
+         * @brief Check if the timer is finish
+         *
+         * @return bool
+         */
         bool checkEndTimer();
 
         /**
