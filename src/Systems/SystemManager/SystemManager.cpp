@@ -9,9 +9,8 @@
 
 namespace ecs::system
 {
-    SystemManager::SystemManager(std::shared_ptr<entities::IEntityManager> &entityManager, std::shared_ptr<ecs::components::IComponentManager> &componentManager) :
-    _entityManager(entityManager),
-    _componentManager(componentManager)
+    SystemManager::SystemManager(std::shared_ptr<ManagerWrapper> managerWrapper) :
+    _managerWrapper(managerWrapper)
     {
     }
     
@@ -30,8 +29,8 @@ namespace ecs::system
             it->update();
         }
         for (auto &it : _entitiesToDelete) {
-            _componentManager->deleteComponents(it);
-            _entityManager->deleteEntity(it);
+            _managerWrapper->getComponentManager()->deleteComponents(it);
+            _managerWrapper->getEntityManager()->deleteEntity(it);
         }
         _entitiesToDelete.clear();
     }
@@ -39,10 +38,5 @@ namespace ecs::system
     void SystemManager::addSystem(std::shared_ptr<ISystem> system)
     {
         _systems.push_back(system);
-    }
-
-    void SystemManager::setRenderManager(IRenderManager *renderManager)
-    {
-        _renderManager = renderManager;
     }
 }

@@ -16,6 +16,7 @@
 #include "TestEntity.hpp"
 #include "IRenderManager.hpp"
 #include "SFMLRenderManager.hpp"
+#include "ManagerWrapper.hpp"
 
 using namespace ecs::components;
 using namespace ecs::system;
@@ -24,24 +25,22 @@ using namespace ecs::entities;
 int main()
 {
     bool isPlaying = false;
-	ecs::SFMLRenderManager render;
-    std::shared_ptr<IComponentManager> componentManager = std::make_shared<ComponentManager>();
-    std::shared_ptr<IEntityManager> entityManager = std::make_shared<EntityManager>(componentManager);
-    std::shared_ptr<SystemManager> systemManager = std::make_shared<SystemManager>(entityManager, componentManager);
-    std::shared_ptr<IEntityFactory> factory = std::make_shared<EntityFactory>(entityManager, componentManager);
-	// ecs::SFMLRenderManager* render = new ecs::SFMLRenderManager();
-    // std::shared_ptr<IRenderManager> render = std::make_shared<SFMLRenderManager>();
+    std::shared_ptr<ecs::ManagerWrapper> managerWrapper = std::make_shared<ManagerWrapper>();
+    std::shared_ptr<IEntityFactory> factory = std::make_shared<EntityFactory>(managerWrapper->getEntityManager() , managerWrapper->getComponentManager());
+    std::shared_ptr<SystemManager> systemManager = std::make_shared<SystemManager>(std::shared_ptr<WrapperManager> );
 
-    systemManager->addSystem(std::make_shared<DisplaySystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
+    systemManager->addSystem(std::make_shared<DisplaySystem>(managerWrapper);
     isPlaying = true;
     factory->addEntityConstructor(std::make_shared<TestEntity>());
     factory->createEntity("Test");
     factory->createEntity("Test");
     factory->createEntity("Test");
+    render->init();
     while (isPlaying == true) {
+        render->graphicsUpdate();
         systemManager->updateAll();
-        isPlaying = render.eventUpdate();
+        isPlaying = render->eventUpdate();
     }
-    render.terminate();
+    render->terminate();
     return 0;
 }

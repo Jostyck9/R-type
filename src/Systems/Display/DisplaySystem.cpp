@@ -13,8 +13,8 @@
 
 namespace ecs::system
 {
-    DisplaySystem::DisplaySystem(std::shared_ptr<entities::IEntityManager> &entityManager, std::shared_ptr<ecs::components::IComponentManager> &componentManager, std::list<int> &entitiesToDelete) : 
-    ASystem(entityManager, componentManager, entitiesToDelete), _elapsedTime(0)
+    DisplaySystem::DisplaySystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete) : 
+    ASystem(managerWrapper, entitiesToDelete), _elapsedTime(0)
     {
         this->_elapsedTime = time(NULL);
     }

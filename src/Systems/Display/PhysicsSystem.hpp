@@ -15,7 +15,7 @@ namespace ecs::system
     class PhysicsSystem : public ASystem
     {
     public:
-        PhysicsSystem(std::shared_ptr<entities::IEntityManager> &entityManager, std::shared_ptr<ecs::components::IComponentManager> &componentManager, std::list<int> &entitiesToDelete);
+        PhysicsSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete);
         ~PhysicsSystem();
 
         void update() override;

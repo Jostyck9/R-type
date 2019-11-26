@@ -10,22 +10,18 @@
 
 #include <memory>
 #include <list>
-#include "IComponentManager.hpp"
-#include "IEntityManager.hpp"
 #include "ISystem.hpp"
 #include "ISystemManager.hpp"
-#include "IRenderManager.hpp"
+#include "ManagerWrapper.hpp"
 
 namespace ecs::system
 {
     class SystemManager : public ISystemManager
     {
     private:
+        std::shared_ptr<ManagerWrapper> _managerWrapper;
         std::list<std::shared_ptr<ISystem>> _systems;
         std::list<int> _entitiesToDelete;
-        std::shared_ptr<entities::IEntityManager> &_entityManager;
-        std::shared_ptr<ecs::components::IComponentManager> &_componentManager;
-        IRenderManager *_renderManager;
 
     public:
         /**
@@ -34,7 +30,7 @@ namespace ecs::system
          * @param entityManager 
          * @param componentManager 
          */
-        SystemManager(std::shared_ptr<entities::IEntityManager> &entityManager, std::shared_ptr<ecs::components::IComponentManager> &componentManager);
+        SystemManager(std::shared_ptr<ManagerWrapper> managerWrapper);
         ~SystemManager();
 
         /**
@@ -52,13 +48,6 @@ namespace ecs::system
          * @param system 
          */
         void addSystem(std::shared_ptr<ISystem> system);
-        
-        /**
-         * @brief Add a system inside the system manager
-         * 
-         * @param renderManager 
-         */
-        void setRenderManager(IRenderManager *renderManager);
     };
 }
 
