@@ -5,18 +5,20 @@
 ** DisplaySystem.cpp
 */
 
+#include <iostream>
 #include "Physics/Position.hpp"
 #include "Physics/Velocity.hpp"
+#include "Display/Image.hpp"
 #include "DisplaySystem.hpp"
-#include "Physics/Collision.hpp"
+#include "Collision.hpp"
 #include "ComponentExceptions.hpp"
-#include <iostream>
 
 namespace ecs::system
 {
-    DisplaySystem::DisplaySystem(std::shared_ptr<ecs::entities::IEntityManager> &entityManager, std::shared_ptr<ecs::components::IComponentManager> &componentManager, std::list<int> &entitiesToDelete) : 
-    ASystem(entityManager, componentManager, entitiesToDelete)
+    DisplaySystem::DisplaySystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete) : 
+    ASystem(managerWrapper, entitiesToDelete), _elapsedTime(0)
     {
+        this->_elapsedTime = time(NULL);
     }
     
     DisplaySystem::~DisplaySystem()
@@ -25,20 +27,29 @@ namespace ecs::system
 
     void DisplaySystem::update()
     {
-        for (auto &it : _entityManager->getAllEntities()) {
-            // auto VelocityComponent = _componentManager->getPhysicComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Velocity)));
-            // auto speed = std::dynamic_pointer_cast<ecs::components::Velocity>(VelocityComponent);
-            auto PosComponent = _componentManager->getPhysicComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Position)));
+        for (auto &it : _managerWrapper->getEntityManager()->getAllEntities()) {
+            auto PosComponent = _managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Position)));
             auto position = std::dynamic_pointer_cast<ecs::components::Position>(PosComponent);
-            // position->setX(position->getX() + speed->getValue());
             std::cout << "Update position : " << int(position->getX()) << " " << int(position->getY()) << std::endl;
             try {
-                auto colision = std::reinterpret_pointer_cast<ecs::components::Collision>(_componentManager->getPhysicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::Collision))));
+                auto colision = std::reinterpret_pointer_cast<ecs::components::Collision>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::Collision))));
                 for (auto &it2 : colision->getCollidedTags()) {
                     std::cout << "colision on " << it->getID() << " by " << it2.first << " on tag : " << it2.second << std::endl;
                 }
             } catch (ComponentExceptions &e) {
             }
         }
+        // time_t currentTime = time(NULL); // TODO timer qui bloque le programme donc ca va pas 
+        // while ((currentTime - this->_elapsedTime) < 2) {
+        //     currentTime = time(NULL);
+        // }
+        // this->_elapsedTime = time(NULL);
+        // std::cout << " YEETUPDATED" << std::endl;
+        //est ce qu'on rajoute un state pour savoir quelle entity doivent etre display ?
+        // for (auto &it : _entityManager->getAllEntities()) {
+        //     // auto ImageComponent = _componentManager->getDisplayComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Image)));
+        //     // auto bruh = std::dynamic_pointer_cast<ecs::components::Image>(ImageComponent);
+        //     std::cout << "show image " << std::endl;
+        // }
     }
 }

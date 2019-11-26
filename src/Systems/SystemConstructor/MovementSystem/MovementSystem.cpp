@@ -18,9 +18,7 @@
 using namespace ecs::system;
 using namespace ecs::components;
 
-MovementSystem::MovementSystem(std::shared_ptr<ecs::entities::IEntityManager> &entityManager,
-                               std::shared_ptr<ecs::components::IComponentManager> &componentManager,
-                               std::list<int> &entitiesToDelete) : ASystem(entityManager, componentManager, entitiesToDelete)
+MovementSystem::MovementSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete) : ASystem(managerWrapper, entitiesToDelete)
 {
 }
 
@@ -107,14 +105,14 @@ void MovementSystem::update()
 {
     std::vector<data> allData;
 
-    for (auto &it : _entityManager->getAllEntities())
+    for (auto &it : _managerWrapper->getEntityManager()->getAllEntities())
     {
         data current;
         try
         {
-            current.pos = std::reinterpret_pointer_cast<Position>(_componentManager->getPhysicComponentOfSpecifiedType(it, std::type_index(typeid(ecs::components::Position))));
-            current.rot = std::reinterpret_pointer_cast<Rotation>(_componentManager->getPhysicComponentOfSpecifiedType(it, std::type_index(typeid(ecs::components::Rotation))));
-            current.speed = std::reinterpret_pointer_cast<Velocity>(_componentManager->getPhysicComponentOfSpecifiedType(it, std::type_index(typeid(ecs::components::Velocity))));
+            current.pos = std::reinterpret_pointer_cast<Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it, std::type_index(typeid(ecs::components::Position))));
+            current.rot = std::reinterpret_pointer_cast<Rotation>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it, std::type_index(typeid(ecs::components::Rotation))));
+            current.speed = std::reinterpret_pointer_cast<Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it, std::type_index(typeid(ecs::components::Velocity))));
             current.entity = it;
         }
         catch (ComponentExceptions &e)
@@ -124,7 +122,7 @@ void MovementSystem::update()
         }
         try
         {
-            current.box = std::reinterpret_pointer_cast<Collision>(_componentManager->getPhysicComponentOfSpecifiedType(it, std::type_index(typeid(ecs::components::Collision))));
+            current.box = std::reinterpret_pointer_cast<Collision>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it, std::type_index(typeid(ecs::components::Collision))));
         }
         catch (ComponentExceptions &e)
         {

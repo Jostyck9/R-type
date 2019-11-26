@@ -11,32 +11,38 @@
 #include "SystemManager.hpp"
 #include "Display/DisplaySystem.hpp"
 #include "MovementSystem.hpp"
-#include "Physics/Position.hpp"
-#include "Physics/Velocity.hpp"
-#include "TestEntity.hpp"
 #include "TestEntity2.hpp"
+#include "Physics/Position.hpp"
+#include "TestEntity.hpp"
+#include "IRenderManager.hpp"
+#include "SFMLRenderManager.hpp"
+#include "ManagerWrapper.hpp"
 
 using namespace ecs::components;
-using namespace ecs::system;
 using namespace ecs::entities;
+using namespace ecs::system;
 
 int main()
 {
-    std::shared_ptr<IComponentManager> componentManager = std::make_shared<ComponentManager>();
-    std::shared_ptr<IEntityManager> entityManager = std::make_shared<EntityManager>(componentManager);
-    std::shared_ptr<SystemManager> systemManager = std::make_shared<SystemManager>(entityManager, componentManager);
-    std::shared_ptr<IEntityFactory> factory = std::make_shared<EntityFactory>(entityManager, componentManager);
+    bool isPlaying = false;
+    std::shared_ptr<ecs::ManagerWrapper> managerWrapper = std::make_shared<ecs::ManagerWrapper>();
+    std::shared_ptr<IEntityFactory> factory = std::make_shared<EntityFactory>(managerWrapper->getEntityManager() , managerWrapper->getComponentManager());
+    std::shared_ptr<SystemManager> systemManager = std::make_shared<SystemManager>(managerWrapper);
 
+    systemManager->addSystem(std::make_shared<DisplaySystem>(managerWrapper, systemManager->getEntitiesToDelete()));
+    systemManager->addSystem(std::make_shared<MovementSystem>(managerWrapper, systemManager->getEntitiesToDelete()));
+
+    isPlaying = true;
     factory->addEntityConstructor(std::make_shared<TestEntity>());
     factory->addEntityConstructor(std::make_shared<TestEntity2>());
     factory->createEntity("Test");
     factory->createEntity("Test2");
-
-    systemManager->addSystem(std::make_shared<MovementSystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
-    systemManager->addSystem(std::make_shared<DisplaySystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
-    for (int i = 0; i < 10; i++) {
+    managerWrapper->getRenderManager()->init();
+    while (isPlaying == true) {
+        managerWrapper->getRenderManager()->graphicsUpdate();
         systemManager->updateAll();
-
+        isPlaying = managerWrapper->getRenderManager()->eventUpdate();
     }
+    managerWrapper->getRenderManager()->terminate();
     return 0;
 }

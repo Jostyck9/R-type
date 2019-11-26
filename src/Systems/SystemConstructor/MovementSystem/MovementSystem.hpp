@@ -30,9 +30,7 @@ private:
     };
 
 public:
-    MovementSystem(std::shared_ptr<entities::IEntityManager> &entityManager,
-                   std::shared_ptr<ecs::components::IComponentManager> &componentManager,
-                   std::list<int> &entitiesToDelete);
+    MovementSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete);
     ~MovementSystem();
 
     bool isColliding(const data &box1, const data &box2) const;
