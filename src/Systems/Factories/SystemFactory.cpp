@@ -10,11 +10,9 @@
 
 using namespace ecs::system;
 
-SystemFactory::SystemFactory(std::shared_ptr<ecs::entities::IEntityManager> entityManager, std::shared_ptr<ISystemManager> systemManager, std::shared_ptr<ecs::components::IComponentManager> componentsManager)
+SystemFactory::SystemFactory(std::shared_ptr<ManagerWrapper> &_managerWrapper, std::shared_ptr<ISystemManager> systemManager) : _managerWrapper(_managerWrapper),
+                                                                                                                  _systemManager(systemManager)
 {
-    this->_entityManager = entityManager;
-    this->_systemManager = systemManager;
-    this->_componentManager = componentsManager;
 }
 
 SystemFactory::~SystemFactory()
@@ -23,14 +21,15 @@ SystemFactory::~SystemFactory()
 
 bool SystemFactory::isExisting(const std::string &name)
 {
-    if(this->_createFunction.find(name) == _createFunction.end())
+    if (this->_createFunction.find(name) == _createFunction.end())
         return (false);
     return (true);
 }
 
 void SystemFactory::addSystemConstructor(std::shared_ptr<ISystemConstructor> constructor)
 {
-    if (isExisting(constructor->getName())) {
+    if (isExisting(constructor->getName()))
+    {
         throw SystemExceptions("Error: Could not add system Constructor ", std::string(__FILE__) + ' ' + std::to_string(__LINE__));
     }
     _createFunction[constructor->getName()] = constructor;
@@ -38,8 +37,9 @@ void SystemFactory::addSystemConstructor(std::shared_ptr<ISystemConstructor> con
 
 std::shared_ptr<ISystem> SystemFactory::createSystem(const std::string &name)
 {
-    if (!isExisting(name)) {
-        throw SystemExceptions("Error: Could not create system \'" + name + '\'', std::string(__FILE__) + ' ' + std::to_string(__LINE__));        
+    if (!isExisting(name))
+    {
+        throw SystemExceptions("Error: Could not create system \'" + name + '\'', std::string(__FILE__) + ' ' + std::to_string(__LINE__));
     }
-    return (_createFunction[name])->create(this->_entityManager,this->_componentManager, this->_systemManager->getEntitiesToDelete());
+    return (_createFunction[name])->create(_managerWrapper, _systemManager->getEntitiesToDelete());
 }

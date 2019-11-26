@@ -6,11 +6,11 @@
 */
 
 #include "ManagerWrapper.hpp"
-
+#include "SFMLRenderManager.hpp"
 namespace ecs
 {
-ManagerWrapper::ManagerWrapper(/* args */) : _componentManager(std::make_shared<ComponentManager>()),
-                                             _entityManager(std::make_shared<ecs::EntityManager>(_componentManager)),
+ManagerWrapper::ManagerWrapper(/* args */) : _componentManager(std::make_shared<ecs::components::ComponentManager>()),
+                                             _entityManager(std::make_shared<ecs::entities::EntityManager>(_componentManager)),
                                              _renderManager(std::make_shared<ecs::SFMLRenderManager>())
 {
 }
@@ -28,6 +28,6 @@ std::shared_ptr<IRenderManager> &ManagerWrapper::getRenderManager()
 }
 std::shared_ptr<entities::IEntityManager> &ManagerWrapper::getEntityManager()
 {
-    return this->_componentManager;
+    return this->_entityManager;
 }
 } // namespace ecs

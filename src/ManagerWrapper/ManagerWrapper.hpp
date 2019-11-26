@@ -5,6 +5,9 @@
 ** ManagerWrapper.hpp
 */
 
+#ifndef MANAGERWRAPPER_HPP__
+#define MANAGERWRAPPER_HPP__
+
 #include "IRenderManager.hpp"
 #include "IEntityManager.hpp"
 #include "ISystemManager.hpp"
@@ -21,10 +24,12 @@ private:
     std::shared_ptr<IRenderManager> _renderManager;
 
 public:
-    ManagerWrapper(/* args */) {}
-    ~ManagerWrapper() {}
+    ManagerWrapper(/* args */);
+    ~ManagerWrapper();
     std::shared_ptr<components::IComponentManager> &getComponentManager();
     std::shared_ptr<IRenderManager> &getRenderManager();
     std::shared_ptr<entities::IEntityManager> &getEntityManager();
 };
 } // namespace ecs
+
+#endif //MANAGERWRAPPER_HPP__

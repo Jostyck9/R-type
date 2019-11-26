@@ -13,15 +13,15 @@
 #include "ISystemFactory.hpp"
 #include "IEntityManager.hpp"
 #include "IComponentManager.hpp"
+#include "ManagerWrapper.hpp"
 
 namespace ecs::system
 {
     class SystemFactory : public ISystemFactory
     {
     private:
-        std::shared_ptr<ecs::entities::IEntityManager> _entityManager;
+        std::shared_ptr<ManagerWrapper> _managerWrapper;
         std::shared_ptr<ISystemManager> _systemManager;
-        std::shared_ptr<components::IComponentManager> _componentManager;
         std::map<std::string, std::shared_ptr<ISystemConstructor>> _createFunction;
 
     public:
@@ -30,7 +30,7 @@ namespace ecs::system
          * 
          * @param componentsManager : System manager
          */
-        SystemFactory(std::shared_ptr<ecs::entities::IEntityManager>, std::shared_ptr<ISystemManager>, std::shared_ptr<components::IComponentManager> componentsManager);
+        SystemFactory(std::shared_ptr<ManagerWrapper> &_managerWrapper, std::shared_ptr<ISystemManager>);
         ~SystemFactory();
 
         /**

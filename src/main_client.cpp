@@ -25,22 +25,22 @@ using namespace ecs::entities;
 int main()
 {
     bool isPlaying = false;
-    std::shared_ptr<ecs::ManagerWrapper> managerWrapper = std::make_shared<ManagerWrapper>();
+    std::shared_ptr<ecs::ManagerWrapper> managerWrapper = std::make_shared<ecs::ManagerWrapper>();
     std::shared_ptr<IEntityFactory> factory = std::make_shared<EntityFactory>(managerWrapper->getEntityManager() , managerWrapper->getComponentManager());
-    std::shared_ptr<SystemManager> systemManager = std::make_shared<SystemManager>(std::shared_ptr<WrapperManager> );
+    std::shared_ptr<SystemManager> systemManager = std::make_shared<SystemManager>(managerWrapper);
 
-    systemManager->addSystem(std::make_shared<DisplaySystem>(managerWrapper);
+    systemManager->addSystem(std::make_shared<DisplaySystem>(managerWrapper, systemManager->getEntitiesToDelete()));
     isPlaying = true;
     factory->addEntityConstructor(std::make_shared<TestEntity>());
     factory->createEntity("Test");
     factory->createEntity("Test");
     factory->createEntity("Test");
-    render->init();
+    managerWrapper->getRenderManager()->init();
     while (isPlaying == true) {
-        render->graphicsUpdate();
+        managerWrapper->getRenderManager()->graphicsUpdate();
         systemManager->updateAll();
-        isPlaying = render->eventUpdate();
+        isPlaying = managerWrapper->getRenderManager()->eventUpdate();
     }
-    render->terminate();
+    managerWrapper->getRenderManager()->terminate();
     return 0;
 }
