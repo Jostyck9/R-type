@@ -12,6 +12,7 @@
 #include "Display/DisplaySystem.hpp"
 #include "MovementSystem.hpp"
 #include "TestEntity2.hpp"
+#include "TestPlayerEntity.hpp"
 #include "Physics/Position.hpp"
 #include "TestEntity.hpp"
 #include "IRenderManager.hpp"
@@ -21,6 +22,7 @@
 using namespace ecs::components;
 using namespace ecs::entities;
 using namespace ecs::system;
+using namespace ecs;
 
 int main()
 {
@@ -35,11 +37,12 @@ int main()
     isPlaying = true;
     factory->addEntityConstructor(std::make_shared<TestEntity>());
     factory->addEntityConstructor(std::make_shared<TestEntity2>());
+    factory->addEntityConstructor(std::make_shared<TestPlayerEntity>());
     factory->createEntity("Test");
     factory->createEntity("Test2");
+	factory->createEntity("TestPlayer");
     managerWrapper->getRenderManager()->init();
     while (isPlaying == true) {
-        managerWrapper->getRenderManager()->graphicsUpdate();
         systemManager->updateAll();
         isPlaying = managerWrapper->getRenderManager()->eventUpdate();
     }

@@ -31,4 +31,9 @@ std::shared_ptr<entities::IEntityManager> &ManagerWrapper::getEntityManager()
 {
     return this->_entityManager;
 }
+// std::shared_ptr<ResourceManager> &ManagerWrapper::getResourceManager()
+// {
+//     return this->_resourceManager;
+// }
+
 } // namespace ecs

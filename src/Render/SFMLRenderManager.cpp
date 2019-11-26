@@ -132,6 +132,11 @@ void SFMLRenderManager::init()
     _window->setFramerateLimit(60);
     _window->clear();
     _window->display();
+    if (!texture.loadFromFile("../sprite/test00.jpg", sf::IntRect(300, 300, 200, 200)))
+    {
+        std::cout << "wrong file" << std::endl;
+        throw;
+    }
 }
 
 void SFMLRenderManager::terminate()
@@ -145,23 +150,15 @@ void SFMLRenderManager::terminate()
 
 void SFMLRenderManager::graphicsUpdate()
 {    
-    if (!texture.loadFromFile("../sprite/test00.jpg", sf::IntRect(300, 300, 200, 200)))
-    {
-        std::cout << "wrong file" << std::endl;
-        throw;
-    }
-    else {        
-        std::cout << "good file" << std::endl;
+   
         _sprite.setTexture(texture);
         _window->draw(_sprite);
         _window->display();
-    }
      // _sprite.setPosition(entity.getPosX(), entity.getPosY());
 }
 
 void SFMLRenderManager::audioUpdate() 
 {
-    std::cout << "DO YOU COPY ?" << std::endl;
     // play/pause en fonction du state de l'audio
 }
   

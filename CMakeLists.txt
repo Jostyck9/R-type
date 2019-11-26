@@ -39,11 +39,12 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Components/GameLogic/
         src/Components/IO/
         src/Components/Physics/
-        src/RessourceManager/
+        src/ResourceManager/
         src/Entities/
         src/Entities/EntityConstructor/
         src/Entities/EntityConstructor/TestEntity/
         src/Entities/EntityConstructor/TestEntity2/
+        src/Entities/EntityConstructor/TestPlayerEntity/
         src/Entities/EntityManager/
         src/Entities/Factories/
         src/Systems/
@@ -98,6 +99,7 @@ set(SOURCE_CLIENT
         "src/Entities/Entity.cpp"
         "src/Entities/EntityConstructor/TestEntity/TestEntity.cpp"
         "src/Entities/EntityConstructor/TestEntity2/TestEntity2.cpp"
+        "src/Entities/EntityConstructor/TestPlayerEntity/TestPlayerEntity.cpp"
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
         "src/Systems/ASystem.cpp"

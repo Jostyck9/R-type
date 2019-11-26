@@ -17,7 +17,7 @@
  */
 namespace ecs {
     /*!
-     * @class IRenderManager
+     * @class IRenderManager manages rendering depending on your lib
      */
     class IRenderManager {
     public:
