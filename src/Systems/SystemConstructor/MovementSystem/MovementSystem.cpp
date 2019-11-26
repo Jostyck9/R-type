@@ -38,8 +38,8 @@ std::pair<float, float> MovementSystem::getNextPos(std::shared_ptr<Position> &po
 
     if (speed->getVelocityX() < 0)
         directionX = -1;
-    newPos.first = newPos.first + (1 * speed->getVelocityX());
-    newPos.second = newPos.second + (1 * speed->getVelocityY());
+    newPos.first = newPos.first + (1 * speed->getVelocityX()); // TODO Add clocking movement here
+    newPos.second = newPos.second + (1 * speed->getVelocityY()); // TODO Add clocking movement here
 
     float radius = std::sqrt(std::pow(newPos.first - srcPos.first, 2) + std::pow(newPos.second - srcPos.second, 2));
     float angle = rot->getRadAngle() + std::atan((newPos.second - srcPos.second) / (newPos.first - srcPos.first));

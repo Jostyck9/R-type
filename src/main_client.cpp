@@ -36,6 +36,7 @@ int main()
     systemManager->addSystem(std::make_shared<DisplaySystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
     for (int i = 0; i < 10; i++) {
         systemManager->updateAll();
+
     }
     return 0;
 }
