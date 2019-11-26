@@ -63,6 +63,7 @@ namespace ecs::components
         const std::chrono::time_point<std::chrono::system_clock> &getStart() const;
         const std::chrono::time_point<std::chrono::system_clock> &getStop() const;
         double getEndTime() const;
+        bool isRunning();
 
         /**
          * @brief Check if the timer is finish

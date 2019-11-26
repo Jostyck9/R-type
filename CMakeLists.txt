@@ -49,13 +49,13 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/
         src/Systems/Display
         src/Systems/SystemManager
-        src/Exceptions
         src/Systems/SystemConstructor
         src/Systems/SystemConstructor/MovementSystem
         src/Systems/SystemConstructor/testSystem
         src/Systems/Factories
         src/Render/
         src/ManagerWrapper
+        src/Exceptions
         src/)
 
 #r-type_client

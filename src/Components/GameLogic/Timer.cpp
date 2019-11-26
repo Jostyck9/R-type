@@ -93,6 +93,11 @@ double ecs::components::Timer::getEndTime() const
     return _endTime;
 }
 
+bool ecs::components::Timer::isRunning()
+{
+    return _isRunning;
+}
+
 const std::type_index ecs::components::Timer::getType() const
 {
     return (std::type_index(typeid(Timer)));
