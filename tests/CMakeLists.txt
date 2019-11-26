@@ -27,6 +27,7 @@ include_directories(
     ${SOURCE_ROOT}/Components/ComponentManager/
     ${SOURCE_ROOT}/Exceptions/
     ${SOURCE_ROOT}/ResourceManager/
+    ${SOURCE_ROOT}/ManagerWrapper/
     ${SOURCE_ROOT}/Systems/
     ${SOURCE_ROOT}/Systems/Display/
     ${SOURCE_ROOT}/Systems/Factories/
@@ -64,8 +65,10 @@ add_executable(unit_test
     ${SOURCE_ROOT}/Systems/Factories/SystemFactory.cpp
     ${SOURCE_ROOT}/Systems/Display/DisplaySystem.cpp
     ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/testSystem.cpp
+    ${SOURCE_ROOT}/ManagerWrapper/ManagerWrapper.cpp
+    ${SOURCE_ROOT}/Render/SFMLRenderManager.cpp
 )
-target_link_libraries(unit_test criterion)
+target_link_libraries(unit_test criterion ${CONAN_LIBS})
 
 add_executable(unit_test_graphic
     ./src/testResourceManager.cpp
@@ -77,5 +80,10 @@ add_executable(unit_test_graphic
     ${SOURCE_ROOT}/ResourceManager/Sound.cpp
     ${SOURCE_ROOT}/ResourceManager/Text.cpp
     ${SOURCE_ROOT}/ResourceManager/Texture.cpp
+    ${SOURCE_ROOT}/Components/ComponentManager/ComponentManager.cpp
+    ${SOURCE_ROOT}/Entities/EntityManager/EntityManager.cpp
+    ${SOURCE_ROOT}/Entities/Entity.cpp
+    ${SOURCE_ROOT}/Render/SFMLRenderManager.cpp
+    ${SOURCE_ROOT}/ManagerWrapper/ManagerWrapper.cpp
 )
 target_link_libraries(unit_test_graphic criterion ${CONAN_LIBS})

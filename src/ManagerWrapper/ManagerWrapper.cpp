@@ -14,6 +14,7 @@ ManagerWrapper::ManagerWrapper(/* args */) : _componentManager(std::make_shared<
                                              _renderManager(std::make_shared<ecs::SFMLRenderManager>())
 {
 }
+
 ManagerWrapper::~ManagerWrapper()
 {
 }
