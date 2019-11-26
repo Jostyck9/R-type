@@ -82,6 +82,7 @@ add_executable(unit_test_graphic
     ${SOURCE_ROOT}/ResourceManager/Sound.cpp
     ${SOURCE_ROOT}/ResourceManager/Text.cpp
     ${SOURCE_ROOT}/ResourceManager/Texture.cpp
+    ${SOURCE_ROOT}/Exceptions/ComponentExceptions.cpp
     ${SOURCE_ROOT}/Components/ComponentManager/ComponentManager.cpp
     ${SOURCE_ROOT}/Entities/EntityManager/EntityManager.cpp
     ${SOURCE_ROOT}/Entities/Entity.cpp
