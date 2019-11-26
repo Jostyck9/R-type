@@ -15,6 +15,7 @@
 #include "ISystemManager.hpp"
 #include "IComponentManager.hpp"
 #include "IEntityManager.hpp"
+#include "ManagerWrapper.hpp"
 
 namespace ecs::system
 {
@@ -29,9 +30,7 @@ public:
      * @param componentsManager
      * @return std::shared_ptr<ecs::system::ISystem> 
      */
-    virtual std::shared_ptr<ecs::system::ISystem> create(
-        std::shared_ptr<ecs::entities::IEntityManager> &entityManager,
-        std::shared_ptr<ecs::components::IComponentManager> &componentsManager,
+    virtual std::shared_ptr<ecs::system::ISystem> create(std::shared_ptr<ManagerWrapper> &managerWrapper,
         std::list<int> &entitiesToDelete) = 0;
     /**
      * @brief Get the Name of the entity

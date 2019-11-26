@@ -7,7 +7,7 @@
 
 #include "Image.hpp"
 
-ecs::components::Image::Image()
+ecs::components::Image::Image() : _id(0)
 {
 }
 
