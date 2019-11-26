@@ -5,38 +5,54 @@
 ** Velocity.cpp
 */
 
+#include <utility>
 #include "Velocity.hpp"
 
 using namespace ecs::components;
 
-Velocity::Velocity(float value) : _value(value)
+Velocity::Velocity(float x, float y) : _velocityX(x), _velocityY(y)
 {
 }
 
 Velocity::Velocity(const Velocity &oldVelocity)
 {
-    this->_value = oldVelocity.getValue();
+    this->_velocityX = oldVelocity.getVelocityX();
+    this->_velocityY = oldVelocity.getVelocityY();
 }
 
 Velocity::~Velocity()
 {
 }
 
-bool Velocity::operator==(Velocity const &other) const
+void Velocity::setVelocityX(const float &x)
 {
-    if (this->getValue() != other.getValue())
-        return (false);
-    return (true);
+    _velocityX = x;
 }
 
-void Velocity::setValue(const float &val)
+float Velocity::getVelocityX() const
 {
-    this->_value = val;
+    return _velocityX;
 }
 
-float Velocity::getValue() const
+void Velocity::setVelocityY(const float &y)
 {
-    return (this->_value);
+    _velocityY = y;
+}
+
+float Velocity::getVelocityY() const
+{
+    return _velocityY;
+}
+
+void Velocity::setVelocity(const float &x, const float &y)
+{
+    _velocityX = x;
+    _velocityY = y;
+}
+
+const std::pair<float, float> Velocity::getVelocity() const
+{
+    return std::make_pair(_velocityX, _velocityY);
 }
 
 const std::type_index Velocity::getType() const

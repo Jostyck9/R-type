@@ -43,7 +43,6 @@ add_executable(unit_test
     ./src/testEntity.cpp
     ./src/testExceptions
     ./src/testEntityConstructor.cpp
-    ./src/testSystemConstructor.cpp
     ${SOURCE_ROOT}/Entities/Entity.cpp
     ${SOURCE_ROOT}/Entities/EntityConstructor/TestEntity/TestEntity.cpp
     ${SOURCE_ROOT}/Entities/EntityManager/EntityManager.cpp
@@ -53,6 +52,8 @@ add_executable(unit_test
     ${SOURCE_ROOT}/Components/Physics/Motion.cpp
     ${SOURCE_ROOT}/Components/Physics/Velocity.cpp
     ${SOURCE_ROOT}/Components/Physics/Position.cpp
+    ${SOURCE_ROOT}/Components/Physics/Collision.cpp
+    ${SOURCE_ROOT}/Components/Physics/Rotation.cpp
     ${SOURCE_ROOT}/Components/Display/Image.cpp
     ${SOURCE_ROOT}/Exceptions/ComponentExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/ECSExceptions.cpp
@@ -72,6 +73,7 @@ target_link_libraries(unit_test criterion ${CONAN_LIBS})
 
 add_executable(unit_test_graphic
     ./src/testResourceManager.cpp
+    ./src/testSystemConstructor.cpp
     ${SOURCE_ROOT}/Exceptions/ECSExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/RTypeExceptions.cpp
     ${SOURCE_ROOT}/ResourceManager/Font.cpp
@@ -80,10 +82,25 @@ add_executable(unit_test_graphic
     ${SOURCE_ROOT}/ResourceManager/Sound.cpp
     ${SOURCE_ROOT}/ResourceManager/Text.cpp
     ${SOURCE_ROOT}/ResourceManager/Texture.cpp
+    ${SOURCE_ROOT}/Exceptions/ComponentExceptions.cpp
     ${SOURCE_ROOT}/Components/ComponentManager/ComponentManager.cpp
     ${SOURCE_ROOT}/Entities/EntityManager/EntityManager.cpp
     ${SOURCE_ROOT}/Entities/Entity.cpp
     ${SOURCE_ROOT}/Render/SFMLRenderManager.cpp
     ${SOURCE_ROOT}/ManagerWrapper/ManagerWrapper.cpp
+    ${SOURCE_ROOT}/Systems/ASystem.cpp
+    ${SOURCE_ROOT}/Systems/SystemManager/SystemManager.cpp
+    ${SOURCE_ROOT}/Systems/Factories/SystemFactory.cpp
+    ${SOURCE_ROOT}/Systems/Display/DisplaySystem.cpp
+    ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/testSystem.cpp
+    ${SOURCE_ROOT}/Exceptions/ServerExceptions.cpp
+    ${SOURCE_ROOT}/Exceptions/SystemExceptions.cpp
+    ${SOURCE_ROOT}/Components/Physics/Acceleration.cpp
+    ${SOURCE_ROOT}/Components/Physics/Motion.cpp
+    ${SOURCE_ROOT}/Components/Physics/Velocity.cpp
+    ${SOURCE_ROOT}/Components/Physics/Position.cpp
+    ${SOURCE_ROOT}/Components/Physics/Collision.cpp
+    ${SOURCE_ROOT}/Components/Physics/Rotation.cpp
+    ${SOURCE_ROOT}/Components/Display/Image.cpp
 )
 target_link_libraries(unit_test_graphic criterion ${CONAN_LIBS})

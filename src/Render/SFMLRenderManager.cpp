@@ -122,8 +122,9 @@ SFMLRenderManager::~SFMLRenderManager()
 
 void SFMLRenderManager::init()
 {
-    if (_window != nullptr)
-        throw;
+    if (_window != nullptr) {
+        throw;// TODO change the throw
+    }
 	_window = new sf::RenderWindow(sf::VideoMode(800, 600), "rtype");
     if (_window == nullptr) {
         throw;

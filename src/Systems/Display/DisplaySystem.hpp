@@ -19,6 +19,10 @@ namespace ecs::system
         DisplaySystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete);
         ~DisplaySystem();
 
+        /**
+         * @brief Update the display
+         * 
+         */
         void update() override;
 
     private:

@@ -5,11 +5,12 @@
 ** Rotation.cpp
 */
 
+#include <cmath>
 #include "Rotation.hpp"
 
 using namespace ecs::components;
 
-Rotation::Rotation()
+Rotation::Rotation(const float rotation) : _radAngle((rotation * M_PI) / 180)
 {
 }
 

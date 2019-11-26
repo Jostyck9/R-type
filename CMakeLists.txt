@@ -43,6 +43,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/
         src/Entities/EntityConstructor/
         src/Entities/EntityConstructor/TestEntity/
+        src/Entities/EntityConstructor/TestEntity2/
         src/Entities/EntityManager/
         src/Entities/Factories/
         src/Systems/
@@ -50,6 +51,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/SystemManager
         src/Exceptions
         src/Systems/SystemConstructor
+        src/Systems/SystemConstructor/MovementSystem
         src/Systems/SystemConstructor/testSystem
         src/Systems/Factories
         src/Render/
@@ -95,11 +97,11 @@ set(SOURCE_CLIENT
         "src/ResourceManager/Text.cpp"
         "src/Entities/Entity.cpp"
         "src/Entities/EntityConstructor/TestEntity/TestEntity.cpp"
+        "src/Entities/EntityConstructor/TestEntity2/TestEntity2.cpp"
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
         "src/Systems/ASystem.cpp"
         "src/Systems/Display/DisplaySystem.cpp"
-        "src/Systems/Display/PhysicsSystem.cpp"
         "src/Systems/SystemManager/SystemManager.cpp"
         "src/Systems/SystemManager/SystemManager.cpp"
         "src/Exceptions/ComponentExceptions.cpp"
@@ -110,6 +112,7 @@ set(SOURCE_CLIENT
         "src/Exceptions/SystemExceptions.cpp"
         "src/Systems/SystemConstructor/testSystem/testSystem.cpp"
         "src/Systems/Factories/SystemFactory.cpp"
+        "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp")
 
