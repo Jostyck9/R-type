@@ -2,8 +2,8 @@
 // Created by romane on 19/11/2019.
 //
 
-#ifndef R_TYPE_RESSOURCEMANAGER_H
-#define R_TYPE_RESSOURCEMANAGER_H
+#ifndef R_TYPE_RESOURCEMANAGER_H
+#define R_TYPE_RESOURCEMANAGER_H
 
 #include <vector>
 #include "Music.hpp"
@@ -128,4 +128,4 @@ namespace ecs {
     };
 }
 
-#endif //R_TYPE_RESSOURCEMANAGER_H
+#endif //R_TYPE_RESOURCEMANAGER_H

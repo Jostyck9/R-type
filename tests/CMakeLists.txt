@@ -24,6 +24,7 @@ include_directories(
     ${SOURCE_ROOT}/Components/
     ${SOURCE_ROOT}/Components/Physics/
     ${SOURCE_ROOT}/Components/Display/
+    ${SOURCE_ROOT}/Components/GameLogic/
     ${SOURCE_ROOT}/Components/ComponentManager/
     ${SOURCE_ROOT}/Exceptions/
     ${SOURCE_ROOT}/ResourceManager/
@@ -43,6 +44,7 @@ add_executable(unit_test
     ./src/testEntity.cpp
     ./src/testExceptions
     ./src/testEntityConstructor.cpp
+    ./src/testTimer.cpp
     ${SOURCE_ROOT}/Entities/Entity.cpp
     ${SOURCE_ROOT}/Entities/EntityConstructor/TestEntity/TestEntity.cpp
     ${SOURCE_ROOT}/Entities/EntityManager/EntityManager.cpp
@@ -55,6 +57,7 @@ add_executable(unit_test
     ${SOURCE_ROOT}/Components/Physics/Collision.cpp
     ${SOURCE_ROOT}/Components/Physics/Rotation.cpp
     ${SOURCE_ROOT}/Components/Display/Image.cpp
+    ${SOURCE_ROOT}/Components/GameLogic/Timer.cpp
     ${SOURCE_ROOT}/Exceptions/ComponentExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/ECSExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/EntityExceptions.cpp
