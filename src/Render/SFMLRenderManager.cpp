@@ -3,7 +3,7 @@
 
 namespace ecs {
 
-    SFMLRenderManager::SFMLRenderManager() : _window(nullptr), _event(), aled(0)
+    SFMLRenderManager::SFMLRenderManager(std::shared_ptr<ResourceManager> &resourceManager) : _event(), aled(0), _resourceManager(resourceManager)
     {
         _keys[sf::Keyboard::A] = ecs::input::A;
         _keys[sf::Keyboard::B] = ecs::input::B;
@@ -120,47 +120,29 @@ SFMLRenderManager::~SFMLRenderManager()
 
 void SFMLRenderManager::init()
 {
-    if (_window != nullptr) {
-        throw;// TODO change the throw
-    }
-	_window = new sf::RenderWindow(sf::VideoMode(800, 600), "rtype");
-    if (_window == nullptr) {
-        throw;
-    }
-    _window->setFramerateLimit(60);
-    _window->clear();
-    _window->display();
+	_window.create(sf::VideoMode(800, 600), "rtype");
+	// _window = new sf::RenderWindow(sf::VideoMode(800, 600), "rtype");
+    _window.setFramerateLimit(60);
+    _window.clear();
+    _window.display();
 }
 
 void SFMLRenderManager::terminate()
 {
-    if (_window != nullptr) {
-        _window->close();
-        _window = nullptr;
-    }
+    _window.close();
     //stop audio ?
 }
 
 
-void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::IComponent> &sprite)
+void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &sprite)
 {
-    std::cout << "we have a sprite" << std::endl;
-    // comp->getName();
-    //     _sprite.setTexture(texture);
-    //     _window->draw(_sprite);
-        _window->display();
+    std::cout << sprite->getName() << std::endl;
+    // texture = _resourceManager->getTexture(sprite->getName())->
+    // _sprite.setTexture(texture);
+    //     _window.draw(_sprite);
+        _window.display();
      // _sprite.setPosition(entity.getPosX(), entity.getPosY());
 }
-
-// void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &sprite)
-// {
-//     std::cout << "we have a sprite" << std::endl;
-//     // comp->getName();
-//     //     _sprite.setTexture(texture);
-//     //     _window->draw(_sprite);
-//         _window->display();
-//      // _sprite.setPosition(entity.getPosX(), entity.getPosY());
-// }
 
 void SFMLRenderManager::audioUpdate() 
 {
@@ -174,10 +156,10 @@ void SFMLRenderManager::textUpdate()
 
 bool SFMLRenderManager::eventUpdate() 
 {
-    while (_window->pollEvent(_event))
+    while (_window.pollEvent(_event))
     {
         if (_event.type == sf::Event::Closed) {
-            _window->close();
+            _window.close();
             return false;
         }
     }
@@ -186,7 +168,7 @@ bool SFMLRenderManager::eventUpdate()
 
 void SFMLRenderManager::clear() 
 {
-    _window->clear();
+    _window.clear();
 }
 
 }

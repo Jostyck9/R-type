@@ -22,8 +22,9 @@ private:
 
     std::shared_ptr<components::IComponentManager> _componentManager;
     std::shared_ptr<entities::IEntityManager> _entityManager;
-    std::shared_ptr<IRenderManager> _renderManager;
     std::shared_ptr<ResourceManager> _resourceManager;
+    std::shared_ptr<IRenderManager> _renderManager;
+
 
 public:
     ManagerWrapper(/* args */);

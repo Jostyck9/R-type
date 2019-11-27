@@ -26,8 +26,7 @@ namespace ecs {
 		virtual ~IRenderManager() = default;
         virtual void init() = 0;
         virtual void terminate() = 0;
-        virtual void graphicsUpdate(std::shared_ptr<components::IComponent> &sprite) = 0;
-        // virtual void graphicsUpdate(std::shared_ptr<components::Sprite> &sprite) = 0;
+        virtual void graphicsUpdate(std::shared_ptr<components::Sprite> &sprite) = 0;
         virtual void audioUpdate() = 0;
         virtual void textUpdate() = 0;
         virtual bool eventUpdate() = 0;
