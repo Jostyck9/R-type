@@ -8,6 +8,8 @@
 #include "ISystemManager.hpp"
 #include "IRenderManager.hpp"
 #include "ManagerWrapper.hpp"
+#include "SystemManager.hpp"
+#include "RtypeResources.hpp"
 
 #ifndef R_TYPE_RTYPE_HPP
 #define R_TYPE_RTYPE_HPP
@@ -30,6 +32,7 @@ private:
     std::shared_ptr<IEntityFactory> _entityFactory;
     std::shared_ptr<IRenderManager> _renderManager;
     std::shared_ptr<ManagerWrapper> _managerWrapper;
+    std::shared_ptr<RtypeResources> _rtypeResources;
 };
 
 #endif //R_TYPE_RTYPE_HPP

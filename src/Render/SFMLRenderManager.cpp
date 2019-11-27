@@ -118,8 +118,6 @@ SFMLRenderManager::~SFMLRenderManager()
 {
 }
 
-// static SFMLRenderManager::SFMLRenderManager &getInstance();
-
 void SFMLRenderManager::init()
 {
     if (_window != nullptr) {
@@ -132,11 +130,6 @@ void SFMLRenderManager::init()
     _window->setFramerateLimit(60);
     _window->clear();
     _window->display();
-    if (!texture.loadFromFile("../resources/background.png", sf::IntRect(800, 600, 200, 200)))
-    {
-        std::cout << "wrong file" << std::endl;
-        throw;
-    }
 }
 
 void SFMLRenderManager::terminate()
@@ -148,19 +141,23 @@ void SFMLRenderManager::terminate()
     //stop audio ?
 }
 
-void SFMLRenderManager::graphicsUpdate()
-{    
-        _sprite.setTexture(texture);
-        _window->draw(_sprite);
+
+void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::IComponent> &sprite)
+{
+    std::cout << "we have a sprite" << std::endl;
+    // comp->getName();
+    //     _sprite.setTexture(texture);
+    //     _window->draw(_sprite);
         _window->display();
      // _sprite.setPosition(entity.getPosX(), entity.getPosY());
 }
 
-// void SFMLRenderManager::graphicsUpdate(std::shared_ptr<IComponent> &comp)
-// {    
-//     comp->getName();
-//         _sprite.setTexture(texture);
-//         _window->draw(_sprite);
+// void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &sprite)
+// {
+//     std::cout << "we have a sprite" << std::endl;
+//     // comp->getName();
+//     //     _sprite.setTexture(texture);
+//     //     _window->draw(_sprite);
 //         _window->display();
 //      // _sprite.setPosition(entity.getPosX(), entity.getPosY());
 // }

@@ -25,7 +25,7 @@ std::shared_ptr<ecs::entities::Entity> TestPlayerEntity::create(
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(1, 0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(true, 0, 0, 1, 1, "Test"), toCreate);
-    // componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("../Sprite/test00.jpg", 100, 100), toCreate);
+    componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("../Sprite/test00.jpg", 100, 100), toCreate);
     return toCreate;
 }
 

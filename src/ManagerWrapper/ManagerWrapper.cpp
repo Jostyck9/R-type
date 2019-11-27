@@ -7,11 +7,13 @@
 
 #include "ManagerWrapper.hpp"
 #include "SFMLRenderManager.hpp"
+
 namespace ecs
 {
 ManagerWrapper::ManagerWrapper(/* args */) : _componentManager(std::make_shared<ecs::components::ComponentManager>()),
                                              _entityManager(std::make_shared<ecs::entities::EntityManager>(_componentManager)),
-                                             _renderManager(std::make_shared<ecs::SFMLRenderManager>())
+                                             _renderManager(std::make_shared<ecs::SFMLRenderManager>()),
+                                             _resourceManager(std::make_shared<ecs::ResourceManager>())
 {
 }
 
@@ -31,9 +33,10 @@ std::shared_ptr<entities::IEntityManager> &ManagerWrapper::getEntityManager()
 {
     return this->_entityManager;
 }
-// std::shared_ptr<ResourceManager> &ManagerWrapper::getResourceManager()
-// {
-//     return this->_resourceManager;
-// }
+
+std::shared_ptr<ResourceManager> &ManagerWrapper::getResourceManager()
+{
+    return this->_resourceManager;
+}
 
 } // namespace ecs

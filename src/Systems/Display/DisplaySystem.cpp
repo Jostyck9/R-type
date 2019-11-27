@@ -28,8 +28,8 @@ namespace ecs::system
     void DisplaySystem::update()
     {
         for (auto &it :  _managerWrapper->getEntityManager()->getAllEntities()) {
-            // auto spriteComp = _managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Sprite)));
-             _managerWrapper->getRenderManager()->graphicsUpdate();
+        //     auto spriteComp = _managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Sprite)));
+        //    _managerWrapper->getRenderManager()->graphicsUpdate(spriteComp);
         }
     }
 }

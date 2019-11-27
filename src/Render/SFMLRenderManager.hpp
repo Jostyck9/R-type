@@ -17,27 +17,20 @@ namespace ecs {
         SFMLRenderManager();
         ~SFMLRenderManager();
         /**
-         * @brief Get the instance of the RenderManager classe
-         *
-         * @return SFMLRenderManager
-         */
-        // static SFMLRenderManager &getInstance();
-
-        // SFMLRenderManager(const SFMLRenderManager &) = delete;
-        // SFMLRenderManager operator=(const SFMLRenderManager &) = delete;
-        
-        /**
          * @brief initialize sfml window etc
          *
          */
         void init() override;
         void terminate() override;
+
         /**
-         * @brief update a graphical objet
+         * @brief display a graphical component
          *
          */
-        void graphicsUpdate() override;
-        // void graphicsUpdate(std::shared_ptr<IComponent> &comp) override;
+        // void graphicsUpdate(std::shared_ptr<components::Sprite> &sprite) override;
+        void graphicsUpdate(std::shared_ptr<components::IComponent> &sprite) override;
+
+
         /**
          * @brief update audio
          *
