@@ -32,7 +32,7 @@ namespace ecs::system
          * @param componentManager 
          * @param entitiesToDelete List of entities to delete after the update
          */
-        ASystem(std::shared_ptr<entities::IEntityManager> &entityManager, std::shared_ptr<ecs::components::IComponentManager> &componentManager, std::list<int> &entitiesToDelete);
+        ASystem(std::shared_ptr<ecs::entities::IEntityManager> &entityManager, std::shared_ptr<ecs::components::IComponentManager> &componentManager, std::list<int> &entitiesToDelete);
         ~ASystem();
     };
 }

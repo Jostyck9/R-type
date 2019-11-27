@@ -6,7 +6,7 @@ project(R-type VERSION 0.1.0)
 
 if (CMAKE_VERSION VERSION_LESS "3.1")
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-        set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
+        set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++17")
     endif ()
 else ()
     if(MSVC)
@@ -28,6 +28,8 @@ elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
     # Update if necessary
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W -Wall")
 endif()
+
+
 
 # Compilation
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
@@ -51,6 +53,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Exceptions
         src/Network/Session
         src/Systems/SystemConstructor
+        src/Systems/SystemConstructor/MovementSystem
         src/Systems/SystemConstructor/testSystem
         src/Systems/Factories)
 
@@ -107,6 +110,7 @@ set(SOURCE_CLIENT
         "src/Exceptions/SystemExceptions.cpp"
         "src/Systems/SystemConstructor/testSystem/testSystem.cpp"
         "src/Systems/Factories/SystemFactory.cpp"
+        "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
         )
 
 add_executable(r-type_client ${SOURCE_CLIENT})
@@ -114,10 +118,13 @@ target_link_libraries(r-type_client ${CONAN_LIBS})
 
 #r-type_server
 set(SOURCE_SERVER
-        src/main_server.cpp
-        src/Network/Session/Session.cpp)
 
+        src/main_server.cpp
+        src/Network/Session/Session.cpp
+        src/Room/RoomManager.cpp src/Room/Room.cpp
+        )
 add_executable(r-type_server ${SOURCE_SERVER})
+
 target_link_libraries(r-type_server ${CONAN_LIBS})
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})

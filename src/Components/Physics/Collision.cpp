@@ -9,7 +9,7 @@
 
 using namespace ecs::components;
 
-Collision::Collision()
+Collision::Collision(float x, float y, float width, float height) : _x(x), _y(y), _height(height), _width(width)
 {
 }
 
@@ -32,12 +32,12 @@ bool Collision::operator==(Collision const &other) const
     return (true);
 }
 
-void Collision::setX(const int &val)
+void Collision::setX(const float &val)
 {
     this->_x = val;
 }
 
-void Collision::setY(const int &val)
+void Collision::setY(const float &val)
 {
     this->_y = val;
 }
@@ -52,12 +52,12 @@ void Collision::setWidth(const float &val)
     this->_width = val;
 }
 
-int Collision::getX() const
+float Collision::getX() const
 {
     return (this->_x);
 }
 
-int Collision::getY() const
+float Collision::getY() const
 {
     return (this->_y);
 }

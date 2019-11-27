@@ -10,6 +10,7 @@
 #include "ComponentManager.hpp"
 #include "SystemManager.hpp"
 #include "Display/DisplaySystem.hpp"
+#include "MovementSystem.hpp"
 #include "Physics/Position.hpp"
 #include "Physics/Velocity.hpp"
 #include "TestEntity.hpp"
@@ -27,9 +28,8 @@ int main()
 
     factory->addEntityConstructor(std::make_shared<TestEntity>());
     factory->createEntity("Test");
-    factory->createEntity("Test");
-    factory->createEntity("Test");
 
+    systemManager->addSystem(std::make_shared<MovementSystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
     systemManager->addSystem(std::make_shared<DisplaySystem>(entityManager, componentManager, systemManager->getEntitiesToDelete()));
     for (int i = 0; i < 10; i++) {
         systemManager->updateAll();

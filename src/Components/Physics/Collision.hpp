@@ -19,12 +19,12 @@ namespace ecs::components
     class Collision : public IPhysics
     {
     private:
-        int _x;
-        int _y;
+        float _x;
+        float _y;
         float _height;
         float _width;
     public:
-        Collision();
+        Collision(float x = 0, float y = 0, float width = 0, float height = 0);
         Collision(const Collision &oldCollision);
         ~Collision();
         bool operator==(Collision const &) const;
@@ -33,12 +33,12 @@ namespace ecs::components
          * @brief Set the X object
          * 
          */
-        void setX(const int &);
+        void setX(const float &);
         /**
          * @brief Set the Y object
          * 
          */
-        void setY(const int &);
+        void setY(const float &);
         /**
          * @brief Set the Height object
          * 
@@ -53,15 +53,15 @@ namespace ecs::components
         /**
          * @brief Get the X object
          * 
-         * @return int 
+         * @return float 
          */
-        int getX() const;
+        float getX() const;
         /**
          * @brief Get the Y object
          * 
-         * @return int 
+         * @return float 
          */
-        int getY() const;
+        float getY() const;
         /**
          * @brief Get the Height object
          * 

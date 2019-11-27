@@ -50,7 +50,7 @@ namespace ecs::components
         _x = x;
     }
 
-    void Position::serY(float y)
+    void Position::setY(float y)
     {
         _y = y;
     }

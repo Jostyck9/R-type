@@ -5,6 +5,7 @@
 ** ComponentManager.hpp
 */
 
+#include "ComponentExceptions.hpp"
 #include "ComponentManager.hpp"
 
 namespace ecs::components
@@ -30,16 +31,16 @@ std::list<std::shared_ptr<IComponent>> ComponentManager::extractComponentsFrom(s
 
 std::shared_ptr<IComponent> ComponentManager::extractComponentsOfType(std::multimap<size_t, std::shared_ptr<IComponent>> &map, size_t idEntity, const std::type_index type)
 {
-    std::shared_ptr<IComponent> res;
-
     std::pair<MMAPIterator, MMAPIterator> result = map.equal_range(idEntity);
-    for (MMAPIterator it = result.first; it != result.second; it++)
+    for (MMAPIterator it = result.first; it != result.second; it++) {
         if (type == it->second->getType()) {
-            res = (std::shared_ptr<IComponent>(it->second));
-            return res;
+            return it->second;
         }
-    // TODO Throw an execption and do not return a null ptr
-    return nullptr;
+    }
+    std::string errorMsg = "No ";
+    errorMsg += type.name();
+    errorMsg += " component found for entity " + std::to_string(idEntity);
+    throw ComponentExceptions(errorMsg, "ExtractComponentsOfType");
 }
 
 std::list<std::shared_ptr<IComponent>> ComponentManager::getPhysicComponents(size_t idEntity)

@@ -19,25 +19,53 @@ namespace ecs::components
     class Velocity : public Motion
     {
     private:
-        float _value;
+        float _velocityX;
+        float _velocityY;
     public:
-        Velocity(float value = 0);
+        Velocity(float x = 0,  float y = 0);
         Velocity(const Velocity &oldVelocity);
         ~Velocity();
         bool operator==(Velocity const &) const;
 
         /**
-         * @brief Set the Value object
+         * @brief Set the Velocity X object
          * 
          */
-        void setValue(const float &);
+        void setVelocityX(const float &);
         
         /**
-         * @brief Get the Value object
+         * @brief Get the Velocity X object
          * 
          * @return float 
          */
-        float getValue() const;
+        float getVelocityX() const;
+
+        /**
+         * @brief Set the Velocity Y object
+         * 
+         */
+        void setVelocityY(const float &);
+        
+        /**
+         * @brief Get the Velocity Y object
+         * 
+         * @return float 
+         */
+        float getVelocityY() const;
+
+        /**
+         * @brief Set the Velocity X and Y object
+         * 
+         */
+        void setVelocity(const float &x, const float &y);
+
+        /**
+         * @brief Get the Velocity object
+         * 
+         * @return const std::pair<float, float> 
+         */
+        const std::pair<float, float> getVelocity() const;
+
         /**
          * @brief Get the Type object
          * 
