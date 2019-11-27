@@ -7,7 +7,7 @@ RoomManager::~RoomManager()
 
 RoomManager::RoomManager(size_t nbRoom, size_t nbPlayer) : _nbRoom(nbRoom), _pool(_nbRoom)
 {
-    for (int i = 0; i < _nbRoom; ++i) {
+    for (size_t i = 0; i < _nbRoom; ++i) {
         _rooms.emplace_back(std::make_shared<Room>(i+1, nbPlayer));
     }
 
