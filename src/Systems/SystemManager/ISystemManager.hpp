@@ -12,7 +12,7 @@
 
 namespace ecs::system
 {
-    class h
+    class ISystemManager
     {
     public:
         /**
