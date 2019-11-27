@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
 
         boost::asio::io_context io_context;
 
-        server s(io_context, std::atoi(argv[1]));
+        server s(io_context, (short)std::atoi(argv[1]));
 
         io_context.run();
     }
@@ -86,10 +86,9 @@ int main(int argc, char *argv[])
         std::cerr << "Exception: " << e.what() << "\n";
     }
 
-<<<<<<< HEAD
     return 0;
 }
-=======
+/**
 #include "Room/RoomManager.hpp"
 
 int main(int, char**) {
@@ -107,4 +106,5 @@ int main(int, char**) {
     rooms.stop();
     return (0);
 }
->>>>>>> RoomManager
+
+*/
