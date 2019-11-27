@@ -60,40 +60,50 @@ Test(Text, text_is_ok)
 
 Test(ResourceManager, music_manager_is_ok)
 {
-    ecs::ResourceManager::getInstance().loadMusic("music", "resources/music.ogg");
-    std::shared_ptr<ecs::Music> music = ecs::ResourceManager::getInstance().getMusic("music");
+    ecs::ResourceManager resourceManager;
+
+    resourceManager.loadMusic("music", "resources/music.ogg");
+    std::shared_ptr<ecs::Music> music = resourceManager.getMusic("music");
     
     cr_assert_eq(music->getName(), "music");
 }
 
 Test(ResourceManager, sound_manager_is_ok)
 {
-    ecs::ResourceManager::getInstance().loadSound("sound", "resources/laser.wav");
-    std::shared_ptr<ecs::Sound> sound = ecs::ResourceManager::getInstance().getSound("sound");
+    ecs::ResourceManager resourceManager;
+
+    resourceManager.loadSound("sound", "resources/laser.wav");
+    std::shared_ptr<ecs::Sound> sound = resourceManager.getSound("sound");
     
     cr_assert_eq(sound->getName(), "sound");
 }
 
 Test(ResourceManager, text_manager_is_ok)
 {
-    ecs::ResourceManager::getInstance().loadText("text", "text");
-    std::shared_ptr<ecs::Text> text = ecs::ResourceManager::getInstance().getText("text");
+    ecs::ResourceManager resourceManager;
+
+    resourceManager.loadText("text", "text");
+    std::shared_ptr<ecs::Text> text = resourceManager.getText("text");
     
     cr_assert_eq(text->getName(), "text");
 }
 
 Test(ResourceManager, texture_manager_is_ok)
 {
-    ecs::ResourceManager::getInstance().loadTexture("texture", "resources/texture.jpg");
-    std::shared_ptr<ecs::Texture> texture = ecs::ResourceManager::getInstance().getTexture("texture");
+    ecs::ResourceManager resourceManager;
+
+    resourceManager.loadTexture("texture", "resources/texture.jpg");
+    std::shared_ptr<ecs::Texture> texture = resourceManager.getTexture("texture");
     
     cr_assert_eq(texture->getName(), "texture");
 }
 
 Test(ResourceManager, font_manager_is_ok)
 {
-    ecs::ResourceManager::getInstance().loadFont("font", "resources/Arial.ttf");
-    std::shared_ptr<ecs::Font> font = ecs::ResourceManager::getInstance().getFont("font");
+    ecs::ResourceManager resourceManager;
+
+    resourceManager.loadFont("font", "resources/Arial.ttf");
+    std::shared_ptr<ecs::Font> font = resourceManager.getFont("font");
     
     cr_assert_eq(font->getName(), "font");
 }

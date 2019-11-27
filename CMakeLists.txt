@@ -50,13 +50,14 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/
         src/Systems/Display
         src/Systems/SystemManager
-        src/Exceptions
         src/Systems/SystemConstructor
         src/Systems/SystemConstructor/MovementSystem
         src/Systems/SystemConstructor/testSystem
         src/Systems/Factories
         src/Render/
-        src/ManagerWrapper)
+        src/ManagerWrapper
+        src/Exceptions
+        src/)
 
 #r-type_client
 set(SOURCE_CLIENT
@@ -75,6 +76,7 @@ set(SOURCE_CLIENT
         "src/Components/GameLogic/Level.cpp"
         "src/Components/GameLogic/Power.cpp"
         "src/Components/GameLogic/Scale.cpp"
+        "src/Components/GameLogic/Timer.cpp"
         "src/Components/IO/Controller.cpp"
         "src/Components/IO/DummyInput.cpp"
         "src/Components/IO/GameController.cpp"
@@ -96,6 +98,7 @@ set(SOURCE_CLIENT
         "src/ResourceManager/Texture.cpp"
         "src/ResourceManager/Font.cpp"
         "src/ResourceManager/Text.cpp"
+        "src/ResourceManager/RtypeResources.cpp"
         "src/Entities/Entity.cpp"
         "src/Entities/EntityConstructor/TestEntity/TestEntity.cpp"
         "src/Entities/EntityConstructor/TestEntity2/TestEntity2.cpp"
@@ -116,7 +119,8 @@ set(SOURCE_CLIENT
         "src/Systems/Factories/SystemFactory.cpp"
         "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
         "src/Render/SFMLRenderManager.cpp"
-        "src/ManagerWrapper/ManagerWrapper.cpp")
+        "src/ManagerWrapper/ManagerWrapper.cpp"
+        "src/Rtype.cpp")
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})
