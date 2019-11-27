@@ -50,7 +50,12 @@ namespace ecs {
          *
          */
         void clear();
-      
+        /**
+         * @brief get all the key inputs
+         *
+         * @return std::vector<ecs::input::Key>
+         */
+        std::vector<ecs::input::Key> getInputs();
     private:
         sf::RenderWindow _window; /*!< Internal window used by SFML functions */
         sf::Music _music; /*!<Music of the program */
