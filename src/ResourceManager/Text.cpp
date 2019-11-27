@@ -26,4 +26,9 @@ void Text::setText(const std::string &text)
     _text.setString(text);
 }
 
+sf::Text &Text::getSFMLText()
+{
+    return _text;
+}
+
 }
