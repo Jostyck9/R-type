@@ -2,24 +2,38 @@
 
 RoomManager::~RoomManager()
 {
+    _pool.join();
 }
 
-RoomManager::RoomManager(const size_t &nbRoom) : _nbRoom(nbRoom), _lastId(_nbRoom-1)
+RoomManager::RoomManager(size_t nbRoom, size_t nbPlayer) : _nbRoom(nbRoom), _pool(_nbRoom)
 {
     for (int i = 0; i < _nbRoom; ++i) {
-        _rooms.emplace_back(Room(i));
+        _rooms.emplace_back(std::make_shared<Room>(i+1, nbPlayer));
     }
+
 }
 
-void RoomManager::closeRoom(const size_t &roomId)
+void RoomManager::addTask(const std::function<void()> &f)
 {
-    for (auto &r : _rooms) {
-        if (r.getId() == roomId)
-            r.setIsOpen(false);
-    }
+    boost::asio::post(_pool, f);
 }
 
-void RoomManager::openNewRoom()
+std::vector<std::shared_ptr<Room>> &RoomManager::getRooms()
 {
-    _rooms.emplace_back(Room(++_lastId));
+    return _rooms;
 }
+
+size_t RoomManager::getNbRoom() const
+{
+    return _nbRoom;
+}
+
+void RoomManager::stop()
+{
+    for (auto &r : getRooms()) {
+        r->stop();
+    }
+
+    _pool.stop();
+}
+
