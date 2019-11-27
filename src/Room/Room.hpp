@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include <mutex>
+#include <condition_variable>
 
 struct PlayerInfo {
     std::string _pseudo;
