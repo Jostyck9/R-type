@@ -12,7 +12,6 @@ Rtype::Rtype()
     _managerWrapper = std::make_shared<ecs::ManagerWrapper>();
     _systemManager = std::make_shared<SystemManager>(_managerWrapper);
     _entityFactory = std::make_shared<EntityFactory>(_managerWrapper->getEntityManager(), _managerWrapper->getComponentManager());
-    _renderManager = std::make_shared<SFMLRenderManager>();
 }
 
 Rtype::~Rtype()
@@ -24,13 +23,14 @@ void Rtype::start()
 {
     bool isPlaying = true;
 
-    _renderManager->init();
+    _managerWrapper->getRenderManager()->init();
     while (isPlaying) {
-        isPlaying = _renderManager->eventUpdate();
+        isPlaying = _managerWrapper->getRenderManager()->eventUpdate();
+        _managerWrapper->getRenderManager()->graphicsUpdate();
     }
 }
 
 void Rtype::stop()
 {
-    _renderManager->terminate();
+    _managerWrapper->getRenderManager()->terminate();
 }

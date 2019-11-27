@@ -132,7 +132,7 @@ void SFMLRenderManager::init()
     _window->setFramerateLimit(60);
     _window->clear();
     _window->display();
-    if (!texture.loadFromFile("../sprite/r-typesheet42.gif", sf::IntRect(300, 300, 200, 200)))
+    if (!texture.loadFromFile("../resources/background.png", sf::IntRect(800, 600, 200, 200)))
     {
         std::cout << "wrong file" << std::endl;
         throw;
@@ -150,9 +150,7 @@ void SFMLRenderManager::terminate()
 
 void SFMLRenderManager::graphicsUpdate()
 {    
-    std::cout << "avant le drame" << std::endl;
         _sprite.setTexture(texture);
-        std::cout << "apres le drame " << std::endl;
         _window->draw(_sprite);
         _window->display();
      // _sprite.setPosition(entity.getPosX(), entity.getPosY());
@@ -191,7 +189,7 @@ bool SFMLRenderManager::eventUpdate()
 
 void SFMLRenderManager::clear() 
 {
-            _window->clear();
+    _window->clear();
 }
 
 }
