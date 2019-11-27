@@ -27,9 +27,15 @@ private:
      * 
      * @param toFill 
      * @param entity 
-     * @param componentsManager 
      */
     void addPhysicsComponent(ecs::network::Entity &toFill, const std::shared_ptr<Entity> &entity);
+
+    /**
+     * @brief Add the serialazable components inside the entityPacket
+     * 
+     * @param toFill 
+     * @param entity 
+     */
     void addGraphicalComponent(ecs::network::Entity &toFill, const std::shared_ptr<Entity> &entity);
 
 public:
@@ -37,11 +43,9 @@ public:
     ~Serializer();
 
     /**
-     * @brief Returns the display data serialized for the packet
+     * @brief Serialize all the entities for the network transfert
      * 
-     * @param entityManager 
-     * @param componentManager 
-     * @return std::list<ecs::network::Entity> 
+     * @return std::list<ecs::network::Entity>
      */
     std::list<ecs::network::Entity> serialize();
 };
