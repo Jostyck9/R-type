@@ -121,7 +121,6 @@ SFMLRenderManager::~SFMLRenderManager()
 void SFMLRenderManager::init()
 {
 	_window.create(sf::VideoMode(800, 600), "rtype");
-	// _window = new sf::RenderWindow(sf::VideoMode(800, 600), "rtype");
     _window.setFramerateLimit(60);
     _window.clear();
     _window.display();
@@ -137,7 +136,7 @@ std::vector<ecs::input::Key> SFMLRenderManager::getInputs()
 {
     std::vector<input::Key> keys;
 
-    while (_window->pollEvent(_event)) {
+    while (_window.pollEvent(_event)) {
         if (_event.type == sf::Event::KeyPressed) {
             if (_keys.find(_event.key.code) != _keys.end()) {
                 keys.push_back(_keys[_event.key.code]);
@@ -150,12 +149,11 @@ std::vector<ecs::input::Key> SFMLRenderManager::getInputs()
 
 void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &sprite)
 {
-    std::cout << sprite->getName() << std::endl;
-    // texture = _resourceManager->getTexture(sprite->getName())->
+    // texture = _resourceManager->getTexture(sprite->getName())->getSFMLTexture();
     // _sprite.setTexture(texture);
-    //     _window.draw(_sprite);
-        _window.display();
-     // _sprite.setPosition(entity.getPosX(), entity.getPosY());
+    // _window.draw(_sprite);
+    _window.display();
+    // _sprite.setPosition(entity.getPosX(), entity.getPosY());
 }
 
 void SFMLRenderManager::audioUpdate() 

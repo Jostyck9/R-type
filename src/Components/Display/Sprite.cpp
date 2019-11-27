@@ -7,11 +7,7 @@
 
 #include "Sprite.hpp"
 
-ecs::components::Sprite::Sprite()
-{
-}
-
-ecs::components::Sprite::Sprite(const std::string &name, const int &height, const int &width) : _name(name), _rect(height, width)
+ecs::components::Sprite::Sprite(const std::string &name, Rect &rect) : _rect(rect)
 {
 }
 
@@ -47,17 +43,17 @@ std::string ecs::components::Sprite::getName() const
     return this->_name;
 }
 
-std::pair<int, int> ecs::components::Sprite::getRect() const
+ecs::Rect ecs::components::Sprite::getRect() const
 {
-    return this->_rect;
+    return _rect;
 }
 
 bool ecs::components::Sprite::operator==(Sprite &other)
 {
-    if (other.getId() == this->_id)
-        return true;
-    if (other.getName() == this->_name)
-        return true;
+    if (other.getId() != this->_id)
+        return false;
+    if (other.getName() != this->_name)
+        return false;
     if (other.getRect() == this->_rect)
         return true;
     return false;

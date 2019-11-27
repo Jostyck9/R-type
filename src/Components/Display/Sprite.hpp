@@ -10,7 +10,7 @@
 
 #include <string>
 #include <typeindex>
-#include <tuple>
+#include "Rect.hpp"
 #include "IDisplay.hpp"
 
 namespace ecs::components
@@ -23,8 +23,7 @@ namespace ecs::components
 
     {
     public:
-        Sprite();
-        Sprite(const std::string &name, const int &height, const int &width);
+        Sprite(const std::string &name, Rect &rect);
         Sprite(const Sprite &oldSprite);
         ~Sprite();
          /**
@@ -46,12 +45,12 @@ namespace ecs::components
         const std::type_index getType() const;
         bool operator==(Sprite &other);
         std::string getName() const;
-        std::pair<int, int> getRect() const;
+        ecs::Rect getRect() const;
         
     private:
        unsigned int _id;
        std::string _name;
-       std::pair<int, int> _rect;
+       ecs::Rect _rect;
     };
 }
 
