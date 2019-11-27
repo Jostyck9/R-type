@@ -2,6 +2,7 @@
 #define R_TYPE_SFMLRENDERMANAGER_H
 
 #include "IRenderManager.hpp"
+#include "ResourceManager.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
@@ -14,7 +15,7 @@ namespace ecs {
      */
     class SFMLRenderManager : public IRenderManager {
     public:
-        SFMLRenderManager();
+        SFMLRenderManager(std::shared_ptr<ResourceManager> &resourceManager);
         ~SFMLRenderManager();
         /**
          * @brief initialize sfml window etc
@@ -58,6 +59,7 @@ namespace ecs {
         sf::Sprite _sprite; /*!<Sprite of the program */
         std::map<int, ecs::input::Key> _keys; /*!<Key mapping*/
         sf::Texture texture;
+        std::shared_ptr<ResourceManager> _resourceManager;
     };
 }
 
