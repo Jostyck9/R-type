@@ -8,35 +8,41 @@
 #ifndef PACKETMANAGER_HPP
 #define PACKETMANAGER_HPP
 
-#include <iostream>
+#include <list>
+
+namespace ecs::network
+{
+enum ComponentType : char
+{
+    POSITION,
+    ROTATION
+};
+
+struct Component
+{
+    ComponentType type;
+    union {
+        struct
+        {
+            int x;
+            int y;
+        } _position;
+
+        struct
+        {
+            int radAngle;
+        } _rotation;
+    };
+};
+
+struct Entity
+{
+    size_t id;
+    std::list<Component> components;
+};
 
 class PacketManager
 {
-public:
-    enum componentType : char
-    {
-        POSITION,
-        ROTATION
-    };
-
-private:
-    struct Component
-    {
-        componentType type;
-        union {
-            struct
-            {
-                int x;
-                int y;
-            } _position;
-
-            struct
-            {
-                int radAngle;
-            } _rotation;
-        };
-    };
-
 public:
     enum
     {
@@ -45,12 +51,11 @@ public:
     };
 
 private:
-    struct Entity
+    struct EntityPacket
     {
         size_t id;
-        PacketManager::Component components[MAX_COMPONENTS];
-
-    } test;
+        Component components[MAX_COMPONENTS];
+    };
 
 public:
     enum
@@ -62,7 +67,7 @@ private:
     struct Data
     {
         char nbrEntities;
-        Entity entities[MAX_ENTITIES];
+        EntityPacket entities[MAX_ENTITIES];
     };
 
 public:
@@ -77,5 +82,7 @@ public:
     PacketManager();
     ~PacketManager();
 };
+
+} // namespace ecs::network
 
 #endif

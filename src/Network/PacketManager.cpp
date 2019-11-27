@@ -7,12 +7,13 @@
 
 #include "PacketManager.hpp"
 
+namespace ecs::network
+{
 PacketManager::PacketManager()
 {
-
 }
 
 PacketManager::~PacketManager()
 {
-    
 }
+} // namespace ecs::network

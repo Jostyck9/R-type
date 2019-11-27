@@ -46,6 +46,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/EntityConstructor/TestEntity2/
         src/Entities/EntityManager/
         src/Entities/Factories/
+        src/Entities/Serializer/
         src/Systems/
         src/Systems/Display
         src/Systems/SystemManager
@@ -101,6 +102,7 @@ set(SOURCE_CLIENT
         "src/Entities/EntityConstructor/TestEntity2/TestEntity2.cpp"
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
+        "src/Entities/Serializer/Serializer.cpp"
         "src/Systems/ASystem.cpp"
         "src/Systems/Display/DisplaySystem.cpp"
         "src/Systems/SystemManager/SystemManager.cpp"
