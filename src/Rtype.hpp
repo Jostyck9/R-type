@@ -32,7 +32,6 @@ private:
     std::shared_ptr<IEntityFactory> _entityFactory;
     std::shared_ptr<IRenderManager> _renderManager;
     std::shared_ptr<ManagerWrapper> _managerWrapper;
-    std::shared_ptr<RtypeResources> _rtypeResources;
 };
 
 #endif //R_TYPE_RTYPE_HPP

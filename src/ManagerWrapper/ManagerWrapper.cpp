@@ -12,8 +12,8 @@ namespace ecs
 {
 ManagerWrapper::ManagerWrapper(/* args */) : _componentManager(std::make_shared<ecs::components::ComponentManager>()),
                                              _entityManager(std::make_shared<ecs::entities::EntityManager>(_componentManager)),
-                                             _resourceManager(std::make_shared<ecs::ResourceManager>()),
-                                             _renderManager(std::make_shared<ecs::SFMLRenderManager>(_resourceManager))
+                                             _rtypeResourceManager(std::make_shared<ecs::RtypeResources>()),
+                                             _renderManager(std::make_shared<ecs::SFMLRenderManager>(_rtypeResourceManager))
 {
 }
 
@@ -34,9 +34,9 @@ std::shared_ptr<entities::IEntityManager> &ManagerWrapper::getEntityManager()
     return this->_entityManager;
 }
 
-std::shared_ptr<ResourceManager> &ManagerWrapper::getResourceManager()
+std::shared_ptr<RtypeResources> &ManagerWrapper::getRtypeResourceManager()
 {
-    return this->_resourceManager;
+    return this->_rtypeResourceManager;
 }
 
 } // namespace ecs

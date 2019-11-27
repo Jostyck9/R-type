@@ -3,7 +3,7 @@
 
 namespace ecs {
 
-    SFMLRenderManager::SFMLRenderManager(std::shared_ptr<ResourceManager> &resourceManager) : _event(), aled(0), _resourceManager(resourceManager)
+    SFMLRenderManager::SFMLRenderManager(std::shared_ptr<RtypeResources> &rtypeResources) : _event(), aled(0), _rtypeResources(rtypeResources)
     {
         _keys[sf::Keyboard::A] = ecs::input::A;
         _keys[sf::Keyboard::B] = ecs::input::B;
@@ -150,9 +150,9 @@ std::vector<ecs::input::Key> SFMLRenderManager::getInputs()
 void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &sprite)
 {
     std::cout << "looking for " << sprite->getName() << std::endl;
-    texture = _resourceManager->getTexture(sprite->getName())->getSFMLTexture();
-    //_sprite.setTexture(texture);
-    // _window.draw(_sprite);
+    texture = _rtypeResources->getTexture(sprite->getName())->getSFMLTexture();
+    _sprite.setTexture(texture);
+    _window.draw(_sprite);
     _window.display();
     // _sprite.setPosition(entity.getPosX(), entity.getPosY());
 }

@@ -12,7 +12,7 @@
 #include "IEntityManager.hpp"
 #include "ISystemManager.hpp"
 #include "IComponentManager.hpp"
-#include "ResourceManager.hpp"
+#include "RtypeResources.hpp"
 
 namespace ecs
 {
@@ -22,7 +22,7 @@ private:
 
     std::shared_ptr<components::IComponentManager> _componentManager;
     std::shared_ptr<entities::IEntityManager> _entityManager;
-    std::shared_ptr<ResourceManager> _resourceManager;
+    std::shared_ptr<RtypeResources> _rtypeResourceManager;
     std::shared_ptr<IRenderManager> _renderManager;
 
 
@@ -32,7 +32,7 @@ public:
     std::shared_ptr<components::IComponentManager> &getComponentManager();
     std::shared_ptr<IRenderManager> &getRenderManager();
     std::shared_ptr<entities::IEntityManager> &getEntityManager();
-    std::shared_ptr<ResourceManager> &getResourceManager();
+    std::shared_ptr<RtypeResources> &getRtypeResourceManager();
 
 };
 } // namespace ecs
