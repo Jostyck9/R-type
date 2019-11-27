@@ -10,7 +10,8 @@ namespace ecs {
     {
         try {
             loadTexture("background", "../resources/background.png");
-            loadTexture("test", "../resources/r-typesheet1.gif");
+            loadTexture("test", "../resources/r-typesheet1.gif");        
+            loadTexture("player", "../resources/player.png");
         } catch (const std::exception &e) {
             throw e;
         }

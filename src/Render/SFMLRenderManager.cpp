@@ -149,8 +149,9 @@ std::vector<ecs::input::Key> SFMLRenderManager::getInputs()
 
 void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &sprite)
 {
-    // texture = _resourceManager->getTexture(sprite->getName())->getSFMLTexture();
-    // _sprite.setTexture(texture);
+    std::cout << "looking for " << sprite->getName() << std::endl;
+    texture = _resourceManager->getTexture(sprite->getName())->getSFMLTexture();
+    //_sprite.setTexture(texture);
     // _window.draw(_sprite);
     _window.display();
     // _sprite.setPosition(entity.getPosX(), entity.getPosY());

@@ -7,7 +7,7 @@
 
 #include "Sprite.hpp"
 
-ecs::components::Sprite::Sprite(const std::string &name, Rect &rect) : _rect(rect)
+ecs::components::Sprite::Sprite(const std::string &name, Rect &rect) : _name(name), _rect(rect)
 {
 }
 
