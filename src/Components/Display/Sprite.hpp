@@ -45,7 +45,7 @@ namespace ecs::components
         const std::type_index getType() const;
         bool operator==(Sprite &other);
         std::string getName() const;
-        ecs::Rect getRect() const;
+        const ecs::Rect &getRect() const;
         
     private:
        unsigned int _id;

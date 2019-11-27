@@ -43,7 +43,7 @@ std::string ecs::components::Sprite::getName() const
     return this->_name;
 }
 
-ecs::Rect ecs::components::Sprite::getRect() const
+const ecs::Rect &ecs::components::Sprite::getRect() const
 {
     return _rect;
 }

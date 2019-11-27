@@ -14,7 +14,7 @@ Rect::Rect(int width, int height, int posX, int posY) : _width(width), _height(h
 }
 
 Rect::Rect(const Rect &oldRect)
-{ 
+{
     _width = oldRect.getWidth();
     _height = oldRect.getHeight();
     _posX = oldRect.getPosX();
@@ -25,27 +25,27 @@ Rect::~Rect()
 {
 }
 
-int Rect::getWidth()
+int Rect::getWidth()const
 {
     return _width;
 }
 
-int Rect::getHeight()
+int Rect::getHeight()const
 {
     return _height;
 }
 
-int Rect::getPosX()
+int Rect::getPosX()const
 {
     return _posX;
 }
 
-int Rect::getPosY()
+int Rect::getPosY()const
 {
     return _posY;
 }
 
-bool ecs::Rect::operator==(Rect &other)
+bool ecs::Rect::operator==(const Rect &other) const
 {
     if (other.getHeight() != this->_height)
         return false;
