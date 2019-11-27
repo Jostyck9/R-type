@@ -1,26 +1,19 @@
 #include <iostream>
-#include "Thread/ThreadPool.hpp"
 
-int test(int i, int j) {
-    std::cout << "i = " << i << std::endl << "j = " << j << std::endl << "i + j = " << i + j << std::endl;
-    return i + j;
-}
-
-void test1(std::string& str) {
-    std::cout << str << std::endl;
-}
+#include "Room/RoomManager.hpp"
 
 int main(int, char**) {
 
-    ThreadPool pool(1);
-    //std::cout << "Thread n° " << std::this_thread::get_id() << std::endl;
-    
-    //pool.start();
+    RoomManager rooms(4);
 
-    //std::this_thread::sleep_for(std::chrono::seconds(5));
-    pool.run([&]() {std::cout << "Thread n° " << std::this_thread::get_id() << std::endl; });
-    std::cout << "done\n";
-    pool.destroy();
-    std::cout << "ending\n";
+    for (auto &r : rooms.getRooms()) {
+        rooms.addTask([&]() { r->run(); });
+    }
+
+    //std::cout << rooms.getRooms().at(1)->getId() << std::endl;
+    rooms.getRooms().at(1)->addPlayer();
+    //std::cout << rooms.getRooms().at(1)->getId() << std::endl;
+    std::this_thread::sleep_for(std::chrono::seconds(10));
+    rooms.stop();
     return (0);
 }
