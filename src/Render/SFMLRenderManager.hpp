@@ -52,7 +52,7 @@ namespace ecs {
         void clear();
       
     private:
-        sf::RenderWindow *_window; /*!< Internal window used by SFML functions */
+        sf::RenderWindow _window; /*!< Internal window used by SFML functions */
         sf::Music _music; /*!<Music of the program */
         sf::Event _event; /*!<Events of the program */
         int aled;
