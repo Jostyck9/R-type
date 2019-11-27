@@ -18,7 +18,6 @@ namespace ecs::system
     DisplaySystem::DisplaySystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete) : 
     ASystem(managerWrapper, entitiesToDelete), _elapsedTime(0)
     {
-        this->_elapsedTime = time(NULL);
     }
     
     DisplaySystem::~DisplaySystem()
@@ -28,8 +27,8 @@ namespace ecs::system
     void DisplaySystem::update()
     {
         for (auto &it :  _managerWrapper->getEntityManager()->getAllEntities()) {
-        //     auto spriteComp = _managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Sprite)));
-        //    _managerWrapper->getRenderManager()->graphicsUpdate(spriteComp);
+           std::shared_ptr<ecs::components::Sprite> spriteComp = std::dynamic_pointer_cast<ecs::components::Sprite>(_managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Sprite))));
+            _managerWrapper->getRenderManager()->graphicsUpdate(spriteComp);
         }
     }
 }

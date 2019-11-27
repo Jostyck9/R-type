@@ -142,7 +142,7 @@ void SFMLRenderManager::terminate()
 }
 
 
-void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::IComponent> &sprite)
+void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &sprite)
 {
     std::cout << "we have a sprite" << std::endl;
     // comp->getName();
@@ -151,16 +151,6 @@ void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::IComponent> &
         _window->display();
      // _sprite.setPosition(entity.getPosX(), entity.getPosY());
 }
-
-// void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &sprite)
-// {
-//     std::cout << "we have a sprite" << std::endl;
-//     // comp->getName();
-//     //     _sprite.setTexture(texture);
-//     //     _window->draw(_sprite);
-//         _window->display();
-//      // _sprite.setPosition(entity.getPosX(), entity.getPosY());
-// }
 
 void SFMLRenderManager::audioUpdate() 
 {
