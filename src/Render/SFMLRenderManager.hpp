@@ -28,7 +28,7 @@ namespace ecs {
          * @brief display a graphical component
          *
          */
-        void graphicsUpdate(std::shared_ptr<components::Sprite> &sprite) override;
+        void graphicsUpdate(std::shared_ptr<components::Sprite> &sprite, std::shared_ptr<components::Position> &pos) override;
 
         /**
          * @brief update audio

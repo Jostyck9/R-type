@@ -146,15 +146,15 @@ std::vector<ecs::input::Key> SFMLRenderManager::getInputs()
     return keys;
 }
 
-
-void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &sprite)
+void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &sprite, std::shared_ptr<components::Position> &pos)
 {
-    std::cout << "looking for " << sprite->getName() << std::endl;
+    if (sprite == nullptr)
+        return;
     texture = _rtypeResources->getTexture(sprite->getName())->getSFMLTexture();
     _sprite.setTexture(texture);
+    _sprite.setPosition(pos->getX(), pos->getY());
     _window.draw(_sprite);
     _window.display();
-    // _sprite.setPosition(entity.getPosX(), entity.getPosY());
 }
 
 void SFMLRenderManager::audioUpdate() 

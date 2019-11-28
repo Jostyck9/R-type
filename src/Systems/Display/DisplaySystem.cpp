@@ -28,7 +28,8 @@ namespace ecs::system
     {
         for (auto &it :  _managerWrapper->getEntityManager()->getAllEntities()) {
            std::shared_ptr<ecs::components::Sprite> spriteComp = std::dynamic_pointer_cast<ecs::components::Sprite>(_managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Sprite))));
-            _managerWrapper->getRenderManager()->graphicsUpdate(spriteComp);
+           std::shared_ptr<ecs::components::Position> posComp = std::dynamic_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Position))));
+           _managerWrapper->getRenderManager()->graphicsUpdate(spriteComp, posComp);
         }
     }
 }
