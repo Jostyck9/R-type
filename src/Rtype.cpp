@@ -3,11 +3,7 @@
 //
 
 #include <EntityConstructor/TestPlayerEntity/TestPlayerEntity.hpp>
-#include <EntityConstructor/BackgroundMenuEntity/BackgroundMenuEntity.hpp>
-#include "StopEntity.hpp"
-#include "PlayEntity.hpp"
 #include "SystemManager.hpp"
-#include "DisplaySystem.hpp"
 #include "EntityFactory.hpp"
 #include "Rtype.hpp"
 
@@ -20,20 +16,7 @@ Rtype::Rtype()
 
 void Rtype::start()
 {
-    bool isPlaying = true;
-
-    _systemManager->addSystem(std::make_shared<DisplaySystem>(_managerWrapper, _systemManager->getEntitiesToDelete()));
-    _entityFactory->addEntityConstructor(std::make_shared<BackgroundMenuEntity>());
-    _entityFactory->createEntity("BackgroundMenu");
-    _entityFactory->addEntityConstructor(std::make_shared<PlayEntity>());
-    _entityFactory->createEntity("Play");
-    _entityFactory->addEntityConstructor(std::make_shared<StopEntity>());
-    _entityFactory->createEntity("Stop");
-    _managerWrapper->getRenderManager()->init();
-    while (isPlaying) {
-        _systemManager->updateAll();
-        isPlaying = _managerWrapper->getRenderManager()->eventUpdate();
-    }
+    _sceneManager = std::make_shared<SceneManager>();
 }
 
 void Rtype::stop()

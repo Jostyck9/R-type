@@ -10,6 +10,7 @@
 #include "ManagerWrapper.hpp"
 #include "SystemManager.hpp"
 #include "RtypeResources.hpp"
+#include "SceneManager.hpp"
 
 #ifndef R_TYPE_RTYPE_HPP
 #define R_TYPE_RTYPE_HPP
@@ -32,6 +33,7 @@ private:
     std::shared_ptr<IEntityFactory> _entityFactory;
     std::shared_ptr<IRenderManager> _renderManager;
     std::shared_ptr<ManagerWrapper> _managerWrapper;
+    std::shared_ptr<SceneManager> _sceneManager;
 };
 
 #endif //R_TYPE_RTYPE_HPP

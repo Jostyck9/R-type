@@ -47,6 +47,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/EntityConstructor/TestPlayerEntity/
         src/Entities/EntityConstructor/PlayEntity/
         src/Entities/EntityConstructor/StopEntity/
+        src/Entities/EntityConstructor/BackgroundMenuEntity/
         src/Entities/EntityManager/
         src/Entities/Factories/
         src/Systems/
@@ -60,6 +61,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/ManagerWrapper
         src/Exceptions
         src/Utils/
+        src/Scenes/
         src/)
 
 #r-type_client
@@ -125,6 +127,8 @@ set(SOURCE_CLIENT
         "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
+        "src/Scenes/SceneManager.cpp"
+        "src/Scenes/MenuScene.cpp"
         "src/Rtype.cpp"
         "src/Utils/Rect.cpp")
 
