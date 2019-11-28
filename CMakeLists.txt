@@ -57,7 +57,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Render/
         src/ManagerWrapper
         src/Exceptions
-        src/utils/
+        src/Utils/
         src/)
 
 #r-type_client
@@ -122,7 +122,7 @@ set(SOURCE_CLIENT
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
         "src/Rtype.cpp"
-        "src/utils/Rect.cpp")
+        "src/Utils/Rect.cpp")
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})
