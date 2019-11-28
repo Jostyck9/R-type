@@ -40,7 +40,7 @@ public:
      * @param entity 
      * @return std::shared_ptr<Entity> 
      */
-    virtual std::shared_ptr<Entity> createEntity(ecs::network::Entity &entity) = 0;
+    virtual std::shared_ptr<Entity> createEntity(ecs::network::PacketManager::Entity &entity) = 0;
 };
 } // namespace ecs::entities
 

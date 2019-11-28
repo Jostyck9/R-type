@@ -21,41 +21,43 @@ Serializer::~Serializer()
 {
 }
 
-std::list<ecs::network::Entity> Serializer::serialize()
+std::list<ecs::network::PacketManager::Entity> Serializer::serialize()
 {
-    std::list<ecs::network::Entity> toReturn;
+    std::list<ecs::network::PacketManager::Entity> toReturn;
 
     for (auto &it : _entityManager->getAllEntities())
     {
-        ecs::network::Entity toFill;
+        ecs::network::PacketManager::Entity toFill;
 
         if (it->getInGameID() == it->NOGAMEID)
             continue;
+        toFill.nbrComponents = 0;
         toFill.id = it->getInGameID();
         addPhysicsComponent(toFill, it);
         addGraphicalComponent(toFill, it);
         toReturn.push_back(toFill);
+        if (toFill.nbrComponents == ecs::network::PacketManager::MAX_COMPONENTS)
+            break;
     }
     return toReturn;
 }
 
-void Serializer::addPhysicsComponent(ecs::network::Entity &toFill, const std::shared_ptr<Entity> &entity)
+void Serializer::addPhysicsComponent(ecs::network::PacketManager::Entity &toFill, const std::shared_ptr<Entity> &entity)
 {
     bool position = false;
     bool rotation = false;
 
     for (auto &it : _componentManager->getPhysicComponents(entity)) {
-        if (position && rotation)
+        if ((position && rotation) || toFill.nbrComponents == ecs::network::PacketManager::MAX_COMPONENTS)
             return;
 
-        ecs::network::Component compoToFill;
-
+        ecs::network::PacketManager::Component compoToFill;
         if (it->getType() == std::type_index(typeid(ecs::components::Position))) {
             auto pos = std::reinterpret_pointer_cast<ecs::components::Position>(it);
             compoToFill.type = ecs::network::POSITION;
             compoToFill._position.x = pos->getX();
             compoToFill._position.y = pos->getY();
-            toFill.components.push_back(compoToFill);
+            toFill.nbrComponents++;
             position = true;
             continue;
         }
@@ -64,45 +66,18 @@ void Serializer::addPhysicsComponent(ecs::network::Entity &toFill, const std::sh
             auto rot = std::reinterpret_pointer_cast<ecs::components::Rotation>(it);
             compoToFill.type = ecs::network::ROTATION;
             compoToFill._rotation.radAngle = rot->getRadAngle();
-            toFill.components.push_back(compoToFill);
+            toFill.components[toFill.nbrComponents] = compoToFill;
+            toFill.nbrComponents++;
             rotation = true;
             continue;
         }
     }
 }
 
-void Serializer::addGraphicalComponent(ecs::network::Entity &toFill, const std::shared_ptr<Entity> &entity)
+void Serializer::addGraphicalComponent(ecs::network::PacketManager::Entity &toFill, const std::shared_ptr<Entity> &entity)
 {
     (void)toFill;
     (void)entity;
-    // bool position = false;
-    // bool rotation = false;
-
-    // for (auto &it : _componentManager->getPhysicComponents(entity)) {
-    //     if (position && rotation)
-    //         return;
-
-    //     ecs::network::Component compoToFill;
-
-    //     if (it->getType() == std::type_index(typeid(ecs::components::Position))) {
-    //         auto pos = std::reinterpret_pointer_cast<ecs::components::Position>(it);
-    //         compoToFill.type = ecs::network::POSITION;
-    //         compoToFill._position.x = pos->getX();
-    //         compoToFill._position.y = pos->getY();
-    //         toFill.components.push_back(compoToFill);
-    //         position = true;
-    //         continue;
-    //     }
-
-    //     if (it->getType() == std::type_index(typeid(ecs::components::Rotation))) {
-    //         auto rot = std::reinterpret_pointer_cast<ecs::components::Rotation>(it);
-    //         compoToFill.type = ecs::network::ROTATION;
-    //         compoToFill._rotation.radAngle = rot->getRadAngle();
-    //         toFill.components.push_back(compoToFill);
-    //         rotation = true;
-    //         continue;
-    //     }
-    // }
 }
 
 } // namespace ecs::entities

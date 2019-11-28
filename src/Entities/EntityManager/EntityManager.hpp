@@ -48,11 +48,11 @@ namespace ecs::entities
         std::shared_ptr<Entity> &getEntityByGameId(size_t id);
 
     private:
-        using ptrFunc = void (EntityManager::*)(const std::shared_ptr<entities::Entity> &entity, const ecs::network::Component toAdd);
+        using ptrFunc = void (EntityManager::*)(const std::shared_ptr<entities::Entity> &entity, const ecs::network::PacketManager::Component toAdd);
         std::map<ecs::network::ComponentType, ptrFunc> _functionsUpdate;
 
-        void updatePosition(const std::shared_ptr<entities::Entity> &entity, const ecs::network::Component toAdd);
-        void updateRotation(const std::shared_ptr<entities::Entity> &entity, const ecs::network::Component toAdd);
+        void updatePosition(const std::shared_ptr<entities::Entity> &entity, const ecs::network::PacketManager::Component toAdd);
+        void updateRotation(const std::shared_ptr<entities::Entity> &entity, const ecs::network::PacketManager::Component toAdd);
 
     public:
         /**
@@ -69,7 +69,7 @@ namespace ecs::entities
          * @param toUpdate 
          * @return std::shared_ptr<Entity> 
          */
-        std::shared_ptr<Entity> updateEntity(const ecs::network::Entity &toUpdate) override;
+        std::shared_ptr<Entity> updateEntity(const ecs::network::PacketManager::Entity &toUpdate) override;
 
         /**
          * @brief Get All the Entities object

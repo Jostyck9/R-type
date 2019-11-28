@@ -56,7 +56,7 @@ std::shared_ptr<Entity> &EntityManager::getEntityByGameId(size_t id)
     throw EntityExceptions("No entity found with gameid : " + id, "getEntityyByGameId");
 }
 
-void EntityManager::updatePosition(const std::shared_ptr<entities::Entity> &entity, const ecs::network::Component toAdd)
+void EntityManager::updatePosition(const std::shared_ptr<entities::Entity> &entity, const ecs::network::PacketManager::Component toAdd)
 {
     try
     {
@@ -69,7 +69,7 @@ void EntityManager::updatePosition(const std::shared_ptr<entities::Entity> &enti
     }
 }
 
-void EntityManager::updateRotation(const std::shared_ptr<entities::Entity> &entity, const ecs::network::Component toAdd)
+void EntityManager::updateRotation(const std::shared_ptr<entities::Entity> &entity, const ecs::network::PacketManager::Component toAdd)
 {
     try
     {
@@ -85,15 +85,15 @@ void EntityManager::updateRotation(const std::shared_ptr<entities::Entity> &enti
     }
 }
 
-std::shared_ptr<Entity> EntityManager::updateEntity(const ecs::network::Entity &toUpdate)
+std::shared_ptr<Entity> EntityManager::updateEntity(const ecs::network::PacketManager::Entity &toUpdate)
 {
     auto entity = getEntityByGameId(toUpdate.id);
 
-    for (auto &it : toUpdate.components)
+    for (int i = 0; i < toUpdate.nbrComponents; i++)
     {
-        if (_functionsUpdate.find(it.type) != _functionsUpdate.end())
+        if (_functionsUpdate.find(toUpdate.components[i].type) != _functionsUpdate.end())
         {
-            (this->*(_functionsUpdate[it.type]))(entity, it);
+            (this->*(_functionsUpdate[toUpdate.components[i].type]))(entity, toUpdate.components[i]);
         }
     }
     return entity;

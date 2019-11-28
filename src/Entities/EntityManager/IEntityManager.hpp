@@ -25,7 +25,7 @@ namespace ecs::entities
          * @return true if existing and updated
          * @return false if net existing
          */
-        virtual std::shared_ptr<Entity> updateEntity(const ecs::network::Entity &toUpdate) = 0;
+        virtual std::shared_ptr<Entity> updateEntity(const ecs::network::PacketManager::Entity &toUpdate) = 0;
 
         /**
          * @brief Get the Entity By Id object

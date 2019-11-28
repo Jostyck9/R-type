@@ -39,13 +39,13 @@ namespace ecs::entities
          * @param entity 
          * @return std::shared_ptr<ecs::entities::Entity> 
          */
-        std::shared_ptr<ecs::entities::Entity> updateIfExisting(const ecs::network::Entity &entity);
+        std::shared_ptr<ecs::entities::Entity> updateIfExisting(const ecs::network::PacketManager::Entity &entity);
         
-        using ptrFunc = void (ecs::entities::EntityFactory::*)(std::shared_ptr<ecs::entities::Entity>&, const ecs::network::Component);
+        using ptrFunc = void (ecs::entities::EntityFactory::*)(std::shared_ptr<ecs::entities::Entity>&, const ecs::network::PacketManager::Component);
         std::map<ecs::network::ComponentType, ptrFunc> _functionsUpdate;
 
-        void addPosition(std::shared_ptr<ecs::entities::Entity> &entity, const ecs::network::Component data);
-        void addRotation(std::shared_ptr<ecs::entities::Entity> &entity, const ecs::network::Component data);
+        void addPosition(std::shared_ptr<ecs::entities::Entity> &entity, const ecs::network::PacketManager::Component data);
+        void addRotation(std::shared_ptr<ecs::entities::Entity> &entity, const ecs::network::PacketManager::Component data);
 
     public:
         /**
@@ -77,7 +77,7 @@ namespace ecs::entities
         * @param entity 
         * @return std::shared_ptr<Entity> 
         */
-        std::shared_ptr<Entity> createEntity(ecs::network::Entity &entity) override;
+        std::shared_ptr<Entity> createEntity(ecs::network::PacketManager::Entity &entity) override;
     };
 }
 

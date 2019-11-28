@@ -27,12 +27,12 @@ EntityFactory::~EntityFactory()
 {
 }
 
-void EntityFactory::addPosition(std::shared_ptr<ecs::entities::Entity> &entity, const ecs::network::Component data)
+void EntityFactory::addPosition(std::shared_ptr<ecs::entities::Entity> &entity, const ecs::network::PacketManager::Component data)
 {
     _componentManager->addPhysicComponent(std::make_shared<ecs::components::Position>(data._position.x, data._position.y), entity);
 }
 
-void EntityFactory::addRotation(std::shared_ptr<ecs::entities::Entity> &entity, const ecs::network::Component data)
+void EntityFactory::addRotation(std::shared_ptr<ecs::entities::Entity> &entity, const ecs::network::PacketManager::Component data)
 {
     auto rotation = std::make_shared<ecs::components::Rotation>();
 
@@ -49,7 +49,7 @@ bool EntityFactory::isExisting(const std::string &name)
     return true;
 }
 
-std::shared_ptr<ecs::entities::Entity> EntityFactory::updateIfExisting(const ecs::network::Entity &entity)
+std::shared_ptr<ecs::entities::Entity> EntityFactory::updateIfExisting(const ecs::network::PacketManager::Entity &entity)
 {
     return _entityManager->updateEntity(entity);
 }
@@ -72,7 +72,7 @@ std::shared_ptr<Entity> EntityFactory::createEntity(const std::string &name)
     return (_creationFunction[name])->create(_entityManager, _componentManager);
 }
 
-std::shared_ptr<Entity> EntityFactory::createEntity(ecs::network::Entity &entity)
+std::shared_ptr<Entity> EntityFactory::createEntity(ecs::network::PacketManager::Entity &entity)
 {
     if (entity.id != Entity::NOGAMEID)
     {
@@ -85,10 +85,10 @@ std::shared_ptr<Entity> EntityFactory::createEntity(ecs::network::Entity &entity
         }
 
         auto newEntity = std::make_shared<ecs::entities::Entity>(static_cast<ecs::entities::Entity::option>(entity.id));
-        for (auto it : entity.components) {
-            if (_functionsUpdate.find(it.type) == _functionsUpdate.end())
+        for (int i = 0; i < entity.nbrComponents; i++) {
+            if (_functionsUpdate.find(entity.components[i].type) == _functionsUpdate.end())
                 continue;
-            (this->*(_functionsUpdate[it.type]))(newEntity, it);
+            (this->*(_functionsUpdate[entity.components[i].type]))(newEntity, entity.components[i]);
         }
         _entityManager->addEntity(newEntity);
         return newEntity;

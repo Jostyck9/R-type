@@ -18,42 +18,36 @@ enum ComponentType : char
     ROTATION
 };
 
-struct Component
-{
-    ComponentType type;
-    union {
-        struct
-        {
-            int x;
-            int y;
-        } _position;
-
-        struct
-        {
-            int radAngle;
-        } _rotation;
-    };
-};
-
-struct Entity
-{
-    size_t id;
-    std::list<Component> components;
-};
-
 class PacketManager
 {
 public:
+    struct Component
+    {
+        ComponentType type;
+        union {
+            struct
+            {
+                int x;
+                int y;
+            } _position;
+
+            struct
+            {
+                int radAngle;
+            } _rotation;
+        };
+    };
+
     enum
     {
         MAX_LENGTH = 1024,
         MAX_COMPONENTS = 7,
     };
 
-private:
-    struct EntityPacket
+    struct Entity
     {
         size_t id;
+        char nbrComponents;
         Component components[MAX_COMPONENTS];
     };
 
@@ -67,7 +61,7 @@ private:
     struct Data
     {
         char nbrEntities;
-        EntityPacket entities[MAX_ENTITIES];
+        Entity entities[MAX_ENTITIES];
     };
 
 public:
