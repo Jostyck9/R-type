@@ -18,8 +18,8 @@ std::shared_ptr<ecs::entities::Entity> PlayEntity::create(
     std::shared_ptr<Entity> toCreate = std::make_shared<Entity>();
 
     entityManager->addEntity(toCreate);
-    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(50, 200), toCreate);
-    componentsManager->addDisplayComponent(std::make_shared<ecs::components::Text>("PLAY", 30), toCreate);
+    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(300, 700), toCreate);
+    componentsManager->addDisplayComponent(std::make_shared<ecs::components::Text>("PLAY", 50), toCreate);
     return toCreate;
 }
 

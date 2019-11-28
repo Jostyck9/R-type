@@ -22,7 +22,7 @@ using namespace ecs;
 class Rtype {
 public:
     Rtype();
-    ~Rtype();
+    ~Rtype() = default;
 
     void start();
     void stop();

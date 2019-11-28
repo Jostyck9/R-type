@@ -3,6 +3,7 @@
 //
 
 #include <EntityConstructor/TestPlayerEntity/TestPlayerEntity.hpp>
+#include <EntityConstructor/BackgroundMenuEntity/BackgroundMenuEntity.hpp>
 #include "StopEntity.hpp"
 #include "PlayEntity.hpp"
 #include "SystemManager.hpp"
@@ -17,22 +18,17 @@ Rtype::Rtype()
     _entityFactory = std::make_shared<EntityFactory>(_managerWrapper->getEntityManager(), _managerWrapper->getComponentManager());
 }
 
-Rtype::~Rtype()
-{
-
-}
-
 void Rtype::start()
 {
     bool isPlaying = true;
 
     _systemManager->addSystem(std::make_shared<DisplaySystem>(_managerWrapper, _systemManager->getEntitiesToDelete()));
+    _entityFactory->addEntityConstructor(std::make_shared<BackgroundMenuEntity>());
+    _entityFactory->createEntity("BackgroundMenu");
     _entityFactory->addEntityConstructor(std::make_shared<PlayEntity>());
     _entityFactory->createEntity("Play");
     _entityFactory->addEntityConstructor(std::make_shared<StopEntity>());
     _entityFactory->createEntity("Stop");
-    _entityFactory->addEntityConstructor(std::make_shared<TestPlayerEntity>());
-    _entityFactory->createEntity("TestPlayer");
     _managerWrapper->getRenderManager()->init();
     while (isPlaying) {
         _systemManager->updateAll();

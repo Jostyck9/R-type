@@ -107,6 +107,7 @@ set(SOURCE_CLIENT
         "src/Entities/EntityConstructor/TestPlayerEntity/TestPlayerEntity.cpp"
         "src/Entities/EntityConstructor/PlayEntity/PlayEntity.cpp"
         "src/Entities/EntityConstructor/StopEntity/StopEntity.cpp"
+        "src/Entities/EntityConstructor/BackgroundMenuEntity/BakgroundMenuEntity.cpp"
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
         "src/Systems/ASystem.cpp"
