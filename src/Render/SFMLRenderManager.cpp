@@ -180,8 +180,9 @@ void SFMLRenderManager::audioUpdate()
   
 void SFMLRenderManager::textUpdate(std::shared_ptr<components::Text> &Text, std::shared_ptr<components::Position> &pos) 
 {
-    _text.setString("ON VA FAIRE UN TURBORTYPE");
-    _text.setCharacterSize(30);
+    _text.setString(Text->getStr());
+    _text.setCharacterSize(Text->getSize());
+    _text.setPosition(pos->getX(), pos->getY());
     _window.draw(_text);
 }
 
