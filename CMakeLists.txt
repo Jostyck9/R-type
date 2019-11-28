@@ -60,7 +60,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
 #r-type_client
 set(SOURCE_CLIENT
         "src/main_client.cpp"
-        "src/Components/ComponentManager/ComponentManager.cpp"
+        #[["src/Components/ComponentManager/ComponentManager.cpp"
         "src/Components/Display/Animator.cpp"
         "src/Components/Display/Button.cpp"
         "src/Components/Display/Image.cpp"
@@ -110,8 +110,8 @@ set(SOURCE_CLIENT
         "src/Exceptions/SystemExceptions.cpp"
         "src/Systems/SystemConstructor/testSystem/testSystem.cpp"
         "src/Systems/Factories/SystemFactory.cpp"
-        "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
-        )
+        "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"]]
+        src/Network/Client/ClientUdpNetwork.cpp src/Network/Client/ClientUdpNetwork.hpp)
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})
