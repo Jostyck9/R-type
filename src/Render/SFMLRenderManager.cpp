@@ -170,7 +170,6 @@ void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &spri
         _rectangle.setPosition(pos->getX(), pos->getY());
         _window.draw(_rectangle);
     }
-    _window.display();
 }
 
 void SFMLRenderManager::audioUpdate() 
@@ -201,6 +200,11 @@ bool SFMLRenderManager::eventUpdate()
 void SFMLRenderManager::clear() 
 {
     _window.clear();
+}
+
+void SFMLRenderManager::display()
+{
+    _window.display();
 }
 
 }
