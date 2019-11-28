@@ -10,7 +10,6 @@
 
 namespace ecs::system
 {
-
     class ISystem
     {
     public:
@@ -19,6 +18,14 @@ namespace ecs::system
          * 
          */
         virtual void update() = 0;
+
+        /**
+         * @brief Get the Name object
+         * 
+         * @return const std::string 
+         */
+        virtual const std::string getName() const = 0;
+
     };
 
 }

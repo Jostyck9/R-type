@@ -10,6 +10,7 @@
 #include "Physics/Position.hpp"
 #include "Physics/Velocity.hpp"
 #include "Physics/Collision.hpp"
+#include "ManagerWrapper.hpp"
 
 using namespace ecs::entities;
 
@@ -30,4 +31,12 @@ std::shared_ptr<ecs::entities::Entity> TestEntity::create(
 std::string TestEntity::getName()
 {
     return std::string("Test");
+}
+
+extern "C"
+{
+    std::shared_ptr<ecs::entities::IEntityConstructor> entryPoint()
+    {
+        return (std::make_shared<ecs::entities::TestEntity>());
+    }
 }

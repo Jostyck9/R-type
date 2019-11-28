@@ -5,8 +5,8 @@
 ** testSystem.hpp
 */
 
-#ifndef TESTSYSTE_HPP
-#define TESTSYSTE_HPP
+#ifndef TESTSYSTEM_HPP
+#define TESTSYSTEM_HPP
 
 #include "ISystemConstructor.hpp"
 #include "IEntityManager.hpp"
@@ -18,13 +18,11 @@ namespace ecs::system
     {
     private:
     public:
-        testSystem();
+        testSystem(std::shared_ptr<ecs::ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete);
         ~testSystem();
 
         std::shared_ptr<ecs::system::ISystem> create(std::shared_ptr<ManagerWrapper> &managerWrapper,
             std::list<int> &entitiesToDelete) override;
-
-        std::string getName() override;
     };
 }
-#endif //TESTSYSTE_HPP
+#endif //TESTSYSTEM_HPP

@@ -8,6 +8,7 @@
 #include <memory>
 #include <iostream>
 #include <cmath>
+#include "SystemConstructor.hpp"
 #include "SystemExceptions.hpp"
 #include "ComponentExceptions.hpp"
 #include "MovementSystem.hpp"
@@ -131,4 +132,17 @@ void MovementSystem::update()
         allData.push_back(current);
     }
     updateAll(allData);
+}
+
+const std::string MovementSystem::getName() const
+{
+    return ("Movement");
+}
+
+extern "C"
+{
+    std::shared_ptr<ecs::system::ISystemConstructor> entryPoint()
+        {
+            return (std::make_shared<ecs::system::SystemConstructor<ecs::system::MovementSystem>>());
+        }
 }

@@ -29,10 +29,9 @@ include_directories(
     ${SOURCE_ROOT}/ResourceManager/
     ${SOURCE_ROOT}/ManagerWrapper/
     ${SOURCE_ROOT}/Systems/
-    ${SOURCE_ROOT}/Systems/Display/
+    ${SOURCE_ROOT}/Systems/SystemConstructor/Display/
     ${SOURCE_ROOT}/Systems/Factories/
     ${SOURCE_ROOT}/Systems/SystemConstructor/
-    ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/
     ${SOURCE_ROOT}/Systems/SystemManager/
     ${SOURCE_ROOT}/Render/
 )
@@ -64,8 +63,7 @@ add_executable(unit_test
     ${SOURCE_ROOT}/Systems/ASystem.cpp
     ${SOURCE_ROOT}/Systems/SystemManager/SystemManager.cpp
     ${SOURCE_ROOT}/Systems/Factories/SystemFactory.cpp
-    ${SOURCE_ROOT}/Systems/Display/DisplaySystem.cpp
-    ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/testSystem.cpp
+    ${SOURCE_ROOT}/Systems/SystemConstructor/Display/DisplaySystem.cpp
     ${SOURCE_ROOT}/ManagerWrapper/ManagerWrapper.cpp
     ${SOURCE_ROOT}/Render/SFMLRenderManager.cpp
 )
@@ -91,8 +89,7 @@ add_executable(unit_test_graphic
     ${SOURCE_ROOT}/Systems/ASystem.cpp
     ${SOURCE_ROOT}/Systems/SystemManager/SystemManager.cpp
     ${SOURCE_ROOT}/Systems/Factories/SystemFactory.cpp
-    ${SOURCE_ROOT}/Systems/Display/DisplaySystem.cpp
-    ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/testSystem.cpp
+    ${SOURCE_ROOT}/Systems/SystemConstructor/Display/DisplaySystem.cpp
     ${SOURCE_ROOT}/Exceptions/ServerExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/SystemExceptions.cpp
     ${SOURCE_ROOT}/Components/Physics/Acceleration.cpp

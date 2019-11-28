@@ -23,7 +23,7 @@ class ISystemConstructor
 {
 private:
 public:
-     /**
+    /**
      * @brief Create an ISystem associated with the class
      * 
      * @param systemManager
@@ -31,13 +31,7 @@ public:
      * @return std::shared_ptr<ecs::system::ISystem> 
      */
     virtual std::shared_ptr<ecs::system::ISystem> create(std::shared_ptr<ManagerWrapper> &managerWrapper,
-        std::list<int> &entitiesToDelete) = 0;
-    /**
-     * @brief Get the Name of the entity
-     * 
-     * @return std::string 
-     */
-    virtual std::string getName() = 0;
+                                                         std::list<int> &entitiesToDelete) = 0;
 };
 
 } // namespace ecs::system

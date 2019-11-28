@@ -79,6 +79,8 @@ public:
      * 
      */
     void update() override;
+
+    const std::string getName() const override;
 };
 
 } // namespace ecs::system

@@ -28,11 +28,12 @@ bool SystemFactory::isExisting(const std::string &name)
 
 void SystemFactory::addSystemConstructor(std::shared_ptr<ISystemConstructor> constructor)
 {
-    if (isExisting(constructor->getName()))
+    auto name = constructor->create(_managerWrapper, _systemManager->getEntitiesToDelete())->getName();
+    if (isExisting(name))
     {
         throw SystemExceptions("Error: Could not add system Constructor ", std::string(__FILE__) + ' ' + std::to_string(__LINE__));
     }
-    _createFunction[constructor->getName()] = constructor;
+    _createFunction[name] = constructor;
 }
 
 std::shared_ptr<ISystem> SystemFactory::createSystem(const std::string &name)

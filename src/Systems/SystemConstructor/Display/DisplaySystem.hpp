@@ -25,6 +25,8 @@ namespace ecs::system
          */
         void update() override;
 
+        const std::string getName() const override;
+
     private:
 
     time_t _elapsedTime;

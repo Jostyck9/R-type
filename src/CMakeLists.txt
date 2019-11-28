@@ -34,21 +34,26 @@ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/TestEntity/CMakeLists.txt)
-include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/TestEntity2/CMakeLists.txt)
-include(${CMAKE_CURRENT_SOURCE_DIR}/src/Systems/SystemConstructor/MovementSystem/CMakeLists.txt)
-include(${CMAKE_CURRENT_SOURCE_DIR}/src/Systems/SystemConstructor/Display/CMakeLists.txt)
+# include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/TestEntity2/CMakeLists.txt)
+# include(${CMAKE_CURRENT_SOURCE_DIR}/src/Systems/SystemConstructor/MovementSystem/CMakeLists.txt)
+# include(${CMAKE_CURRENT_SOURCE_DIR}/src/Systems/SystemConstructor/Display/CMakeLists.txt)
 
 #Link shared libraries
-set_property(TARGET TestEntity PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libTestEntity.so)
+add_library(testEntity1 SHARED IMPORTED)
+# add_library(testEntity2 SHARED IMPORTED)
+# add_library(Movement SHARED IMPORTED)
+# add_library(Display SHARED IMPORTED)
+
+set_property(TARGET testEntity1 PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libTestEntity.so)
 #set_property(TARGET testEntity1 PROPERTY IMPORTED_IMPLIB c:/path/to/bar.lib)
 
-set_property(TARGET TestEntity2 PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libTestEntity2.so)
+# set_property(TARGET testEntity2 PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libTestEntity2.so)
 #set_property(TARGET testEntity2 PROPERTY IMPORTED_IMPLIB c:/path/to/bar.lib)
 
-set_property(TARGET MovementSystem PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libMovementSystem.so)
+# set_property(TARGET Movement PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libMovementSystem.so)
 #set_property(TARGET Movement PROPERTY IMPORTED_IMPLIB c:/path/to/bar.lib)
 
-set_property(TARGET DisplaySystem PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libDisplaySystem.so)
+# set_property(TARGET Display PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libDisplaySystem.so)
 #set_property(TARGET Display PROPERTY IMPORTED_IMPLIB c:/path/to/bar.lib)
 
 
@@ -63,14 +68,16 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/RessourceManager/
         src/Entities/
         src/Entities/EntityConstructor/
-        src/Entities/EntityConstructor/TestEntity
-        src/Entities/EntityConstructor/TestEntity2
+        src/Entities/EntityConstructor/TestEntity/
+        src/Entities/EntityConstructor/TestEntity2/
         src/Entities/EntityManager/
         src/Entities/Factories/
         src/Systems/
+        src/Systems/SystemConstructor/Display
         src/Systems/SystemManager
         src/Exceptions
         src/Systems/SystemConstructor
+        src/Systems/SystemConstructor/MovementSystem
         src/Systems/Factories
         src/Render/
         src/ManagerWrapper)
@@ -131,7 +138,7 @@ set(SOURCE_CLIENT
 )
 
 add_executable(r-type_client ${SOURCE_CLIENT})
-target_link_libraries(r-type_client ${CONAN_LIBS} TestEntity TestEntity2 DisplaySystem MovementSystem ${CMAKE_DL_LIBS})
+target_link_libraries(r-type_client ${CONAN_LIBS} testEntity1 ${CMAKE_DL_LIBS})
 
 #r-type_server
 set(SOURCE_SERVER

@@ -5,12 +5,14 @@
 ** testSystem.cpp
 */
 
+#include "SystemConstructor.hpp"
 #include "DisplaySystem.hpp"
 #include "testSystem.hpp"
 
 using namespace ecs::system;
 
-testSystem::testSystem()
+testSystem::testSystem(std::shared_ptr<ecs::ManagerWrapper> &managerWrapper,
+                       std::list<int> &entitiesToDelete)
 {
 }
 
@@ -19,12 +21,15 @@ testSystem::~testSystem()
 }
 
 std::shared_ptr<ecs::system::ISystem> testSystem::create(std::shared_ptr<ecs::ManagerWrapper> &managerWrapper,
-    std::list<int> &entitiesToDelete)
+                                                         std::list<int> &entitiesToDelete)
 {
     return std::make_shared<ecs::system::DisplaySystem>(managerWrapper, entitiesToDelete);
 }
 
-std::string testSystem::getName()
+extern "C"
 {
-    return std::string("Display");
+    ecs::system::ISystemConstructor *entryPoint(std::shared_ptr<ecs::ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete)
+    {
+        return (new ecs::system::SystemConstructor<testSystem>());
+    }
 }

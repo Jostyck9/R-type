@@ -6,12 +6,12 @@
 */
 
 #include <iostream>
-#include "Physics/Position.hpp"
-#include "Physics/Velocity.hpp"
-#include "Display/Image.hpp"
+#include "Position.hpp"
+#include "Image.hpp"
 #include "DisplaySystem.hpp"
 #include "Collision.hpp"
 #include "ComponentExceptions.hpp"
+#include "SystemConstructor.hpp"
 
 namespace ecs::system
 {
@@ -27,6 +27,7 @@ namespace ecs::system
 
     void DisplaySystem::update()
     {
+        std::cout << "Bonjour" << std::endl;
         for (auto &it : _managerWrapper->getEntityManager()->getAllEntities()) {
             auto PosComponent = _managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Position)));
             auto position = std::dynamic_pointer_cast<ecs::components::Position>(PosComponent);
@@ -51,5 +52,18 @@ namespace ecs::system
         //     // auto bruh = std::dynamic_pointer_cast<ecs::components::Image>(ImageComponent);
         //     std::cout << "show image " << std::endl;
         // }
+    }
+
+const std::string DisplaySystem::getName() const
+{
+    return ("Display");
+}
+}
+
+extern "C"
+{
+    std::shared_ptr<ecs::system::ISystemConstructor> entryPoint()
+    {
+        return (std::make_shared<ecs::system::SystemConstructor<ecs::system::DisplaySystem>>());
     }
 }
