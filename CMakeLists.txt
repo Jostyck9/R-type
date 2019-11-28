@@ -100,7 +100,6 @@ set(SOURCE_CLIENT
         "src/ResourceManager/Sound.cpp"
         "src/ResourceManager/Texture.cpp"
         "src/ResourceManager/Font.cpp"
-        "src/ResourceManager/Text.cpp"
         "src/ResourceManager/RtypeResources.cpp"
         "src/Entities/Entity.cpp"
         "src/Entities/EntityConstructor/TestEntity/TestEntity.cpp"
