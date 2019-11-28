@@ -45,9 +45,9 @@ public:
     /**
      * @brief Serialize all the entities for the network transfert
      * 
-     * @return std::list<ecs::network::Entity>
+     * @return std::list<ecs::network::PacketManager>
      */
-    std::list<ecs::network::PacketManager::Entity> serialize();
+    std::list<ecs::network::PacketManager> serialize();
 };
 } // namespace ecs::entities
 

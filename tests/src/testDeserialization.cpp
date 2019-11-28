@@ -30,7 +30,7 @@ Test(Deserialization, CreateEntity)
     ecs::network::PacketManager::Component toAdd2;
 
     toAdd.type = ecs::network::POSITION;
-    toAdd._position.x = 20; 
+    toAdd._position.x = 20;
     toAdd._position.y = 30;
     toAdd2.type = ecs::network::ROTATION;
     toAdd2._rotation.radAngle = 20; 

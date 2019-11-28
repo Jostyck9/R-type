@@ -53,15 +53,15 @@ int main()
     ecs::entities::Serializer serializer(managerWrapper->getEntityManager(), managerWrapper->getComponentManager());
     auto test = serializer.serialize();
 
-    for (auto &it : test) {
-        std::cout << it.id << std::endl;
-        for (auto &it2 : it.components) {
-            if (it2.type == ecs::network::ROTATION) {
-                std::cout << "rotation : " << it2._rotation.radAngle << std::endl;
-            } else {
-                std::cout << "pos : " << it2._position.x << " " << it2._position.y << std::endl;
-            }
-        }
-    }
+    // for (auto &it : test) {
+    //     std::cout << it.id << std::endl;
+    //     for (auto &it2 : it.components) {
+    //         if (it2.type == ecs::network::ROTATION) {
+    //             std::cout << "rotation : " << it2._rotation.radAngle << std::endl;
+    //         } else {
+    //             std::cout << "pos : " << it2._position.x << " " << it2._position.y << std::endl;
+    //         }
+    //     }
+    // }
     return 0;
 }

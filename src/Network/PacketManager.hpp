@@ -41,14 +41,46 @@ public:
     enum
     {
         MAX_LENGTH = 1024,
+        MAX_PSEUDO_SIZE = 10,
+        MAX_PLAYER = 4,
         MAX_COMPONENTS = 7,
+        MAX_ROOM = 8
+    };
+
+    enum CMD : char
+    {
+        HANDSHAKE,
+        ISREADY,
+        JOINROOM,
+        GETROOMS,
+        LEAVEROOM,
+
+        ISALIVE,
+        LAUNCHGAME,
+        UPDATE
     };
 
     struct Entity
     {
         size_t id;
         char nbrComponents;
-        Component components[MAX_COMPONENTS];
+        struct Component components[MAX_COMPONENTS];
+    };
+
+    struct PlayerInfo
+    {
+        bool isReady;
+        char pseudo[MAX_PSEUDO_SIZE];
+    };
+
+    struct Room
+    {
+        bool isOpen;
+        bool isStarted;
+        char id;
+        char nbPlayers;
+        char nbPlayerMax;
+        struct PlayerInfo players[MAX_PLAYER];
     };
 
 public:
@@ -58,23 +90,192 @@ public:
     };
 
 private:
-    struct Data
+    struct Entities
     {
-        char nbrEntities;
-        Entity entities[MAX_ENTITIES];
+        char size;
+        struct Entity list[MAX_ENTITIES];
     };
 
-public:
-    struct PacketData
+    struct IsReady
     {
-        union {
-            char rawData[MAX_LENGTH];
-            Data data;
-        };
-    } packet;
+        bool isReady;
+    };
 
+    struct JoinRoom
+    {
+        char id;
+    };
+
+    struct GetRooms
+    {
+        char size;
+        struct Room listRoom[MAX_ROOM];
+    };
+
+    struct Data
+    {
+        bool res;
+        CMD typeCmd;
+        int magicNumber;
+        union {
+            struct IsReady _isReady;
+            struct JoinRoom _join;
+            struct GetRooms _getRoom;
+            struct Entities _entities;
+        };
+    };
+
+    union PacketData {
+        char rawData[MAX_LENGTH];
+        struct Data data;
+    };
+
+    PacketData packet;
+
+public:
+    /**
+     * @brief Construct a new Packet Manager object
+     * 
+     */
     PacketManager();
+
+    /**
+     * @brief Construct a new Packet Manager object
+     * 
+     * @param other 
+     */
+    PacketManager(const PacketManager &other);
+
     ~PacketManager();
+
+    /**
+     * @brief Clear the packet
+     * 
+     */
+    void clear();
+
+    /**
+     * @brief Set the Cmd in the packet
+     * 
+     * @param cmd 
+     */
+    void setCmd(const CMD cmd);
+
+    /**
+     * @brief Set the packet res info
+     * 
+     * @param res 
+     */
+    void setRes(bool res);
+
+    /**
+     * @brief Set the Join Room id
+     * 
+     * @param roomId 
+     */
+    void setJoinRoom(char roomId);
+
+    /**
+     * @brief Add an entity in the packet and returns his index, to use to add components
+     * 
+     * @param gameId
+     * @return int : the index inside the packet, -1 if the packet is full 
+     */
+    int addEntity(size_t gameId);
+
+    /**
+     * @brief Add an entity in the packet and returns his index, to use to add components
+     * 
+     * @param gameId 
+     * @return int 
+     */
+    int addEntity(Entity entity);
+
+    /**
+     * @brief Add position inside the entity, returns false if the number of components to add is atteint
+     * 
+     * @param entityIndex 
+     * @param x 
+     * @param y 
+     * @return true 
+     * @return false 
+     */
+    bool addPosition(int entityIndex, float x, float y);
+
+    /**
+     * @brief Add rotation inside the entity, returns false if the number of components to add is atteint
+     * 
+     * @param entityIndex 
+     * @param angleRad 
+     * @return true 
+     * @return false 
+     */
+    bool addRotation(int entityIndex, float angleRad);
+
+    /**
+     * @brief Add a room in the packet and returns his index
+     * 
+     * @param room 
+     * @return int , -1 if packet full
+     */
+    int addRoom(const Room &room);
+
+    /**
+     * @brief return if the packet is succesfull
+     * 
+     * @return true 
+     * @return false 
+     */
+    bool isSuccessful() const;
+
+    /**
+     * @brief Get the Cmd object
+     * 
+     * @return const CMD 
+     */
+    CMD getCmd() const;
+
+    /**
+     * @brief Get the IsReady object
+     * 
+     * @return const IsReady 
+     */
+    const IsReady getIsReady() const;
+
+    /**
+     * @brief Get the Join Room object
+     * 
+     * @return const JoinRoom 
+     */
+    const JoinRoom getJoinRoom() const;
+
+    /**
+     * @brief Get the List Rooms object
+     * 
+     * @return const GetRooms 
+     */
+    const GetRooms getListRooms() const;
+
+    /**
+     * @brief Get the List Entities object
+     * 
+     * @return const Entities 
+     */
+    const Entities getListEntities() const;
+
+    /**
+     * @brief Get the Raw Data object
+     * 
+     * @return const char* 
+     */
+    const char *getRawData() const;
+
+    /**
+     * @brief Get the Magic Number object
+     * 
+     * @return char 
+     */
+    char getMagicNumber() const;
 };
 
 } // namespace ecs::network

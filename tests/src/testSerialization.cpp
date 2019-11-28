@@ -32,20 +32,18 @@ Test(EntitySerialization, TestEntity)
     cr_assert_eq(res2.size(), 1);
     for (auto it = res2.begin(); it != res2.end(); it++)
     {
-        cr_assert_eq(it->id, 2);
-        for (int i = 0; i < it->nbrComponents; i++)
-        {
-            if (i == 0)
-            {
-                cr_assert_eq(it->components[i].type, ecs::network::POSITION);
-                cr_assert_eq(it->components[i]._position.x, 0);
-                cr_assert_eq(it->components[i]._position.y, 0);
-            }
-            else
-            {
-                cr_assert_eq(it->components[i].type, ecs::network::ROTATION);
-                cr_assert_eq(it->components[i]._rotation.radAngle, 0);
-            }
-        }
+        cr_assert_eq(true, it->isSuccessful());
+        cr_assert_eq(42, it->getMagicNumber());
+        cr_assert_eq(ecs::network::PacketManager::UPDATE, it->getCmd());
+        cr_assert_eq(1, it->getListEntities().size);
+
+        cr_assert_eq(2, it->getListEntities().list[0].nbrComponents);
+        cr_assert_eq(ecs::network::POSITION, it->getListEntities().list[0].components[0].type);
+        cr_assert_eq(0, it->getListEntities().list[0].components[0]._position.x);
+        cr_assert_eq(0, it->getListEntities().list[0].components[0]._position.y);
+
+        cr_assert_eq(ecs::network::ROTATION, it->getListEntities().list[0].components[1].type);
+        cr_assert_eq(0, it->getListEntities().list[0].components[1]._rotation.radAngle);
+
     }
 }

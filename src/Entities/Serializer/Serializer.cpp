@@ -21,9 +21,10 @@ Serializer::~Serializer()
 {
 }
 
-std::list<ecs::network::PacketManager::Entity> Serializer::serialize()
+std::list<ecs::network::PacketManager> Serializer::serialize()
 {
-    std::list<ecs::network::PacketManager::Entity> toReturn;
+    std::list<ecs::network::PacketManager> toReturn;
+    ecs::network::PacketManager packet;
 
     for (auto &it : _entityManager->getAllEntities())
     {
@@ -35,10 +36,14 @@ std::list<ecs::network::PacketManager::Entity> Serializer::serialize()
         toFill.id = it->getInGameID();
         addPhysicsComponent(toFill, it);
         addGraphicalComponent(toFill, it);
-        toReturn.push_back(toFill);
-        if (toFill.nbrComponents == ecs::network::PacketManager::MAX_COMPONENTS)
-            break;
+        if (packet.addEntity(toFill) == -1) {
+            toReturn.push_back(packet);
+            packet.clear();
+            packet.addEntity(toFill);
+        }
     }
+    toReturn.push_back(packet);
+
     return toReturn;
 }
 

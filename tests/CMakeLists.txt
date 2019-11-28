@@ -66,6 +66,7 @@ add_executable(unit_test
     ${SOURCE_ROOT}/Exceptions/RTypeExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/ServerExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/SystemExceptions.cpp
+    ${SOURCE_ROOT}/Network/PacketManager.cpp
     ${SOURCE_ROOT}/Systems/ASystem.cpp
     ${SOURCE_ROOT}/Systems/SystemManager/SystemManager.cpp
     ${SOURCE_ROOT}/Systems/Factories/SystemFactory.cpp
