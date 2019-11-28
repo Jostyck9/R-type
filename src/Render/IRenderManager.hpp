@@ -32,6 +32,9 @@ namespace ecs {
         virtual void audioUpdate() = 0;
         virtual void textUpdate(std::shared_ptr<components::Text> &Text, std::shared_ptr<components::Position> &pos) = 0;
         virtual bool eventUpdate() = 0;
+        virtual void clear() = 0;
+        virtual void display() = 0;
+
     };
 }
 
