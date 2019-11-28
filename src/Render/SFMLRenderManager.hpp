@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2019
+** R-type
+** File description:
+** SFMLRenderManager.hpp
+*/
+
 #ifndef R_TYPE_SFMLRENDERMANAGER_H
 #define R_TYPE_SFMLRENDERMANAGER_H
 
@@ -39,7 +46,7 @@ namespace ecs {
          * @brief update text component
          *
          */
-        void textUpdate() override;
+        void textUpdate(std::shared_ptr<components::Text> &Text, std::shared_ptr<components::Position> &pos) override;
         /**
          * @brief update event and return type of event
          *
@@ -66,6 +73,8 @@ namespace ecs {
         sf::Texture _texture; /*!<Texture of the program */
         std::shared_ptr<RtypeResources> _rtypeResources;
         sf::RectangleShape _rectangle; /*!<Shape of the program */
+        sf::Font _font; /*!<Font of the program */
+        sf::Text _text; /*<Text of the program */
     };
 }
 

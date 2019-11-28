@@ -1,3 +1,9 @@
+/*
+** EPITECH PROJECT, 2019
+** R-type
+** File description:
+** SFMLRenderManager.cpp
+*/
 
 #include "SFMLRenderManager.hpp"
 #include "RTypeExceptions.hpp"
@@ -106,6 +112,9 @@ namespace ecs {
         _keys[sf::Keyboard::Subtract] = ecs::input::SUBTRACT;
         _keys[sf::Keyboard::Tab] = ecs::input::TAB;
         _rectangle.setFillColor(sf::Color(100, 250, 50));
+        _font.loadFromFile("../resources/pixeled.ttf");
+        _text.setFont(_font);
+        _text.setColor(sf::Color::White);
         // _colors[ecs::Color::BLACK] = sf::Color::Black;
         // _colors[ecs::Color::WHITE] = sf::Color::White;
         // _colors[ecs::Color::BLUE] = sf::Color::Blue;
@@ -169,9 +178,11 @@ void SFMLRenderManager::audioUpdate()
     // play/pause en fonction du state de l'audio
 }
   
-void SFMLRenderManager::textUpdate() 
+void SFMLRenderManager::textUpdate(std::shared_ptr<components::Text> &Text, std::shared_ptr<components::Position> &pos) 
 {
-       //Render le texte dans la window --> besoin de window, texte , pos 
+    _text.setString("ON VA FAIRE UN TURBORTYPE");
+    _text.setCharacterSize(30);
+    _window.draw(_text);
 }
 
 bool SFMLRenderManager::eventUpdate() 
