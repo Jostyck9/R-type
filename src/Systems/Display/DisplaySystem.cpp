@@ -55,6 +55,7 @@ void DisplaySystem::update()
         catch (const ComponentExceptions &e)
         {
         }
+        _managerWrapper->getRenderManager()->display();
     }
 }
 } // namespace ecs::system

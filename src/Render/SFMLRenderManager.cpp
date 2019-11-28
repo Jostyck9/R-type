@@ -112,7 +112,7 @@ namespace ecs {
         _keys[sf::Keyboard::Subtract] = ecs::input::SUBTRACT;
         _keys[sf::Keyboard::Tab] = ecs::input::TAB;
         _rectangle.setFillColor(sf::Color(100, 250, 50));
-        _font.loadFromFile("../resources/pixeled.ttf");
+        _font = _rtypeResources->getFont("Pixeled")->getSFMLFont();
         _text.setFont(_font);
         _text.setColor(sf::Color::White);
         // _colors[ecs::Color::BLACK] = sf::Color::Black;

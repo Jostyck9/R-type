@@ -58,12 +58,12 @@ public:
          * @brief clear the window of all rendered objects
          *
          */
-    void clear();
+    void clear() override;
     /**
          * @brief displayy the window and all rendered objects
          *
          */
-    void display();
+    void display() override;
     /**
          * @brief get all the key inputs
          *
