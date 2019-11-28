@@ -46,6 +46,7 @@ add_executable(unit_test
     ./src/testExceptions
     ./src/testEntityConstructor.cpp
     ./src/testSerialization.cpp
+    ./src/testDeserialization.cpp
     ${SOURCE_ROOT}/Entities/Entity.cpp
     ${SOURCE_ROOT}/Entities/EntityConstructor/TestEntity/TestEntity.cpp
     ${SOURCE_ROOT}/Entities/EntityManager/EntityManager.cpp
@@ -97,6 +98,10 @@ add_executable(unit_test_graphic
     ${SOURCE_ROOT}/Systems/Factories/SystemFactory.cpp
     ${SOURCE_ROOT}/Systems/Display/DisplaySystem.cpp
     ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/testSystem.cpp
+    ${SOURCE_ROOT}/Exceptions/ComponentExceptions.cpp
+    ${SOURCE_ROOT}/Exceptions/ECSExceptions.cpp
+    ${SOURCE_ROOT}/Exceptions/EntityExceptions.cpp
+    ${SOURCE_ROOT}/Exceptions/RTypeExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/ServerExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/SystemExceptions.cpp
     ${SOURCE_ROOT}/Components/Physics/Acceleration.cpp

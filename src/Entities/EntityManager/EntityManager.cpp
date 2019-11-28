@@ -5,6 +5,7 @@
 ** EntityManager.cpp
 */
 
+#include "EntityExceptions.hpp"
 #include "Position.hpp"
 #include "Rotation.hpp"
 #include "EntityExceptions.hpp"
@@ -77,7 +78,10 @@ void EntityManager::updateRotation(const std::shared_ptr<entities::Entity> &enti
     }
     catch (const ComponentExceptions &e)
     {
-        _componentManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(toAdd._rotation.radAngle), entity);
+        auto rotation = std::make_shared<ecs::components::Rotation>();
+
+        rotation->setRadAngle(toAdd._rotation.radAngle);
+        _componentManager->addPhysicComponent(rotation, entity);
     }
 }
 
@@ -102,8 +106,7 @@ const std::shared_ptr<Entity> &EntityManager::getEntityById(size_t idEntity) con
         if (it->getID() == idEntity)
             return it;
     }
-    // TODO Create all exceptions : Here the noEntity
-    throw new std::exception();
+    throw EntityExceptions("No entity found with this id : " + idEntity, "getEntityById");
 }
 
 const std::vector<std::shared_ptr<Entity>> &EntityManager::getAllEntities() const

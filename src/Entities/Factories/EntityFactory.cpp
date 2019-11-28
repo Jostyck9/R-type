@@ -34,7 +34,10 @@ void EntityFactory::addPosition(std::shared_ptr<ecs::entities::Entity> &entity, 
 
 void EntityFactory::addRotation(std::shared_ptr<ecs::entities::Entity> &entity, const ecs::network::Component data)
 {
-    _componentManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(data._rotation.radAngle), entity);
+    auto rotation = std::make_shared<ecs::components::Rotation>();
+
+    rotation->setRadAngle(data._rotation.radAngle);
+    _componentManager->addPhysicComponent(rotation, entity);
 }
 
 bool EntityFactory::isExisting(const std::string &name)
@@ -87,6 +90,8 @@ std::shared_ptr<Entity> EntityFactory::createEntity(ecs::network::Entity &entity
                 continue;
             (this->*(_functionsUpdate[it.type]))(newEntity, it);
         }
+        _entityManager->addEntity(newEntity);
+        return newEntity;
     }
     throw EntityExceptions("Cannot create an entity with id : NOGAMEID", "EntityFactory::createEntity");
 }
