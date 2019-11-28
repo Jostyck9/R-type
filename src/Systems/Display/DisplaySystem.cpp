@@ -29,6 +29,8 @@ void DisplaySystem::update()
     std::shared_ptr<ecs::components::Position> posComp;
     std::shared_ptr<ecs::components::Text> textComp;
 
+    _managerWrapper->getRenderManager()->clear();
+
     for (auto &it : _managerWrapper->getEntityManager()->getAllEntities())
     {
         try
@@ -55,7 +57,7 @@ void DisplaySystem::update()
         catch (const ComponentExceptions &e)
         {
         }
-        _managerWrapper->getRenderManager()->display();
     }
+    _managerWrapper->getRenderManager()->display();
 }
 } // namespace ecs::system

@@ -112,9 +112,6 @@ namespace ecs {
         _keys[sf::Keyboard::Space] = ecs::input::SPACE;
         _keys[sf::Keyboard::Subtract] = ecs::input::SUBTRACT;
         _keys[sf::Keyboard::Tab] = ecs::input::TAB;
-        _rectangle.setFillColor(sf::Color(100, 250, 50));
-        _font = _rtypeResources->getFont("Pixeled")->getSFMLFont();
-        _text.setFont(_font);
 
         _colors[ecs::Color::BLACK] = sf::Color::Black;
         _colors[ecs::Color::WHITE] = sf::Color::White;
@@ -125,6 +122,9 @@ namespace ecs {
         _colors[ecs::Color::MAGENTA] = sf::Color::Magenta;
 
         _text.setFillColor(_colors[ecs::Color::WHITE]);
+        _rectangle.setFillColor(sf::Color(100, 250, 50));
+        _font = _rtypeResources->getFont("Pixeled")->getSFMLFont();
+        _text.setFont(_font);
     }
     
 SFMLRenderManager::~SFMLRenderManager()
@@ -133,7 +133,7 @@ SFMLRenderManager::~SFMLRenderManager()
 
 void SFMLRenderManager::init()
 {
-	_window.create(sf::VideoMode(800, 600), "R-Type");
+	_window.create(sf::VideoMode(1500, 900), "R-Type");
     _window.setFramerateLimit(60);
     _window.clear();
     _window.display();
@@ -186,7 +186,6 @@ void SFMLRenderManager::textUpdate(std::shared_ptr<components::Text> &Text, std:
     _text.setCharacterSize(Text->getSize());
     _text.setPosition(pos->getX(), pos->getY());
     _window.draw(_text);
-    _window.display();
 }
 
 bool SFMLRenderManager::eventUpdate() 

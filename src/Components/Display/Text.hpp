@@ -10,6 +10,7 @@
 
 #include <typeindex>
 #include <string>
+#include <Color.hpp>
 #include "IUserInterface.hpp"
 
 namespace ecs::components
@@ -23,7 +24,7 @@ class Text : public IUserInterface
 {
 public:
     Text();
-    Text(const std::string &str);
+    Text(const std::string &str, int size);
     Text(const Text &oldText);
     ~Text();
     /**
@@ -65,6 +66,17 @@ public:
          * 
          */
     int getSize(void) const;
+    /**
+         * @brief Set new value to the color
+         *
+         * @param newColor
+         */
+    void setColor(const ecs::Color &newcolor);
+    /**
+         * @brief return the color
+         *
+         */
+    ecs::Color getColor(void) const;
 
     bool operator==(Text &other);
 
@@ -72,6 +84,7 @@ private:
     unsigned int _id;
     std::string _string;
     int _size;
+    ecs::Color _color;
 };
 } // namespace ecs::components
 
