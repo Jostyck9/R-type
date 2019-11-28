@@ -2,7 +2,7 @@
 #define R_TYPE_SFMLRENDERMANAGER_H
 
 #include "IRenderManager.hpp"
-#include "RTypeResources.hpp"
+#include "ResourceManager/RTypeResources.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
