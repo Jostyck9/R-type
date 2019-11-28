@@ -11,7 +11,7 @@ ecs::components::Text::Text() : _string("null") ,_size(15)
 {
 }
 
-ecs::components::Text::Text(std::string &str) : _string(str) ,_size(15)
+ecs::components::Text::Text(const std::string &str) : _string(str) ,_size(15)
 {
 }
 

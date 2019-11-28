@@ -23,7 +23,7 @@ class Text : public IUserInterface
 {
 public:
     Text();
-    Text(std::string &str);
+    Text(const std::string &str);
     Text(const Text &oldText);
     ~Text();
     /**
