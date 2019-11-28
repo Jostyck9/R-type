@@ -36,6 +36,7 @@ include_directories(
     ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/
     ${SOURCE_ROOT}/Systems/SystemManager/
     ${SOURCE_ROOT}/Render/
+    ${SOURCE_ROOT}/Utils/
 )
 
 add_executable(unit_test
@@ -71,6 +72,7 @@ add_executable(unit_test
     ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/testSystem.cpp
     ${SOURCE_ROOT}/ManagerWrapper/ManagerWrapper.cpp
     ${SOURCE_ROOT}/Render/SFMLRenderManager.cpp
+    ${SOURCE_ROOT}/Utils/Rect.cpp
 )
 target_link_libraries(unit_test criterion ${CONAN_LIBS})
 
