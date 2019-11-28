@@ -1,9 +1,10 @@
 
 #include "SFMLRenderManager.hpp"
+#include "RTypeExceptions.hpp"
 
 namespace ecs {
 
-    SFMLRenderManager::SFMLRenderManager(std::shared_ptr<RtypeResources> &rtypeResources) : _event(), aled(0), _rtypeResources(rtypeResources)
+    SFMLRenderManager::SFMLRenderManager(std::shared_ptr<RtypeResources> &rtypeResources) : _event(), _rtypeResources(rtypeResources), _rectangle(sf::Vector2f(120, 50))
     {
         _keys[sf::Keyboard::A] = ecs::input::A;
         _keys[sf::Keyboard::B] = ecs::input::B;
@@ -104,7 +105,7 @@ namespace ecs {
         _keys[sf::Keyboard::Space] = ecs::input::SPACE;
         _keys[sf::Keyboard::Subtract] = ecs::input::SUBTRACT;
         _keys[sf::Keyboard::Tab] = ecs::input::TAB;
-
+        _rectangle.setFillColor(sf::Color(100, 250, 50));
         // _colors[ecs::Color::BLACK] = sf::Color::Black;
         // _colors[ecs::Color::WHITE] = sf::Color::White;
         // _colors[ecs::Color::BLUE] = sf::Color::Blue;
@@ -150,10 +151,16 @@ void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &spri
 {
     if (sprite == nullptr)
         return;
-    texture = _rtypeResources->getTexture(sprite->getName())->getSFMLTexture();
-    _sprite.setTexture(texture);
-    _sprite.setPosition(pos->getX(), pos->getY());
-    _window.draw(_sprite);
+    try {
+        _texture = _rtypeResources->getTexture(sprite->getName())->getSFMLTexture();
+        _sprite.setTexture(_texture);
+        _sprite.setPosition(pos->getX(), pos->getY());
+        _window.draw(_sprite);
+    } catch (const RTypeExceptions &e) {
+        std::cerr << e.what() << e.where() << std::endl;
+        _rectangle.setPosition(pos->getX(), pos->getY());
+        _window.draw(_rectangle);
+    }
     _window.display();
 }
 

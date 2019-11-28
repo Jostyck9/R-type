@@ -61,11 +61,11 @@ namespace ecs {
         sf::RenderWindow _window; /*!< Internal window used by SFML functions */
         sf::Music _music; /*!<Music of the program */
         sf::Event _event; /*!<Events of the program */
-        int aled;
         sf::Sprite _sprite; /*!<Sprite of the program */
         std::map<int, ecs::input::Key> _keys; /*!<Key mapping*/
-        sf::Texture texture;
+        sf::Texture _texture; /*!<Texture of the program */
         std::shared_ptr<RtypeResources> _rtypeResources;
+        sf::RectangleShape _rectangle; /*!<Shape of the program */
     };
 }
 
