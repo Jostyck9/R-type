@@ -112,16 +112,17 @@ namespace ecs {
         _keys[sf::Keyboard::Subtract] = ecs::input::SUBTRACT;
         _keys[sf::Keyboard::Tab] = ecs::input::TAB;
         _rectangle.setFillColor(sf::Color(100, 250, 50));
-        _font.loadFromFile("../resources/pixeled.ttf");
+        _font.loadFromFile("resources/Pixeled.ttf");
         _text.setFont(_font);
-        _text.setColor(sf::Color::White);
-        // _colors[ecs::Color::BLACK] = sf::Color::Black;
-        // _colors[ecs::Color::WHITE] = sf::Color::White;
-        // _colors[ecs::Color::BLUE] = sf::Color::Blue;
-        // _colors[ecs::Color::RED] = sf::Color::Red;
-        // _colors[ecs::Color::GREEN] = sf::Color::Green;
-        // _colors[ecs::Color::YELLOW] = sf::Color::Yellow;
-        // _colors[ecs::Color::MAGENTA] = sf::Color::Magenta;
+        _text.setFillColor(sf::Color::White);
+
+        _colors[ecs::Color::BLACK] = sf::Color::Black;
+        _colors[ecs::Color::WHITE] = sf::Color::White;
+        _colors[ecs::Color::BLUE] = sf::Color::Blue;
+        _colors[ecs::Color::RED] = sf::Color::Red;
+        _colors[ecs::Color::GREEN] = sf::Color::Green;
+        _colors[ecs::Color::YELLOW] = sf::Color::Yellow;
+        _colors[ecs::Color::MAGENTA] = sf::Color::Magenta;
     }
     
 SFMLRenderManager::~SFMLRenderManager()
@@ -130,7 +131,7 @@ SFMLRenderManager::~SFMLRenderManager()
 
 void SFMLRenderManager::init()
 {
-	_window.create(sf::VideoMode(800, 600), "rtype");
+	_window.create(sf::VideoMode(800, 600), "R-Type");
     _window.setFramerateLimit(60);
     _window.clear();
     _window.display();

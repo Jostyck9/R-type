@@ -2,12 +2,12 @@
 // Created by romane on 25/11/2019.
 //
 
+#include "StopEntity.hpp"
+#include "PlayEntity.hpp"
 #include "SystemManager.hpp"
 #include "DisplaySystem.hpp"
-#include "Factories/EntityFactory.hpp"
-#include "SFMLRenderManager.hpp"
+#include "EntityFactory.hpp"
 #include "Rtype.hpp"
-#include "TestPlayerEntity.hpp"
 
 Rtype::Rtype()
 {
@@ -26,8 +26,10 @@ void Rtype::start()
     bool isPlaying = true;
 
     _systemManager->addSystem(std::make_shared<DisplaySystem>(_managerWrapper, _systemManager->getEntitiesToDelete()));
-    _entityFactory->addEntityConstructor(std::make_shared<TestPlayerEntity>());
-    _entityFactory->createEntity("TestPlayer");
+    _entityFactory->addEntityConstructor(std::make_shared<PlayEntity>());
+    _entityFactory->createEntity("Play");
+    _entityFactory->addEntityConstructor(std::make_shared<StopEntity>());
+    _entityFactory->createEntity("Stop");
     _managerWrapper->getRenderManager()->init();
     while (isPlaying) {
         _systemManager->updateAll();
