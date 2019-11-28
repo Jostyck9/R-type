@@ -10,6 +10,7 @@
 
 #include <string>
 #include <memory>
+#include "PacketManager.hpp"
 #include "IEntityConstructor.hpp"
 #include "Entity.hpp"
 
@@ -34,12 +35,12 @@ public:
     virtual void addEntityConstructor(std::shared_ptr<IEntityConstructor> constructor) = 0;
 
     /**
-     * @brief Create a Entity object
+     * @brief Create an Entity object from an EntityPacket or update it if existing
      * 
-     * @param description
+     * @param entity 
      * @return std::shared_ptr<Entity> 
      */
-    // virtual std::shared_ptr<Entity> createEntity(/* Buffer de la socket provenant du serveur (reflechir pour la clsse) */ description) = 0;
+    virtual std::shared_ptr<Entity> createEntity(ecs::network::Entity &entity) = 0;
 };
 } // namespace ecs::entities
 

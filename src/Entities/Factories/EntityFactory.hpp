@@ -33,6 +33,20 @@ namespace ecs::entities
          */
         bool isExisting(const std::string &name);
 
+        /**
+         * @brief Update the entity if aready existing (userfull between server and client)
+         * 
+         * @param entity 
+         * @return std::shared_ptr<ecs::entities::Entity> 
+         */
+        std::shared_ptr<ecs::entities::Entity> updateIfExisting(const ecs::network::Entity &entity);
+        
+        using ptrFunc = void (ecs::entities::EntityFactory::*)(std::shared_ptr<ecs::entities::Entity>&, const ecs::network::Component);
+        std::map<ecs::network::ComponentType, ptrFunc> _functionsUpdate;
+
+        void addPosition(std::shared_ptr<ecs::entities::Entity> &entity, const ecs::network::Component data);
+        void addRotation(std::shared_ptr<ecs::entities::Entity> &entity, const ecs::network::Component data);
+
     public:
         /**
          * @brief Construct a new Entity Factory object
@@ -56,6 +70,14 @@ namespace ecs::entities
          * @param constructor 
          */
         void addEntityConstructor(std::shared_ptr<IEntityConstructor> constructor) override;
+
+        /**
+        * @brief Create an Entity object from an EntityPacket or update it if existing
+        * 
+        * @param entity 
+        * @return std::shared_ptr<Entity> 
+        */
+        std::shared_ptr<Entity> createEntity(ecs::network::Entity &entity) override;
     };
 }
 

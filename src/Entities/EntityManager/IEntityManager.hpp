@@ -11,12 +11,22 @@
 #include <memory>
 #include <vector>
 #include "Entity.hpp"
+#include "PacketManager.hpp"
 
 namespace ecs::entities
 {
     class IEntityManager
     {
     public:
+        /**
+         * @brief Update an entity if existing (useful for network part)
+         * 
+         * @param toUpdate 
+         * @return true if existing and updated
+         * @return false if net existing
+         */
+        virtual std::shared_ptr<Entity> updateEntity(const ecs::network::Entity &toUpdate) = 0;
+
         /**
          * @brief Get the Entity By Id object
          * 
