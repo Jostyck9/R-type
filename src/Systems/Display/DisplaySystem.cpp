@@ -27,9 +27,11 @@ namespace ecs::system
     void DisplaySystem::update()
     {
         for (auto &it :  _managerWrapper->getEntityManager()->getAllEntities()) {
-           std::shared_ptr<ecs::components::Sprite> spriteComp = std::dynamic_pointer_cast<ecs::components::Sprite>(_managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Sprite))));
-           std::shared_ptr<ecs::components::Position> posComp = std::dynamic_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Position))));
-           _managerWrapper->getRenderManager()->graphicsUpdate(spriteComp, posComp);
+            std::shared_ptr<ecs::components::Sprite> spriteComp = std::dynamic_pointer_cast<ecs::components::Sprite>(_managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Sprite))));
+            std::shared_ptr<ecs::components::Position> posComp = std::dynamic_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Position))));
+            std::shared_ptr<ecs::components::Text> textComp = std::dynamic_pointer_cast<ecs::components::Text>(_managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Text))));
+            _managerWrapper->getRenderManager()->graphicsUpdate(spriteComp, posComp);
+            _managerWrapper->getRenderManager()->textUpdate(textComp, posComp);
         }
     }
 }
