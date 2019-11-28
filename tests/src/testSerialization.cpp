@@ -33,18 +33,18 @@ Test(EntitySerialization, TestEntity)
     for (auto it = res2.begin(); it != res2.end(); it++)
     {
         cr_assert_eq(it->id, 2);
-        for (auto it2 = it->components.begin(); it2 != it->components.end(); it2++)
+        for (int i = 0; i < it->nbrComponents; i++)
         {
-            if (it2 == it->components.begin())
+            if (i == 0)
             {
-                cr_assert_eq(it2->type, ecs::network::POSITION);
-                cr_assert_eq(it2->_position.x, 0);
-                cr_assert_eq(it2->_position.y, 0);
+                cr_assert_eq(it->components[i].type, ecs::network::POSITION);
+                cr_assert_eq(it->components[i]._position.x, 0);
+                cr_assert_eq(it->components[i]._position.y, 0);
             }
             else
             {
-                cr_assert_eq(it2->type, ecs::network::ROTATION);
-                cr_assert_eq(it2->_rotation.radAngle, 0);
+                cr_assert_eq(it->components[i].type, ecs::network::ROTATION);
+                cr_assert_eq(it->components[i]._rotation.radAngle, 0);
             }
         }
     }

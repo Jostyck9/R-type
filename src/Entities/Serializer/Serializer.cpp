@@ -57,6 +57,7 @@ void Serializer::addPhysicsComponent(ecs::network::PacketManager::Entity &toFill
             compoToFill.type = ecs::network::POSITION;
             compoToFill._position.x = pos->getX();
             compoToFill._position.y = pos->getY();
+            toFill.components[static_cast<int>(toFill.nbrComponents)] = compoToFill;
             toFill.nbrComponents++;
             position = true;
             continue;
@@ -66,7 +67,7 @@ void Serializer::addPhysicsComponent(ecs::network::PacketManager::Entity &toFill
             auto rot = std::reinterpret_pointer_cast<ecs::components::Rotation>(it);
             compoToFill.type = ecs::network::ROTATION;
             compoToFill._rotation.radAngle = rot->getRadAngle();
-            toFill.components[toFill.nbrComponents] = compoToFill;
+            toFill.components[static_cast<int>(toFill.nbrComponents)] = compoToFill;
             toFill.nbrComponents++;
             rotation = true;
             continue;
