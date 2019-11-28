@@ -78,6 +78,7 @@ private:
     sf::Event _event;                     /*!<Events of the program */
     sf::Sprite _sprite;                   /*!<Sprite of the program */
     std::map<int, ecs::input::Key> _keys; /*!<Key mapping*/
+    std::map<ecs::Color, sf::Color> _colors; /*!<Color mapping*/
     sf::Texture _texture;                 /*!<Texture of the program */
     std::shared_ptr<RtypeResources> _rtypeResources;
     sf::RectangleShape _rectangle; /*!<Shape of the program */
