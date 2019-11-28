@@ -23,4 +23,9 @@ const std::string &Font::getName()
     return _name;
 }
 
+sf::Font &Font::getSFMLFont()
+{
+    return _font;
+}
+
 }

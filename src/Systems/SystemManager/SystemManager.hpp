@@ -47,7 +47,7 @@ namespace ecs::system
          * 
          * @param system 
          */
-        void addSystem(std::shared_ptr<ISystem> system);
+        void addSystem(std::shared_ptr<ISystem> system) override;
     };
 }
 

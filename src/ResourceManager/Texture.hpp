@@ -24,7 +24,12 @@ namespace ecs {
          * @return std::string
          */
         const std::string &getName() override;
-
+        /**
+         * @brief Get SFML texture of the Texture
+         *
+         * @return sf::Texture
+         */
+        sf::Texture &getSFMLTexture();
     private:
         std::string _name;
         sf::Texture _texture;

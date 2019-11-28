@@ -5,6 +5,7 @@
 #ifndef R_TYPE_RESOURCEMANAGER_H
 #define R_TYPE_RESOURCEMANAGER_H
 
+#include <memory>
 #include <vector>
 #include "Music.hpp"
 #include "Sound.hpp"

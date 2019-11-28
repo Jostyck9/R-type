@@ -8,6 +8,8 @@
 #include "ISystemManager.hpp"
 #include "IRenderManager.hpp"
 #include "ManagerWrapper.hpp"
+#include "SystemManager.hpp"
+#include "RtypeResources.hpp"
 
 #ifndef R_TYPE_RTYPE_HPP
 #define R_TYPE_RTYPE_HPP

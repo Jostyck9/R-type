@@ -44,6 +44,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/EntityConstructor/
         src/Entities/EntityConstructor/TestEntity/
         src/Entities/EntityConstructor/TestEntity2/
+        src/Entities/EntityConstructor/TestPlayerEntity/
         src/Entities/EntityManager/
         src/Entities/Factories/
         src/Systems/
@@ -56,6 +57,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Render/
         src/ManagerWrapper
         src/Exceptions
+        src/Utils/
         src/)
 
 #r-type_client
@@ -97,9 +99,11 @@ set(SOURCE_CLIENT
         "src/ResourceManager/Texture.cpp"
         "src/ResourceManager/Font.cpp"
         "src/ResourceManager/Text.cpp"
+        "src/ResourceManager/RtypeResources.cpp"
         "src/Entities/Entity.cpp"
         "src/Entities/EntityConstructor/TestEntity/TestEntity.cpp"
         "src/Entities/EntityConstructor/TestEntity2/TestEntity2.cpp"
+        "src/Entities/EntityConstructor/TestPlayerEntity/TestPlayerEntity.cpp"
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
         "src/Systems/ASystem.cpp"
@@ -117,7 +121,8 @@ set(SOURCE_CLIENT
         "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
-        "src/Rtype.cpp")
+        "src/Rtype.cpp"
+        "src/Utils/Rect.cpp")
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})
