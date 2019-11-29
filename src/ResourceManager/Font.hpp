@@ -24,6 +24,13 @@ namespace ecs {
          * @return std::string 
          */
         const std::string &getName() override;
+        /**
+         * @brief Get SFML font of the Font
+         *
+         * @return sf::Font
+         */
+        sf::Font &getSFMLFont();
+
 
     private:
         std::string _name;

@@ -8,7 +8,9 @@
 #ifndef SPRITE_HPP
 #define SPRITE_HPP
 
+#include <string>
 #include <typeindex>
+#include "Rect.hpp"
 #include "IDisplay.hpp"
 
 namespace ecs::components
@@ -21,7 +23,7 @@ namespace ecs::components
 
     {
     public:
-        Sprite();
+        Sprite(const std::string &name, Rect &rect);
         Sprite(const Sprite &oldSprite);
         ~Sprite();
          /**
@@ -42,9 +44,13 @@ namespace ecs::components
          */
         const std::type_index getType() const;
         bool operator==(Sprite &other);
+        std::string getName() const;
+        const ecs::Rect &getRect() const;
         
     private:
        unsigned int _id;
+       std::string _name;
+       ecs::Rect _rect;
     };
 }
 

@@ -1,9 +1,10 @@
 
 #include "SFMLRenderManager.hpp"
+#include "RTypeExceptions.hpp"
 
 namespace ecs {
 
-    SFMLRenderManager::SFMLRenderManager() : _window(nullptr), _event(), aled(0)
+    SFMLRenderManager::SFMLRenderManager(std::shared_ptr<RtypeResources> &rtypeResources) : _event(), _rtypeResources(rtypeResources), _rectangle(sf::Vector2f(120, 50))
     {
         _keys[sf::Keyboard::A] = ecs::input::A;
         _keys[sf::Keyboard::B] = ecs::input::B;
@@ -104,7 +105,7 @@ namespace ecs {
         _keys[sf::Keyboard::Space] = ecs::input::SPACE;
         _keys[sf::Keyboard::Subtract] = ecs::input::SUBTRACT;
         _keys[sf::Keyboard::Tab] = ecs::input::TAB;
-
+        _rectangle.setFillColor(sf::Color(100, 250, 50));
         // _colors[ecs::Color::BLACK] = sf::Color::Black;
         // _colors[ecs::Color::WHITE] = sf::Color::White;
         // _colors[ecs::Color::BLUE] = sf::Color::Blue;
@@ -118,50 +119,53 @@ SFMLRenderManager::~SFMLRenderManager()
 {
 }
 
-// static SFMLRenderManager::SFMLRenderManager &getInstance();
-
 void SFMLRenderManager::init()
 {
-    if (_window != nullptr) {
-        throw;// TODO change the throw
-    }
-	_window = new sf::RenderWindow(sf::VideoMode(800, 600), "rtype");
-    if (_window == nullptr) {
-        throw;
-    }
-    _window->setFramerateLimit(60);
-    _window->clear();
-    _window->display();
+	_window.create(sf::VideoMode(800, 600), "rtype");
+    _window.setFramerateLimit(60);
+    _window.clear();
+    _window.display();
 }
 
 void SFMLRenderManager::terminate()
 {
-    if (_window != nullptr) {
-        _window->close();
-        _window = nullptr;
-    }
+    _window.close();
     //stop audio ?
 }
 
-void SFMLRenderManager::graphicsUpdate()
-{    
-    if (!texture.loadFromFile("../sprite/test00.jpg", sf::IntRect(300, 300, 200, 200)))
-    {
-        std::cout << "wrong file" << std::endl;
-        throw;
+std::vector<ecs::input::Key> SFMLRenderManager::getInputs()
+{
+    std::vector<input::Key> keys;
+
+    while (_window.pollEvent(_event)) {
+        if (_event.type == sf::Event::KeyPressed) {
+            if (_keys.find(_event.key.code) != _keys.end()) {
+                keys.push_back(_keys[_event.key.code]);
+            }
+        }
     }
-    else {        
-        std::cout << "good file" << std::endl;
-        _sprite.setTexture(texture);
-        _window->draw(_sprite);
-        _window->display();
+    return keys;
+}
+
+void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &sprite, std::shared_ptr<components::Position> &pos)
+{
+    if (sprite == nullptr)
+        return;
+    try {
+        _texture = _rtypeResources->getTexture(sprite->getName())->getSFMLTexture();
+        _sprite.setTexture(_texture);
+        _sprite.setPosition(pos->getX(), pos->getY());
+        _window.draw(_sprite);
+    } catch (const RTypeExceptions &e) {
+        std::cerr << e.what() << e.where() << std::endl;
+        _rectangle.setPosition(pos->getX(), pos->getY());
+        _window.draw(_rectangle);
     }
-     // _sprite.setPosition(entity.getPosX(), entity.getPosY());
+    _window.display();
 }
 
 void SFMLRenderManager::audioUpdate() 
 {
-    std::cout << "DO YOU COPY ?" << std::endl;
     // play/pause en fonction du state de l'audio
 }
   
@@ -172,10 +176,10 @@ void SFMLRenderManager::textUpdate()
 
 bool SFMLRenderManager::eventUpdate() 
 {
-    while (_window->pollEvent(_event))
+    while (_window.pollEvent(_event))
     {
         if (_event.type == sf::Event::Closed) {
-            _window->close();
+            _window.close();
             return false;
         }
     }
@@ -184,7 +188,7 @@ bool SFMLRenderManager::eventUpdate()
 
 void SFMLRenderManager::clear() 
 {
-            _window->clear();
+    _window.clear();
 }
 
 }

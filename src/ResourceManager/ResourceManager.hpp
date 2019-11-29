@@ -2,9 +2,10 @@
 // Created by romane on 19/11/2019.
 //
 
-#ifndef R_TYPE_RESSOURCEMANAGER_H
-#define R_TYPE_RESSOURCEMANAGER_H
+#ifndef R_TYPE_RESOURCEMANAGER_H
+#define R_TYPE_RESOURCEMANAGER_H
 
+#include <memory>
 #include <vector>
 #include "Music.hpp"
 #include "Sound.hpp"
@@ -19,18 +20,6 @@ namespace ecs {
      */
     class ResourceManager {
     public:
-        
-        /**
-         * @brief Get the instance of the Resource Manager classe
-         * 
-         * @return ResourceManager 
-         */
-        static ResourceManager &getInstance();
-
-        ResourceManager(const ResourceManager &) = delete;
-        ResourceManager operator=(const ResourceManager &) = delete;
-
-    private:
         ResourceManager();
         ~ResourceManager();
 
@@ -128,4 +117,4 @@ namespace ecs {
     };
 }
 
-#endif //R_TYPE_RESSOURCEMANAGER_H
+#endif //R_TYPE_RESOURCEMANAGER_H

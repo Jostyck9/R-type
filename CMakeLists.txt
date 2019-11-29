@@ -39,25 +39,28 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Components/GameLogic/
         src/Components/IO/
         src/Components/Physics/
-        src/RessourceManager/
+        src/ResourceManager/
         src/Entities/
         src/Entities/EntityConstructor/
         src/Entities/EntityConstructor/TestEntity/
         src/Entities/EntityConstructor/TestEntity2/
+        src/Entities/EntityConstructor/TestPlayerEntity/
         src/Entities/EntityManager/
         src/Entities/Factories/
         src/Entities/Serializer/
         src/Systems/
         src/Systems/Display
         src/Systems/SystemManager
-        src/Exceptions
         src/Systems/SystemConstructor
         src/Systems/SystemConstructor/MovementSystem
         src/Systems/SystemConstructor/testSystem
         src/Systems/Factories
         src/Render/
         src/ManagerWrapper
-        src/Network/)
+        src/Network/
+        src/Exceptions
+        src/Utils/
+        src/)
 
 #r-type_client
 set(SOURCE_CLIENT
@@ -76,6 +79,7 @@ set(SOURCE_CLIENT
         "src/Components/GameLogic/Level.cpp"
         "src/Components/GameLogic/Power.cpp"
         "src/Components/GameLogic/Scale.cpp"
+        "src/Components/GameLogic/Timer.cpp"
         "src/Components/IO/Controller.cpp"
         "src/Components/IO/DummyInput.cpp"
         "src/Components/IO/GameController.cpp"
@@ -97,9 +101,11 @@ set(SOURCE_CLIENT
         "src/ResourceManager/Texture.cpp"
         "src/ResourceManager/Font.cpp"
         "src/ResourceManager/Text.cpp"
+        "src/ResourceManager/RtypeResources.cpp"
         "src/Entities/Entity.cpp"
         "src/Entities/EntityConstructor/TestEntity/TestEntity.cpp"
         "src/Entities/EntityConstructor/TestEntity2/TestEntity2.cpp"
+        "src/Entities/EntityConstructor/TestPlayerEntity/TestPlayerEntity.cpp"
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
         "src/Entities/Serializer/Serializer.cpp"
@@ -118,7 +124,9 @@ set(SOURCE_CLIENT
         "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
-        "src/Network/PacketManager.cpp")
+        "src/Network/PacketManager.cpp"
+        "src/Rtype.cpp"
+        "src/Utils/Rect.cpp")
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})
