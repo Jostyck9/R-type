@@ -48,6 +48,12 @@ namespace ecs::system
          * @param system 
          */
         void addSystem(std::shared_ptr<ISystem> system) override;
+
+        /**
+         * @brief Delete all the systems inside the system manager
+         * 
+         */
+        void deleteAll() override;
     };
 }
 

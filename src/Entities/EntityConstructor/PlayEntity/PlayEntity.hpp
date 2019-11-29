@@ -5,19 +5,19 @@
 ** TestPlayerEntity.hpp
 */
 
-#ifndef TESTPLAYERENTITY_HPP__
-#define TESTPLAYERENTITY_HPP__
+#ifndef PLAYENTITY_HPP__
+#define PLAYENTITY_HPP__
 
 #include "IEntityConstructor.hpp"
 
 namespace ecs::entities
 {
 
-class TestPlayerEntity : public IEntityConstructor
+class PlayEntity : public IEntityConstructor
 {
 public:
-    TestPlayerEntity() = default;
-    ~TestPlayerEntity() = default;
+    PlayEntity() = default;
+    ~PlayEntity() = default;
 
     /**
      * @brief Create the entity associated with class constructor
@@ -42,4 +42,4 @@ public:
 };
 } // namespace ecs::entities
 
-#endif //TESTPLAYERENTITY_HPP__
+#endif //PLAYENTITY_HPP__

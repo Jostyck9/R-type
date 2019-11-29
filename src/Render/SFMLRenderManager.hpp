@@ -14,6 +14,7 @@
 #include <iostream>
 #include <RtypeResources.hpp>
 #include "Input.hpp"
+#include "Color.hpp"
 
 namespace ecs
 {
@@ -71,20 +72,21 @@ public:
      void updatePressedKeys();
 
      std::map<ecs::input::Key, bool> &getKeysMap() override;
-        
-    private:
-        sf::RenderWindow _window; /*!< Internal window used by SFML functions */
-        sf::Music _music; /*!<Music of the program */
-        sf::Event _event; /*!<Events of the program */
-        sf::Sprite _sprite; /*!<Sprite of the program */
-        std::map<sf::Keyboard::Key, ecs::input::Key> _keys; /*!<Key mapping*/
-        sf::Texture _texture; /*!<Texture of the program */
-        std::shared_ptr<RtypeResources> _rtypeResources;
-        sf::RectangleShape _rectangle; /*!<Shape of the program */
-        sf::Font _font; /*!<Font of the program */
-        sf::Text _text; /*<Text of the program */
-        std::map<ecs::input::Key, bool> _keysMap; /*<Contains name of key and if it is pressed or not */
-    };
+     
+private:
+    sf::RenderWindow _window;             /*!< Internal window used by SFML functions */
+    sf::Music _music;                     /*!<Music of the program */
+    sf::Event _event;                     /*!<Events of the program */
+    sf::Sprite _sprite;                   /*!<Sprite of the program */
+    std::map<ecs::Color, sf::Color> _colors; /*!<Color mapping*/
+    sf::Texture _texture;                 /*!<Texture of the program */
+    std::shared_ptr<RtypeResources> _rtypeResources;
+    sf::RectangleShape _rectangle; /*!<Shape of the program */
+    sf::Font _font;                /*!<Font of the program */
+    sf::Text _text;                /*<Text of the program */
+    std::map<sf::Keyboard::Key, ecs::input::Key> _keys; /*!<Key mapping*/
+    std::map<ecs::input::Key, bool> _keysMap; /*<Contains name of key and if it is pressed or not */
+};
 } // namespace ecs
 
 #endif //R_TYPE_RENDERMANAGER_H

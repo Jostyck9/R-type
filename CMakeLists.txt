@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.1.0)
 project(R-type VERSION 0.1.0)
 
 # include(CTest)
@@ -45,8 +45,12 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/EntityConstructor/TestEntity/
         src/Entities/EntityConstructor/TestEntity2/
         src/Entities/EntityConstructor/TestPlayerEntity/
+        src/Entities/EntityConstructor/PlayEntity/
+        src/Entities/EntityConstructor/StopEntity/
+        src/Entities/EntityConstructor/BackgroundMenuEntity/
         src/Entities/EntityManager/
         src/Entities/Factories/
+        src/Entities/Serializer/
         src/Systems/
         src/Systems/Display
         src/Systems/SystemManager
@@ -56,8 +60,10 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/Factories
         src/Render/
         src/ManagerWrapper
+        src/Network/
         src/Exceptions
         src/Utils/
+        src/Scenes/
         src/)
 
 #r-type_client
@@ -99,14 +105,17 @@ set(SOURCE_CLIENT
         "src/ResourceManager/Sound.cpp"
         "src/ResourceManager/Texture.cpp"
         "src/ResourceManager/Font.cpp"
-        "src/ResourceManager/Text.cpp"
         "src/ResourceManager/RtypeResources.cpp"
         "src/Entities/Entity.cpp"
         "src/Entities/EntityConstructor/TestEntity/TestEntity.cpp"
         "src/Entities/EntityConstructor/TestEntity2/TestEntity2.cpp"
         "src/Entities/EntityConstructor/TestPlayerEntity/TestPlayerEntity.cpp"
+        "src/Entities/EntityConstructor/PlayEntity/PlayEntity.cpp"
+        "src/Entities/EntityConstructor/StopEntity/StopEntity.cpp"
+        "src/Entities/EntityConstructor/BackgroundMenuEntity/BakgroundMenuEntity.cpp"
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
+        "src/Entities/Serializer/Serializer.cpp"
         "src/Systems/ASystem.cpp"
         "src/Systems/Display/DisplaySystem.cpp"
         "src/Systems/SystemManager/SystemManager.cpp"
@@ -123,6 +132,9 @@ set(SOURCE_CLIENT
         "src/Systems/SystemConstructor/MovementSystem/PlayerMovementSystem.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
+        "src/Network/PacketManager.cpp"
+        "src/Scenes/SceneManager.cpp"
+        "src/Scenes/MenuScene.cpp"
         "src/Rtype.cpp"
         "src/Utils/Rect.cpp")
 

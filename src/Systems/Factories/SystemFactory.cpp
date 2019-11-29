@@ -43,3 +43,16 @@ std::shared_ptr<ISystem> SystemFactory::createSystem(const std::string &name)
     }
     return (_createFunction[name])->create(_managerWrapper, _systemManager->getEntitiesToDelete());
 }
+
+bool SystemFactory::remove(const std::string &name)
+{
+    if (!isExisting(name))
+        return false;
+    _createFunction.erase(name);
+    return true;
+}
+
+void SystemFactory::deleteAll()
+{
+    _createFunction.clear();
+}

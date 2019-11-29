@@ -19,8 +19,15 @@ using namespace ecs::entities;
 
 std::shared_ptr<ecs::entities::Entity> TestPlayerEntity::create(
     std::shared_ptr<IEntityManager> &entityManager,
-    std::shared_ptr<ecs::components::IComponentManager> &componentsManager)
+    std::shared_ptr<ecs::components::IComponentManager> &componentsManager,
+    std::pair<float, float> pos,
+    std::pair<float, float> velocity,
+    float rotation)
 {
+    static_cast<void>(rotation);
+    static_cast<void>(pos);
+    static_cast<void>(velocity);
+
     std::shared_ptr<Entity> toCreate = std::make_shared<Entity>();
 
     Rect spriteRect(50, 50, 0, 0);

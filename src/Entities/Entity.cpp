@@ -10,11 +10,15 @@
 
 using namespace ecs::entities;
 
-Entity::Entity() : _id(0)
+Entity::Entity(option gameId) : _id(0), _gameId(gameId)
 {
     static size_t id = 0;
+    static size_t allGameId = AUTOID + 1;
 
     _id = id++;
+    if (gameId == AUTOID) {
+        _gameId = allGameId++;
+    }
 }
 
 Entity::~Entity()
@@ -24,4 +28,9 @@ Entity::~Entity()
 size_t Entity::getID() const
 {
     return _id;
+}
+
+size_t Entity::getInGameID() const
+{
+    return _gameId;
 }

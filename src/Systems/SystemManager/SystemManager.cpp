@@ -39,4 +39,9 @@ namespace ecs::system
     {
         _systems.push_back(system);
     }
+
+    void SystemManager::deleteAll()
+    {
+        _systems.clear();
+    }
 }

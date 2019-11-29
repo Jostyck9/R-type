@@ -10,6 +10,7 @@
 
 #include <string>
 #include <memory>
+#include "PacketManager.hpp"
 #include "IEntityConstructor.hpp"
 #include "Entity.hpp"
 
@@ -19,12 +20,15 @@ class IEntityFactory
 {
 public:
     /**
-     * @brief Create an Entity object with the specific name
+     * @brief Create a Entity object
      * 
      * @param name 
+     * @param pos : std::pair<float, float> = (0, 0)
+     * @param velocity : std::pair<float, float> = (0, 0)
+     * @param rotation 
      * @return std::shared_ptr<Entity> 
      */
-    virtual std::shared_ptr<Entity> createEntity(const std::string &name) = 0;
+    virtual std::shared_ptr<Entity> createEntity(const std::string &name, std::pair<float, float> pos = std::make_pair(0, 0), std::pair<float, float> velocity = std::make_pair(0, 0), float rotation = 0) = 0;
 
     /**
      * @brief Add an entityConstructor to use inside the factory
@@ -34,12 +38,27 @@ public:
     virtual void addEntityConstructor(std::shared_ptr<IEntityConstructor> constructor) = 0;
 
     /**
-     * @brief Create a Entity object
+     * @brief Create an Entity object from an EntityPacket or update it if existing
      * 
-     * @param description
+     * @param entity 
      * @return std::shared_ptr<Entity> 
      */
-    // virtual std::shared_ptr<Entity> createEntity(/* Buffer de la socket provenant du serveur (reflechir pour la clsse) */ description) = 0;
+    virtual std::shared_ptr<Entity> createEntity(ecs::network::PacketManager::Entity &entity) = 0;
+
+    /**
+     * @brief Delete all entities constructor
+     * 
+     */
+    virtual void deleteAll() = 0;
+    
+    /**
+     * @brief Remove an entity constructor
+     * 
+     * @param name 
+     * @return true 
+     * @return false if not existing
+     */
+    virtual bool remove(const std::string &name) = 0;
 };
 } // namespace ecs::entities
 

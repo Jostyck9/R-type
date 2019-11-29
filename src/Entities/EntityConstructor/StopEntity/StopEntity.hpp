@@ -5,19 +5,19 @@
 ** TestPlayerEntity.hpp
 */
 
-#ifndef TESTPLAYERENTITY_HPP__
-#define TESTPLAYERENTITY_HPP__
+#ifndef STOPENTITY_HPP__
+#define STOPENTITY_HPP__
 
 #include "IEntityConstructor.hpp"
 
 namespace ecs::entities
 {
 
-class TestPlayerEntity : public IEntityConstructor
+class StopEntity : public IEntityConstructor
 {
 public:
-    TestPlayerEntity() = default;
-    ~TestPlayerEntity() = default;
+    StopEntity() = default;
+    ~StopEntity() = default;
 
     /**
      * @brief Create the entity associated with class constructor
@@ -27,11 +27,11 @@ public:
      * @return std::shared_ptr<ecs::entities::Entity> 
      */
     std::shared_ptr<ecs::entities::Entity> create(
-        std::shared_ptr<IEntityManager> &entityManager,
-        std::shared_ptr<ecs::components::IComponentManager> &componentsManager,
-        std::pair<float, float> pos = std::make_pair(0,0),
-        std::pair<float, float> velocity = std::make_pair(0,0),
-        float rotation = 0) override;
+            std::shared_ptr<IEntityManager> &entityManager,
+            std::shared_ptr<ecs::components::IComponentManager> &componentsManager,
+            std::pair<float, float> pos = std::make_pair(0,0),
+            std::pair<float, float> velocity = std::make_pair(0,0),
+            float rotation = 0) override;
 
     /**
      * @brief Get the Name entity
@@ -42,4 +42,4 @@ public:
 };
 } // namespace ecs::entities
 
-#endif //TESTPLAYERENTITY_HPP__
+#endif //STOPENTITY_HPP__

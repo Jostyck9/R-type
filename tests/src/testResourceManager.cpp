@@ -9,7 +9,6 @@
 #include <criterion/redirect.h>
 #include "IAudio.hpp"
 #include "IFont.hpp"
-#include "IText.hpp"
 #include "ITexture.hpp"
 #include "Sound.hpp"
 #include "Music.hpp"
@@ -51,13 +50,6 @@ Test(Font, font_is_ok)
     cr_assert_eq(font->getName(), "font");
 }
 
-Test(Text, text_is_ok)
-{
-    std::unique_ptr<ecs::IText> text = std::make_unique<ecs::Text>("text", "Test1");
-
-    cr_assert_eq(text->getName(), "text");
-}
-
 Test(ResourceManager, music_manager_is_ok)
 {
     ecs::ResourceManager resourceManager;
@@ -76,16 +68,6 @@ Test(ResourceManager, sound_manager_is_ok)
     std::shared_ptr<ecs::Sound> sound = resourceManager.getSound("sound");
     
     cr_assert_eq(sound->getName(), "sound");
-}
-
-Test(ResourceManager, text_manager_is_ok)
-{
-    ecs::ResourceManager resourceManager;
-
-    resourceManager.loadText("text", "text");
-    std::shared_ptr<ecs::Text> text = resourceManager.getText("text");
-    
-    cr_assert_eq(text->getName(), "text");
 }
 
 Test(ResourceManager, texture_manager_is_ok)

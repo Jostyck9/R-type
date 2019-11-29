@@ -9,7 +9,6 @@
 #include "MovementSystem.hpp"
 #include "PlayerMovementSystem.hpp"
 #include "Rtype.hpp"
-#include "TestPlayerEntity.hpp"
 
 Rtype::Rtype()
 {
@@ -18,25 +17,9 @@ Rtype::Rtype()
     _entityFactory = std::make_shared<EntityFactory>(_managerWrapper->getEntityManager(), _managerWrapper->getComponentManager());
 }
 
-Rtype::~Rtype()
-{
-
-}
-
 void Rtype::start()
 {
-    bool isPlaying = true;
-
-    _systemManager->addSystem(std::make_shared<DisplaySystem>(_managerWrapper, _systemManager->getEntitiesToDelete()));
-    _systemManager->addSystem(std::make_shared<MovementSystem>(_managerWrapper, _systemManager->getEntitiesToDelete()));
-    _systemManager->addSystem(std::make_shared<PlayerMovementSystem>(_managerWrapper, _systemManager->getEntitiesToDelete()));
-    _entityFactory->addEntityConstructor(std::make_shared<TestPlayerEntity>());
-    _entityFactory->createEntity("TestPlayer");
-    _managerWrapper->getRenderManager()->init();
-    while (isPlaying) {
-        _systemManager->updateAll();
-        isPlaying = _managerWrapper->getRenderManager()->eventUpdate();
-    }
+    _sceneManager = std::make_shared<SceneManager>();
 }
 
 void Rtype::stop()

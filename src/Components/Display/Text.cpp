@@ -11,7 +11,7 @@ ecs::components::Text::Text() : _string("null") ,_size(15)
 {
 }
 
-ecs::components::Text::Text(const std::string &str) : _string(str) ,_size(15)
+ecs::components::Text::Text(const std::string &str, int size) : _string(str) ,_size(size)
 {
 }
 
@@ -62,9 +62,18 @@ int ecs::components::Text::getSize(void) const
     return this->_size;
 }
 
+void ecs::components::Text::setColor(const ecs::Color &newColor)
+{
+    this->_color = newColor;
+}
+
+ecs::Color ecs::components::Text::getColor(void) const
+{
+    return this->_color;
+}
+
+
 bool ecs::components::Text::operator==(Text &other)
 {
-    if (other.getId() == this->_id)
-        return true;
-    return false;
+    return other.getId() == this->_id;
 }
