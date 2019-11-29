@@ -25,27 +25,46 @@ PlayerMovementSystem::PlayerMovementSystem(std::shared_ptr<ManagerWrapper> &mana
 void PlayerMovementSystem::update()
 {
     std::shared_ptr<ecs::components::Velocity> velocityComp;
-    std::vector<ecs::input::Key>
-        inputs = _managerWrapper->getRenderManager()->getInputs();
+    std::vector<ecs::input::Key> inputs = _managerWrapper->getRenderManager()->getInputs();
     for (auto &it : _managerWrapper->getEntityManager()->getAllEntities())
     {
         try
-        {           
-            std::cout << "MEGAPUTE" <<std::endl;
+        {
             std::dynamic_pointer_cast<ecs::components::PlayerController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::PlayerController))));
-            std::cout << "TURBOPUTE" <<std::endl;
             velocityComp = std::dynamic_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::Velocity))));
-            std::cout << "CLEMENTPUTE" <<std::endl;
-            if (std::find(inputs.begin(), inputs.end(), PlayerMovementSystem::movePlayerUp) != inputs.end())
-            {
-                velocityComp->setVelocityY((velocityComp->getVelocityY() - 1));
-                std::cout << "pute up " << std::endl;
-            }
+            updateVelocityOnInput(inputs, velocityComp);
         }
         catch (const ComponentExceptions &e)
-        { 
+        {
         }
     }
 }
 
+void PlayerMovementSystem::updateVelocityOnInput(std::vector<ecs::input::Key> &inputs, std::shared_ptr<ecs::components::Velocity> &velocityComp)
+{
+    if (std::find(inputs.begin(), inputs.end(), PlayerMovementSystem::movePlayerUp) != inputs.end())
+    {
+        velocityComp->setVelocityY((velocityComp->getVelocityY() - 1));
+    }
+    else if (std::find(inputs.begin(), inputs.end(), PlayerMovementSystem::movePlayerDown) != inputs.end())
+    {
+        velocityComp->setVelocityY((velocityComp->getVelocityY() + 1));
+    }
+    else
+    {
+        velocityComp->setVelocityY(0);
+    }
+    if (std::find(inputs.begin(), inputs.end(), PlayerMovementSystem::movePlayerRight) != inputs.end())
+    {
+        velocityComp->setVelocityX((velocityComp->getVelocityX() + 1));
+    }
+    else if (std::find(inputs.begin(), inputs.end(), PlayerMovementSystem::movePlayerLeft) != inputs.end())
+    {
+        velocityComp->setVelocityX((velocityComp->getVelocityX() - 1));
+    }
+    else
+    {
+        velocityComp->setVelocityX(0);
+    }
+}
 } // namespace ecs::system

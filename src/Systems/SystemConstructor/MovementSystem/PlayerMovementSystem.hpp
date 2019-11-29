@@ -46,6 +46,7 @@ public:
     PlayerMovementSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete);
     ~PlayerMovementSystem() = default;
     void update() override;
+    void updateVelocityOnInput(std::vector<ecs::input::Key> &inputs, std::shared_ptr<ecs::components::Velocity> &velocityComp);
 
 public:
 
