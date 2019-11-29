@@ -65,11 +65,12 @@ public:
          */
     void display() override;
     /**
-         * @brief get all the key inputs
+         * @brief update what key are pressed
          *
-         * @return std::vector<ecs::input::Key>
          */
-        const std::vector<ecs::input::Key> &getInputs() override;
+     void updatePressedKeys();
+
+     std::map<ecs::input::Key, bool> &getKeysMap() override;
         
     private:
         sf::RenderWindow _window; /*!< Internal window used by SFML functions */
@@ -82,7 +83,7 @@ public:
         sf::RectangleShape _rectangle; /*!<Shape of the program */
         sf::Font _font; /*!<Font of the program */
         sf::Text _text; /*<Text of the program */
-        std::vector<input::Key> _foundKeys;
+        std::map<ecs::input::Key, bool> _keysMap; /*<Contains name of key and if it is pressed or not */
     };
 } // namespace ecs
 

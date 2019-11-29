@@ -2,6 +2,7 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <map>
 #include "IComponent.hpp"
 #include "ComponentManager.hpp"
 #include "Entity.hpp"
@@ -35,8 +36,7 @@ namespace ecs {
         virtual bool eventUpdate() = 0;
         virtual void clear() = 0;
         virtual void display() = 0;
-        virtual const std::vector<ecs::input::Key> &getInputs() = 0;
-
+        virtual std::map<ecs::input::Key, bool> &getKeysMap() = 0;
     };
 }
 

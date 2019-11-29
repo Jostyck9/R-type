@@ -111,6 +111,11 @@ namespace ecs {
         _keys[sf::Keyboard::Space] = ecs::input::SPACE;
         _keys[sf::Keyboard::Subtract] = ecs::input::SUBTRACT;
         _keys[sf::Keyboard::Tab] = ecs::input::TAB;
+        _keysMap[ecs::input::UP] = false;
+        _keysMap[ecs::input::DOWN] = false;
+        _keysMap[ecs::input::RIGHT] = false;
+        _keysMap[ecs::input::LEFT] = false;
+        _keysMap[ecs::input::SPACE] = false;
         _rectangle.setFillColor(sf::Color(100, 250, 50));
         _font = _rtypeResources->getFont("Pixeled")->getSFMLFont();
         _text.setFont(_font);
@@ -142,17 +147,16 @@ void SFMLRenderManager::terminate()
     //stop audio ?
 }
 
-const std::vector<ecs::input::Key> &SFMLRenderManager::getInputs()
+std::map<ecs::input::Key, bool> &SFMLRenderManager::getKeysMap() {
+    return _keysMap;
+}
+
+void SFMLRenderManager::updatePressedKeys()
 {
-    _foundKeys.clear();
-    while (_window.pollEvent(_event)) {
-        if (_event.type == sf::Event::KeyPressed) {
-            if (_keys.find(_event.key.code) != _keys.end()) {
-                _foundKeys.push_back(_keys[_event.key.code]);
-            }
-        }
-    }
-    return _foundKeys;
+    _keysMap[ecs::input::LEFT] = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
+    _keysMap[ecs::input::UP] = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
+    _keysMap[ecs::input::DOWN] = sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
+    _keysMap[ecs::input::RIGHT] = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
 }
 
 void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &sprite, std::shared_ptr<components::Position> &pos)
@@ -192,6 +196,8 @@ bool SFMLRenderManager::eventUpdate()
             _window.close();
             return false;
         }
+        //if (_event.type == sf::Event::KeyPressed)
+            updatePressedKeys();
     }
     return true;
 }

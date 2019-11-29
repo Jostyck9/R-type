@@ -10,11 +10,6 @@
 #include "ComponentExceptions.hpp"
 #include "PlayerMovementSystem.hpp"
 
-const ecs::input::Key ecs::system::PlayerMovementSystem::movePlayerUp = ecs::input::UP;
-const ecs::input::Key ecs::system::PlayerMovementSystem::movePlayerDown = ecs::input::DOWN;
-const ecs::input::Key ecs::system::PlayerMovementSystem::movePlayerLeft = ecs::input::LEFT;
-const ecs::input::Key ecs::system::PlayerMovementSystem::movePlayerRight = ecs::input::RIGHT;
-
 namespace ecs::system
 {
 
@@ -25,14 +20,14 @@ PlayerMovementSystem::PlayerMovementSystem(std::shared_ptr<ManagerWrapper> &mana
 void PlayerMovementSystem::update()
 {
     std::shared_ptr<ecs::components::Velocity> velocityComp;
-    std::vector<ecs::input::Key> inputs = _managerWrapper->getRenderManager()->getInputs();
+    std::map<ecs::input::Key, bool> keys = _managerWrapper->getRenderManager()->getKeysMap();
     for (auto &it : _managerWrapper->getEntityManager()->getAllEntities())
     {
         try
         {
             std::dynamic_pointer_cast<ecs::components::PlayerController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::PlayerController))));
             velocityComp = std::dynamic_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::Velocity))));
-            updateVelocityOnInput(inputs, velocityComp);
+            updateVelocityOnInput(keys, velocityComp);
         }
         catch (const ComponentExceptions &e)
         {
@@ -40,31 +35,27 @@ void PlayerMovementSystem::update()
     }
 }
 
-void PlayerMovementSystem::updateVelocityOnInput(std::vector<ecs::input::Key> &inputs, std::shared_ptr<ecs::components::Velocity> &velocityComp)
+void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, bool> &keys, std::shared_ptr<ecs::components::Velocity> &velocityComp)
 {
-    if (std::find(inputs.begin(), inputs.end(), PlayerMovementSystem::movePlayerUp) != inputs.end())
+    if (keys[ecs::input::LEFT])
+        velocityComp->setVelocityX(-2);
+    else if (keys[ecs::input::RIGHT])
     {
-        velocityComp->setVelocityY((velocityComp->getVelocityY() - 2));
-    }
-    else if (std::find(inputs.begin(), inputs.end(), PlayerMovementSystem::movePlayerDown) != inputs.end())
-    {
-        velocityComp->setVelocityY((velocityComp->getVelocityY() + 2));
+        velocityComp->setVelocityX(2);
     }
     else
-    {
-        velocityComp->setVelocityY(0);
-    }
-    if (std::find(inputs.begin(), inputs.end(), PlayerMovementSystem::movePlayerRight) != inputs.end())
-    {
-        velocityComp->setVelocityX((velocityComp->getVelocityX() + 2));
-    }
-    else if (std::find(inputs.begin(), inputs.end(), PlayerMovementSystem::movePlayerLeft) != inputs.end())
-    {
-        velocityComp->setVelocityX((velocityComp->getVelocityX() - 2));
-    }
-    else
-    {
+    {        std::cout << "you dont press left nor right" << std::endl;
+
         velocityComp->setVelocityX(0);
+    }
+    if (keys[ecs::input::UP])
+        velocityComp->setVelocityY(-2);
+    else if (keys[ecs::input::DOWN]) {
+        velocityComp->setVelocityY(2);
+    }
+    else {
+        std::cout << "you dont press up nor down" << std::endl;
+        velocityComp->setVelocityY(0);
     }
 }
 } // namespace ecs::system

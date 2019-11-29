@@ -46,14 +46,7 @@ public:
     PlayerMovementSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete);
     ~PlayerMovementSystem() = default;
     void update() override;
-    void updateVelocityOnInput(std::vector<ecs::input::Key> &inputs, std::shared_ptr<ecs::components::Velocity> &velocityComp);
-
-public:
-
-    static const ecs::input::Key movePlayerUp;
-    static const ecs::input::Key movePlayerDown;
-    static const ecs::input::Key movePlayerLeft;
-    static const ecs::input::Key movePlayerRight;
+    void updateVelocityOnInput(std::map<ecs::input::Key, bool> &keys, std::shared_ptr<ecs::components::Velocity> &velocityComp);
 };
 
 } // namespace ecs::system
