@@ -43,6 +43,21 @@ public:
      * @return false 
      */
     virtual bool isExisting(const std::string &name) = 0;
+
+    /**
+     * @brief Remove a system constructor
+     * 
+     * @param name 
+     * @return true 
+     * @return false 
+     */
+    virtual bool remove(const std::string &name) = 0;
+
+    /**
+     * @brief Delete all systems factory
+     * 
+     */
+    virtual void deleteAll() = 0;
 };
 }// namespace ecs::system
 

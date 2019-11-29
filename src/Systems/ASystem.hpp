@@ -10,9 +10,8 @@
 
 #include <memory>
 #include <list>
-#include "IEntityManager.hpp"
-#include "IComponentManager.hpp"
 #include "ISystem.hpp"
+#include "ManagerWrapper.hpp"
 
 namespace ecs::system
 {
@@ -20,8 +19,7 @@ namespace ecs::system
     class ASystem : public ISystem
     {
     protected:
-        std::shared_ptr<entities::IEntityManager> &_entityManager;
-        std::shared_ptr<ecs::components::IComponentManager> &_componentManager;
+        std::shared_ptr<ManagerWrapper> &_managerWrapper;
         std::list<int> &_entitiesToDelete;
 
     public:
@@ -32,7 +30,7 @@ namespace ecs::system
          * @param componentManager 
          * @param entitiesToDelete List of entities to delete after the update
          */
-        ASystem(std::shared_ptr<ecs::entities::IEntityManager> &entityManager, std::shared_ptr<ecs::components::IComponentManager> &componentManager, std::list<int> &entitiesToDelete);
+        ASystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete);
         ~ASystem();
     };
 }

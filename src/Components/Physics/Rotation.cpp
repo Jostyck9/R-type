@@ -10,7 +10,7 @@
 
 using namespace ecs::components;
 
-Rotation::Rotation(const float rotation) : _radAngle((rotation * M_PI) / 180)
+Rotation::Rotation(const float rotation) : _radAngle((rotation * 3.14) / 180)
 {
 }
 

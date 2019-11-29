@@ -50,6 +50,12 @@ namespace ecs {
          * 
          */
         void loop(bool state) override;
+        /**
+         * @brief Get SFML music of the Music
+         *
+         * @return sf::Music
+         */
+        sf::Music &getSFMLMusic();
 
     private:
         std::string _name;

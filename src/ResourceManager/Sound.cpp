@@ -44,4 +44,9 @@ const std::string &Sound::getName()
     return _name;
 }
 
+sf::Sound &Sound::getSFMLSound()
+{
+    return _sound;
+}
+
 }

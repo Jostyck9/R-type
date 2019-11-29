@@ -9,6 +9,7 @@
 #define DUMMYINPUT_HPP
 
 #include "Input.hpp"
+
 namespace ecs::components
 {
     /**

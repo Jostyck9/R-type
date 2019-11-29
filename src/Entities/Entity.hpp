@@ -18,9 +18,23 @@ namespace ecs::entities
     {
     private:
         size_t _id;
+        size_t _gameId;
 
     public:
-        Entity();
+        enum option : size_t {
+            NOGAMEID,
+            AUTOID
+        };
+
+    public:
+        /**
+         * @brief Construct a new Entity object
+         * 
+         * @param gameId can be NOGAMEID: that dosen't define a gameId
+         *               can be AUTOID: that create a gameID auto
+         *               or a size_t directly defined by yourself
+         */
+        Entity(option gameId = NOGAMEID);
         ~Entity();
 
         /**
@@ -29,6 +43,13 @@ namespace ecs::entities
          * @return size_t 
          */
         size_t getID() const;
+
+        /**
+         * @brief Get the In Game ID object
+         * 
+         * @return size_t 
+         */
+        size_t getInGameID() const;
 
         bool operator==(const Entity &other) const
         {

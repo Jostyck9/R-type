@@ -30,7 +30,13 @@ namespace ecs {
          * 
          * @param std::string
          */
-        void setText(const std::string &text) override; 
+        void setText(const std::string &text) override;
+        /**
+         * @brief Get SFML text of the Text
+         *
+         * @return sf::Text
+         */
+        sf::Text &getSFMLText();
 
     private:
         std::string _name;

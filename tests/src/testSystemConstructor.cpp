@@ -15,6 +15,7 @@
 #include "SystemFactory.hpp"
 #include "testSystem.hpp"
 #include "DisplaySystem.hpp"
+#include "ManagerWrapper.hpp"
 
 using namespace ecs::components;
 using namespace ecs::entities;
@@ -22,15 +23,30 @@ using namespace ecs::system;
 
 Test(SystemConstructor, Factory)
 {
+    std::shared_ptr<ecs::ManagerWrapper> managers = std::make_shared<ecs::ManagerWrapper>();
     std::list <int>idToDel;
-    std::shared_ptr<IComponentManager> compoManager = std::make_shared<ComponentManager>();
-    std::shared_ptr<IEntityManager> entityManager = std::make_shared<EntityManager>(compoManager);
-    std::shared_ptr<ISystemManager> systemManager = std::make_shared<SystemManager>(entityManager, compoManager);
-    std::shared_ptr<ISystemFactory> systemFactory = std::make_shared<SystemFactory>(entityManager, systemManager, compoManager);
+    std::shared_ptr<ISystemManager> systemManager = std::make_shared<SystemManager>(managers);
+    std::shared_ptr<ISystemFactory> systemFactory = std::make_shared<SystemFactory>(managers, systemManager);
 
     cr_assert_eq(systemFactory->isExisting("Display"), false);
     systemFactory->addSystemConstructor(std::make_shared<testSystem>());
     cr_assert_eq(systemFactory->isExisting("Display"), true);
     cr_assert_eq(systemFactory->isExisting("test"), false);
     auto res = systemFactory->createSystem("Display");
+    cr_assert_eq(systemFactory->isExisting("Display"), true);
+    systemFactory->remove("Display");
+    cr_assert_eq(systemFactory->isExisting("Display"), false);
+}
+
+Test(SystemConstructor, DeleteAll)
+{
+    std::shared_ptr<ecs::ManagerWrapper> managers = std::make_shared<ecs::ManagerWrapper>();
+    std::list <int>idToDel;
+    std::shared_ptr<ISystemManager> systemManager = std::make_shared<SystemManager>(managers);
+    std::shared_ptr<ISystemFactory> systemFactory = std::make_shared<SystemFactory>(managers, systemManager);
+
+    systemFactory->addSystemConstructor(std::make_shared<testSystem>());
+    cr_assert_eq(systemFactory->isExisting("Display"), true);
+    systemFactory->deleteAll();
+    cr_assert_eq(systemFactory->isExisting("Display"), false);
 }

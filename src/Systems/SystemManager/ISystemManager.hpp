@@ -8,6 +8,8 @@
 #ifndef ISYSTEMMANAGER_HPP__
 #define ISYSTEMMANAGER_HPP__
 
+#include "ISystem.hpp"
+
 namespace ecs::system
 {
     class ISystemManager
@@ -18,7 +20,27 @@ namespace ecs::system
          * 
          */
         virtual void updateAll() = 0;
+
+        /**
+         * @brief Get the Entities To Delete object
+         * 
+         * @return std::list<int>& 
+         */
         virtual std::list<int> &getEntitiesToDelete() = 0;
+
+        /**
+         * @brief Add a system inside the system manager
+         * 
+         * @param system 
+         */
+        virtual void addSystem(std::shared_ptr<ISystem> system) = 0;
+
+        /**
+         * @brief Remove all the systems inside the system manager
+         * 
+         */
+        virtual void deleteAll() = 0;
+
     };
 }
 

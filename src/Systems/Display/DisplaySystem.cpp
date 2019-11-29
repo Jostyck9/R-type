@@ -5,15 +5,18 @@
 ** DisplaySystem.cpp
 */
 
+#include <iostream>
 #include "Physics/Position.hpp"
 #include "Physics/Velocity.hpp"
+#include "Display/Sprite.hpp"
 #include "DisplaySystem.hpp"
-#include <iostream>
+#include "Collision.hpp"
+#include "ComponentExceptions.hpp"
 
 namespace ecs::system
 {
-    DisplaySystem::DisplaySystem(std::shared_ptr<ecs::entities::IEntityManager> &entityManager, std::shared_ptr<ecs::components::IComponentManager> &componentManager, std::list<int> &entitiesToDelete) : 
-    ASystem(entityManager, componentManager, entitiesToDelete)
+    DisplaySystem::DisplaySystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete) : 
+    ASystem(managerWrapper, entitiesToDelete), _elapsedTime(0)
     {
     }
     
@@ -23,33 +26,10 @@ namespace ecs::system
 
     void DisplaySystem::update()
     {
-        for (auto &it : _entityManager->getAllEntities()) {
-            // auto VelocityComponent = _componentManager->getPhysicComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Velocity)));
-            // auto speed = std::dynamic_pointer_cast<ecs::components::Velocity>(VelocityComponent);
-            auto PosComponent = _componentManager->getPhysicComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Position)));
-            auto position = std::dynamic_pointer_cast<ecs::components::Position>(PosComponent);
-            // position->setX(position->getX() + speed->getValue());
-            std::cout << "Update position : " << int(position->getX()) << " " << int(position->getY()) << std::endl;
+        for (auto &it :  _managerWrapper->getEntityManager()->getAllEntities()) {
+           std::shared_ptr<ecs::components::Sprite> spriteComp = std::dynamic_pointer_cast<ecs::components::Sprite>(_managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Sprite))));
+           std::shared_ptr<ecs::components::Position> posComp = std::dynamic_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(),std::type_index(typeid(ecs::components::Position))));
+           _managerWrapper->getRenderManager()->graphicsUpdate(spriteComp, posComp);
         }
     }
-    // void DisplaySystem::update()
-    // {
-    //     for (auto &it : _entityManager->getAllEntities()) {
-    //         auto components = _componentManager->getPhysicComponents(it->getID());
-    //         for (auto &it2 : components) {
-    //             if (it2->getType() == std::type_index(typeid(ecs::components::Velocity))) {
-    //                 auto speed = std::dynamic_pointer_cast<ecs::components::Velocity>(it2);
-    //                 for (auto &it3 : components) {
-    //                     if (it3->getType() == std::type_index(typeid(ecs::components::Position))) {
-    //                         auto position = std::dynamic_pointer_cast<ecs::components::Position>(it3);
-
-    //                         position->setX(position->getX() + speed->getValue());
-    //                         std::cout << "Update position : " << position->getX() << std::endl;
-
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
 }

@@ -23,4 +23,9 @@ const std::string &Texture::getName()
     return _name;
 }
 
+sf::Texture &Texture::getSFMLTexture()
+{
+    return _texture;
+}
+
 }
