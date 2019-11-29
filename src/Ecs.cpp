@@ -10,7 +10,8 @@
 using namespace ecs;
 
 Ecs::Ecs(/* args */) : _managerWrapper(std::make_shared<ecs::ManagerWrapper>()),
-                       _systemManager(std::reinterpret_pointer_cast<ecs::system::ISystemManager>(std::make_shared<ecs::system::SystemManager>(_managerWrapper)))
+                       _systemManager(std::reinterpret_pointer_cast<ecs::system::ISystemManager>(std::make_shared<ecs::system::SystemManager>(_managerWrapper))),
+                       _factoriesWrapper(std::make_shared<ecs::FactoriesWrapper>(_managerWrapper, _systemManager))
 {
 }
 
@@ -41,4 +42,14 @@ std::shared_ptr<ecs::ResourceManager> &Ecs::getResourceManager()
 std::shared_ptr<ecs::system::ISystemManager> &Ecs::getSystemManager()
 {
     return _systemManager;
+}
+
+std::shared_ptr<ecs::system::ISystemFactory> &Ecs::getSystemFactory()
+{
+    return _factoriesWrapper->getSystemFactory();
+}
+
+std::shared_ptr<ecs::entities::IEntityFactory> &Ecs::getEntityFactory()
+{
+    return _factoriesWrapper->getEntityFactory();
 }
