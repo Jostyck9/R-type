@@ -19,10 +19,20 @@ class ILoader
 {
 private:
 public:
-    ILoader() = default;
-    ~ILoader() = default;
-
+    /**
+     * @brief get all libraries inside a file
+     * 
+     * @return std::vector<std::shared_ptr<T>> 
+     */
     virtual std::vector<std::shared_ptr<T>> loadAllLibrary() = 0;
+
+    /**
+     * @brief get the define library given in parameter
+     * 
+     * @param const std::string
+     * 
+     * @return std::shared_ptr<T> 
+     */
     virtual std::shared_ptr<T> loadLibrary(const std::string &) = 0;
 };
 }; // namespace ecs

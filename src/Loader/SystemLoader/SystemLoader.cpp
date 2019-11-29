@@ -6,6 +6,7 @@
 */
 
 #include "SystemLoader.hpp"
+#include "DlLoader.hpp"
 
 using namespace ecs;
 
@@ -22,7 +23,11 @@ std::vector<std::shared_ptr<ecs::system::ISystemConstructor>> SystemLoader::load
 
 }
 
-std::shared_ptr<ecs::system::ISystemConstructor> loadLibrary(const std::string &path)
+std::shared_ptr<ecs::system::ISystemConstructor> SystemLoader::loadLibrary(const std::string &path)
 {
+    DlLoader<ecs::system::ISystemConstructor> lib;
 
+    lib.loadInstance(path);
+    auto instancied_lib = lib.getInstance();
+    return(instancied_lib);
 }

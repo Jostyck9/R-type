@@ -53,7 +53,9 @@ set_property(TARGET DisplaySystem PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOU
 
 
 include_directories(${CMAKE_INCLUDE_PATH}
-        src/DlLoader
+        src/Loader/
+        src/Loader/EntitiesLoader/
+        src/Loader/SystemLoader/
         src/Components/
         src/Components/ComponentManager/
         src/Components/Display/
@@ -73,7 +75,8 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/SystemConstructor
         src/Systems/Factories
         src/Render/
-        src/ManagerWrapper)
+        src/ManagerWrapper
+        )
 
 #r-type_client
 set(SOURCE_CLIENT
@@ -128,6 +131,8 @@ set(SOURCE_CLIENT
         "src/Systems/Factories/SystemFactory.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
+        "src/Loader/SystemLoader/SystemLoader.cpp"
+        "src/Loader/EntitiesLoader/EntitiesLoader.cpp"
 )
 
 add_executable(r-type_client ${SOURCE_CLIENT})
