@@ -47,6 +47,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/EntityConstructor/TestPlayerEntity/
         src/Entities/EntityManager/
         src/Entities/Factories/
+        src/Entities/Serializer/
         src/Systems/
         src/Systems/Display
         src/Systems/SystemManager
@@ -56,6 +57,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/Factories
         src/Render/
         src/ManagerWrapper
+        src/Network/
         src/Exceptions
         src/Utils/
         src/)
@@ -106,6 +108,7 @@ set(SOURCE_CLIENT
         "src/Entities/EntityConstructor/TestPlayerEntity/TestPlayerEntity.cpp"
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
+        "src/Entities/Serializer/Serializer.cpp"
         "src/Systems/ASystem.cpp"
         "src/Systems/Display/DisplaySystem.cpp"
         "src/Systems/SystemManager/SystemManager.cpp"
@@ -121,6 +124,7 @@ set(SOURCE_CLIENT
         "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
+        "src/Network/PacketManager.cpp"
         "src/Rtype.cpp"
         "src/Utils/Rect.cpp")
 
