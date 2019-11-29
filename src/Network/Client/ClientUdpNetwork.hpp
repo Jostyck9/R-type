@@ -6,26 +6,38 @@
 #define R_TYPE_CLIENTUDPNETWORK_HPP
 
 #include <boost/asio.hpp>
+#include <vector>
+#include "PacketManager.hpp"
 
-class ClientUDPNetwork {
-    private:
-    boost::asio::io_context _ioContext;
-    boost::asio::ip::udp::socket _socket;
-    boost::asio::ip::udp::resolver _resolver;
-    boost::asio::ip::udp::resolver::results_type _endpoints;
+namespace ecs {
+    namespace network {
+        class ClientUDPNetwork {
+            private:
+            boost::asio::io_context _ioContext;
+            boost::asio::ip::udp::socket _socket;
+            boost::asio::ip::udp::resolver _resolver;
+            boost::asio::ip::udp::endpoint _endpoints;
+            boost::asio::ip::udp::endpoint _senderEndpoint;
+            std::string _host;
+            std::string _port;
 
-    std::string _host;
-    unsigned short _port;
+            std::vector<ecs::network::PacketManager> _packetReceived;
+            std::vector<ecs::network::PacketManager> _packetToSend;
+            public:
 
-    public:
+            ClientUDPNetwork(const std::string &host, const std::string &port);
 
-    ClientUDPNetwork(const std::string &host, unsigned short port);
+            virtual ~ClientUDPNetwork();
 
-    virtual ~ClientUDPNetwork();
-    void receiveHandler(const std::error_code& error, std::size_t bytesTransferred);
-    void receive();
-    void send(/*packet*/);
-    void run();
+            void receiveHandler(const std::error_code &error,
+                std::size_t bytesTransferred
+            );
+            void addPacket(const ecs::network::PacketManager &);
+            void receive();
+            void send();
+            void run();
+        };
+    }
 };
 
 #endif //R_TYPE_CLIENTUDPNETWORK_HPP

@@ -128,11 +128,11 @@ set(SOURCE_CLIENT
         "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
-        "src/Network/PacketManager.cpp"
         "src/Rtype.cpp"
         "src/Utils/Rect.cpp"
         "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"]]
-        src/Network/Client/ClientUdpNetwork.cpp src/Network/Client/ClientUdpNetwork.hpp)
+        src/Network/Client/ClientUdpNetwork.cpp src/Network/Client/ClientUdpNetwork.hpp
+        "src/Network/PacketManager.cpp")
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})
@@ -143,6 +143,7 @@ set(SOURCE_SERVER
         src/main_server.cpp
         src/Network/Session/Session.cpp
         src/Room/RoomManager.cpp src/Room/Room.cpp
+        "src/Network/PacketManager.cpp"
         )
 add_executable(r-type_server ${SOURCE_SERVER})
 

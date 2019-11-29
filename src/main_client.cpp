@@ -9,6 +9,7 @@
 #include <cstring>
 #include <iostream>
 #include <boost/asio.hpp>
+#include <Client/ClientUdpNetwork.hpp>
 
 enum {
     max_length = 1024
@@ -16,6 +17,14 @@ enum {
 
 int main(int argc, char *argv[])
 {
+    ecs::network::ClientUDPNetwork client(argv[1], argv[2]);
+    ecs::network::PacketManager packet;
+
+    packet.setCmd(ecs::network::PacketManager::HANDSHAKE);
+
+    client.addPacket(packet);
+    client.send();
+    /*
     try {
         if (argc != 3) {
             std::cerr << "Usage: blocking_udp_echo_client <host> <port>\n";
@@ -52,6 +61,6 @@ int main(int argc, char *argv[])
     } catch (std::exception &e) {
         std::cerr << "Exception: " << e.what() << "\n";
     }
-
+*/
     return 0;
 }

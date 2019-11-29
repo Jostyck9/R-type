@@ -24,6 +24,7 @@ class server {
 
     void handle_receive(boost::system::error_code ec, std::size_t bytes_recvd)
     {
+        std::cout << ec << " " << bytes_recvd << std::endl;
         if (!ec && bytes_recvd > 0) {
             if (_sessions.find(sender_endpoint_) != _sessions.end()) {
                 _sessions[sender_endpoint_]->manage_data(data_);

@@ -3,17 +3,22 @@
 //
 
 #include <iostream>
-#include "ClientUdpNetwork.hpp"
+#include "ClientUDPNetwork.hpp"
 
-ClientUDPNetwork::ClientUDPNetwork(const std::string &host, unsigned short port)
-    : _host(host), _port(port), _resolver(_ioContext), _socket(_ioContext,
+ecs::network::ClientUDPNetwork::ClientUDPNetwork(const std::string &host,
+    const std::string &port
+) : _host(host), _port(port), _resolver(_ioContext), _socket(_ioContext,
     boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), 0)), _endpoints(
-    _resolver.resolve(boost::asio::ip::udp::v4(), host, std::to_string(port)))
+    *_resolver.resolve(
+        boost::asio::ip::udp::resolver::query(boost::asio::ip::udp::v4(), host,
+            port)))
 {
+    this->send();
 }
 
-void ClientUDPNetwork::run()
+void ecs::network::ClientUDPNetwork::run()
 {
+    receive();
     while (!_ioContext.stopped()) {
         try {
             _ioContext.run();
@@ -25,23 +30,36 @@ void ClientUDPNetwork::run()
     }
 }
 
-void ClientUDPNetwork::receiveHandler(const std::error_code &error,
-    size_t bTr)
+void ecs::network::ClientUDPNetwork::receiveHandler(
+    const std::error_code &error, size_t bTr
+)
 {
     if (!error) {
-
     } else {
         std::cerr << "error receiving\n";
     }
-
+    receive();
 }
 
-void ClientUDPNetwork::receive()
+void ecs::network::ClientUDPNetwork::receive()
 {
+    _socket.async_receive_from(boost::asio::buffer(_packetReceived),
+        _senderEndpoint, [this](std::error_code ec, std::size_t bytes_recvd) {
+            this->receiveHandler(ec, bytes_recvd);
+        });
 }
 
-void ClientUDPNetwork::send()
+void ecs::network::ClientUDPNetwork::send()
 {
+    _socket.send_to(boost::asio::buffer(_packetToSend.begin()->getRawData(),
+        ecs::network::PacketManager::MAX_LENGTH), _endpoints);
 }
 
-ClientUDPNetwork::~ClientUDPNetwork() = default;
+void ecs::network::ClientUDPNetwork::addPacket(
+    const ecs::network::PacketManager &packet
+)
+{
+    _packetToSend.emplace_back(packet);
+}
+
+ecs::network::ClientUDPNetwork::~ClientUDPNetwork() = default;

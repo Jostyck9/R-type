@@ -8,7 +8,7 @@ Component <|-- Physics
 Component <|-- Display
 Component <|-- IO
 Component <|-- GameLogic
-Component <|-- Network
+Component <|-- network
 
 interface Physics
 

@@ -2,7 +2,7 @@
 
 
 
-Network Working Group                                         H. Beaupel
+network Working Group                                         H. Beaupel
 Internet-Draft                                              R-Type, Inc.
 Intended status: Informational                         November 19, 2019
 Expires: May 22, 2020
