@@ -84,20 +84,6 @@ public:
         sf::Text _text; /*<Text of the program */
         std::vector<input::Key> _foundKeys;
     };
-}
-
-private:
-    sf::RenderWindow _window;             /*!< Internal window used by SFML functions */
-    sf::Music _music;                     /*!<Music of the program */
-    sf::Event _event;                     /*!<Events of the program */
-    sf::Sprite _sprite;                   /*!<Sprite of the program */
-    std::map<int, ecs::input::Key> _keys; /*!<Key mapping*/
-    sf::Texture _texture;                 /*!<Texture of the program */
-    std::shared_ptr<RtypeResources> _rtypeResources;
-    sf::RectangleShape _rectangle; /*!<Shape of the program */
-    sf::Font _font;                /*!<Font of the program */
-    sf::Text _text;                /*<Text of the program */
-};
 } // namespace ecs
 
 #endif //R_TYPE_RENDERMANAGER_H

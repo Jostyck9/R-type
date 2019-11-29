@@ -44,11 +44,11 @@ void PlayerMovementSystem::updateVelocityOnInput(std::vector<ecs::input::Key> &i
 {
     if (std::find(inputs.begin(), inputs.end(), PlayerMovementSystem::movePlayerUp) != inputs.end())
     {
-        velocityComp->setVelocityY((velocityComp->getVelocityY() - 1));
+        velocityComp->setVelocityY((velocityComp->getVelocityY() - 2));
     }
     else if (std::find(inputs.begin(), inputs.end(), PlayerMovementSystem::movePlayerDown) != inputs.end())
     {
-        velocityComp->setVelocityY((velocityComp->getVelocityY() + 1));
+        velocityComp->setVelocityY((velocityComp->getVelocityY() + 2));
     }
     else
     {
@@ -56,11 +56,11 @@ void PlayerMovementSystem::updateVelocityOnInput(std::vector<ecs::input::Key> &i
     }
     if (std::find(inputs.begin(), inputs.end(), PlayerMovementSystem::movePlayerRight) != inputs.end())
     {
-        velocityComp->setVelocityX((velocityComp->getVelocityX() + 1));
+        velocityComp->setVelocityX((velocityComp->getVelocityX() + 2));
     }
     else if (std::find(inputs.begin(), inputs.end(), PlayerMovementSystem::movePlayerLeft) != inputs.end())
     {
-        velocityComp->setVelocityX((velocityComp->getVelocityX() - 1));
+        velocityComp->setVelocityX((velocityComp->getVelocityX() - 2));
     }
     else
     {
