@@ -23,7 +23,7 @@ namespace ecs::system
          * @brief Update the display
          * 
          */
-        void update() override;
+        SystemResponse update() override;
 
     private:
 

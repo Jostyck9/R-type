@@ -5,6 +5,7 @@
 ** SystemManager.cpp
 */
 
+#include "SystemResponse.hpp"
 #include "SystemManager.hpp"
 
 namespace ecs::system
@@ -23,16 +24,21 @@ namespace ecs::system
         return _entitiesToDelete;
     }
 
-    void SystemManager::updateAll()
+    SystemResponse SystemManager::updateAll()
     {
+        SystemResponse current;
+
         for (auto &it : _systems) {
-            it->update();
+            current = it->update();
+            if (current.getAction() == ecs::system::SystemResponse::NOACTION)
+                break;
         }
         for (auto &it : _entitiesToDelete) {
             _managerWrapper->getComponentManager()->deleteComponents(it);
             _managerWrapper->getEntityManager()->deleteEntity(it);
         }
         _entitiesToDelete.clear();
+        return current;
     }
 
     void SystemManager::addSystem(std::shared_ptr<ISystem> system)
