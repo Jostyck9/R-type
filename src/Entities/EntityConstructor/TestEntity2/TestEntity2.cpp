@@ -20,6 +20,10 @@ std::shared_ptr<ecs::entities::Entity> TestEntity2::create(
     std::pair<float, float> velocity,
     float rotation)
 {
+    static_cast<void>(rotation);
+    static_cast<void>(pos);
+    static_cast<void>(velocity);
+
     std::shared_ptr<Entity> toCreate = std::make_shared<Entity>(Entity::AUTOID);
 
     entityManager->addEntity(toCreate);
