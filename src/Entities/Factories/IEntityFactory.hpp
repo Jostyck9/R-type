@@ -41,6 +41,21 @@ public:
      * @return std::shared_ptr<Entity> 
      */
     virtual std::shared_ptr<Entity> createEntity(ecs::network::PacketManager::Entity &entity) = 0;
+
+    /**
+     * @brief Delete all entities constructor
+     * 
+     */
+    virtual void deleteAll() = 0;
+    
+    /**
+     * @brief Remove an entity constructor
+     * 
+     * @param name 
+     * @return true 
+     * @return false if not existing
+     */
+    virtual bool remove(const std::string &name) = 0;
 };
 } // namespace ecs::entities
 

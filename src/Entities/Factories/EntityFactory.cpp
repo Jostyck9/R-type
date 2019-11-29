@@ -95,3 +95,16 @@ std::shared_ptr<Entity> EntityFactory::createEntity(ecs::network::PacketManager:
     }
     throw EntityExceptions("Cannot create an entity with id : NOGAMEID", "EntityFactory::createEntity");
 }
+
+void EntityFactory::deleteAll()
+{
+    _creationFunction.clear();
+}
+
+bool EntityFactory::remove(const std::string &name)
+{
+    if (!isExisting(name))
+        return false;
+    _creationFunction.erase(name);
+    return true;
+}
