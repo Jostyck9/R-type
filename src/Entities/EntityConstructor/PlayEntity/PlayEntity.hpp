@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** Untitled (Workspace)
 ** File description:
-** TestPlayerEntity.hpp
+** PlayerEntity.hpp
 */
 
 #ifndef PLAYENTITY_HPP__

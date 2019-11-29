@@ -20,6 +20,7 @@ namespace ecs {
         ~SceneManager() = default;
 
         void createMenu();
+        void createGame();
         void run();
 
     private:

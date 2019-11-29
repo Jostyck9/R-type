@@ -2,22 +2,22 @@
 ** EPITECH PROJECT, 2019
 ** Untitled (Workspace)
 ** File description:
-** TestPlayerEntity.hpp
+** PlayerEntity.hpp
 */
 
-#ifndef TESTPLAYERENTITY_HPP__
-#define TESTPLAYERENTITY_HPP__
+#ifndef PlayerENTITY_HPP__
+#define PlayerENTITY_HPP__
 
 #include "IEntityConstructor.hpp"
 
 namespace ecs::entities
 {
 
-class TestPlayerEntity : public IEntityConstructor
+class PlayerEntity : public IEntityConstructor
 {
 public:
-    TestPlayerEntity() = default;
-    ~TestPlayerEntity() = default;
+    PlayerEntity() = default;
+    ~PlayerEntity() = default;
 
     /**
      * @brief Create the entity associated with class constructor
@@ -42,4 +42,4 @@ public:
 };
 } // namespace ecs::entities
 
-#endif //TESTPLAYERENTITY_HPP__
+#endif //PlayerENTITY_HPP__

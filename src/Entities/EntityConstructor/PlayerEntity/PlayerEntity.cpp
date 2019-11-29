@@ -2,10 +2,10 @@
 ** EPITECH PROJECT, 2019
 ** Untitled (Workspace)
 ** File description:
-** TestPlayerEntity.cpp
+** PlayerEntity.cpp
 */
 
-#include "TestPlayerEntity.hpp"
+#include "PlayerEntity.hpp"
 #include "Physics/Rotation.hpp"
 #include "Physics/Position.hpp"
 #include "Physics/Velocity.hpp"
@@ -17,7 +17,7 @@
 
 using namespace ecs::entities;
 
-std::shared_ptr<ecs::entities::Entity> TestPlayerEntity::create(
+std::shared_ptr<ecs::entities::Entity> PlayerEntity::create(
     std::shared_ptr<IEntityManager> &entityManager,
     std::shared_ptr<ecs::components::IComponentManager> &componentsManager,
     std::pair<float, float> pos,
@@ -42,7 +42,7 @@ std::shared_ptr<ecs::entities::Entity> TestPlayerEntity::create(
     return toCreate;
 }
 
-std::string TestPlayerEntity::getName()
+std::string PlayerEntity::getName()
 {
-    return std::string("TestPlayer");
+    return std::string("Player");
 }

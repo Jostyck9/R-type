@@ -44,7 +44,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/EntityConstructor/
         src/Entities/EntityConstructor/TestEntity/
         src/Entities/EntityConstructor/TestEntity2/
-        src/Entities/EntityConstructor/TestPlayerEntity/
+        src/Entities/EntityConstructor/PlayerEntity/
         src/Entities/EntityConstructor/PlayEntity/
         src/Entities/EntityConstructor/StopEntity/
         src/Entities/EntityConstructor/BackgroundMenuEntity/
@@ -111,7 +111,7 @@ set(SOURCE_CLIENT
         "src/Entities/Entity.cpp"
         "src/Entities/EntityConstructor/TestEntity/TestEntity.cpp"
         "src/Entities/EntityConstructor/TestEntity2/TestEntity2.cpp"
-        "src/Entities/EntityConstructor/TestPlayerEntity/TestPlayerEntity.cpp"
+        "src/Entities/EntityConstructor/PlayerEntity/PlayerEntity.cpp"
         "src/Entities/EntityConstructor/PlayEntity/PlayEntity.cpp"
         "src/Entities/EntityConstructor/StopEntity/StopEntity.cpp"
         "src/Entities/EntityConstructor/BackgroundMenuEntity/BakgroundMenuEntity.cpp"
@@ -137,6 +137,7 @@ set(SOURCE_CLIENT
         "src/Network/PacketManager.cpp"
         "src/Scenes/SceneManager.cpp"
         "src/Scenes/MenuScene.cpp"
+        "src/Scenes/GameScene.cpp"
         "src/Rtype.cpp"
         "src/Utils/Rect.cpp"
         "src/FactoriesWrapper/FactoriesWrapper.cpp")
