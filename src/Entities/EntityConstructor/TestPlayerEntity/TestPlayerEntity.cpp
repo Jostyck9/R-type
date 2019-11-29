@@ -23,6 +23,10 @@ std::shared_ptr<ecs::entities::Entity> TestPlayerEntity::create(
     std::pair<float, float> velocity,
     float rotation)
 {
+    static_cast<void>(rotation);
+    static_cast<void>(pos);
+    static_cast<void>(velocity);
+
     std::shared_ptr<Entity> toCreate = std::make_shared<Entity>();
 
     Rect spriteRect(50, 50, 0, 0);
