@@ -57,12 +57,15 @@ namespace ecs::entities
         ~EntityFactory();
 
         /**
-         * @brief Create a Entity object by his name
+         * @brief Create a Entity object
          * 
          * @param name 
+         * @param pos : std::pair<float, float> = (0, 0)
+         * @param velocity : std::pair<float, float> = (0, 0)
+         * @param rotation 
          * @return std::shared_ptr<Entity> 
          */
-        std::shared_ptr<Entity> createEntity(const std::string &name) override;
+        std::shared_ptr<Entity> createEntity(const std::string &name, std::pair<float, float> pos = std::make_pair(0, 0), std::pair<float, float> velocity = std::make_pair(0, 0), float rotation = 0) override;
 
         /**
          * @brief Add an entity constructor that will be used in the entity factory
