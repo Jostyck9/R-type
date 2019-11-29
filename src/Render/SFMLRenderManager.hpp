@@ -65,24 +65,26 @@ namespace ecs
          */
     void display() override;
     /**
-         * @brief get all the key inputs
+         * @brief update what key are pressed
          *
-         * @return std::vector<ecs::input::Key>
          */
-    std::vector<ecs::input::Key> getInputs();
+     void updatePressedKeys();
 
+     std::map<ecs::input::Key, bool> &getKeysMap() override;
+     
 private:
     sf::RenderWindow _window;             /*!< Internal window used by SFML functions */
     sf::Music _music;                     /*!<Music of the program */
     sf::Event _event;                     /*!<Events of the program */
     sf::Sprite _sprite;                   /*!<Sprite of the program */
-    std::map<int, ecs::input::Key> _keys; /*!<Key mapping*/
     std::map<ecs::Color, sf::Color> _colors; /*!<Color mapping*/
     sf::Texture _texture;                 /*!<Texture of the program */
     std::shared_ptr<ResourceManager> _rtypeResources;
     sf::RectangleShape _rectangle; /*!<Shape of the program */
     sf::Font _font;                /*!<Font of the program */
     sf::Text _text;                /*<Text of the program */
+    std::map<sf::Keyboard::Key, ecs::input::Key> _keys; /*!<Key mapping*/
+    std::map<ecs::input::Key, bool> _keysMap; /*<Contains name of key and if it is pressed or not */
 };
 } // namespace ecs
 

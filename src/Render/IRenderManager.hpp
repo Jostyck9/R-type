@@ -2,6 +2,7 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <map>
 #include "IComponent.hpp"
 #include "ComponentManager.hpp"
 #include "Entity.hpp"
@@ -9,6 +10,7 @@
 #include "Display/Sprite.hpp"
 #include "Physics/Position.hpp"
 #include "Display/Text.hpp"
+#include "Render/Input.hpp"
 
 #ifndef IRENDERMANAGER_HPP__
 #define IRENDERMANAGER_HPP__
@@ -34,7 +36,7 @@ namespace ecs {
         virtual bool eventUpdate() = 0;
         virtual void clear() = 0;
         virtual void display() = 0;
-
+        virtual std::map<ecs::input::Key, bool> &getKeysMap() = 0;
     };
 }
 

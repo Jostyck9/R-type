@@ -3,7 +3,11 @@
 //
 
 #include "SystemManager.hpp"
-#include "EntityFactory.hpp"
+#include "DisplaySystem.hpp"
+#include "Factories/EntityFactory.hpp"
+#include "SFMLRenderManager.hpp"
+#include "MovementSystem.hpp"
+#include "PlayerMovementSystem.hpp"
 #include "Rtype.hpp"
 
 Rtype::Rtype()

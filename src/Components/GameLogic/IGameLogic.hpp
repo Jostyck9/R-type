@@ -18,7 +18,8 @@ namespace ecs::components
      *
      */
     class IGameLogic : public IComponent
-    {};
+    {
+    };
 }
 
 #endif //IGAMELOGIC_HPP
