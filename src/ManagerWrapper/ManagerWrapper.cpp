@@ -34,7 +34,7 @@ std::shared_ptr<entities::IEntityManager> &ManagerWrapper::getEntityManager()
     return this->_entityManager;
 }
 
-std::shared_ptr<RtypeResources> &ManagerWrapper::getRtypeResourceManager()
+std::shared_ptr<ecs::ResourceManager> &ManagerWrapper::getRtypeResourceManager()
 {
     return this->_rtypeResourceManager;
 }

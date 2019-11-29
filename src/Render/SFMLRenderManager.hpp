@@ -15,7 +15,7 @@ namespace ecs {
      */
     class SFMLRenderManager : public IRenderManager {
     public:
-        SFMLRenderManager(std::shared_ptr<RtypeResources> &rtypeResources);
+        SFMLRenderManager(std::shared_ptr<ResourceManager> &rtypeResources);
         ~SFMLRenderManager();
         /**
          * @brief initialize sfml window etc
@@ -64,7 +64,7 @@ namespace ecs {
         sf::Sprite _sprite; /*!<Sprite of the program */
         std::map<int, ecs::input::Key> _keys; /*!<Key mapping*/
         sf::Texture _texture; /*!<Texture of the program */
-        std::shared_ptr<RtypeResources> _rtypeResources;
+        std::shared_ptr<ResourceManager> &_rtypeResources;
         sf::RectangleShape _rectangle; /*!<Shape of the program */
     };
 }

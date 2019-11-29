@@ -6,7 +6,7 @@
 
 namespace ecs {
 
-    RtypeResources::RtypeResources()
+    RtypeResources::RtypeResources() : ResourceManager()
     {
         try {
             loadTexture("background", "../resources/background.png");

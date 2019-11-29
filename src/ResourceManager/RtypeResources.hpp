@@ -7,12 +7,14 @@
 
 #include "ResourceManager.hpp"
 
-namespace ecs {
-    class RtypeResources : public ResourceManager {
-    public:
-        RtypeResources();
-        ~RtypeResources() = default;
-    };
-}
+namespace ecs
+{
+class RtypeResources : public ResourceManager
+{
+public:
+    RtypeResources();
+    ~RtypeResources() = default;
+};
+} // namespace ecs
 
 #endif //R_TYPE_RTYPERESOURCES_HPP

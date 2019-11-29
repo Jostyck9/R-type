@@ -22,7 +22,7 @@ private:
 
     std::shared_ptr<components::IComponentManager> _componentManager;
     std::shared_ptr<entities::IEntityManager> _entityManager;
-    std::shared_ptr<RtypeResources> _rtypeResourceManager;
+    std::shared_ptr<ecs::ResourceManager> _rtypeResourceManager;
     std::shared_ptr<IRenderManager> _renderManager;
 
 
@@ -32,7 +32,7 @@ public:
     std::shared_ptr<components::IComponentManager> &getComponentManager();
     std::shared_ptr<IRenderManager> &getRenderManager();
     std::shared_ptr<entities::IEntityManager> &getEntityManager();
-    std::shared_ptr<RtypeResources> &getRtypeResourceManager();
+    std::shared_ptr<ecs::ResourceManager> &getRtypeResourceManager();
 
 };
 } // namespace ecs

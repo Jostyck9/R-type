@@ -65,6 +65,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
 #r-type_client
 set(SOURCE_CLIENT
         "src/main_client.cpp"
+        "src/Ecs.cpp"
         "src/Components/ComponentManager/ComponentManager.cpp"
         "src/Components/Display/Animator.cpp"
         "src/Components/Display/Button.cpp"
