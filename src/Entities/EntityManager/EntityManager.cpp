@@ -56,7 +56,7 @@ std::shared_ptr<Entity> &EntityManager::getEntityByGameId(size_t id)
     throw EntityExceptions("No entity found with gameid : " + id, "getEntityyByGameId");
 }
 
-void EntityManager::updatePosition(const std::shared_ptr<entities::Entity> &entity, const ecs::network::PacketManager::Component toAdd)
+void EntityManager::updatePosition(const std::shared_ptr<ecs::entities::Entity> &entity, const ecs::network::PacketManager::Component toAdd)
 {
     try
     {
@@ -69,7 +69,7 @@ void EntityManager::updatePosition(const std::shared_ptr<entities::Entity> &enti
     }
 }
 
-void EntityManager::updateRotation(const std::shared_ptr<entities::Entity> &entity, const ecs::network::PacketManager::Component toAdd)
+void EntityManager::updateRotation(const std::shared_ptr<ecs::entities::Entity> &entity, const ecs::network::PacketManager::Component toAdd)
 {
     try
     {
