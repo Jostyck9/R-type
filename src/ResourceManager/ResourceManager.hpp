@@ -91,29 +91,11 @@ namespace ecs {
          */
         std::shared_ptr<Font> getFont(const std::string &name);
 
-        
-        /**
-         * @brief Load a text
-         * 
-         * @param name 
-         * @param filename 
-         */
-        void loadText(const std::string &name, const std::string &filename);
-        
-        /**
-         * @brief Get a text with her name
-         * 
-         * @param name 
-         * @return std::shared_ptr<Text> 
-         */
-        std::shared_ptr<Text> getText(const std::string &name);
-    
     private:
         std::vector<std::shared_ptr<Music>> _musics;
         std::vector<std::shared_ptr<Sound>> _sounds;
         std::vector<std::shared_ptr<Texture>> _textures;
         std::vector<std::shared_ptr<Font>> _fonts;
-        std::vector<std::shared_ptr<Text>> _texts;
     };
 }
 

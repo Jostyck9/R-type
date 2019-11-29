@@ -1,4 +1,11 @@
+/*
+** EPITECH PROJECT, 2019
+** R-type
+** File description:
+** SFMLRenderManager.cpp
+*/
 
+#include <iostream>
 #include "SFMLRenderManager.hpp"
 #include "RTypeExceptions.hpp"
 
@@ -105,14 +112,19 @@ namespace ecs {
         _keys[sf::Keyboard::Space] = ecs::input::SPACE;
         _keys[sf::Keyboard::Subtract] = ecs::input::SUBTRACT;
         _keys[sf::Keyboard::Tab] = ecs::input::TAB;
+
+        _colors[ecs::Color::BLACK] = sf::Color::Black;
+        _colors[ecs::Color::WHITE] = sf::Color::White;
+        _colors[ecs::Color::BLUE] = sf::Color::Blue;
+        _colors[ecs::Color::RED] = sf::Color::Red;
+        _colors[ecs::Color::GREEN] = sf::Color::Green;
+        _colors[ecs::Color::YELLOW] = sf::Color::Yellow;
+        _colors[ecs::Color::MAGENTA] = sf::Color::Magenta;
+
+        _text.setFillColor(_colors[ecs::Color::WHITE]);
         _rectangle.setFillColor(sf::Color(100, 250, 50));
-        // _colors[ecs::Color::BLACK] = sf::Color::Black;
-        // _colors[ecs::Color::WHITE] = sf::Color::White;
-        // _colors[ecs::Color::BLUE] = sf::Color::Blue;
-        // _colors[ecs::Color::RED] = sf::Color::Red;
-        // _colors[ecs::Color::GREEN] = sf::Color::Green;
-        // _colors[ecs::Color::YELLOW] = sf::Color::Yellow;
-        // _colors[ecs::Color::MAGENTA] = sf::Color::Magenta;
+        _font = _rtypeResources->getFont("Pixeled")->getSFMLFont();
+        _text.setFont(_font);
     }
     
 SFMLRenderManager::~SFMLRenderManager()
@@ -121,7 +133,7 @@ SFMLRenderManager::~SFMLRenderManager()
 
 void SFMLRenderManager::init()
 {
-	_window.create(sf::VideoMode(800, 600), "rtype");
+	_window.create(sf::VideoMode(1500, 900), "R-Type");
     _window.setFramerateLimit(60);
     _window.clear();
     _window.display();
@@ -161,7 +173,6 @@ void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &spri
         _rectangle.setPosition(pos->getX(), pos->getY());
         _window.draw(_rectangle);
     }
-    _window.display();
 }
 
 void SFMLRenderManager::audioUpdate() 
@@ -169,9 +180,12 @@ void SFMLRenderManager::audioUpdate()
     // play/pause en fonction du state de l'audio
 }
   
-void SFMLRenderManager::textUpdate() 
+void SFMLRenderManager::textUpdate(std::shared_ptr<components::Text> &Text, std::shared_ptr<components::Position> &pos) 
 {
-       //Render le texte dans la window --> besoin de window, texte , pos 
+    _text.setString(Text->getStr());
+    _text.setCharacterSize(Text->getSize());
+    _text.setPosition(pos->getX(), pos->getY());
+    _window.draw(_text);
 }
 
 bool SFMLRenderManager::eventUpdate() 
@@ -189,6 +203,11 @@ bool SFMLRenderManager::eventUpdate()
 void SFMLRenderManager::clear() 
 {
     _window.clear();
+}
+
+void SFMLRenderManager::display()
+{
+    _window.display();
 }
 
 }
