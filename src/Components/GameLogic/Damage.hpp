@@ -21,6 +21,7 @@ namespace ecs::components
     {
     public:
         Damage();
+        Damage(int dmg);
         Damage(const Damage &oldDamage);
         ~Damage();
         void setValue(const float &newValue);

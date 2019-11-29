@@ -24,6 +24,7 @@ namespace ecs::components
     {
     public:
         Sprite(const std::string &name, Rect &rect);
+        Sprite(const std::string &name, Rect &rect, bool isVisible);
         Sprite(const Sprite &oldSprite);
         ~Sprite();
          /**
@@ -46,11 +47,14 @@ namespace ecs::components
         bool operator==(Sprite &other);
         std::string getName() const;
         const ecs::Rect &getRect() const;
+        const bool &getIsVisible() const;
+        void setIsVisible(bool &state);
         
     private:
        unsigned int _id;
        std::string _name;
        ecs::Rect _rect;
+       bool _isVisible; /*!<show the image or not */
     };
 }
 

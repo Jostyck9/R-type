@@ -7,9 +7,14 @@
 
 #include "Sprite.hpp"
 
-ecs::components::Sprite::Sprite(const std::string &name, Rect &rect) : _name(name), _rect(rect)
+ecs::components::Sprite::Sprite(const std::string &name, Rect &rect) : _name(name), _rect(rect), _isVisible(false)
 {
 }
+
+ecs::components::Sprite::Sprite(const std::string &name, Rect &rect, bool isVisible) : _name(name), _rect(rect), _isVisible(isVisible)
+{
+}
+
 
 ecs::components::Sprite::Sprite(const Sprite &oldSprite)
 {
@@ -57,4 +62,14 @@ bool ecs::components::Sprite::operator==(Sprite &other)
     if (other.getRect() == this->_rect)
         return true;
     return false;
+}
+
+const bool &ecs::components::Sprite::getIsVisible() const
+{
+    return _isVisible;
+}
+    
+void ecs::components::Sprite::setIsVisible(bool &state)
+{
+    _isVisible = state;
 }

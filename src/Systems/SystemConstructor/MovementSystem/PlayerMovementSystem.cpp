@@ -38,19 +38,19 @@ void PlayerMovementSystem::update()
 void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, bool> &keys, std::shared_ptr<ecs::components::Velocity> &velocityComp)
 {
     if (keys[ecs::input::LEFT])
-        velocityComp->setVelocityX(-2);
+        velocityComp->setVelocityX(-10);
     else if (keys[ecs::input::RIGHT])
     {
-        velocityComp->setVelocityX(2);
+        velocityComp->setVelocityX(10);
     }
     else
     {
         velocityComp->setVelocityX(0);
     }
     if (keys[ecs::input::UP])
-        velocityComp->setVelocityY(-2);
+        velocityComp->setVelocityY(-10);
     else if (keys[ecs::input::DOWN]) {
-        velocityComp->setVelocityY(2);
+        velocityComp->setVelocityY(10);
     }
     else {
         velocityComp->setVelocityY(0);

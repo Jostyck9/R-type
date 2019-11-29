@@ -9,6 +9,8 @@
 #include "BackgroundMenuEntity.hpp"
 #include "PlayerEntity.hpp"
 #include "StopEntity.hpp"
+#include "BulletEntity.hpp"
+#include "EnnemyEntity.hpp"
 
 namespace ecs {
 
@@ -18,6 +20,8 @@ namespace ecs {
 
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::BackgroundMenuEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlayerEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::BulletEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::EnnemyEntity>());
 
         // createMenu();
         createGame();

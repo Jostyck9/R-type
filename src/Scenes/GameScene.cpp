@@ -24,6 +24,7 @@ ecs::GameScene::GameScene(std::shared_ptr<Ecs> &ecs) : _ecs(ecs)
     _ecs->getSystemManager()->addSystem(std::make_shared<system::DisplaySystem>(_ecs->getManagerWrapper(), _ecs->getSystemManager()->getEntitiesToDelete()));
     _ecs->getSystemManager()->addSystem(std::make_shared<system::MovementSystem>(_ecs->getManagerWrapper(), _ecs->getSystemManager()->getEntitiesToDelete()));
     _ecs->getSystemManager()->addSystem(std::make_shared<system::PlayerMovementSystem>(_ecs->getManagerWrapper(), _ecs->getSystemManager()->getEntitiesToDelete()));
-    // _ecs->getEntityFactory()->createEntity("GameBackground");
     _ecs->getEntityFactory()->createEntity("Player");
+    _ecs->getEntityFactory()->createEntity("Bullet");
+    _ecs->getEntityFactory()->createEntity("Ennemy");
 }

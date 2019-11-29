@@ -43,7 +43,8 @@ void DisplaySystem::update()
         try
         {
             spriteComp = std::dynamic_pointer_cast<ecs::components::Sprite>(_managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::Sprite))));
-            _managerWrapper->getRenderManager()->graphicsUpdate(spriteComp, posComp);
+            if (spriteComp->getIsVisible())
+                _managerWrapper->getRenderManager()->graphicsUpdate(spriteComp, posComp);
         }
         catch (const ComponentExceptions &e)
         {
