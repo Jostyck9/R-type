@@ -5,6 +5,7 @@
 ** PlayEntity.cpp
 */
 
+#include <Display/Button.hpp>
 #include "StopEntity.hpp"
 #include "Position.hpp"
 #include "Text.hpp"
@@ -27,6 +28,7 @@ std::shared_ptr<ecs::entities::Entity> StopEntity::create(
     entityManager->addEntity(toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(1020, 700), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Text>("EXIT", 50), toCreate);
+    componentsManager->addDisplayComponent(std::make_shared<ecs::components::Button>(false, ecs::system::SystemResponse::CMD::QUIT), toCreate);
     return toCreate;
 }
 

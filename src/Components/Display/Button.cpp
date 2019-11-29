@@ -7,29 +7,48 @@
 
 #include "Button.hpp"
 
-ecs::components::Button::Button()
+ecs::components::Button::Button(bool isSelected, ecs::system::SystemResponse::CMD cmd, const std::string &parameter)
 {
+    _isSelected = isSelected;
+    _cmd = cmd;
+    _parameter = parameter;
 }
 
 ecs::components::Button::Button(const Button &oldButton)
 {
-    this->_id = oldButton.getId();
+    this->_isSelected = oldButton.getIsSelected();
+    this->_cmd = oldButton.getCmd();
+    this->_parameter = oldButton.getParameter();
 }
 
-ecs::components::Button::~Button()
+void ecs::components::Button::setIsSelected(bool newState)
 {
+    _isSelected = newState;
 }
 
-
-void ecs::components::Button::setId(const unsigned int &newId)
+bool ecs::components::Button::getIsSelected() const
 {
-    this->_id = newId;
-    return;
+    return _isSelected;
 }
 
-unsigned int ecs::components::Button::getId(void) const
+void ecs::components::Button::setCmd(const ecs::system::SystemResponse::CMD &newCmd)
 {
-    return this->_id;
+    _cmd = newCmd;
+}
+
+const ecs::system::SystemResponse::CMD &ecs::components::Button::getCmd() const
+{
+    return _cmd;
+}
+
+void ecs::components::Button::setParameter(const std::string &newParameter)
+{
+    _parameter = newParameter;
+}
+
+const std::string &ecs::components::Button::getParameter() const
+{
+    return _parameter;
 }
 
 const std::type_index ecs::components::Button::getType() const
@@ -39,7 +58,5 @@ const std::type_index ecs::components::Button::getType() const
 
 bool ecs::components::Button::operator==(Button &other)
 {
-    if (other.getId() == this->_id)
-        return true;
-    return false;
+    return other.getIsSelected() == this->_isSelected && other.getCmd() == this->_cmd && other.getParameter() == this->_parameter;
 }
