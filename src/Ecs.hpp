@@ -74,6 +74,13 @@ public:
      * @return std::shared_ptr<ecs::entities::IEntityFactory>& 
      */
     std::shared_ptr<ecs::entities::IEntityFactory> &getEntityFactory();
+
+    /**
+     * @brief Return the manager wrapper
+     * 
+     * @return std::shared_ptr<ecs::ManagerWrapper>& 
+     */
+    std::shared_ptr<ecs::ManagerWrapper> &getManagerWrapper();
 };
 
 } // namespace ecs

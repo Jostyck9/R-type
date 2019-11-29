@@ -53,3 +53,8 @@ std::shared_ptr<ecs::entities::IEntityFactory> &Ecs::getEntityFactory()
 {
     return _factoriesWrapper->getEntityFactory();
 }
+
+std::shared_ptr<ecs::ManagerWrapper> &Ecs::getManagerWrapper()
+{
+    return _managerWrapper;
+}

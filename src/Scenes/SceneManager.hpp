@@ -6,10 +6,8 @@
 #define R_TYPE_SCENEMANAGER_HPP
 
 #include <memory>
-#include <ManagerWrapper.hpp>
 #include "IScene.hpp"
-#include "ISystemManager.hpp"
-#include "IEntityFactory.hpp"
+#include "Ecs.hpp"
 
 namespace ecs {
     /**
@@ -26,9 +24,7 @@ namespace ecs {
 
     private:
         std::shared_ptr<IScene> _current;
-        std::shared_ptr<ManagerWrapper> _managerWrapper;
-        std::shared_ptr<system::ISystemManager> _systemManager;
-        std::shared_ptr<entities::IEntityFactory> _entityFactory;
+        std::shared_ptr<Ecs> _ecs;
     };
 }
 
