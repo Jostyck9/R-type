@@ -8,6 +8,8 @@
 #ifndef ISYSTEM_HPP__
 #define ISYSTEM_HPP__
 
+#include "SystemResponse.hpp"
+
 namespace ecs::system
 {
 
@@ -18,7 +20,7 @@ namespace ecs::system
          * @brief update the game with this system
          * 
          */
-        virtual void update() = 0;
+        virtual SystemResponse update() = 0;
     };
 
 }

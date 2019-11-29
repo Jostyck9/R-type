@@ -19,7 +19,7 @@ namespace ecs::system
          * @brief Update the game with all the systems inside the manager
          * 
          */
-        virtual void updateAll() = 0;
+        virtual SystemResponse updateAll() = 0;
 
         /**
          * @brief Get the Entities To Delete object

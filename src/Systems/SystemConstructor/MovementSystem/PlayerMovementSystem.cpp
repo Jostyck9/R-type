@@ -17,7 +17,7 @@ PlayerMovementSystem::PlayerMovementSystem(std::shared_ptr<ManagerWrapper> &mana
 {
 }
 
-void PlayerMovementSystem::update()
+SystemResponse PlayerMovementSystem::update()
 {
     std::shared_ptr<ecs::components::Velocity> velocityComp;
     std::map<ecs::input::Key, bool> keys = _managerWrapper->getRenderManager()->getKeysMap();
@@ -33,6 +33,7 @@ void PlayerMovementSystem::update()
         {
         }
     }
+    return SystemResponse();
 }
 
 void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, bool> &keys, std::shared_ptr<ecs::components::Velocity> &velocityComp)

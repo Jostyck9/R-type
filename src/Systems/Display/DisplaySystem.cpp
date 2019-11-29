@@ -23,7 +23,7 @@ DisplaySystem::~DisplaySystem()
 {
 }
 
-void DisplaySystem::update()
+SystemResponse DisplaySystem::update()
 {
     std::shared_ptr<ecs::components::Sprite> spriteComp;
     std::shared_ptr<ecs::components::Position> posComp;
@@ -58,5 +58,6 @@ void DisplaySystem::update()
         }
     }
     _managerWrapper->getRenderManager()->display();
+    return SystemResponse();
 }
 } // namespace ecs::system

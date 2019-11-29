@@ -103,7 +103,7 @@ void MovementSystem::updateAll(std::vector<data> &all)
     _myTimer.restart();
 }
 
-void MovementSystem::update()
+SystemResponse   MovementSystem::update()
 {
     std::vector<data> allData;
 
@@ -133,4 +133,5 @@ void MovementSystem::update()
         allData.push_back(current);
     }
     updateAll(allData);
+    return SystemResponse();
 }

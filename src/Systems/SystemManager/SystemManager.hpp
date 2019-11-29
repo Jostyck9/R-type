@@ -40,7 +40,7 @@ namespace ecs::system
          */
         std::list<int> &getEntitiesToDelete() override;
 
-        void updateAll() override;
+        SystemResponse updateAll() override;
 
         /**
          * @brief Add a system inside the system manager

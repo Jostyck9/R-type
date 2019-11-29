@@ -80,7 +80,7 @@ public:
      * @brief Update the position and the colisions
      * 
      */
-    void update() override;
+    SystemResponse update() override;
 };
 
 } // namespace ecs::system
