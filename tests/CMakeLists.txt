@@ -36,6 +36,7 @@ include_directories(
     ${SOURCE_ROOT}/Systems/SystemConstructor/
     ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/
     ${SOURCE_ROOT}/Systems/SystemManager/
+    ${SOURCE_ROOT}/Systems/SystemResponse/
     ${SOURCE_ROOT}/Render/
     ${SOURCE_ROOT}/Network/
     ${SOURCE_ROOT}/Utils/
@@ -80,6 +81,7 @@ add_executable(unit_test
     ${SOURCE_ROOT}/Systems/Factories/SystemFactory.cpp
     ${SOURCE_ROOT}/Systems/Display/DisplaySystem.cpp
     ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/testSystem.cpp
+    ${SOURCE_ROOT}/Systems/SystemResponse/SystemResponse.cpp
     ${SOURCE_ROOT}/ManagerWrapper/ManagerWrapper.cpp
     ${SOURCE_ROOT}/Render/SFMLRenderManager.cpp
     ${SOURCE_ROOT}/Utils/Rect.cpp
@@ -114,6 +116,7 @@ add_executable(unit_test_graphic
     ${SOURCE_ROOT}/Systems/Factories/SystemFactory.cpp
     ${SOURCE_ROOT}/Systems/Display/DisplaySystem.cpp
     ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/testSystem.cpp
+    ${SOURCE_ROOT}/Systems/SystemResponse/SystemResponse.cpp
     ${SOURCE_ROOT}/Exceptions/ComponentExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/ECSExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/EntityExceptions.cpp

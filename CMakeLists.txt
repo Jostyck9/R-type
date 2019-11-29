@@ -136,6 +136,7 @@ set(SOURCE_CLIENT
         "src/Systems/Factories/SystemFactory.cpp"
         "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
         "src/Systems/SystemConstructor/MovementSystem/PlayerMovementSystem.cpp"
+        "src/Systems/SystemResponse/SystemResponse.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
         "src/Network/PacketManager.cpp"
