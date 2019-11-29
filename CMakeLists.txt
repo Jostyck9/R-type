@@ -63,12 +63,14 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Network/
         src/Exceptions
         src/Utils/
+        src/FactoriesWrapper/
         src/Scenes/
         src/)
 
 #r-type_client
 set(SOURCE_CLIENT
         "src/main_client.cpp"
+        "src/Ecs.cpp"
         "src/Components/ComponentManager/ComponentManager.cpp"
         "src/Components/Display/Animator.cpp"
         "src/Components/Display/Button.cpp"
@@ -84,6 +86,7 @@ set(SOURCE_CLIENT
         "src/Components/GameLogic/Power.cpp"
         "src/Components/GameLogic/Scale.cpp"
         "src/Components/GameLogic/Timer.cpp"
+        "src/Components/GameLogic/PlayerController.cpp"
         "src/Components/IO/Controller.cpp"
         "src/Components/IO/DummyInput.cpp"
         "src/Components/IO/GameController.cpp"
@@ -128,13 +131,15 @@ set(SOURCE_CLIENT
         "src/Systems/SystemConstructor/testSystem/testSystem.cpp"
         "src/Systems/Factories/SystemFactory.cpp"
         "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
+        "src/Systems/SystemConstructor/MovementSystem/PlayerMovementSystem.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
         "src/Network/PacketManager.cpp"
         "src/Scenes/SceneManager.cpp"
         "src/Scenes/MenuScene.cpp"
         "src/Rtype.cpp"
-        "src/Utils/Rect.cpp")
+        "src/Utils/Rect.cpp"
+        "src/FactoriesWrapper/FactoriesWrapper.cpp")
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})

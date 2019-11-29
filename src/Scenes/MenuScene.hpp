@@ -5,23 +5,18 @@
 #ifndef R_TYPE_MENUSCENE_HPP
 #define R_TYPE_MENUSCENE_HPP
 
-#include <ManagerWrapper.hpp>
+#include "Ecs.hpp"
 #include "IEntityFactory.hpp"
 #include "IScene.hpp"
 
 namespace ecs {
     class MenuScene : public IScene {
     public:
-        MenuScene(const std::shared_ptr<ecs::ManagerWrapper>& managerWrapper,
-                  const std::shared_ptr<ecs::system::ISystemManager>& systemManager,
-                  const std::shared_ptr<ecs::entities::IEntityFactory>& entityFactory);
+        MenuScene(std::shared_ptr<Ecs> &ecs);
 
         ~MenuScene() = default;
     private:
-        std::shared_ptr<entities::IEntityFactory> _entityFactory;
-        std::shared_ptr<ecs::ManagerWrapper> _managerWrapper;
-        std::shared_ptr<ecs::system::ISystemManager> _systemManager;
-        std::shared_ptr<entities::IEntityManager> _entityManager;
+        std::shared_ptr<Ecs> &_ecs;
     };
 }
 

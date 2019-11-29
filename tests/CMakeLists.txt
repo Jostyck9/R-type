@@ -39,6 +39,7 @@ include_directories(
     ${SOURCE_ROOT}/Render/
     ${SOURCE_ROOT}/Network/
     ${SOURCE_ROOT}/Utils/
+    ${SOURCE_ROOT}/FactoriesWrapper/
 )
 
 add_executable(unit_test
