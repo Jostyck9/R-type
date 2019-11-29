@@ -112,7 +112,7 @@ namespace ecs {
         _keys[sf::Keyboard::Subtract] = ecs::input::SUBTRACT;
         _keys[sf::Keyboard::Tab] = ecs::input::TAB;
         _rectangle.setFillColor(sf::Color(100, 250, 50));
-        _font.loadFromFile("../resources/pixeled.ttf");
+        _font = _rtypeResources->getFont("Pixeled")->getSFMLFont();
         _text.setFont(_font);
         _text.setColor(sf::Color::White);
         // _colors[ecs::Color::BLACK] = sf::Color::Black;
@@ -169,7 +169,6 @@ void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &spri
         _rectangle.setPosition(pos->getX(), pos->getY());
         _window.draw(_rectangle);
     }
-    _window.display();
 }
 
 void SFMLRenderManager::audioUpdate() 
@@ -200,6 +199,11 @@ bool SFMLRenderManager::eventUpdate()
 void SFMLRenderManager::clear() 
 {
     _window.clear();
+}
+
+void SFMLRenderManager::display()
+{
+    _window.display();
 }
 
 }
