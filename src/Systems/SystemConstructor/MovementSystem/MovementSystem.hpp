@@ -13,7 +13,7 @@
 #include "Rotation.hpp"
 #include "Position.hpp"
 #include "ASystem.hpp"
-
+#include "Timer.hpp"
 
 namespace ecs::system
 {
@@ -33,6 +33,8 @@ private:
         std::pair<float, float> nextPos;
         std::shared_ptr<ecs::entities::Entity> entity;
     };
+
+    ecs::components::Timer _myTimer;
 
 public:
     /**

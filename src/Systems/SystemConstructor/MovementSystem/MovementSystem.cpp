@@ -20,6 +20,7 @@ using namespace ecs::components;
 
 MovementSystem::MovementSystem(std::shared_ptr<ecs::ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete) : ASystem(managerWrapper, entitiesToDelete)
 {
+    _myTimer.start();
 }
 
 MovementSystem::~MovementSystem()
@@ -36,8 +37,8 @@ std::pair<float, float> MovementSystem::getNextPos(std::shared_ptr<Position> &po
 
     if (speed->getVelocityX() < 0)
         directionX = -1;
-    newPos.first = newPos.first + (1 * speed->getVelocityX()); // TODO Add clocking movement here
-    newPos.second = newPos.second + (1 * speed->getVelocityY()); // TODO Add clocking movement here
+    newPos.first = newPos.first + (1 * speed->getVelocityX()) * _myTimer.getElapsedSeconds();
+    newPos.second = newPos.second + (1 * speed->getVelocityY()) * _myTimer.getElapsedSeconds();
 
     float radius = std::sqrt(std::pow(newPos.first - srcPos.first, 2) + std::pow(newPos.second - srcPos.second, 2));
     float angle = rot->getRadAngle() + std::atan((newPos.second - srcPos.second) / (newPos.first - srcPos.first));
@@ -99,6 +100,7 @@ void MovementSystem::updateAll(std::vector<data> &all)
             collide = false;
         }
     }
+    _myTimer.restart();
 }
 
 void MovementSystem::update()
