@@ -40,15 +40,19 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/src/Systems/SystemConstructor/Display/CMakeL
 
 #Link shared libraries
 set_property(TARGET TestEntity PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libTestEntity.so)
+set_target_properties(TestEntity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
 #set_property(TARGET testEntity1 PROPERTY IMPORTED_IMPLIB c:/path/to/bar.lib)
 
 set_property(TARGET TestEntity2 PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libTestEntity2.so)
+set_target_properties(TestEntity2 PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
 #set_property(TARGET testEntity2 PROPERTY IMPORTED_IMPLIB c:/path/to/bar.lib)
 
 set_property(TARGET MovementSystem PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libMovementSystem.so)
+set_target_properties(MovementSystem PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/systems)
 #set_property(TARGET Movement PROPERTY IMPORTED_IMPLIB c:/path/to/bar.lib)
 
 set_property(TARGET DisplaySystem PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libDisplaySystem.so)
+set_target_properties(DisplaySystem PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/systems)
 #set_property(TARGET Display PROPERTY IMPORTED_IMPLIB c:/path/to/bar.lib)
 
 
@@ -136,7 +140,7 @@ set(SOURCE_CLIENT
 )
 
 add_executable(r-type_client ${SOURCE_CLIENT})
-target_link_libraries(r-type_client ${CONAN_LIBS} TestEntity TestEntity2 DisplaySystem MovementSystem ${CMAKE_DL_LIBS})
+target_link_libraries(r-type_client ${CONAN_LIBS} TestEntity TestEntity2 DisplaySystem MovementSystem ${CMAKE_DL_LIBS} "stdc++fs")
 
 #r-type_server
 set(SOURCE_SERVER

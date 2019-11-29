@@ -21,6 +21,8 @@
 #include "SFMLRenderManager.hpp"
 #include "ManagerWrapper.hpp"
 #include "DlLoader.hpp"
+#include "ILoader.hpp"
+#include  "EntitiesLoader.hpp"
 
 using namespace ecs::components;
 using namespace ecs::entities;
@@ -36,10 +38,14 @@ int main()
     DlLoader<TestEntity> testEntity;
     DlLoader<TestEntity2> testEntity2;
 
-    displaySystem.loadInstance("../lib/libDisplaySystem.so");
-    movementSystem.loadInstance("../lib/libMovementSystem.so");
-    testEntity2.loadInstance("../lib/libTestEntity2.so");
-    testEntity.loadInstance("../lib/libTestEntity.so");
+    EntitiesLoader test;
+
+    test.loadAllLibrary();
+
+    displaySystem.loadInstance("../lib/systems/libDisplaySystem.so");
+    movementSystem.loadInstance("../lib/systems/libMovementSystem.so");
+    testEntity2.loadInstance("../lib/entities/libTestEntity2.so");
+    testEntity.loadInstance("../lib/entities/libTestEntity.so");
 
     std::shared_ptr<ecs::ManagerWrapper> managerWrapper = std::make_shared<ecs::ManagerWrapper>();
     std::shared_ptr<IEntityFactory> factory = std::make_shared<EntityFactory>(managerWrapper->getEntityManager() , managerWrapper->getComponentManager());
