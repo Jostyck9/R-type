@@ -13,6 +13,7 @@ namespace ecs {
             loadTexture("test", "../resources/r-typesheet1.gif");
             loadTexture("player", "../resources/player.png");
             loadTexture("bullet", "../resources/bullet.png");
+            loadTexture("ennemy", "../resources/ennemy01.png");
             loadTexture("backgroundMenu", "../resources/menu_background.png");
             loadFont("Pixeled", "../resources/Pixeled.ttf");
         } catch (const std::exception &e) {

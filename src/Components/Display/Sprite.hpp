@@ -55,6 +55,7 @@ namespace ecs::components
        std::string _name;
        ecs::Rect _rect;
        bool _isVisible; /*!<show the image or not */
+    //    std::pair<int, int> _size; /*!<contains maximal width and length of the sprite */
     };
 }
 

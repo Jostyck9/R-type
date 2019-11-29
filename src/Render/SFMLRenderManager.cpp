@@ -12,7 +12,7 @@
 namespace ecs
 {
 
-SFMLRenderManager::SFMLRenderManager(std::shared_ptr<ResourceManager> &rtypeResources) : _event(), _rtypeResources(rtypeResources), _rectangle(sf::Vector2f(120, 50))
+SFMLRenderManager::SFMLRenderManager(std::shared_ptr<ResourceManager> &rtypeResources) : _event(), _rtypeResources(rtypeResources), _rectangle(sf::Vector2f(120, 50)), _rect(0, 0, 0, 0) 
 {
     _keys[sf::Keyboard::A] = ecs::input::A;
     _keys[sf::Keyboard::B] = ecs::input::B;
@@ -125,7 +125,6 @@ SFMLRenderManager::SFMLRenderManager(std::shared_ptr<ResourceManager> &rtypeReso
     _rectangle.setFillColor(sf::Color(100, 250, 50));
     _text.setFont(_font);
     _font = _rtypeResources->getFont("Pixeled")->getSFMLFont();
-
     for (auto &key : _keys) {
         _keysMap[key.second] = false;
     }
@@ -170,12 +169,18 @@ void SFMLRenderManager::updatePressedKeys()
 
 void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &sprite, std::shared_ptr<components::Position> &pos)
 {
+    _rect.height = sprite->getRect().getHeight();
+    _rect.width = sprite->getRect().getWidth();
+    _rect.top = sprite->getRect().getPosY();
+    _rect.left = sprite->getRect().getPosX();
     if (sprite == nullptr)
         return;
     try
     {
         _texture = _rtypeResources->getTexture(sprite->getName())->getSFMLTexture();
+        _texture.setRepeated(true);
         _sprite.setTexture(_texture);
+        _sprite.setTextureRect(_rect);
         _sprite.setPosition(pos->getX(), pos->getY());
         _window.draw(_sprite);
     }

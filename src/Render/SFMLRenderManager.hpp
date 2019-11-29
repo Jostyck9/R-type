@@ -83,6 +83,7 @@ private:
     sf::RectangleShape _rectangle; /*!<Shape of the program */
     sf::Font _font;                /*!<Font of the program */
     sf::Text _text;                /*<Text of the program */
+    sf::IntRect _rect;
     std::map<sf::Keyboard::Key, ecs::input::Key> _keys; /*!<Key mapping*/
     std::map<ecs::input::Key, bool> _keysMap; /*<Contains name of key and if it is pressed or not */
 };

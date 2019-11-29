@@ -89,6 +89,7 @@ set(SOURCE_CLIENT
         "src/Components/GameLogic/Scale.cpp"
         "src/Components/GameLogic/Timer.cpp"
         "src/Components/GameLogic/PlayerController.cpp"
+        "src/Components/GameLogic/EnnemiesController.cpp"
         "src/Components/IO/Controller.cpp"
         "src/Components/IO/DummyInput.cpp"
         "src/Components/IO/GameController.cpp"
