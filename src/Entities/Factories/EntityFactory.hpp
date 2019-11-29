@@ -33,6 +33,20 @@ namespace ecs::entities
          */
         bool isExisting(const std::string &name);
 
+        /**
+         * @brief Update the entity if aready existing (userfull between server and client)
+         * 
+         * @param entity 
+         * @return std::shared_ptr<ecs::entities::Entity> 
+         */
+        std::shared_ptr<ecs::entities::Entity> updateIfExisting(const ecs::network::PacketManager::Entity &entity);
+        
+        using ptrFunc = void (ecs::entities::EntityFactory::*)(std::shared_ptr<ecs::entities::Entity>&, const ecs::network::PacketManager::Component);
+        std::map<ecs::network::ComponentType, ptrFunc> _functionsUpdate;
+
+        void addPosition(std::shared_ptr<ecs::entities::Entity> &entity, const ecs::network::PacketManager::Component data);
+        void addRotation(std::shared_ptr<ecs::entities::Entity> &entity, const ecs::network::PacketManager::Component data);
+
     public:
         /**
          * @brief Construct a new Entity Factory object
@@ -43,12 +57,15 @@ namespace ecs::entities
         ~EntityFactory();
 
         /**
-         * @brief Create a Entity object by his name
+         * @brief Create a Entity object
          * 
          * @param name 
+         * @param pos : std::pair<float, float> = (0, 0)
+         * @param velocity : std::pair<float, float> = (0, 0)
+         * @param rotation 
          * @return std::shared_ptr<Entity> 
          */
-        std::shared_ptr<Entity> createEntity(const std::string &name) override;
+        std::shared_ptr<Entity> createEntity(const std::string &name, std::pair<float, float> pos = std::make_pair(0, 0), std::pair<float, float> velocity = std::make_pair(0, 0), float rotation = 0) override;
 
         /**
          * @brief Add an entity constructor that will be used in the entity factory
@@ -56,6 +73,29 @@ namespace ecs::entities
          * @param constructor 
          */
         void addEntityConstructor(std::shared_ptr<IEntityConstructor> constructor) override;
+
+        /**
+        * @brief Create an Entity object from an EntityPacket or update it if existing
+        * 
+        * @param entity 
+        * @return std::shared_ptr<Entity> 
+        */
+        std::shared_ptr<Entity> createEntity(ecs::network::PacketManager::Entity &entity) override;
+
+        /**
+         * @brief Delete all entities constructor
+         * 
+         */
+        void deleteAll() override;
+    
+        /**
+         * @brief Remove an entity constructor
+         * 
+         * @param name 
+         * @return true 
+         * @return false if not existing
+         */
+        bool remove(const std::string &name) override;
     };
 }
 

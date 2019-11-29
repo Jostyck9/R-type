@@ -2,7 +2,6 @@
 // Created by romane on 25/11/2019.
 //
 
-#include <EntityConstructor/TestPlayerEntity/TestPlayerEntity.hpp>
 #include "SystemManager.hpp"
 #include "EntityFactory.hpp"
 #include "Rtype.hpp"

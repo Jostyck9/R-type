@@ -8,6 +8,7 @@
 #ifndef ENTITYMANAGER_HPP__
 #define ENTITYMANAGER_HPP__
 
+#include <map>
 #include <vector>
 #include "IComponentManager.hpp"
 #include "IEntityManager.hpp"
@@ -38,6 +39,21 @@ namespace ecs::entities
          */
         bool contains(const Entity &entity) const;
 
+        /**
+         * @brief Get the Entity By Game Id object, throw an entityException if not found
+         * 
+         * @param id 
+         * @return std::shared_ptr<Entity>& 
+         */
+        std::shared_ptr<Entity> &getEntityByGameId(size_t id);
+
+    private:
+        using ptrFunc = void (EntityManager::*)(const std::shared_ptr<entities::Entity> &entity, const ecs::network::PacketManager::Component toAdd);
+        std::map<ecs::network::ComponentType, ptrFunc> _functionsUpdate;
+
+        void updatePosition(const std::shared_ptr<entities::Entity> &entity, const ecs::network::PacketManager::Component toAdd);
+        void updateRotation(const std::shared_ptr<entities::Entity> &entity, const ecs::network::PacketManager::Component toAdd);
+
     public:
         /**
          * @brief Construct a new Entity Manager object
@@ -46,6 +62,14 @@ namespace ecs::entities
          */
         EntityManager(std::shared_ptr<components::IComponentManager> componentManager);
         ~EntityManager();
+
+        /**
+         * @brief Update an entity if existing (useful for network part)
+         * 
+         * @param toUpdate 
+         * @return std::shared_ptr<Entity> 
+         */
+        std::shared_ptr<Entity> updateEntity(const ecs::network::PacketManager::Entity &toUpdate) override;
 
         /**
          * @brief Get All the Entities object
