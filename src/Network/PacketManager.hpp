@@ -127,15 +127,16 @@ private:
             char _msg[MAX_MSG_LENGTH];
         };
     };
-
+    
     union PacketData {
         char rawData[MAX_LENGTH];
         struct Data data;
     };
-
-    PacketData packet;
+    
+    
 
 public:
+    PacketData packet;
     /**
      * @brief Construct a new Packet Manager object
      * 

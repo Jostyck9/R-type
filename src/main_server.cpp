@@ -47,15 +47,14 @@ class server {
                 std::placeholders::_2));
     }
 
-    void do_send(std::size_t length)
+    /*void do_send(std::size_t length)
     {
         socket_.async_send_to(boost::asio::buffer(data_, length),
-            sender_endpoint_, [this](boost::system::error_code /*ec*/,
-                std::size_t /*bytes_sent*/
+            sender_endpoint_, [this](
             ) {
                 do_receive();
             });
-    }
+    }*/
 
     private:
     udp::socket socket_;
