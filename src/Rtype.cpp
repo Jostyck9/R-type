@@ -2,6 +2,7 @@
 // Created by romane on 25/11/2019.
 //
 
+#include "MovementSystem.hpp"
 #include "SystemManager.hpp"
 #include "DisplaySystem.hpp"
 #include "Factories/EntityFactory.hpp"
@@ -25,6 +26,7 @@ void Rtype::start()
 {
     bool isPlaying = true;
 
+    _systemManager->addSystem(std::make_shared<MovementSystem>(_managerWrapper, _systemManager->getEntitiesToDelete()));
     _systemManager->addSystem(std::make_shared<DisplaySystem>(_managerWrapper, _systemManager->getEntitiesToDelete()));
     _entityFactory->addEntityConstructor(std::make_shared<TestPlayerEntity>());
     _entityFactory->createEntity("TestPlayer");
