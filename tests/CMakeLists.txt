@@ -47,6 +47,7 @@ add_executable(unit_test
     ./src/testEntityConstructor.cpp
     ./src/testSerialization.cpp
     ./src/testDeserialization.cpp
+    ./src/testPacketManager.cpp
     ${SOURCE_ROOT}/Entities/Entity.cpp
     ${SOURCE_ROOT}/Entities/EntityConstructor/TestEntity/TestEntity.cpp
     ${SOURCE_ROOT}/Entities/EntityManager/EntityManager.cpp

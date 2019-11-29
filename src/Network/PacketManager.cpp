@@ -20,7 +20,6 @@ PacketManager::PacketManager(const PacketManager &other)
 {
     clear();
     std::memcpy(packet.rawData, other.packet.rawData, MAX_LENGTH);
-    packet.data.magicNumber = 42;
 }
 
 PacketManager::~PacketManager()
@@ -30,7 +29,8 @@ PacketManager::~PacketManager()
 void PacketManager::clear()
 {
     std::memset(packet.rawData, 0, MAX_LENGTH);
-
+    packet.data.magicNumber = 42;
+    setRes(true);
 }
 
 void PacketManager::setCmd(const CMD cmd)
@@ -141,6 +141,23 @@ const char *PacketManager::getRawData() const
 char PacketManager::getMagicNumber() const
 {
     return packet.data.magicNumber;
+}
+
+void PacketManager::setMsg(const std::string &msg)
+{
+    size_t size = MAX_MSG_LENGTH;
+
+    if (msg.size() < MAX_MSG_LENGTH)
+        size = msg.size();
+    std::strncpy(packet.data._msg, msg.c_str(), size);
+}
+
+const std::string PacketManager::getMsg()
+{
+    std::string msg;
+
+    msg = packet.data._msg;
+    return msg;
 }
 
 } // namespace ecs::network

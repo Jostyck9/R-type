@@ -8,6 +8,7 @@
 #ifndef PACKETMANAGER_HPP
 #define PACKETMANAGER_HPP
 
+#include <string>
 #include <list>
 
 namespace ecs::network
@@ -86,7 +87,8 @@ public:
 public:
     enum
     {
-        MAX_ENTITIES = MAX_LENGTH / sizeof(Entity)
+        MAX_ENTITIES = MAX_LENGTH / sizeof(Entity),
+        MAX_MSG_LENGTH = MAX_LENGTH / 2
     };
 
 private:
@@ -122,6 +124,7 @@ private:
             struct JoinRoom _join;
             struct GetRooms _getRoom;
             struct Entities _entities;
+            char _msg[MAX_MSG_LENGTH];
         };
     };
 
@@ -276,6 +279,20 @@ public:
      * @return char 
      */
     char getMagicNumber() const;
+
+    /**
+     * @brief Set the Msg object
+     * 
+     * @param msg 
+     */
+    void setMsg(const std::string &msg);
+    
+    /**
+     * @brief Get the Msg object
+     * 
+     * @return std::string 
+     */
+    const std::string getMsg();
 };
 
 } // namespace ecs::network
