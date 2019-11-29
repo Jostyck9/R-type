@@ -30,7 +30,7 @@ namespace ecs::system
 
         for (auto &it : _systems) {
             current = it->update();
-            if (current.getAction() == ecs::system::SystemResponse::NOACTION)
+            if (current.getAction() != ecs::system::SystemResponse::NOACTION)
                 break;
         }
         for (auto &it : _entitiesToDelete) {

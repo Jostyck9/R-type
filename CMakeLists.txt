@@ -57,6 +57,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/SystemConstructor
         src/Systems/SystemConstructor/MovementSystem
         src/Systems/SystemConstructor/MenuSystem
+        src/Systems/SystemConstructor/ButtonColorSystem
         src/Systems/SystemConstructor/testSystem
         src/Systems/Factories
         src/Systems/SystemResponse/
@@ -123,7 +124,7 @@ set(SOURCE_CLIENT
         "src/Systems/ASystem.cpp"
         "src/Systems/Display/DisplaySystem.cpp"
         "src/Systems/SystemConstructor/MenuSystem/MenuSystem.cpp"
-        "src/Systems/SystemManager/SystemManager.cpp"
+        "src/Systems/SystemConstructor/ButtonColorSystem/ButtonColorSystem.cpp"
         "src/Systems/SystemManager/SystemManager.cpp"
         "src/Exceptions/ComponentExceptions.cpp"
         "src/Exceptions/ECSExceptions.cpp"

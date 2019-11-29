@@ -121,8 +121,8 @@ SFMLRenderManager::SFMLRenderManager(std::shared_ptr<ResourceManager> &rtypeReso
     _colors[ecs::Color::GREEN] = sf::Color::Green;
     _colors[ecs::Color::YELLOW] = sf::Color::Yellow;
     _colors[ecs::Color::MAGENTA] = sf::Color::Magenta;
-    _text.setFillColor(_colors[ecs::Color::WHITE]);
     _rectangle.setFillColor(sf::Color(100, 250, 50));
+    _text.setFillColor(_colors[ecs::Color::WHITE]);
     _text.setFont(_font);
     _font = _rtypeResources->getFont("Pixeled")->getSFMLFont();
 
@@ -194,6 +194,7 @@ void SFMLRenderManager::audioUpdate()
 
 void SFMLRenderManager::textUpdate(std::shared_ptr<components::Text> &Text, std::shared_ptr<components::Position> &pos)
 {
+    _text.setFillColor(_colors[Text->getColor()]);
     _text.setString(Text->getStr());
     _text.setCharacterSize(Text->getSize());
     _text.setPosition(pos->getX(), pos->getY());
