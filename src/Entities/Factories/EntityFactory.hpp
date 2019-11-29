@@ -78,6 +78,21 @@ namespace ecs::entities
         * @return std::shared_ptr<Entity> 
         */
         std::shared_ptr<Entity> createEntity(ecs::network::PacketManager::Entity &entity) override;
+
+        /**
+         * @brief Delete all entities constructor
+         * 
+         */
+        void deleteAll() override;
+    
+        /**
+         * @brief Remove an entity constructor
+         * 
+         * @param name 
+         * @return true 
+         * @return false if not existing
+         */
+        bool remove(const std::string &name) override;
     };
 }
 

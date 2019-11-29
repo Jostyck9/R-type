@@ -33,4 +33,20 @@ Test(SystemConstructor, Factory)
     cr_assert_eq(systemFactory->isExisting("Display"), true);
     cr_assert_eq(systemFactory->isExisting("test"), false);
     auto res = systemFactory->createSystem("Display");
+    cr_assert_eq(systemFactory->isExisting("Display"), true);
+    systemFactory->remove("Display");
+    cr_assert_eq(systemFactory->isExisting("Display"), false);
+}
+
+Test(SystemConstructor, DeleteAll)
+{
+    std::shared_ptr<ecs::ManagerWrapper> managers = std::make_shared<ecs::ManagerWrapper>();
+    std::list <int>idToDel;
+    std::shared_ptr<ISystemManager> systemManager = std::make_shared<SystemManager>(managers);
+    std::shared_ptr<ISystemFactory> systemFactory = std::make_shared<SystemFactory>(managers, systemManager);
+
+    systemFactory->addSystemConstructor(std::make_shared<testSystem>());
+    cr_assert_eq(systemFactory->isExisting("Display"), true);
+    systemFactory->deleteAll();
+    cr_assert_eq(systemFactory->isExisting("Display"), false);
 }

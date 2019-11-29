@@ -45,4 +45,13 @@ Test(EntityConstructor, Factory)
     cr_assert_eq(pos.size(), 4);
     cr_assert_none_throw(compoManager->getPhysicComponentOfSpecifiedType(res, std::type_index(typeid(Position))));
     cr_assert_none_throw(compoManager->getPhysicComponentOfSpecifiedType(res, std::type_index(typeid(Velocity))));
+
+    entityFactory->deleteAll();
+    cr_assert_any_throw(entityFactory->createEntity("Test"));
+
+    entityFactory->addEntityConstructor(std::make_shared<TestEntity>());
+    cr_assert_none_throw(entityFactory->createEntity("Test"));
+    entityFactory->remove("Test");
+    cr_assert_any_throw(entityFactory->createEntity("Test"));
+
 }
