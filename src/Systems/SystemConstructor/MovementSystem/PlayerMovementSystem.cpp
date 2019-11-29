@@ -44,8 +44,7 @@ void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, bool>
         velocityComp->setVelocityX(2);
     }
     else
-    {        std::cout << "you dont press left nor right" << std::endl;
-
+    {
         velocityComp->setVelocityX(0);
     }
     if (keys[ecs::input::UP])
@@ -54,7 +53,6 @@ void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, bool>
         velocityComp->setVelocityY(2);
     }
     else {
-        std::cout << "you dont press up nor down" << std::endl;
         velocityComp->setVelocityY(0);
     }
 }
