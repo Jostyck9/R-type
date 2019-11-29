@@ -58,6 +58,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/SystemConstructor/MovementSystem
         src/Systems/SystemConstructor/testSystem
         src/Systems/Factories
+        src/Systems/SystemResponse/
         src/Render/
         src/ManagerWrapper
         src/Network/
@@ -139,7 +140,8 @@ set(SOURCE_CLIENT
         "src/Scenes/MenuScene.cpp"
         "src/Rtype.cpp"
         "src/Utils/Rect.cpp"
-        "src/FactoriesWrapper/FactoriesWrapper.cpp")
+        "src/FactoriesWrapper/FactoriesWrapper.cpp"
+        "src/Systems/SystemResponse/SystemResponse.cpp")
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})
