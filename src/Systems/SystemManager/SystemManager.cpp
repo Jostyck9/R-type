@@ -5,12 +5,14 @@
 ** SystemManager.cpp
 */
 
+#include "SystemExceptions.hpp"
 #include "SystemManager.hpp"
 
 namespace ecs::system
 {
     SystemManager::SystemManager(std::shared_ptr<ManagerWrapper> managerWrapper) :
-    _managerWrapper(managerWrapper)
+    _managerWrapper(managerWrapper),
+    _entityFactory(nullptr)
     {
     }
     
@@ -23,8 +25,15 @@ namespace ecs::system
         return _entitiesToDelete;
     }
 
+    void SystemManager::checkIfEntityFactory()
+    {
+        if (_entityFactory == nullptr)
+            throw SystemExceptions("No entity factory given, make sur to add it", "SystemManager");
+    }
+
     void SystemManager::updateAll()
     {
+        checkIfEntityFactory();
         for (auto &it : _systems) {
             it->update();
         }
@@ -43,5 +52,10 @@ namespace ecs::system
     void SystemManager::deleteAll()
     {
         _systems.clear();
+    }
+
+    void SystemManager::setEntityFactory(std::shared_ptr<ecs::entities::IEntityFactory> entityFactory)
+    {
+        _entityFactory = entityFactory;
     }
 }

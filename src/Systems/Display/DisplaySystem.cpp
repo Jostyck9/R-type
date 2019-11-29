@@ -15,7 +15,7 @@
 
 namespace ecs::system
 {
-DisplaySystem::DisplaySystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete) : ASystem(managerWrapper, entitiesToDelete), _elapsedTime(0)
+DisplaySystem::DisplaySystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete) : ASystem(managerWrapper, entityFactory, entitiesToDelete), _elapsedTime(0)
 {
 }
 

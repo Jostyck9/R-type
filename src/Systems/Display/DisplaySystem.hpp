@@ -16,7 +16,7 @@ namespace ecs::system
     class DisplaySystem : public ASystem
     {
     public:
-        DisplaySystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete);
+        DisplaySystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
         ~DisplaySystem();
 
         /**
