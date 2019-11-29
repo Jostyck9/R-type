@@ -63,12 +63,14 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Network/
         src/Exceptions
         src/Utils/
+        src/FactoriesWrapper/
         src/Scenes/
         src/)
 
 #r-type_client
 set(SOURCE_CLIENT
         "src/main_client.cpp"
+        "src/Ecs.cpp"
         "src/Components/ComponentManager/ComponentManager.cpp"
         "src/Components/Display/Animator.cpp"
         "src/Components/Display/Button.cpp"
@@ -134,7 +136,8 @@ set(SOURCE_CLIENT
         "src/Scenes/SceneManager.cpp"
         "src/Scenes/MenuScene.cpp"
         "src/Rtype.cpp"
-        "src/Utils/Rect.cpp")
+        "src/Utils/Rect.cpp"
+        "src/FactoriesWrapper/FactoriesWrapper.cpp")
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})

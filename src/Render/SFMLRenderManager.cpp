@@ -11,7 +11,7 @@
 
 namespace ecs {
 
-    SFMLRenderManager::SFMLRenderManager(std::shared_ptr<RtypeResources> &rtypeResources) : _event(), _rtypeResources(rtypeResources), _rectangle(sf::Vector2f(120, 50))
+    SFMLRenderManager::SFMLRenderManager(std::shared_ptr<ResourceManager> &rtypeResources) : _event(), _rtypeResources(rtypeResources), _rectangle(sf::Vector2f(120, 50))
     {
         _keys[sf::Keyboard::A] = ecs::input::A;
         _keys[sf::Keyboard::B] = ecs::input::B;

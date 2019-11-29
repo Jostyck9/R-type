@@ -2,10 +2,8 @@
 // Created by romane on 28/11/2019.
 //
 
-#include <SystemManager/SystemManager.hpp>
 #include <iostream>
 #include "MenuScene.hpp"
-#include "EntityFactory.hpp"
 #include "SceneManager.hpp"
 #include "BackgroundMenuEntity.hpp"
 #include "PlayEntity.hpp"
@@ -13,17 +11,13 @@
 
 namespace ecs {
 
-    SceneManager::SceneManager()
+    SceneManager::SceneManager() : _ecs(std::make_shared<Ecs>())
     {
-        _managerWrapper = std::make_shared<ecs::ManagerWrapper>();
-        _systemManager = std::make_shared<system::SystemManager>(_managerWrapper);
-        _entityFactory = std::make_shared<ecs::entities::EntityFactory>(_managerWrapper->getEntityManager(), _managerWrapper->getComponentManager());
+        _ecs->getRenderManager()->init();
 
-        _managerWrapper->getRenderManager()->init();
-
-        _entityFactory->addEntityConstructor(std::make_shared<entities::BackgroundMenuEntity>());
-        _entityFactory->addEntityConstructor(std::make_shared<entities::PlayEntity>());
-        _entityFactory->addEntityConstructor(std::make_shared<entities::StopEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::BackgroundMenuEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlayEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::StopEntity>());
 
         createMenu();
         run();
@@ -31,7 +25,7 @@ namespace ecs {
 
     void SceneManager::createMenu()
     {
-        _current = std::make_shared<MenuScene>(_managerWrapper, _systemManager, _entityFactory);
+        _current = std::make_shared<MenuScene>(_ecs);
     }
 
     void SceneManager::run()
@@ -39,9 +33,8 @@ namespace ecs {
         bool isPlaying = true;
 
         while (isPlaying) {
-            _systemManager->updateAll();
-            isPlaying = _managerWrapper->getRenderManager()->eventUpdate();
+            _ecs->getSystemManager()->updateAll();
+            isPlaying = _ecs->getRenderManager()->eventUpdate();
         }
     }
-
 }

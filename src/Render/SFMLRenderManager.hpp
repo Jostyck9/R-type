@@ -22,12 +22,11 @@ namespace ecs
      * @brief Manager gameRendering of the game
      *
      */
-class SFMLRenderManager : public IRenderManager
-{
-public:
-    SFMLRenderManager(std::shared_ptr<RtypeResources> &rtypeResources);
-    ~SFMLRenderManager();
-    /**
+    class SFMLRenderManager : public IRenderManager {
+    public:
+        SFMLRenderManager(std::shared_ptr<ResourceManager> &rtypeResources);
+        ~SFMLRenderManager();
+        /**
          * @brief initialize sfml window etc
          *
          */
@@ -80,7 +79,7 @@ private:
     std::map<int, ecs::input::Key> _keys; /*!<Key mapping*/
     std::map<ecs::Color, sf::Color> _colors; /*!<Color mapping*/
     sf::Texture _texture;                 /*!<Texture of the program */
-    std::shared_ptr<RtypeResources> _rtypeResources;
+    std::shared_ptr<ResourceManager> _rtypeResources;
     sf::RectangleShape _rectangle; /*!<Shape of the program */
     sf::Font _font;                /*!<Font of the program */
     sf::Text _text;                /*<Text of the program */

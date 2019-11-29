@@ -10,19 +10,15 @@
 #include "DisplaySystem.hpp"
 #include "EntityFactory.hpp"
 
-ecs::MenuScene::MenuScene(const std::shared_ptr<ecs::ManagerWrapper>& managerWrapper, const std::shared_ptr<ecs::system::ISystemManager>& systemManager, const std::shared_ptr<ecs::entities::IEntityFactory>& entityFactory)
+ecs::MenuScene::MenuScene(std::shared_ptr<Ecs> &ecs) : _ecs(ecs)
 {
-    _systemManager = systemManager;
-    _managerWrapper = managerWrapper;
-    _entityFactory = entityFactory;
+    _ecs->getEntityManager()->deleteAll();
+    _ecs->getSystemManager()->deleteAll();
 
-    _entityManager = std::make_shared<ecs::entities::EntityManager>(_managerWrapper->getComponentManager());
-    _entityManager->deleteAll();
+    // TODO use system Factory inside ecs
+    _ecs->getSystemManager()->addSystem(std::make_shared<system::DisplaySystem>(_ecs->getManagerWrapper(), _ecs->getSystemManager()->getEntitiesToDelete()));
 
-    _systemManager->addSystem(std::make_shared<system::DisplaySystem>(_managerWrapper, _systemManager->getEntitiesToDelete()));
-
-    _entityFactory->createEntity("BackgroundMenu");
-    _entityFactory->createEntity("Play");
-    _entityFactory->createEntity("Stop");
-//    _systemManager->deleteAll();
+    _ecs->getEntityFactory()->createEntity("BackgroundMenu");
+    _ecs->getEntityFactory()->createEntity("Play");
+    _ecs->getEntityFactory()->createEntity("Stop");
 }
