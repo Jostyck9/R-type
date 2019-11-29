@@ -68,6 +68,11 @@ public:
      */
     std::shared_ptr<ecs::system::ISystemFactory> &getSystemFactory();
 
+    /**
+     * @brief Get the Entity Factory object
+     * 
+     * @return std::shared_ptr<ecs::entities::IEntityFactory>& 
+     */
     std::shared_ptr<ecs::entities::IEntityFactory> &getEntityFactory();
 };
 

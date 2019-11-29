@@ -66,6 +66,7 @@ add_executable(unit_test
     ${SOURCE_ROOT}/Components/Physics/Rotation.cpp
     ${SOURCE_ROOT}/Components/Display/Image.cpp
     ${SOURCE_ROOT}/Components/Display/Sprite.cpp
+    ${SOURCE_ROOT}/Components/Display/Text.cpp
     ${SOURCE_ROOT}/Components/GameLogic/Timer.cpp
     ${SOURCE_ROOT}/Exceptions/ComponentExceptions.cpp
     ${SOURCE_ROOT}/Exceptions/ECSExceptions.cpp
@@ -87,7 +88,6 @@ add_executable(unit_test
     ${SOURCE_ROOT}/ResourceManager/Font.cpp
     ${SOURCE_ROOT}/ResourceManager/Music.cpp
     ${SOURCE_ROOT}/ResourceManager/Sound.cpp
-    ${SOURCE_ROOT}/ResourceManager/Text.cpp
     ${SOURCE_ROOT}/ResourceManager/Texture.cpp
 )
 target_link_libraries(unit_test criterion ${CONAN_LIBS})
@@ -102,7 +102,6 @@ add_executable(unit_test_graphic
     ${SOURCE_ROOT}/ResourceManager/ResourceManager.cpp
     ${SOURCE_ROOT}/ResourceManager/RtypeResources.cpp
     ${SOURCE_ROOT}/ResourceManager/Sound.cpp
-    ${SOURCE_ROOT}/ResourceManager/Text.cpp
     ${SOURCE_ROOT}/ResourceManager/Texture.cpp
     ${SOURCE_ROOT}/Exceptions/ComponentExceptions.cpp
     ${SOURCE_ROOT}/Components/ComponentManager/ComponentManager.cpp
@@ -129,6 +128,7 @@ add_executable(unit_test_graphic
     ${SOURCE_ROOT}/Components/Physics/Rotation.cpp
     ${SOURCE_ROOT}/Components/Display/Image.cpp
     ${SOURCE_ROOT}/Components/Display/Sprite.cpp
+    ${SOURCE_ROOT}/Components/Display/Text.cpp
     ${SOURCE_ROOT}/Utils/Rect.cpp
 )
 target_link_libraries(unit_test_graphic criterion ${CONAN_LIBS})

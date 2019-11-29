@@ -22,6 +22,7 @@ namespace ecs::components
     {
     public:
         StaticText();
+        StaticText(std::string &str);
         ~StaticText();
         /**
          * @brief Get the Type object
@@ -29,6 +30,8 @@ namespace ecs::components
          * @return const std::type_index 
          */
         const std::type_index getType() const;
+    private:
+        std::string _str;
     };
 }
 
