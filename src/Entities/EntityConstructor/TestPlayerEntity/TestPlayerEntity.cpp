@@ -12,6 +12,7 @@
 #include "Physics/Collision.hpp"
 #include "Display/Sprite.hpp"
 #include "Display/Text.hpp"
+#include "PlayerController.hpp"
 #include "Rect.hpp"
 
 using namespace ecs::entities;
@@ -25,11 +26,12 @@ std::shared_ptr<ecs::entities::Entity> TestPlayerEntity::create(
     Rect spriteRect(50, 50, 0, 0);
     entityManager->addEntity(toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(30, 30), toCreate);
-    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(1, 0), toCreate);
+    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(0, 0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(true, 0, 0, 1, 1, "Test"), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("player", spriteRect), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Text>("P1"), toCreate);
+    componentsManager->addGameLogicComponent(std::make_shared<ecs::components::PlayerController>(), toCreate);
     return toCreate;
 }
 

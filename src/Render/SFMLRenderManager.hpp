@@ -62,7 +62,7 @@ namespace ecs {
          *
          * @return std::vector<ecs::input::Key>
          */
-        std::vector<ecs::input::Key> getInputs();
+        const std::vector<ecs::input::Key> &getInputs() override;
         
     private:
         sf::RenderWindow _window; /*!< Internal window used by SFML functions */
@@ -75,6 +75,7 @@ namespace ecs {
         sf::RectangleShape _rectangle; /*!<Shape of the program */
         sf::Font _font; /*!<Font of the program */
         sf::Text _text; /*<Text of the program */
+        std::vector<input::Key> _foundKeys;
     };
 }
 

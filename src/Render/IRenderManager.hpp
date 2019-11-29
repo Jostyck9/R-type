@@ -9,6 +9,7 @@
 #include "Display/Sprite.hpp"
 #include "Physics/Position.hpp"
 #include "Display/Text.hpp"
+#include "Render/Input.hpp"
 
 #ifndef IRENDERMANAGER_HPP__
 #define IRENDERMANAGER_HPP__
@@ -32,6 +33,8 @@ namespace ecs {
         virtual void audioUpdate() = 0;
         virtual void textUpdate(std::shared_ptr<components::Text> &Text, std::shared_ptr<components::Position> &pos) = 0;
         virtual bool eventUpdate() = 0;
+        virtual const std::vector<ecs::input::Key> &getInputs() = 0;
+
     };
 }
 

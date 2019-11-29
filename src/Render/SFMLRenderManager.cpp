@@ -142,18 +142,17 @@ void SFMLRenderManager::terminate()
     //stop audio ?
 }
 
-std::vector<ecs::input::Key> SFMLRenderManager::getInputs()
+const std::vector<ecs::input::Key> &SFMLRenderManager::getInputs()
 {
-    std::vector<input::Key> keys;
-
+    _foundKeys.clear();
     while (_window.pollEvent(_event)) {
         if (_event.type == sf::Event::KeyPressed) {
             if (_keys.find(_event.key.code) != _keys.end()) {
-                keys.push_back(_keys[_event.key.code]);
+                _foundKeys.push_back(_keys[_event.key.code]);
             }
         }
     }
-    return keys;
+    return _foundKeys;
 }
 
 void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &sprite, std::shared_ptr<components::Position> &pos)

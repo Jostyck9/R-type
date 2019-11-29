@@ -6,6 +6,8 @@
 #include "DisplaySystem.hpp"
 #include "Factories/EntityFactory.hpp"
 #include "SFMLRenderManager.hpp"
+#include "MovementSystem.hpp"
+#include "PlayerMovementSystem.hpp"
 #include "Rtype.hpp"
 #include "TestPlayerEntity.hpp"
 
@@ -26,6 +28,8 @@ void Rtype::start()
     bool isPlaying = true;
 
     _systemManager->addSystem(std::make_shared<DisplaySystem>(_managerWrapper, _systemManager->getEntitiesToDelete()));
+    _systemManager->addSystem(std::make_shared<MovementSystem>(_managerWrapper, _systemManager->getEntitiesToDelete()));
+    _systemManager->addSystem(std::make_shared<PlayerMovementSystem>(_managerWrapper, _systemManager->getEntitiesToDelete()));
     _entityFactory->addEntityConstructor(std::make_shared<TestPlayerEntity>());
     _entityFactory->createEntity("TestPlayer");
     _managerWrapper->getRenderManager()->init();
