@@ -12,6 +12,11 @@ namespace ecs {
      */
     class IAudio {
     public:
+        enum State {
+            PLAYING,
+            PAUSED,
+            STOP
+        };
 
         /**
          * @brief Get name of the music
@@ -43,6 +48,18 @@ namespace ecs {
          * 
          */
         virtual void loop(bool state) = 0;
+
+        /**
+         * @brief Get state of the audio
+         *
+         */
+        virtual State getState() = 0;
+
+        /**
+         * @brief Set state oh the audio
+         *
+         */
+        virtual void setState(State) = 0;
     };
 }
 

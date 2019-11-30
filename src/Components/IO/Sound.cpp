@@ -9,27 +9,23 @@
 
 using namespace ecs::components;
 
-Sound::Sound()
+Sound::Sound(std::string nameSound)
 {
+    _nameSound = nameSound;
 }
 
 ecs::components::Sound::Sound(const Sound &oldSound)
 {
-    this->_id = oldSound.getId();
+    this->_nameSound = oldSound.getNameSound();
 }
 
 Sound::~Sound()
 {
 }
 
-void Sound::setId(const unsigned int &val)
+const std::string &Sound::getNameSound() const
 {
-    this->_id = val;
-}
-
-unsigned int Sound::getId() const
-{
-    return (this->_id);
+    return _nameSound;
 }
 
 const std::type_index Sound::getType() const
@@ -37,9 +33,7 @@ const std::type_index Sound::getType() const
     return (std::type_index(typeid(Sound)));
 }
 
-bool Sound::operator==(Sound const& other) const
+bool Sound::operator==(const Sound &other) const
 {
-    if (other.getId() != this->getId())
-        return false;
-    return true;
+    return !(other.getNameSound() != this->getNameSound());
 }

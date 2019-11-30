@@ -201,11 +201,6 @@ void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &spri
     }
 }
 
-void SFMLRenderManager::audioUpdate()
-{
-    // play/pause en fonction du state de l'audio
-}
-
 void SFMLRenderManager::textUpdate(std::shared_ptr<components::Text> &Text, std::shared_ptr<components::Position> &pos)
 {
     _text.setFillColor(_colors[Text->getColor()]);

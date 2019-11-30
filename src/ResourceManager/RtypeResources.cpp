@@ -23,6 +23,7 @@ namespace ecs {
             loadTexture("backgroundWithoutTitle", "./resources/background_without_title.png");
             loadFont("Pixeled", "./resources/font.ttf");
             loadMusic("GameMusic", "./resources/music.ogg");
+            loadSound("laser", "./resources/laser.wav");
         } catch (const std::exception &e) {
             throw e;
         }

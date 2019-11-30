@@ -10,6 +10,7 @@ namespace ecs {
 Music::Music(const std::string &name, const std::string &filePath)
 {
     _name = name;
+    _state = STOP;
     if (!_music.openFromFile(filePath))
         throw ECSExceptions("Error: Could not load music \'" + name + '\'', std::string(__FILE__) + ' ' + std::to_string(__LINE__));
 }
@@ -42,6 +43,16 @@ void Music::loop(bool state)
 const std::string &Music::getName()
 {
     return _name;
+}
+
+IAudio::State Music::getState()
+{
+    return _state;
+}
+
+void Music::setState(ecs::IAudio::State state)
+{
+    _state = state;
 }
 
 sf::Music &Music::getSFMLMusic()
