@@ -25,7 +25,6 @@ namespace ecs {
 
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::BackgroundMenuEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::GameBackgroundEntity>());
-        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::TestBackground>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlayerEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::BulletEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::EnnemyEntity>());
