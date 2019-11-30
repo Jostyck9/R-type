@@ -10,6 +10,7 @@
 
 #include <map>
 #include <vector>
+#include "PacketManager.hpp"
 #include "IComponentManager.hpp"
 #include "IEntityManager.hpp"
 
