@@ -2,22 +2,22 @@
 ** EPITECH PROJECT, 2019
 ** Untitled (Workspace)
 ** File description:
-** EnnemyType01Entity.hpp
+** EnemyType01Entity.hpp
 */
 
-#ifndef ENNEMYTYPE01ENTITY_HPP__
-#define ENNEMYTYPE01ENTITY_HPP__
+#ifndef EnemyTYPE01ENTITY_HPP__
+#define EnemyTYPE01ENTITY_HPP__
 
 #include "IEntityConstructor.hpp"
 
 namespace ecs::entities
 {
 
-class EnnemyType01Entity : public IEntityConstructor
+class EnemyType01Entity : public IEntityConstructor
 {
 public:
-    EnnemyType01Entity() = default;
-    ~EnnemyType01Entity() = default;
+    EnemyType01Entity() = default;
+    ~EnemyType01Entity() = default;
 
     /**
      * @brief Create the entity associated with class constructor
@@ -42,4 +42,4 @@ public:
 };
 } // namespace ecs::entities
 
-#endif //EnnemyType01Entity_HPP__
+#endif //EnemyType01Entity_HPP__

@@ -49,8 +49,8 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/EntityConstructor/PlayerEntity/
         src/Entities/EntityConstructor/PlayEntity/
         src/Entities/EntityConstructor/StopEntity/
-        src/Entities/EntityConstructor/EnnemyEntity/
-        src/Entities/EntityConstructor/EnnemyType01Entity/
+        src/Entities/EntityConstructor/EnemyEntity/
+        src/Entities/EntityConstructor/EnemyType01Entity/
         src/Entities/EntityConstructor/BulletEntity/
         src/Entities/EntityConstructor/BackgroundMenuEntity/
         src/Entities/EntityConstructor/GameBackgroundEntity/
@@ -75,7 +75,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/SystemConstructor/MenuSystem
         src/Systems/SystemConstructor/ButtonColorSystem
         src/Systems/SystemConstructor/PlayerMovementSystem
-        src/Systems/SystemConstructor/EnnemiesMovementSystem
+        src/Systems/SystemConstructor/EnemiesMovementSystem
         src/Systems/SystemConstructor/testSystem
         src/Systems/SystemConstructor/AnimationSystem
         src/Systems/SystemConstructor/ParallaxSystem
@@ -115,7 +115,7 @@ set(SOURCE_CLIENT
         "src/Components/GameLogic/Scale.cpp"
         "src/Components/GameLogic/Timer.cpp"
         "src/Components/GameLogic/PlayerController.cpp"
-        "src/Components/GameLogic/EnnemiesController.cpp"
+        "src/Components/GameLogic/EnemiesController.cpp"
         "src/Components/IO/GameController.cpp"
         "src/Components/IO/Keyboard.cpp"
         "src/Components/IO/Output.cpp"
@@ -141,8 +141,8 @@ set(SOURCE_CLIENT
         "src/Entities/EntityConstructor/PlayEntity/PlayEntity.cpp"
         "src/Entities/EntityConstructor/StopEntity/StopEntity.cpp"
         "src/Entities/EntityConstructor/BulletEntity/BulletEntity.cpp"
-        "src/Entities/EntityConstructor/EnnemyEntity/EnnemyEntity.cpp"
-        "src/Entities/EntityConstructor/EnnemyType01Entity/EnnemyType01Entity.cpp"
+        "src/Entities/EntityConstructor/EnemyEntity/EnemyEntity.cpp"
+        "src/Entities/EntityConstructor/EnemyType01Entity/EnemyType01Entity.cpp"
         "src/Entities/EntityConstructor/BackgroundMenuEntity/BackgroundMenuEntity.cpp"
         "src/Entities/EntityConstructor/TestBackground/TestBackground.cpp"
         "src/Entities/EntityConstructor/GameBackgroundEntity/GameBackgroundEntity.cpp"
@@ -172,7 +172,7 @@ set(SOURCE_CLIENT
         "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
         "src/Systems/SystemResponse/SystemResponse.cpp"
         "src/Systems/SystemConstructor/PlayerMovementSystem/PlayerMovementSystem.cpp"
-        "src/Systems/SystemConstructor/EnnemiesMovementSystem/EnnemiesMovementSystem.cpp"
+        "src/Systems/SystemConstructor/EnemiesMovementSystem/EnemiesMovementSystem.cpp"
         "src/Systems/SystemConstructor/AnimationSystem/AnimationSystem.cpp"
         "src/Systems/SystemConstructor/ParallaxSystem/ParallaxSystem.cpp"
         "src/Systems/SystemConstructor/ChooseRoomSystem/ChooseRoomSystem.cpp"
