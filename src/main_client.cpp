@@ -34,6 +34,7 @@ int main(int ac, char **av)
         packet.setCmd(ecs::network::PacketManager::ISALIVE);
         rtype.start();
         rtype.stop();
+        network.join();
 
     } catch (const RTypeExceptions &e) {
         std::cerr << e.what() << std::endl;
