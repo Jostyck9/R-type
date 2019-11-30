@@ -213,7 +213,7 @@ void SFMLRenderManager::textUpdate(std::shared_ptr<components::Text> &Text, std:
     _text.setFillColor(_colors[Text->getColor()]);
     _text.setString(Text->getStr());
     _text.setCharacterSize(Text->getSize());
-    _text.setPosition(pos->getX(), pos->getY());
+    _text.setPosition(pos->getX() + Text->getPostion().first, pos->getY() + Text->getPostion().second);
     _window.draw(_text);
 }
 
