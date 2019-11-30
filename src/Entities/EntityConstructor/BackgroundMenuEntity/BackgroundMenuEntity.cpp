@@ -26,7 +26,7 @@ std::shared_ptr<ecs::entities::Entity> BackgroundMenuEntity::create(
 
     std::shared_ptr<Entity> toCreate = std::make_shared<Entity>();
 
-    Rect spriteRect(1500, 800, 0, 0);
+    Rect spriteRect(1500, 900, 0, 0);
     entityManager->addEntity(toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(0, 0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(0, 0), toCreate);
