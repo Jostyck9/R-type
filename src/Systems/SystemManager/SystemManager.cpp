@@ -5,6 +5,7 @@
 ** SystemManager.cpp
 */
 
+#include <iostream>
 #include "SystemResponse.hpp"
 #include "SystemExceptions.hpp"
 #include "SystemManager.hpp"
@@ -38,8 +39,10 @@ namespace ecs::system
         SystemResponse current;
         for (auto &it : _systems) {
             current = it->update();
-            if (current.getAction() != ecs::system::SystemResponse::NOACTION)
+            if (current.getAction() != ecs::system::SystemResponse::NOACTION) {
+                std::cout << "Test" << std::endl;
                 break;
+            }
         }
         for (auto &it : _entitiesToDelete) {
             _managerWrapper->getComponentManager()->deleteComponents(it);

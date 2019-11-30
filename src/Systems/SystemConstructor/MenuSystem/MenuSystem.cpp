@@ -28,7 +28,7 @@ SystemResponse MenuSystem::update()
         } catch (const ComponentExceptions &e) {
         }
     }
-    // std::cout << (keys[ecs::input::RIGHT] == IRenderManager::RELEASED) << std::endl;
+    // std::cout << (keys[ecs::input::ENTER] == IRenderManager::PRESSED) << std::endl;
     size_t i = 0;
     for (; i < allButtons.size(); i++) {
         if (allButtons[i]->getIsSelected()) {
@@ -40,6 +40,8 @@ SystemResponse MenuSystem::update()
                 allButtons[i]->setIsSelected(false);
                 if (i != 0)
                     allButtons[i - 1]->setIsSelected(true);
+            } else if (keys[ecs::input::SPACE] == IRenderManager::RELEASED) {
+                return SystemResponse(allButtons[i]->getCmd(), allButtons[i]->getParameter());
             }
             return SystemResponse();
         }

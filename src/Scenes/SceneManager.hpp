@@ -19,6 +19,7 @@ namespace ecs {
         SceneManager();
         ~SceneManager() = default;
 
+        void loadScene(const std::string& name);
         void createMenu();
         void createGame();
         void run();

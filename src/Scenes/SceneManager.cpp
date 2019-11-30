@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include "SystemResponse.hpp"
 #include "MenuScene.hpp"
 #include "GameScene.hpp"
 #include "SceneManager.hpp"
@@ -42,12 +43,32 @@ namespace ecs {
         _current = std::make_shared<GameScene>(_ecs);
     }
 
+    void SceneManager::loadScene(const std::string& name)
+    {
+        if (name == "Game")
+            createGame();
+        else if (name == "Menu")
+            createMenu();
+        else
+            std::cerr << "Unable to create scene : " << name << std::endl;
+    }
+
     void SceneManager::run()
     {
+        ecs::system::SystemResponse res;
         bool isPlaying = true;
 
         while (isPlaying) {
-            _ecs->getSystemManager()->updateAll();
+            res = _ecs->getSystemManager()->updateAll();
+            if (res.getAction() != ecs::system::SystemResponse::CMD::NOACTION) {
+                std::cout << "Hello" << std::endl;
+                if (res.getAction() == ecs::system::SystemResponse::CMD::QUIT)
+                    return;
+                else if (res.getAction() == ecs::system::SystemResponse::CMD::LOADSCENE) {
+                    loadScene(res.getParameters());
+                }
+                continue;
+            }
             isPlaying = _ecs->getRenderManager()->eventUpdate();
         }
     }
