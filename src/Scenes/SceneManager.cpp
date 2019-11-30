@@ -16,6 +16,7 @@
 #include "StopEntity.hpp"
 #include "BulletEntity.hpp"
 #include "EnnemyEntity.hpp"
+#include "EnnemyType01Entity.hpp"
 
 namespace ecs {
 
@@ -28,6 +29,7 @@ namespace ecs {
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlayerEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::BulletEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::EnnemyEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::EnnemyType01Entity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlayEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::StopEntity>());
 
