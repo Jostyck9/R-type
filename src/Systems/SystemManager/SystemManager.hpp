@@ -13,14 +13,14 @@
 #include "ISystem.hpp"
 #include "ISystemManager.hpp"
 #include "IEntityFactory.hpp"
-#include "ManagerWrapper.hpp"
+#include "IManagerWrapper.hpp"
 
 namespace ecs::system
 {
     class SystemManager : public ISystemManager
     {
     private:
-        std::shared_ptr<ManagerWrapper> _managerWrapper;
+        std::shared_ptr<IManagerWrapper> _managerWrapper;
         std::shared_ptr<ecs::entities::IEntityFactory> _entityFactory;
         std::list<std::shared_ptr<ISystem>> _systems;
         std::list<int> _entitiesToDelete;
@@ -38,7 +38,7 @@ namespace ecs::system
          * @param entityManager 
          * @param componentManager 
          */
-        SystemManager(std::shared_ptr<ManagerWrapper> managerWrapper);
+        SystemManager(std::shared_ptr<IManagerWrapper> managerWrapper);
         ~SystemManager();
 
         /**

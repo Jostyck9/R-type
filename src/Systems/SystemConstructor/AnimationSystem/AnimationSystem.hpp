@@ -28,7 +28,7 @@ public:
      * @param managerWrapper 
      * @param entitiesToDelete 
      */
-    AnimationSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
+    AnimationSystem(std::shared_ptr<IManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
     ~AnimationSystem() = default;
     SystemResponse update() override;
 };

@@ -10,6 +10,7 @@
 
 #include <typeindex>
 #include <string>
+#include "Timer.hpp"
 #include "IGameLogic.hpp"
 
 namespace ecs::components
@@ -34,9 +35,30 @@ namespace ecs::components
         std::string getShipType(void) const;
         void setShipType(const std::string &type);
         bool operator==(EnnemiesController &other);
+        /**
+         * @brief Get the Interval object
+         * 
+         * @return double 
+         */
+        double getInterval() const;
+
+        /**
+         * @brief Set the Interval object
+         * 
+         * @param intervalSecond 
+         */
+        void setInterval(double intervalSecond);
+
+        /**
+         * @brief Get the Timer object
+         * 
+         * @return Timer& 
+         */
+        Timer &getTimer();
     private:
         std::string _shipType;
-        //futur enum pour les patterns ?
+        double _interval;
+        Timer _timer;
     };
 }
 

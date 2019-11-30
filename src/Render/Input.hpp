@@ -130,8 +130,8 @@ namespace ecs {
             Y,
             Z
         };
-    }
-}
+    };
+};
 
 
 #endif //R_TYPE_INPUT_HPP

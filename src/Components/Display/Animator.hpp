@@ -90,6 +90,20 @@ namespace ecs::components
         void setInterval(double intervalSecond);
 
         /**
+         * @brief Get the obj's offset
+         * 
+         * @return int 
+         */
+        int getOffset() const;
+
+        /**
+         * @brief Set object's offset
+         * 
+         * @param offset 
+         */
+        void setOffset(int &offset);
+
+        /**
          * @brief Get the Timer object
          * 
          * @return Timer& 
@@ -103,6 +117,7 @@ namespace ecs::components
         int _currentRep;
         double _interval;
         Timer _timer;
+        int _offset;
     };
 }
 
