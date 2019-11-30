@@ -8,8 +8,8 @@
 #ifndef GAMECONTROLLER_HPP
 #define GAMECONTROLLER_HPP
 
+#include <typeindex>
 #include <map>
-#include "Controller.hpp"
 
 namespace ecs::components
 {
