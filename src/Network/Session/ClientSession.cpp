@@ -14,7 +14,7 @@ ecs::network::ClientSession::ClientSession(udp::socket &socket,
 ecs::network::ClientSession::~ClientSession()
 = default;
 
-void ecs::network::ClientSession::do_write(char *data)
+void ecs::network::ClientSession::do_write(const char *data)
 {
     _socket.async_send_to(boost::asio::buffer(data, max_length),
         *_endpoints.begin(),
@@ -33,7 +33,7 @@ void ecs::network::ClientSession::handle_write(boost::system::error_code ec,
     }
 }
 
-void ecs::network::ClientSession::manage_data(char *rawData)
+void ecs::network::ClientSession::manage_data(const char *rawData)
 {
     std::cout << "received : " << std::endl;
     for (size_t i = 0; i < max_length; i++)

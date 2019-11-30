@@ -28,11 +28,11 @@ namespace ecs::network {
 
         ~ServerSession();
 
-        void do_write(char data[max_length]) override;
+        void do_write(const char data[max_length]) override;
 
         void handle_write(boost::system::error_code ec, std::size_t length) override;
 
-        void manage_data(char rawData[max_length]) override;
+        void manage_data(const char rawData[max_length]) override;
     };
 }
 #endif //SESSION_HPP__

@@ -62,6 +62,9 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Render/
         src/ManagerWrapper
         src/Network/
+        src/Network/Client
+        src/Network/Server
+        src/Network/Session
         src/Exceptions
         src/Utils/
         src/)
@@ -131,8 +134,13 @@ set(SOURCE_CLIENT
         "src/Rtype.cpp"
         "src/Utils/Rect.cpp"
         "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"]]
-        src/Network/Client/UDPClient.cpp src/Network/Client/UDPClient.hpp
-        "src/Network/PacketManager.cpp" src/Network/AUDPNetwork.cpp src/Network/AUDPNetwork.hpp src/Network/Session/ClientSession.cpp src/Network/Session/ClientSession.hpp)
+        src/Network/Client/UDPClient.cpp
+        src/Network/Client/UDPClient.hpp
+        src/Network/PacketManager.cpp
+        src/Network/AUDPNetwork.cpp
+        src/Network/Session/ClientSession.cpp
+        src/Exceptions/RTypeExceptions.cpp
+        )
 
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})
@@ -141,10 +149,15 @@ target_link_libraries(r-type_client ${CONAN_LIBS})
 set(SOURCE_SERVER
 
         src/main_server.cpp
+        src/Room/RoomManager.cpp
+        src/Room/Room.cpp
+        src/Network/PacketManager.cpp
+        src/Network/AUDPNetwork.cpp
+        src/Network/Server/UDPServer.cpp
         src/Network/Session/ServerSession.cpp
-        src/Room/RoomManager.cpp src/Room/Room.cpp
-        "src/Network/PacketManager.cpp"
-        src/Network/AUDPNetwork.cpp src/Network/AUDPNetwork.hpp src/Network/Server/UDPServer.cpp src/Network/Server/UDPServer.hpp)
+        src/Exceptions/RTypeExceptions.cpp
+        src/Exceptions/ServerExceptions.cpp
+        )
 add_executable(r-type_server ${SOURCE_SERVER})
 
 target_link_libraries(r-type_server ${CONAN_LIBS})

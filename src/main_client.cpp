@@ -28,7 +28,7 @@ int main(int ac, char **av)
 
         packet.setCmd(ecs::network::PacketManager::HANDSHAKE);
 
-
+        clientNetwork.send(packet);
 
     } catch (std::exception &e) {
         std::cerr << "Exception: " << e.what() << "\n";

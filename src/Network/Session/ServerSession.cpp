@@ -19,7 +19,7 @@ ecs::network::ServerSession::~ServerSession()
 {
 }
 
-void ecs::network::ServerSession::do_write(char rawData[max_length])
+void ecs::network::ServerSession::do_write(const char rawData[max_length])
 {
     _socket.async_send_to(boost::asio::buffer(rawData, max_length),
         _sender_endpoint, std::bind(&ecs::network::ServerSession::handle_write,
@@ -37,7 +37,7 @@ void ecs::network::ServerSession::handle_write(boost::system::error_code ec,
     }
 }
 
-void ecs::network::ServerSession::manage_data(char rawData[max_length])
+void ecs::network::ServerSession::manage_data(const char rawData[max_length])
 {
     std::cout << "sent from :" << _sender_endpoint.address().to_string() << std::endl;
     std::cout << "received : " << std::endl;

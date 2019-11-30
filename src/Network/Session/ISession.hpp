@@ -22,11 +22,11 @@ namespace ecs::network {
             max_length = 1024
         };
 
-        virtual void do_write(char data[max_length]) = 0;
+        virtual void do_write(const char data[max_length]) = 0;
 
         virtual void handle_write(boost::system::error_code ec, std::size_t length) = 0;
 
-        virtual void manage_data(char rawData[max_length]) = 0;
+        virtual void manage_data(const char rawData[max_length]) = 0;
     };
 }
 

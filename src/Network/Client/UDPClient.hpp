@@ -26,6 +26,9 @@ namespace ecs::network {
         void handle_receive(boost::system::error_code ec,
             std::size_t bytes_recvd
         ) override;
+
+        void send(const ecs::network::PacketManager &packet, const size_t &id = 0
+        ) override;
     };
 
 }

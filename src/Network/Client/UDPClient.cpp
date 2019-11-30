@@ -15,6 +15,7 @@ ecs::network::UDPClient::UDPClient(const std::string &ip,
     AUDPNetwork(ip, port)
 {
     _clientSession = std::make_shared<ClientSession>(_socket, _endpoints);
+
 }
 
 void ecs::network::UDPClient::handle_receive(boost::system::error_code ec,
@@ -27,6 +28,14 @@ void ecs::network::UDPClient::handle_receive(boost::system::error_code ec,
             << std::endl;
     }
     do_receive();
+}
+
+void ecs::network::UDPClient::send(const ecs::network::PacketManager &packet,
+    const size_t &id
+)
+{
+    (void)id;
+    _clientSession->manage_data(packet.packet.rawData);
 }
 
 

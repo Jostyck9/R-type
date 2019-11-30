@@ -7,6 +7,7 @@
 
 #include <boost/asio.hpp>
 #include <iostream>
+#include "PacketManager.hpp"
 
 namespace ecs::network {
 
@@ -30,6 +31,10 @@ namespace ecs::network {
 
         virtual void handle_receive(boost::system::error_code ec,
             std::size_t bytes_recvd
+        ) = 0;
+
+        virtual void send(const ecs::network::PacketManager &packet,
+            const size_t &id
         ) = 0;
 
         void run()

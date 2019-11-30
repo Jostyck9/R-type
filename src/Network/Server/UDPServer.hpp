@@ -6,18 +6,27 @@
 #define R_TYPE_UDPSERVER_HPP
 
 #include <ServerSession.hpp>
-
+#include "ServerExceptions.hpp"
 #include <AUDPNetwork.hpp>
 
 namespace ecs::network {
     class UDPServer : public AUDPNetwork {
         private:
-        std::map<udp::endpoint, std::shared_ptr<ISession>> _sessions;
+
+        size_t _sessionId;
+        std::map<std::pair<size_t, udp::endpoint>, std::shared_ptr<ISession>> _sessions;
+
         public:
         explicit UDPServer(const std::string &port);
 
         void handle_receive(boost::system::error_code ec,
             std::size_t bytes_recvd) override;
+
+        std::shared_ptr<ISession> &getSession(const size_t &id);
+        std::shared_ptr<ISession> &getSession(const udp::endpoint &endpoint);
+
+        void send(const ecs::network::PacketManager &packet, const size_t &id
+        ) override;
     };
 }
 #endif //R_TYPE_UDPSERVER_HPP
