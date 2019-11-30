@@ -16,9 +16,15 @@ using namespace ecs::entities;
 
 std::shared_ptr<ecs::entities::Entity> TestEntity::create(
     std::shared_ptr<IEntityManager> &entityManager,
-    std::shared_ptr<ecs::components::IComponentManager> &componentsManager)
+    std::shared_ptr<ecs::components::IComponentManager> &componentsManager,
+    std::pair<float, float> pos,
+    std::pair<float, float> velocity,
+    float rotation)
 {
-    std::shared_ptr<Entity> toCreate = std::make_shared<Entity>();
+    std::shared_ptr<Entity> toCreate = std::make_shared<Entity>(Entity::AUTOID);
+    static_cast<void>(pos);
+    static_cast<void>(velocity);
+    static_cast<void>(rotation);
 
     entityManager->addEntity(toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(0, 0), toCreate);

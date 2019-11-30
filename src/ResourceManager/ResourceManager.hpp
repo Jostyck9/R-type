@@ -2,9 +2,10 @@
 // Created by romane on 19/11/2019.
 //
 
-#ifndef R_TYPE_RESSOURCEMANAGER_H
-#define R_TYPE_RESSOURCEMANAGER_H
+#ifndef R_TYPE_RESOURCEMANAGER_H
+#define R_TYPE_RESOURCEMANAGER_H
 
+#include <memory>
 #include <vector>
 #include "Music.hpp"
 #include "Sound.hpp"
@@ -19,18 +20,6 @@ namespace ecs {
      */
     class ResourceManager {
     public:
-        
-        /**
-         * @brief Get the instance of the Resource Manager classe
-         * 
-         * @return ResourceManager 
-         */
-        static ResourceManager &getInstance();
-
-        ResourceManager(const ResourceManager &) = delete;
-        ResourceManager operator=(const ResourceManager &) = delete;
-
-    private:
         ResourceManager();
         ~ResourceManager();
 
@@ -102,30 +91,12 @@ namespace ecs {
          */
         std::shared_ptr<Font> getFont(const std::string &name);
 
-        
-        /**
-         * @brief Load a text
-         * 
-         * @param name 
-         * @param filename 
-         */
-        void loadText(const std::string &name, const std::string &filename);
-        
-        /**
-         * @brief Get a text with her name
-         * 
-         * @param name 
-         * @return std::shared_ptr<Text> 
-         */
-        std::shared_ptr<Text> getText(const std::string &name);
-    
     private:
         std::vector<std::shared_ptr<Music>> _musics;
         std::vector<std::shared_ptr<Sound>> _sounds;
         std::vector<std::shared_ptr<Texture>> _textures;
         std::vector<std::shared_ptr<Font>> _fonts;
-        std::vector<std::shared_ptr<Text>> _texts;
     };
 }
 
-#endif //R_TYPE_RESSOURCEMANAGER_H
+#endif //R_TYPE_RESOURCEMANAGER_H

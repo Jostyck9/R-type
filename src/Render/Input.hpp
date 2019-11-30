@@ -43,7 +43,7 @@ namespace ecs {
             D8,
             D9,
             DECIMAL,
-            DELETE,
+            DELETEKEY,
             DIVIDE,
             DOWN,
             E,

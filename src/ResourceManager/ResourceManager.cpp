@@ -9,12 +9,6 @@
 
 namespace ecs {
 
-ResourceManager &ResourceManager::getInstance()
-{
-    static ResourceManager ressourceManager;
-    return ressourceManager;
-}
-
 ResourceManager::ResourceManager()
 {
 
@@ -103,22 +97,6 @@ std::shared_ptr<Font> ResourceManager::getFont(const std::string &name)
                 return i;
     } catch (const std::exception &e) {}
     throw ECSExceptions("Error: Could not get font \'" + name + '\'', std::string(__FILE__) + ' ' + std::to_string(__LINE__));
-}
-
-void ResourceManager::loadText(const std::string &name, const std::string &filename)
-{
-    std::shared_ptr<Text> text = std::make_shared<Text>(name, filename);
-    _texts.push_back(text);
-}
-
-std::shared_ptr<Text> ResourceManager::getText(const std::string &name)
-{
-    try {
-        for (auto &i: _texts)
-            if (i->getName() == name)
-                return i;
-    } catch (const std::exception &e) {}
-    throw ECSExceptions("Error: Could not get text \'" + name + '\'', std::string(__FILE__) + ' ' + std::to_string(__LINE__));
 }
 
 }

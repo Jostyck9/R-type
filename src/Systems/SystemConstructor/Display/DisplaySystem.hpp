@@ -16,14 +16,14 @@ namespace ecs::system
     class DisplaySystem : public ASystem
     {
     public:
-        DisplaySystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete);
+        DisplaySystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
         ~DisplaySystem();
 
         /**
          * @brief Update the display
          * 
          */
-        void update() override;
+        SystemResponse update() override;
 
         const std::string getName() const override;
 

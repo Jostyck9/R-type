@@ -9,8 +9,11 @@
 
 namespace ecs::system
 {
-ASystem::ASystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete) : _managerWrapper(managerWrapper),
-                                                                                                      _entitiesToDelete(entitiesToDelete)
+ASystem::ASystem(std::shared_ptr<ManagerWrapper> &managerWrapper,
+                 std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory,
+                 std::list<int> &entitiesToDelete) : _managerWrapper(managerWrapper),
+                                                     _entityFactory(entityFactory),
+                                                     _entitiesToDelete(entitiesToDelete)
 {
 }
 

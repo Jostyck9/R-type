@@ -8,17 +8,13 @@
 #ifndef ISYSTEM_HPP__
 #define ISYSTEM_HPP__
 
+#include "SystemResponse.hpp"
+
 namespace ecs::system
 {
     class ISystem
     {
     public:
-        /**
-         * @brief update the game with this system
-         * 
-         */
-        virtual void update() = 0;
-
         /**
          * @brief Get the Name object
          * 
@@ -26,6 +22,12 @@ namespace ecs::system
          */
         virtual const std::string getName() const = 0;
 
+        /**
+         * @brief update
+         * 
+         * @return SystemResponse 
+         */
+        virtual SystemResponse update() = 0;
     };
 
 }

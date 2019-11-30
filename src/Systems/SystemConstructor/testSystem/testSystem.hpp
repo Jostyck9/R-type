@@ -22,6 +22,7 @@ namespace ecs::system
         ~testSystem();
 
         std::shared_ptr<ecs::system::ISystem> create(std::shared_ptr<ManagerWrapper> &managerWrapper,
+            std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory,
             std::list<int> &entitiesToDelete) override;
     };
 }

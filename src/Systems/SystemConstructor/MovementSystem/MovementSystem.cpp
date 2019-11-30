@@ -19,8 +19,9 @@
 using namespace ecs::system;
 using namespace ecs::components;
 
-MovementSystem::MovementSystem(std::shared_ptr<ecs::ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete) : ASystem(managerWrapper, entitiesToDelete)
+MovementSystem::MovementSystem(std::shared_ptr<ecs::ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete) : ASystem(managerWrapper, entityFactory, entitiesToDelete)
 {
+    _myTimer.start();
 }
 
 MovementSystem::~MovementSystem()
@@ -34,17 +35,22 @@ std::pair<float, float> MovementSystem::getNextPos(std::shared_ptr<Position> &po
     std::pair<float, float> srcPos = pos->getPosition();
     std::pair<float, float> newPos = srcPos;
     int directionX = 1;
+    int directionY = 1;
 
     if (speed->getVelocityX() < 0)
+    {
         directionX = -1;
-    newPos.first = newPos.first + (1 * speed->getVelocityX()); // TODO Add clocking movement here
-    newPos.second = newPos.second + (1 * speed->getVelocityY()); // TODO Add clocking movement here
+        if (speed->getVelocityY() != 0)
+            directionY = -1;
+    }
+    newPos.first = newPos.first + (1 * speed->getVelocityX()) * _myTimer.getElapsedSeconds();
+    newPos.second = newPos.second + (1 * speed->getVelocityY()) * _myTimer.getElapsedSeconds();
 
     float radius = std::sqrt(std::pow(newPos.first - srcPos.first, 2) + std::pow(newPos.second - srcPos.second, 2));
     float angle = rot->getRadAngle() + std::atan((newPos.second - srcPos.second) / (newPos.first - srcPos.first));
 
     newPos.first = (directionX * radius * std::cos(angle)) + srcPos.first;
-    newPos.second = (radius * std::sin(angle)) + srcPos.second;
+    newPos.second = (directionY * radius * std::sin(angle)) + srcPos.second;
 
     return newPos;
 }
@@ -60,8 +66,7 @@ bool MovementSystem::isColliding(const data &box1, const data &box2) const
         box1.pos->getX() + box1.box->getX() + width > box2.pos->getX() + box2.box->getX() &&
         box2.pos->getX() + box2.box->getX() + box2.box->getWidth() > box1.pos->getX() + box1.box->getX() &&
         box1.pos->getY() + box1.box->getY() + height > box2.pos->getY() + box2.box->getY() &&
-        box2.pos->getY() + box2.box->getY() + box2.box->getHeight() > box1.pos->getY() + box1.box->getY()
-    )
+        box2.pos->getY() + box2.box->getY() + box2.box->getHeight() > box1.pos->getY() + box1.box->getY())
     {
         return true;
     }
@@ -72,17 +77,23 @@ void MovementSystem::updateAll(std::vector<data> &all)
 {
     bool collide = false;
 
-    for (auto &it : all) {
-        it.box->setCollinding(false);
-        it.box->clearTags();
+    for (auto &it : all)
+    {
+        if (it.box != nullptr)
+        {
+            it.box->setCollinding(false);
+            it.box->clearTags();
+        }
     }
     for (size_t i = 0; i < all.size(); i++)
     {
         all[i].nextPos = getNextPos(all[i].pos, all[i].rot, all[i].speed);
-        for (size_t y = i + 1; y < all.size(); y++)
+        for (size_t y = i + 1; all[i].box != nullptr && y < all.size(); y++)
         {
-            try {
-                if (isColliding(all[i], all[y])) {
+            try
+            {
+                if (all[i].box != nullptr && all[y].box != nullptr && isColliding(all[i], all[y]))
+                {
                     all[i].box->addTag(all[y].entity->getID(), all[y].box->getTag());
                     all[y].box->addTag(all[i].entity->getID(), all[i].box->getTag());
                     // std::cout << "Collision HERE between " << all[i].box->getTag() << " and " << all[y].box->getTag() << std::endl;
@@ -92,17 +103,21 @@ void MovementSystem::updateAll(std::vector<data> &all)
                     all[y].box->setCollinding(true);
                     break;
                 }
-            } catch (SystemExceptions &e) {
+            }
+            catch (SystemExceptions &e)
+            {
             }
         }
-        if (!collide) {
+        if (!collide)
+        {
             all[i].pos->setPosition(all[i].nextPos);
             collide = false;
         }
     }
+    _myTimer.restart();
 }
 
-void MovementSystem::update()
+SystemResponse MovementSystem::update()
 {
     std::vector<data> allData;
 
@@ -132,6 +147,7 @@ void MovementSystem::update()
         allData.push_back(current);
     }
     updateAll(allData);
+    return SystemResponse();
 }
 
 const std::string MovementSystem::getName() const
@@ -142,7 +158,7 @@ const std::string MovementSystem::getName() const
 extern "C"
 {
     std::shared_ptr<ecs::system::ISystemConstructor> entryPoint()
-        {
-            return (std::make_shared<ecs::system::SystemConstructor<ecs::system::MovementSystem>>());
-        }
+    {
+        return (std::make_shared<ecs::system::SystemConstructor<ecs::system::MovementSystem>>());
+    }
 }

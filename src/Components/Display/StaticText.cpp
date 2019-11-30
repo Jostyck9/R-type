@@ -8,14 +8,16 @@
 #include <typeindex>
 #include "StaticText.hpp"
 
-ecs::components::StaticText::StaticText()
+ecs::components::StaticText::StaticText() : _str("null")
 {
+}
 
+ecs::components::StaticText::StaticText(std::string &str) : _str(str)
+{
 }
 
 ecs::components::StaticText::~StaticText()
 {
-    
 }
 
 const std::type_index ecs::components::StaticText::getType() const

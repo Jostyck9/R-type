@@ -13,7 +13,7 @@
 #include "Rotation.hpp"
 #include "Position.hpp"
 #include "ASystem.hpp"
-
+#include "Timer.hpp"
 
 namespace ecs::system
 {
@@ -34,14 +34,17 @@ private:
         std::shared_ptr<ecs::entities::Entity> entity;
     };
 
+    ecs::components::Timer _myTimer;
+
 public:
     /**
      * @brief Construct a new Movement System object, Check the colision and move the entities
      * 
      * @param managerWrapper 
+     * @param entityFactory 
      * @param entitiesToDelete 
      */
-    MovementSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete);
+    MovementSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
     ~MovementSystem();
 
     /**
@@ -78,7 +81,7 @@ public:
      * @brief Update the position and the colisions
      * 
      */
-    void update() override;
+    SystemResponse update() override;
 
     const std::string getName() const override;
 };
