@@ -14,6 +14,7 @@ namespace ecs {
             loadTexture("player", "./resources/player.png");
             loadTexture("bullet", "./resources/bullet.png");
             loadTexture("ennemy", "./resources/ennemy01.png");
+            loadTexture("ennemyType01", "./resources/ennemytype01.png");
             loadTexture("backgroundMenu", "./resources/menu_background.png");
             loadFont("Pixeled", "./resources/font.ttf");
         } catch (const std::exception &e) {
