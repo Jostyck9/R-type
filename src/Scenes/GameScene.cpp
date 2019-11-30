@@ -6,15 +6,11 @@
 */
 
 #include <memory>
-#include <utility>
-#include "EntityFactory.hpp"
 #include "GameScene.hpp"
-#include "ManagerWrapper.hpp"
 #include "DisplaySystem.hpp"
 #include "PlayerMovementSystem.hpp"
 #include "EnnemiesMovementSystem.hpp"
 #include "AnimationSystem.hpp"
-#include "EntityFactory.hpp"
 #include "MovementSystem.hpp"
 
 ecs::GameScene::GameScene(std::shared_ptr<Ecs> &ecs) : _ecs(ecs)

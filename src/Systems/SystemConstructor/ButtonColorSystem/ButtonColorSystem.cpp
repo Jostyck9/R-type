@@ -1,4 +1,4 @@
-/*DisplaySystem
+/*
 ** EPITECH PROJECT, 2019
 ** R-type
 ** File description:
