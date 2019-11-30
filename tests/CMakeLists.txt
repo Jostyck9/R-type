@@ -108,6 +108,7 @@ add_executable(unit_test_graphic
     ${SOURCE_ROOT}/Exceptions/ComponentExceptions.cpp
     ${SOURCE_ROOT}/Components/ComponentManager/ComponentManager.cpp
     ${SOURCE_ROOT}/Entities/EntityManager/EntityManager.cpp
+    ${SOURCE_ROOT}/Entities/Factories/EntityFactory.cpp
     ${SOURCE_ROOT}/Entities/Entity.cpp
     ${SOURCE_ROOT}/Render/SFMLRenderManager.cpp
     ${SOURCE_ROOT}/ManagerWrapper/ManagerWrapper.cpp
