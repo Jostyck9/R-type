@@ -43,7 +43,7 @@ namespace ecs {
             D8,
             D9,
             DECIMAL,
-            DELETE,
+            //DELETE,
             DIVIDE,
             DOWN,
             E,
@@ -130,8 +130,8 @@ namespace ecs {
             Y,
             Z
         };
-    }
-}
+    };
+};
 
 
 #endif //R_TYPE_INPUT_HPP
