@@ -127,7 +127,7 @@ SFMLRenderManager::SFMLRenderManager(std::shared_ptr<ResourceManager> &rtypeReso
     _font = _rtypeResources->getFont("Pixeled")->getSFMLFont();
 
     for (auto &key : _keys) {
-        _keysMap[key.second] = false;
+        _keysMap[key.second] = NONE;
     }
 }
 
@@ -149,7 +149,7 @@ void SFMLRenderManager::terminate()
     //stop audio ?
 }
 
-std::map<ecs::input::Key, bool> &SFMLRenderManager::getKeysMap()
+std::map<ecs::input::Key, IRenderManager::KEY_STATE> &SFMLRenderManager::getKeysMap()
 {
     return _keysMap;
 }
@@ -162,7 +162,18 @@ void SFMLRenderManager::updatePressedKeys()
         {
             if (it.second == key.first)
             {
-                key.second = sf::Keyboard::isKeyPressed(it.first);
+                if (!sf::Keyboard::isKeyPressed(it.first)) {
+                    if (key.second == PRESSED) {
+                        // std::cout << "RELEASED" << std::endl;
+                        key.second = RELEASED;
+                    } else {
+                        // std::cout << "NONE" << std::endl;
+                        key.second = NONE;
+                    }
+                } else {
+                    // std::cout << "PRESSED" << std::endl;
+                    key.second = PRESSED;
+                }
             }
         }
     }
@@ -211,8 +222,9 @@ bool SFMLRenderManager::eventUpdate()
             return false;
         }
         //if (_event.type == sf::Event::KeyPressed)
-        updatePressedKeys();
+        // updatePressedKeys();
     }
+    updatePressedKeys();
     return true;
 }
 

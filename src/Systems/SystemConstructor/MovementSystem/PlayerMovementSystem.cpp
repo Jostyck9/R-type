@@ -20,7 +20,7 @@ PlayerMovementSystem::PlayerMovementSystem(std::shared_ptr<ManagerWrapper> &mana
 SystemResponse PlayerMovementSystem::update()
 {
     std::shared_ptr<ecs::components::Velocity> velocityComp;
-    std::map<ecs::input::Key, bool> keys = _managerWrapper->getRenderManager()->getKeysMap();
+    auto keys = _managerWrapper->getRenderManager()->getKeysMap();
     for (auto &it : _managerWrapper->getEntityManager()->getAllEntities())
     {
         try
@@ -36,11 +36,11 @@ SystemResponse PlayerMovementSystem::update()
     return SystemResponse();
 }
 
-void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, bool> &keys, std::shared_ptr<ecs::components::Velocity> &velocityComp)
+void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, IRenderManager::KEY_STATE> &keys, std::shared_ptr<ecs::components::Velocity> &velocityComp)
 {
-    if (keys[ecs::input::LEFT])
+    if (keys[ecs::input::LEFT] == IRenderManager::PRESSED)
         velocityComp->setVelocityX(-2);
-    else if (keys[ecs::input::RIGHT])
+    else if (keys[ecs::input::RIGHT] == IRenderManager::PRESSED)
     {
         velocityComp->setVelocityX(2);
     }
@@ -48,9 +48,9 @@ void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, bool>
     {
         velocityComp->setVelocityX(0);
     }
-    if (keys[ecs::input::UP])
+    if (keys[ecs::input::UP] == IRenderManager::PRESSED)
         velocityComp->setVelocityY(-2);
-    else if (keys[ecs::input::DOWN]) {
+    else if (keys[ecs::input::DOWN] == IRenderManager::PRESSED) {
         velocityComp->setVelocityY(2);
     }
     else {

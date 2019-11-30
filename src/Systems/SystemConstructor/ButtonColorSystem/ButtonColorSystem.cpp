@@ -21,7 +21,6 @@ SystemResponse ButtonColorSystem::update()
 {
     std::shared_ptr<ecs::components::Text> textComp;
     std::shared_ptr<ecs::components::Button> buttonComp;
-    std::map<ecs::input::Key, bool> keys = _managerWrapper->getRenderManager()->getKeysMap();
 
     for (auto &it : _managerWrapper->getEntityManager()->getAllEntities()) {
         try {

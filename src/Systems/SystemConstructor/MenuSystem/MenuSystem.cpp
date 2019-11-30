@@ -20,7 +20,7 @@ MenuSystem::MenuSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::lis
 SystemResponse MenuSystem::update()
 {
     std::vector<std::shared_ptr<ecs::components::Button>> allButtons;
-    std::map<ecs::input::Key, bool> keys = _managerWrapper->getRenderManager()->getKeysMap();
+    auto keys = _managerWrapper->getRenderManager()->getKeysMap();
 
     for (auto &it : _managerWrapper->getEntityManager()->getAllEntities()) {
         try {
@@ -28,14 +28,15 @@ SystemResponse MenuSystem::update()
         } catch (const ComponentExceptions &e) {
         }
     }
+    // std::cout << (keys[ecs::input::RIGHT] == IRenderManager::RELEASED) << std::endl;
     size_t i = 0;
     for (; i < allButtons.size(); i++) {
         if (allButtons[i]->getIsSelected()) {
-            if (keys[ecs::input::RIGHT]) {
+            if (keys[ecs::input::RIGHT] == IRenderManager::RELEASED) {
                 allButtons[i]->setIsSelected(false);
                 if (i + 1 < allButtons.size())
                     allButtons[i + 1]->setIsSelected(true);
-            } else if (keys[ecs::input::LEFT]) {
+            } else if (keys[ecs::input::LEFT] == IRenderManager::RELEASED) {
                 allButtons[i]->setIsSelected(false);
                 if (i != 0)
                     allButtons[i - 1]->setIsSelected(true);
