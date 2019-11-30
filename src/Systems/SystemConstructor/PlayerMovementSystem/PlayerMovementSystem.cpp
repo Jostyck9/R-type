@@ -19,26 +19,25 @@ PlayerMovementSystem::PlayerMovementSystem(std::shared_ptr<ManagerWrapper> &mana
 
 SystemResponse PlayerMovementSystem::update()
 {
+    std::shared_ptr<ecs::components::PlayerController> playerControllerComp;
     std::shared_ptr<ecs::components::Velocity> velocityComp;
     std::shared_ptr<ecs::components::Position> positionComp;
     auto keys = _managerWrapper->getRenderManager()->getKeysMap();
     auto entities = _managerWrapper->getEntityManager()->getAllEntities();
 
-    for (size_t i = 0; i < entities.size() < 0; i++)
-    {
-        try
-        {
-            _managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::PlayerController)));
-            velocityComp = std::dynamic_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Velocity))));
-            positionComp = std::dynamic_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Position))));
+    for (size_t i = 0; i < entities.size(); i++) {
+        try {
+            playerControllerComp = std::reinterpret_pointer_cast<ecs::components::PlayerController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::PlayerController))));
+            velocityComp = std::reinterpret_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Velocity))));
+            positionComp = std::reinterpret_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Position))));
             updateVelocityOnInput(keys, velocityComp);
-            // auto playerController = _managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(it, std::type_index(typeid(ecs::components::PlayerController)));
-            if (keys[ecs::input::SPACE] == IRenderManager::RELEASED)
-                _entityFactory->createEntity("Bullet", positionComp->getPosition());
-        }
-        catch (const ComponentExceptions &e)
-        {
-        }
+            if (keys[ecs::input::SPACE] == IRenderManager::PRESSED) {
+                if (playerControllerComp->getTimer().getElapsedMilliseconds() >= playerControllerComp->getTimer().getEndTime()) {
+                    _entityFactory->createEntity("Bullet", std::make_pair(positionComp->getPosition().first + 50, positionComp->getPosition().second + 20));
+                    playerControllerComp->getTimer().restart(500);
+                }
+            }
+        } catch (const ComponentExceptions &e) {}
     }
     return SystemResponse();
 }

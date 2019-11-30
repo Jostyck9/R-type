@@ -10,6 +10,7 @@
 
 #include <typeindex>
 #include "IGameLogic.hpp"
+#include "Timer.hpp"
 
 namespace ecs::components
 {
@@ -29,7 +30,16 @@ namespace ecs::components
          * @return const std::type_index 
          */
         const std::type_index getType() const override;
+
+        /**
+         * @brief Get the Timer object
+         *
+         * @return Timer&
+         */
+        Timer &getTimer();
         bool operator==(PlayerController &other);
+    private:
+        Timer _timer;
     };
 }
 
