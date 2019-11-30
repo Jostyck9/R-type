@@ -40,25 +40,26 @@ int main()
 
     EntitiesLoader test;
 
-    test.loadAllLibrary();
+   test.loadAllLibrary();
 
-    displaySystem.loadInstance("../lib/systems/libDisplaySystem.so");
-    movementSystem.loadInstance("../lib/systems/libMovementSystem.so");
-    testEntity2.loadInstance("../lib/entities/libTestEntity2.so");
-    testEntity.loadInstance("../lib/entities/libTestEntity.so");
+   displaySystem.loadInstance("./build/lib/systems/libDisplaySystem.so");
+    movementSystem.loadInstance("./build/lib/systems/libMovementSystem.so");
+    testEntity2.loadInstance("./build/lib/entities/libTestEntity2.so");
+    testEntity.loadInstance("./build/lib/entities/libTestEntity.so");
 
     std::shared_ptr<ecs::ManagerWrapper> managerWrapper = std::make_shared<ecs::ManagerWrapper>();
     std::shared_ptr<IEntityFactory> factory = std::make_shared<EntityFactory>(managerWrapper->getEntityManager() , managerWrapper->getComponentManager());
     std::shared_ptr<SystemManager> systemManager = std::make_shared<SystemManager>(managerWrapper);
-    std::shared_ptr<ISystemFactory> sysFactory = std::make_shared<SystemFactory>(managerWrapper, systemManager);
+    std::shared_ptr<ISystemFactory> sysFactory = std::make_shared<SystemFactory>(managerWrapper, factory, systemManager);
 
     auto display = displaySystem.getInstance();
+    std::cout << "lol1" << std::endl;
     auto movement = movementSystem.getInstance();
-
+    std::cout << "lol2" << std::endl;
     sysFactory->addSystemConstructor(display);
     sysFactory->addSystemConstructor(movement);
-    systemManager->addSystem(sysFactory->createSystem(display->create(managerWrapper, systemManager->getEntitiesToDelete())->getName()));
-    systemManager->addSystem(sysFactory->createSystem(movement->create(managerWrapper, systemManager->getEntitiesToDelete())->getName()));
+    systemManager->addSystem(sysFactory->createSystem(display->create(managerWrapper, factory, systemManager->getEntitiesToDelete())->getName()));
+    systemManager->addSystem(sysFactory->createSystem(movement->create(managerWrapper, factory, systemManager->getEntitiesToDelete())->getName()));
 
     isPlaying = true;
     auto test1 = testEntity.getInstance();
@@ -68,7 +69,7 @@ int main()
     factory->addEntityConstructor(test2);
     factory->createEntity("Test");
     factory->createEntity("Test2");
-    managerWrapper->getRenderManager()->init();
+   managerWrapper->getRenderManager()->init();
     while (isPlaying == true) {
         managerWrapper->getRenderManager()->graphicsUpdate();
         systemManager->updateAll();

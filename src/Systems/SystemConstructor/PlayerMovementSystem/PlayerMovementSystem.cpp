@@ -57,4 +57,10 @@ void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, IRend
         velocityComp->setVelocityY(0);
     }
 }
+
+const std::string PlayerMovementSystem::getName() const
+{
+    return ("PlayerMovement");
+}
+
 } // namespace ecs::system

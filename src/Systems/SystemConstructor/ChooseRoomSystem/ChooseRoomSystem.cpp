@@ -58,3 +58,8 @@ SystemResponse ChooseRoomSystem::update()
         allButtons[0]->setIsSelected(true);
     return SystemResponse();
 }
+
+const std::string ChooseRoomSystem::getName() const
+{
+    return ("ChooseRoom");
+}

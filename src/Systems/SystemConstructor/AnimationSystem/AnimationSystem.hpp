@@ -31,6 +31,7 @@ public:
     AnimationSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
     ~AnimationSystem() = default;
     SystemResponse update() override;
+    const std::string getName() const override;
 };
 
 } // namespace ecs::system

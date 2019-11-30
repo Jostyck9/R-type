@@ -33,6 +33,7 @@ public:
     ~EnnemiesMovementSystem() = default;
     SystemResponse update() override;
     void updateVelocityOnPattern(std::shared_ptr<ecs::components::EnnemiesController> &controller, std::shared_ptr<ecs::components::Velocity> &velocityComp);
+    const std::string getName() const override;
 };
 
 } // namespace ecs::system

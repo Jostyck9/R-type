@@ -16,7 +16,6 @@
 #include "Render/Input.hpp"
 #include "PlayerController.hpp"
 
-
 namespace ecs::system
 {
 
@@ -32,6 +31,7 @@ public:
     PlayerMovementSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
     ~PlayerMovementSystem() = default;
     SystemResponse update() override;
+    const std::string getName() const override;
     void updateVelocityOnInput(std::map<ecs::input::Key, IRenderManager::KEY_STATE> &keys, std::shared_ptr<ecs::components::Velocity> &velocityComp);
 };
 

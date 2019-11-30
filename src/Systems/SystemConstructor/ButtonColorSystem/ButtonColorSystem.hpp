@@ -22,7 +22,7 @@ namespace ecs::system
         ~ButtonColorSystem() = default;
 
         SystemResponse update() override;
-
+        const std::string getName() const override;
     };
 }
 #endif //BUTTONCOLORSYSTEM_HPP

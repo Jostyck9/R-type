@@ -73,8 +73,8 @@ const std::string DisplaySystem::getName() const
 
 extern "C"
 {
-    std::shared_ptr<ecs::system::ISystemConstructor> entryPoint()
+    ecs::system::ISystemConstructor *entryPoint()
     {
-        return (std::make_shared<ecs::system::SystemConstructor<ecs::system::DisplaySystem>>());
+        return (new ecs::system::SystemConstructor<ecs::system::DisplaySystem>());
     }
 }

@@ -52,3 +52,8 @@ SystemResponse MenuSystem::update()
         allButtons[0]->setIsSelected(true);
     return SystemResponse();
 }
+
+const std::string MenuSystem::getName() const
+{
+    return ("Menu");
+}

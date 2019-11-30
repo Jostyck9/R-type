@@ -22,7 +22,7 @@ namespace ecs::system
         ~MenuSystem() = default;
 
         SystemResponse update() override;
-
+        const std::string getName() const override;
     };
 }
 #endif //MENUSYSTEM_HPP

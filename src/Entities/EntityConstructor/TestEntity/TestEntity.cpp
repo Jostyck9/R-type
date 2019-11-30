@@ -41,8 +41,8 @@ std::string TestEntity::getName()
 
 extern "C"
 {
-    std::shared_ptr<ecs::entities::IEntityConstructor> entryPoint()
+    ecs::entities::IEntityConstructor *entryPoint()
     {
-        return (std::make_shared<ecs::entities::TestEntity>());
+        return (new ecs::entities::TestEntity());
     }
 }

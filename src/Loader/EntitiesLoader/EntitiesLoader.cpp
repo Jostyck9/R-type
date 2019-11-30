@@ -25,7 +25,7 @@ std::vector<std::shared_ptr<ecs::entities::IEntityConstructor>> EntitiesLoader::
     DlLoader<ecs::entities::IEntityConstructor> lib;
     std::vector<std::shared_ptr<ecs::entities::IEntityConstructor>> all_libs;
 
-    std::string path = "../lib/entities/";
+    std::string path = "./build/lib/entities/";
     try
     {
         for (const auto &entry : std::experimental::filesystem::directory_iterator(path))

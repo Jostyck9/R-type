@@ -22,7 +22,7 @@ namespace ecs::system
         ~ChooseRoomSystem() = default;
 
         SystemResponse update() override;
-
+        const std::string getName() const override;
     };
 }
 #endif //CHOOSEROOMSYSTEM_HPP

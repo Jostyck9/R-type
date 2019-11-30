@@ -50,4 +50,10 @@ void EnnemiesMovementSystem::updateVelocityOnPattern(std::shared_ptr<ecs::compon
     // if ()
     //sinus pour avoi rl'offset ? mais pas envie de toucher au position donc jsp peut etre juste inverser les velocity toutes les 2 s
 }
+
+const std::string EnnemiesMovementSystem::getName() const
+{
+    return ("EnnemiesMovement");
+}
+
 } // namespace ecs::system

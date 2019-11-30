@@ -25,7 +25,7 @@ std::vector<std::shared_ptr<ecs::system::ISystemConstructor>> SystemLoader::load
     DlLoader<ecs::system::ISystemConstructor> lib;
     std::vector<std::shared_ptr<ecs::system::ISystemConstructor>> all_libs;
 
-    std::string path = "../lib/systems/";
+    std::string path = "./build/lib/systems/";
     try
     {
         for (const auto &entry : std::experimental::filesystem::directory_iterator(path))

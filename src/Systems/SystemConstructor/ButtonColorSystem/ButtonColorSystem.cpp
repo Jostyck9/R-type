@@ -35,3 +35,8 @@ SystemResponse ButtonColorSystem::update()
     }
     return SystemResponse();
 }
+
+const std::string ButtonColorSystem::getName() const
+{
+    return ("ButtonColor");
+}

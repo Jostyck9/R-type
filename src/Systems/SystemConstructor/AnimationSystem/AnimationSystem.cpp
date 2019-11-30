@@ -52,4 +52,10 @@ SystemResponse AnimationSystem::update()
     }
     return SystemResponse();
 }
+
+const std::string AnimationSystem::getName() const
+{
+    return ("Animation");
+}
+
 }
