@@ -55,16 +55,22 @@ std::pair<float, float> MovementSystem::getNextPos(std::shared_ptr<Position> &po
 
 bool MovementSystem::isColliding(const data &box1, const data &box2) const
 {
-    float width = ((box1.nextPos.first + box1.box->getX()) - (box1.pos->getX() + box1.box->getX())) + box1.box->getWidth();
-    float height = ((box1.nextPos.second + box1.box->getY()) - (box1.pos->getY() + box1.box->getY())) + box1.box->getHeight();
-
     if (box1.box == nullptr || box2.box == nullptr)
         throw SystemExceptions("No box collision to check", "MovementSystem::isColliding");
+    // float width = ((box1.nextPos.first + box1.box->getX()) - (box1.pos->getX() + box1.box->getX())) + box1.box->getWidth();
+    // float height = ((box1.nextPos.second + box1.box->getY()) - (box1.pos->getY() + box1.box->getY())) + box1.box->getHeight();
+    float width = box1.box->getWidth();
+    float height = box1.box->getHeight();
+
     if (
-        box1.pos->getX() + box1.box->getX() + width > box2.pos->getX() + box2.box->getX() &&
-        box2.pos->getX() + box2.box->getX() + box2.box->getWidth() > box1.pos->getX() + box1.box->getX() &&
-        box1.pos->getY() + box1.box->getY() + height > box2.pos->getY() + box2.box->getY() &&
-        box2.pos->getY() + box2.box->getY() + box2.box->getHeight() > box1.pos->getY() + box1.box->getY()
+        // box1.pos->getX() + box1.box->getX() + width > box2.pos->getX() + box2.box->getX() &&
+        // box2.pos->getX() + box2.box->getX() + box2.box->getWidth() > box1.pos->getX() + box1.box->getX() &&
+        // box1.pos->getY() + box1.box->getY() + height > box2.pos->getY() + box2.box->getY() &&
+        // box2.pos->getY() + box2.box->getY() + box2.box->getHeight() > box1.pos->getY() + box1.box->getY()
+        box1.nextPos.first + box1.box->getX() + width > box2.pos->getX() + box2.box->getX() &&
+        box2.pos->getX() + box2.box->getX() + box2.box->getWidth() > box1.nextPos.first + box1.box->getX() &&
+        box1.nextPos.second + box1.box->getY() + height > box2.pos->getY() + box2.box->getY() &&
+        box2.pos->getY() + box2.box->getY() + box2.box->getHeight() > box1.nextPos.second + box1.box->getY()
     )
     {
         return true;

@@ -3,10 +3,11 @@
 //
 
 #include <iostream>
-#include <EntityConstructor/NameRoomEntity/NameRoomEntity.hpp>
-#include <EntityConstructor/NumberPlayersEntity/NumberPlayersEntity.hpp>
-#include <EntityConstructor/BackgroundWithoutTitleEntity/BackgroundWithoutTitleEntity.hpp>
-#include <EntityConstructor/BackEntity/BackEntity.hpp>
+#include "NameRoomEntity.hpp"
+#include "NumberPlayersEntity.hpp"
+#include "BackgroundWithoutTitleEntity.hpp"
+#include "BackEntity.hpp"
+#include "WallSideEntity.hpp"
 #include "SystemResponse.hpp"
 #include "MenuScene.hpp"
 #include "GameScene.hpp"
@@ -38,6 +39,7 @@ namespace ecs {
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::StopEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::NameRoomEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::NumberPlayersEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::WallSideEntity>());
 
         createMenu();
         run();
