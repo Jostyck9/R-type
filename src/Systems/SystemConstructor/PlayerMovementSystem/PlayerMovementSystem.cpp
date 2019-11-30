@@ -39,19 +39,19 @@ SystemResponse PlayerMovementSystem::update()
 void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, IRenderManager::KEY_STATE> &keys, std::shared_ptr<ecs::components::Velocity> &velocityComp)
 {
     if (keys[ecs::input::LEFT] == IRenderManager::PRESSED)
-        velocityComp->setVelocityX(-100);
+        velocityComp->setVelocityX(-180);
     else if (keys[ecs::input::RIGHT] == IRenderManager::PRESSED)
     {
-        velocityComp->setVelocityX(100);
+        velocityComp->setVelocityX(180);
     }
     else
     {
         velocityComp->setVelocityX(0);
     }
     if (keys[ecs::input::UP] == IRenderManager::PRESSED)
-        velocityComp->setVelocityY(-100);
+        velocityComp->setVelocityY(-180);
     else if (keys[ecs::input::DOWN] == IRenderManager::PRESSED) {
-        velocityComp->setVelocityY(100);
+        velocityComp->setVelocityY(180);
     }
     else {
         velocityComp->setVelocityY(0);
