@@ -6,15 +6,11 @@
 */
 
 #include <memory>
-#include <utility>
-#include "EntityFactory.hpp"
 #include "GameScene.hpp"
-#include "ManagerWrapper.hpp"
 #include "DisplaySystem.hpp"
 #include "PlayerMovementSystem.hpp"
 #include "EnnemiesMovementSystem.hpp"
 #include "AnimationSystem.hpp"
-#include "EntityFactory.hpp"
 #include "MovementSystem.hpp"
 #include "ParallaxSystem.hpp"
 
@@ -36,7 +32,6 @@ ecs::GameScene::GameScene(std::shared_ptr<Ecs> &ecs) : _ecs(ecs)
     _ecs->getEntityFactory()->createEntity("PlanetRing");
     _ecs->getEntityFactory()->createEntity("Stars");
     _ecs->getEntityFactory()->createEntity("Player");
-    _ecs->getEntityFactory()->createEntity("Bullet");
     _ecs->getEntityFactory()->createEntity("Ennemy");
     _ecs->getEntityFactory()->createEntity("EnnemyType01");
 }

@@ -20,7 +20,10 @@ namespace ecs {
             loadTexture("ennemy", "./resources/ennemy01.png");
             loadTexture("ennemyType01", "./resources/ennemytype01.png");
             loadTexture("backgroundMenu", "./resources/menu_background.png");
+            loadTexture("backgroundWithoutTitle", "./resources/background_without_title.png");
             loadFont("Pixeled", "./resources/font.ttf");
+            loadMusic("GameMusic", "./resources/music.ogg");
+            loadSound("laser", "./resources/laser.wav");
         } catch (const std::exception &e) {
             throw e;
         }

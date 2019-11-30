@@ -80,7 +80,10 @@ std::shared_ptr<Entity> EntityFactory::createEntity(const std::string &name, std
         throw EntityExceptions("Error: Could not add Entity \'" + name + '\'',
             std::string(__FILE__) + ' ' + std::to_string(__LINE__));
     }
-    return (_creationFunction[name])->create(_entityManager, _componentManager, pos, velocity, rotation);
+    auto res = (_creationFunction[name])->create(_entityManager, _componentManager, pos, velocity, rotation);
+    if (res == nullptr)
+        std::cerr << "I've created something NULLLLLLLLLLLLLLLLLLLLLLLL" << std::endl;
+    return res;
 }
 
 std::shared_ptr<Entity> EntityFactory::createEntity(

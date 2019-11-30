@@ -58,6 +58,10 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/EntityConstructor/PlanetRingEntity/
         src/Entities/EntityConstructor/StarsEntity/
         src/Entities/EntityConstructor/TestBackground/
+        src/Entities/EntityConstructor/NameRoomEntity/
+        src/Entities/EntityConstructor/NumberPlayersEntity/
+        src/Entities/EntityConstructor/BackgroundWithoutTitleEntity/
+        src/Entities/EntityConstructor/BackEntity/
         src/Entities/EntityManager/
         src/Entities/Factories/
         src/Entities/Serializer/
@@ -75,6 +79,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/SystemConstructor/testSystem
         src/Systems/SystemConstructor/AnimationSystem
         src/Systems/SystemConstructor/ParallaxSystem
+        src/Systems/SystemConstructor/ChooseRoomSystem
         src/Systems/Factories
         src/Systems/SystemResponse/
         src/Render/
@@ -141,6 +146,10 @@ set(SOURCE_CLIENT
         "src/Entities/EntityConstructor/BackgroundMenuEntity/BackgroundMenuEntity.cpp"
         "src/Entities/EntityConstructor/TestBackground/TestBackground.cpp"
         "src/Entities/EntityConstructor/GameBackgroundEntity/GameBackgroundEntity.cpp"
+        "src/Entities/EntityConstructor/NameRoomEntity/NameRoomEntity.cpp"
+        "src/Entities/EntityConstructor/NumberPlayersEntity/NumberPlayersEntity.cpp"
+        "src/Entities/EntityConstructor/BackgroundWithoutTitleEntity/BackgroundWithoutTitleEntity.cpp"
+        "src/Entities/EntityConstructor/BackEntity/BackEntity.cpp"
         "src/Entities/EntityConstructor/PlanetEntity/PlanetEntity.cpp"
         "src/Entities/EntityConstructor/PlanetRingEntity/PlanetRingEntity.cpp"
         "src/Entities/EntityConstructor/StarsEntity/StarsEntity.cpp"
@@ -166,12 +175,14 @@ set(SOURCE_CLIENT
         "src/Systems/SystemConstructor/EnnemiesMovementSystem/EnnemiesMovementSystem.cpp"
         "src/Systems/SystemConstructor/AnimationSystem/AnimationSystem.cpp"
         "src/Systems/SystemConstructor/ParallaxSystem/ParallaxSystem.cpp"
+        "src/Systems/SystemConstructor/ChooseRoomSystem/ChooseRoomSystem.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
         "src/Network/PacketManager.cpp"
         "src/Scenes/SceneManager.cpp"
         "src/Scenes/MenuScene.cpp"
         "src/Scenes/GameScene.cpp"
+        "src/Scenes/ChooseRoomScene.cpp"
         "src/Rtype.cpp"
         "src/Utils/Rect.cpp"
         "src/FactoriesWrapper/FactoriesWrapper.cpp"

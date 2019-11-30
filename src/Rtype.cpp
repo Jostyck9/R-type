@@ -9,6 +9,7 @@
 #include "MovementSystem.hpp"
 #include "PlayerMovementSystem.hpp"
 #include "Rtype.hpp"
+#include "RTypeExceptions.hpp"
 
 Rtype::Rtype()
 {

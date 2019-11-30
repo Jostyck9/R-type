@@ -164,14 +164,11 @@ void SFMLRenderManager::updatePressedKeys()
             {
                 if (!sf::Keyboard::isKeyPressed(it.first)) {
                     if (key.second == PRESSED) {
-                        // std::cout << "RELEASED" << std::endl;
                         key.second = RELEASED;
                     } else {
-                        // std::cout << "NONE" << std::endl;
                         key.second = NONE;
                     }
                 } else {
-                    // std::cout << "PRESSED" << std::endl;
                     key.second = PRESSED;
                 }
             }
@@ -202,11 +199,6 @@ void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &spri
         _rectangle.setPosition(pos->getX(), pos->getY());
         _window.draw(_rectangle);
     }
-}
-
-void SFMLRenderManager::audioUpdate()
-{
-    // play/pause en fonction du state de l'audio
 }
 
 void SFMLRenderManager::textUpdate(std::shared_ptr<components::Text> &Text, std::shared_ptr<components::Position> &pos)

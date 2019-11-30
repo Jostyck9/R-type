@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** R-type
 ** File description:
-** MenuSystem.cpp
+** ChooseRoomSystem.cpp
 */
 
 #include <iostream>
@@ -10,15 +10,15 @@
 #include <Display/Button.hpp>
 #include "DisplaySystem.hpp"
 #include "ManagerWrapper.hpp"
-#include "MenuSystem.hpp"
+#include "ChooseRoomSystem.hpp"
 
 using namespace ecs::system;
 
-MenuSystem::MenuSystem(std::shared_ptr<ecs::IManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete)
+ChooseRoomSystem::ChooseRoomSystem(std::shared_ptr<ecs::IManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete)
         : ASystem(managerWrapper, entityFactory, entitiesToDelete) {
 }
 
-SystemResponse MenuSystem::update()
+SystemResponse ChooseRoomSystem::update()
 {
     std::vector<std::shared_ptr<ecs::components::Button>> allButtons;
     auto keys = _managerWrapper->getRenderManager()->getKeysMap();
@@ -32,11 +32,11 @@ SystemResponse MenuSystem::update()
     size_t i = 0;
     for (; i < allButtons.size(); i++) {
         if (allButtons[i]->getIsSelected()) {
-            if (keys[ecs::input::RIGHT] == IRenderManager::RELEASED) {
+            if (keys[ecs::input::DOWN] == IRenderManager::RELEASED) {
                 allButtons[i]->setIsSelected(false);
                 if (i + 1 < allButtons.size())
                     allButtons[i + 1]->setIsSelected(true);
-            } else if (keys[ecs::input::LEFT] == IRenderManager::RELEASED) {
+            } else if (keys[ecs::input::UP] == IRenderManager::RELEASED) {
                 allButtons[i]->setIsSelected(false);
                 if (i != 0)
                     allButtons[i - 1]->setIsSelected(true);
@@ -44,6 +44,12 @@ SystemResponse MenuSystem::update()
                     allButtons[allButtons.size() - 1]->setIsSelected(true);
             } else if (keys[ecs::input::SPACE] == IRenderManager::RELEASED) {
                 return SystemResponse(allButtons[i]->getCmd(), allButtons[i]->getParameter());
+            } else if (keys[ecs::input::LEFT] == IRenderManager::RELEASED) {
+                allButtons[i]->setIsSelected(false);
+                allButtons[allButtons.size() - 1]->setIsSelected(true);
+            } else if (keys[ecs::input::RIGHT] == IRenderManager::RELEASED) {
+                allButtons[i]->setIsSelected(false);
+                allButtons[0]->setIsSelected(true);
             }
             return SystemResponse();
         }
