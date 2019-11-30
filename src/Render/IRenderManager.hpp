@@ -11,6 +11,7 @@
 #include "Physics/Position.hpp"
 #include "Display/Text.hpp"
 #include "Render/Input.hpp"
+#include "PacketManager.hpp"
 
 #ifndef IRENDERMANAGER_HPP__
 #define IRENDERMANAGER_HPP__
@@ -43,6 +44,7 @@ namespace ecs {
         virtual void clear() = 0;
         virtual void display() = 0;
         virtual std::map<ecs::input::Key, KEY_STATE> &getKeysMap() = 0;
+        virtual ecs::network::PacketManager getKeyToPacket() = 0;
     };
 }
 

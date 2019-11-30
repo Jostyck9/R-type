@@ -71,6 +71,8 @@ namespace ecs
      void updatePressedKeys();
 
      std::map<ecs::input::Key, KEY_STATE> &getKeysMap() override;
+
+     ecs::network::PacketManager getKeyToPacket() override;
      
 private:
     sf::RenderWindow _window;             /*!< Internal window used by SFML functions */
