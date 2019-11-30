@@ -20,6 +20,7 @@ PlayerMovementSystem::PlayerMovementSystem(std::shared_ptr<ManagerWrapper> &mana
 SystemResponse PlayerMovementSystem::update()
 {
     std::shared_ptr<ecs::components::Velocity> velocityComp;
+    std::shared_ptr<ecs::components::Position> positionComp;
     auto keys = _managerWrapper->getRenderManager()->getKeysMap();
     for (auto &it : _managerWrapper->getEntityManager()->getAllEntities())
     {
@@ -27,7 +28,10 @@ SystemResponse PlayerMovementSystem::update()
         {
             std::dynamic_pointer_cast<ecs::components::PlayerController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::PlayerController))));
             velocityComp = std::dynamic_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::Velocity))));
+            positionComp = std::dynamic_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::Position))));
             updateVelocityOnInput(keys, velocityComp);
+            if (keys[ecs::input::SPACE] == IRenderManager::RELEASED)
+                _entityFactory->createEntity("Bullet", positionComp->getPosition());
         }
         catch (const ComponentExceptions &e)
         {
@@ -41,20 +45,14 @@ void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, IRend
     if (keys[ecs::input::LEFT] == IRenderManager::PRESSED)
         velocityComp->setVelocityX(-100);
     else if (keys[ecs::input::RIGHT] == IRenderManager::PRESSED)
-    {
         velocityComp->setVelocityX(100);
-    }
     else
-    {
         velocityComp->setVelocityX(0);
-    }
     if (keys[ecs::input::UP] == IRenderManager::PRESSED)
         velocityComp->setVelocityY(-100);
-    else if (keys[ecs::input::DOWN] == IRenderManager::PRESSED) {
+    else if (keys[ecs::input::DOWN] == IRenderManager::PRESSED)
         velocityComp->setVelocityY(100);
-    }
-    else {
+    else
         velocityComp->setVelocityY(0);
-    }
 }
 } // namespace ecs::system
