@@ -13,12 +13,16 @@ struct PlayerInfo {
 
 class Room {
     private:
-// TODO Add ecs
+    // TODO Add ecs
     size_t _id;
     bool _isOpen;
     size_t _nbPlayer;
     size_t _nbPlayerMax;
     size_t _lastIdAvailable = 0;
+
+    //TODO add queue in / out
+    //TODO Change or add session in room one way or another
+
 
     std::map<size_t, PlayerInfo> _playerStatus;
 
@@ -59,7 +63,9 @@ class Room {
      * @brief add a player to the room up to nbPlayerMax
      * @param pseudo
      */
-    void addPlayer(const std::string &pseudo = "");
+    void addPlayer(const size_t &id, const std::string &pseudo = "");
+
+    void deletePlayer(const size_t &id);
 
     /**
      * @brief stop room
@@ -100,6 +106,10 @@ class Room {
      * @return
      */
     bool isGameReady();
+
+    void setPlayerStatus(const size_t & id, bool ready);
+
+    PlayerInfo &getPlayerById(const size_t &id);
 };
 
 #endif //R_TYPE_ROOM_HPP
