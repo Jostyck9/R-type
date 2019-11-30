@@ -50,6 +50,8 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/EntityConstructor/EnnemyEntity/
         src/Entities/EntityConstructor/BulletEntity/
         src/Entities/EntityConstructor/BackgroundMenuEntity/
+        src/Entities/EntityConstructor/GameBackgroundEntity/
+        src/Entities/EntityConstructor/TestBackground/
         src/Entities/EntityManager/
         src/Entities/Factories/
         src/Entities/Serializer/
@@ -122,7 +124,9 @@ set(SOURCE_CLIENT
         "src/Entities/EntityConstructor/StopEntity/StopEntity.cpp"
         "src/Entities/EntityConstructor/BulletEntity/BulletEntity.cpp"
         "src/Entities/EntityConstructor/EnnemyEntity/EnnemyEntity.cpp"
-        "src/Entities/EntityConstructor/BackgroundMenuEntity/BakgroundMenuEntity.cpp"
+        "src/Entities/EntityConstructor/BackgroundMenuEntity/BackgroundMenuEntity.cpp"
+        "src/Entities/EntityConstructor/TestBackground/TestBackground.cpp"
+        "src/Entities/EntityConstructor/GameBackgroundEntity/GameBackgroundEntity.cpp"
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
         "src/Entities/Serializer/Serializer.cpp"

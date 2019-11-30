@@ -12,7 +12,7 @@
 #include "Physics/Collision.hpp"
 #include "Display/Sprite.hpp"
 #include "Display/Text.hpp"
-// #include "GameLogic/EnnemiesController.hpp"
+#include "GameLogic/EnnemiesController.hpp"
 #include "Rect.hpp"
 #include "Animator.hpp"
 
@@ -37,7 +37,7 @@ std::shared_ptr<ecs::entities::Entity> EnnemyEntity::create(
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(-90, 0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(true, 0, 0, 1, 1, "Test"), toCreate);
-    //componentsManager->addPhysicComponent(std::make_shared<ecs::components::EnnemiesController>("Basic"), toCreate);
+    componentsManager->addPhysicComponent(std::make_shared<ecs::components::EnnemiesController>("Basic"), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("ennemy", spriteRect, true), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 7), toCreate);
     return toCreate;
