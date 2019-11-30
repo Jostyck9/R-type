@@ -2,10 +2,10 @@
 ** EPITECH PROJECT, 2019
 ** Untitled (Workspace)
 ** File description:
-** GameBackgreoundEntity.cpp
+** StarsEntity.cpp
 */
 
-#include "GameBackgroundEntity.hpp"
+#include "StarsEntity.hpp"
 #include "Position.hpp"
 #include "Sprite.hpp"
 #include "Velocity.hpp"
@@ -14,7 +14,7 @@
 
 using namespace ecs::entities;
 
-std::shared_ptr<ecs::entities::Entity> GameBackgroundEntity::create(
+std::shared_ptr<ecs::entities::Entity> StarsEntity::create(
     std::shared_ptr<IEntityManager> &entityManager,
     std::shared_ptr<ecs::components::IComponentManager> &componentsManager,
     std::pair<float, float> pos,
@@ -27,16 +27,16 @@ std::shared_ptr<ecs::entities::Entity> GameBackgroundEntity::create(
 
     std::shared_ptr<Entity> toCreate = std::make_shared<Entity>();
 
-    Rect spriteRect(1500, 900, 0, 0);
+    Rect starsRect(900, 529, 0, 0);
     entityManager->addEntity(toCreate);
-    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(0, 0), toCreate);
+    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(100, 700), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(0, 0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(0), toCreate);
-    componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("background-parallax", spriteRect, true), toCreate);
+    componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("space-stars-parallax", starsRect, true), toCreate);
     return toCreate;
 }
 
-std::string GameBackgroundEntity::getName()
+std::string StarsEntity::getName()
 {
-    return std::string("GameBackground");
+    return std::string("Stars");
 }

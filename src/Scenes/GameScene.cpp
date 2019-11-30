@@ -30,6 +30,9 @@ ecs::GameScene::GameScene(std::shared_ptr<Ecs> &ecs) : _ecs(ecs)
     _ecs->getSystemManager()->addSystem(std::make_shared<system::AnimationSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
   
     _ecs->getEntityFactory()->createEntity("GameBackground");
+    _ecs->getEntityFactory()->createEntity("Planet");
+    // _ecs->getEntityFactory()->createEntity("PlanetRing");
+    _ecs->getEntityFactory()->createEntity("Stars");
     _ecs->getEntityFactory()->createEntity("Player");
     _ecs->getEntityFactory()->createEntity("Bullet");
     _ecs->getEntityFactory()->createEntity("Ennemy");

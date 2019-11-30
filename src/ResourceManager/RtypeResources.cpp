@@ -9,7 +9,11 @@ namespace ecs {
     RtypeResources::RtypeResources() : ResourceManager()
     {
         try {
-            loadTexture("gameBackground", "./resources/background.png");
+            loadTexture("background-parallax", "./resources/parallax-background.png");
+            loadTexture("planet-parallax", "./resources/parallax-planet.png");
+            loadTexture("far-planet-parallax", "./resources/parallax-far-planets.png");
+            loadTexture("space-stars-parallax", "./resources/parallax-space-stars.png");
+            loadTexture("ring-planet-parallax", "./resources/parallax-ring-planet.png");
             loadTexture("test", "./resources/r-typesheet1.gif");
             loadTexture("player", "./resources/player.png");
             loadTexture("bullet", "./resources/bullet.png");

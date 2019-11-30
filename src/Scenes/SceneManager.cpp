@@ -17,6 +17,9 @@
 #include "BulletEntity.hpp"
 #include "EnnemyEntity.hpp"
 #include "EnnemyType01Entity.hpp"
+#include "PlanetEntity.hpp"
+#include "PlanetRingEntity.hpp"
+#include "StarsEntity.hpp"
 
 namespace ecs {
 
@@ -26,6 +29,9 @@ namespace ecs {
 
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::BackgroundMenuEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::GameBackgroundEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlanetEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlanetRingEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::StarsEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlayerEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::BulletEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::EnnemyEntity>());
