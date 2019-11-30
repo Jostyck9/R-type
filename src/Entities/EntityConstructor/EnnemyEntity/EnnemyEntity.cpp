@@ -33,11 +33,11 @@ std::shared_ptr<ecs::entities::Entity> EnnemyEntity::create(
 
     Rect spriteRect(99, 90, 0, 0);
     entityManager->addEntity(toCreate);
-    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(300, 300), toCreate);
-    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(0, 0), toCreate);
+    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(700, 300), toCreate);
+    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(-90, 0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(true, 0, 0, 1, 1, "Test"), toCreate);
-    // componentsManager->addPhysicComponent(std::make_shared<ecs::components::EnnemiesController>("Basic"), toCreate);
+    //componentsManager->addPhysicComponent(std::make_shared<ecs::components::EnnemiesController>("Basic"), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("ennemy", spriteRect, true), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 7), toCreate);
     return toCreate;

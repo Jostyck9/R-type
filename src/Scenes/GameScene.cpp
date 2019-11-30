@@ -12,6 +12,7 @@
 #include "ManagerWrapper.hpp"
 #include "DisplaySystem.hpp"
 #include "PlayerMovementSystem.hpp"
+#include "EnnemiesMovementSystem.hpp"
 #include "AnimationSystem.hpp"
 #include "EntityFactory.hpp"
 #include "MovementSystem.hpp"
@@ -25,6 +26,7 @@ ecs::GameScene::GameScene(std::shared_ptr<Ecs> &ecs) : _ecs(ecs)
     _ecs->getSystemManager()->addSystem(std::make_shared<system::DisplaySystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
     _ecs->getSystemManager()->addSystem(std::make_shared<system::MovementSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
     _ecs->getSystemManager()->addSystem(std::make_shared<system::PlayerMovementSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
+    _ecs->getSystemManager()->addSystem(std::make_shared<system::EnnemiesMovementSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
     _ecs->getSystemManager()->addSystem(std::make_shared<system::AnimationSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
   
     _ecs->getEntityFactory()->createEntity("Player");

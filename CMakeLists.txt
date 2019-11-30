@@ -61,6 +61,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/SystemConstructor/MenuSystem
         src/Systems/SystemConstructor/ButtonColorSystem
         src/Systems/SystemConstructor/PlayerMovementSystem
+        src/Systems/SystemConstructor/EnnemiesMovementSystem
         src/Systems/SystemConstructor/testSystem
         src/Systems/SystemConstructor/AnimationSystem
         src/Systems/Factories
@@ -144,6 +145,7 @@ set(SOURCE_CLIENT
         "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
         "src/Systems/SystemResponse/SystemResponse.cpp"
         "src/Systems/SystemConstructor/PlayerMovementSystem/PlayerMovementSystem.cpp"
+        "src/Systems/SystemConstructor/EnnemiesMovementSystem/EnnemiesMovementSystem.cpp"
         "src/Systems/SystemConstructor/AnimationSystem/AnimationSystem.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
