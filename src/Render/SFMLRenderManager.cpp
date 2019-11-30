@@ -74,7 +74,7 @@ SFMLRenderManager::SFMLRenderManager(std::shared_ptr<ResourceManager> &rtypeReso
     _keys[sf::Keyboard::Numpad7] = ecs::input::NUM7;
     _keys[sf::Keyboard::Numpad8] = ecs::input::NUM8;
     _keys[sf::Keyboard::Numpad9] = ecs::input::NUM9;
-    _keys[sf::Keyboard::Delete] = ecs::input::DELETE;
+    _keys[sf::Keyboard::Delete] = ecs::input::DELETEKEY;
     _keys[sf::Keyboard::Divide] = ecs::input::DIVIDE;
     _keys[sf::Keyboard::Down] = ecs::input::DOWN;
     _keys[sf::Keyboard::Up] = ecs::input::UP;
