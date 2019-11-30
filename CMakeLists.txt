@@ -6,7 +6,7 @@ project(R-type VERSION 0.1.0)
 
 if (CMAKE_VERSION VERSION_LESS "3.1")
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-        set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
+        set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++17")
     endif ()
 else ()
     if(MSVC)
@@ -28,6 +28,8 @@ elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
     # Update if necessary
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W -Wall")
 endif()
+
+
 
 # Compilation
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
@@ -56,6 +58,8 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/
         src/Systems/Display
         src/Systems/SystemManager
+        src/Exceptions
+        src/Network/Session
         src/Systems/SystemConstructor
         src/Systems/SystemConstructor/MovementSystem
         src/Systems/SystemConstructor/MenuSystem
@@ -69,6 +73,9 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Render/
         src/ManagerWrapper
         src/Network/
+        src/Network/Client
+        src/Network/Server
+        src/Network/Session
         src/Exceptions
         src/Utils/
         src/FactoriesWrapper/
@@ -153,15 +160,30 @@ set(SOURCE_CLIENT
         "src/Rtype.cpp"
         "src/Utils/Rect.cpp"
         "src/FactoriesWrapper/FactoriesWrapper.cpp"
-        "src/Systems/SystemResponse/SystemResponse.cpp")
-
+        "src/Systems/SystemResponse/SystemResponse.cpp"
+        src/Network/Client/UDPClient.cpp
+        src/Network/PacketManager.cpp
+        src/Network/AUDPNetwork.cpp
+        src/Network/Session/ClientSession.cpp
+        )
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})
 
 #r-type_server
 set(SOURCE_SERVER
-        src/main_server.cpp)
+
+        src/main_server.cpp
+        src/Room/RoomManager.cpp
+        src/Room/Room.cpp
+        src/Network/PacketManager.cpp
+        src/Network/AUDPNetwork.cpp
+        src/Network/Server/UDPServer.cpp
+        src/Network/Session/ServerSession.cpp
+        src/Exceptions/RTypeExceptions.cpp
+        src/Exceptions/ServerExceptions.cpp
+        )
 add_executable(r-type_server ${SOURCE_SERVER})
+
 target_link_libraries(r-type_server ${CONAN_LIBS})
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
