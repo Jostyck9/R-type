@@ -2,11 +2,11 @@
 ** EPITECH PROJECT, 2019
 ** R-type
 ** File description:
-** Animator.hpp
+** Parallax.hpp
 */
 
-#ifndef ANIMATOR_HPP
-#define ANIMATOR_HPP
+#ifndef PARALLAX_HPP
+#define PARALLAX_HPP
 
 #include <typeindex>
 #include "IDisplay.hpp"
@@ -16,16 +16,23 @@
 namespace ecs::components
 {
     /**
-     * @brief Animator describes that the entity is animated 
+     * @brief Parallax describes that the entity is animated 
      *
      */
-    class Animator : public IDisplay
+    class Parallax : public IDisplay
 
     {
     public:
-        Animator(Rect &rect, int maxRep, double intervalSecond = 0.5);
-        Animator(const Animator &oldAnimator); 
-        ~Animator();
+        Parallax(double intervalSecond, int move, int offset, Rect &origin);
+        Parallax(const Parallax &oldParallax); 
+        ~Parallax();
+        
+        /**
+         * @brief Get the Rect object
+         * 
+         * @return const ecs::Rect& 
+         */
+        const ecs::Rect &getRect() const;
 
          /**
          * @brief Set new value to the component id
@@ -45,35 +52,7 @@ namespace ecs::components
          */
         const std::type_index getType() const;
         
-        bool operator==(Animator &other);
-        
-        /**
-         * @brief Get the Rect object
-         * 
-         * @return const ecs::Rect& 
-         */
-        const ecs::Rect &getRect() const;
-
-        /**
-         * @brief Get the Max Rep object
-         * 
-         * @return const int& 
-         */
-        const int &getMaxRep() const;
-
-        /**
-         * @brief Get the Current Rep object
-         * 
-         * @return const int& 
-         */
-        const int &getCurrentRep() const;
-
-        /**
-         * @brief Set the Current Rep object
-         * 
-         * @param currentRep 
-         */
-        void setCurrentRep(int currentRep);
+        bool operator==(Parallax &other);
 
         /**
          * @brief Get the Interval object
@@ -88,6 +67,20 @@ namespace ecs::components
          * @param intervalSecond 
          */
         void setInterval(double intervalSecond);
+
+        /**
+         * @brief Get the obj's move
+         * 
+         * @return int 
+         */
+        int getMove() const;
+
+        /**
+         * @brief Set object's move
+         * 
+         * @param move 
+         */
+        void setMove(int &move);
 
         /**
          * @brief Get the obj's offset
@@ -112,13 +105,12 @@ namespace ecs::components
 
     private:
         unsigned int _id;
-        ecs::Rect _rect;
-        int _maxRep;
-        int _currentRep;
         double _interval;
+        int _move;
         Timer _timer;
         int _offset;
+        Rect _origin;
     };
 }
 
-#endif //Animator_HPP
+#endif //Parallax_HPP

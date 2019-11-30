@@ -12,6 +12,7 @@
 #include "EnnemiesMovementSystem.hpp"
 #include "AnimationSystem.hpp"
 #include "MovementSystem.hpp"
+#include "ParallaxSystem.hpp"
 
 ecs::GameScene::GameScene(std::shared_ptr<Ecs> &ecs) : _ecs(ecs)
 {
@@ -24,10 +25,11 @@ ecs::GameScene::GameScene(std::shared_ptr<Ecs> &ecs) : _ecs(ecs)
     _ecs->getSystemManager()->addSystem(std::make_shared<system::PlayerMovementSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
     _ecs->getSystemManager()->addSystem(std::make_shared<system::EnnemiesMovementSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
     _ecs->getSystemManager()->addSystem(std::make_shared<system::AnimationSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
-  
+    _ecs->getSystemManager()->addSystem(std::make_shared<system::ParallaxSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
+
     _ecs->getEntityFactory()->createEntity("GameBackground");
     _ecs->getEntityFactory()->createEntity("Planet");
-    // _ecs->getEntityFactory()->createEntity("PlanetRing");
+    _ecs->getEntityFactory()->createEntity("PlanetRing");
     _ecs->getEntityFactory()->createEntity("Stars");
     _ecs->getEntityFactory()->createEntity("Player");
     _ecs->getEntityFactory()->createEntity("Ennemy");
