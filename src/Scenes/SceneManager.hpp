@@ -22,6 +22,7 @@ namespace ecs {
         void loadScene(const std::string& name);
         void createMenu();
         void createGame();
+        void createChooseRoom();
         void run();
 
     private:

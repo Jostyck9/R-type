@@ -22,7 +22,7 @@ namespace ecs::components
     {
     public:
         EnnemiesController();
-        EnnemiesController(std::string &type);
+        EnnemiesController(const std::string &type);
         EnnemiesController(const EnnemiesController &oldEnnemiesController);
         ~EnnemiesController() = default;
         /**
@@ -31,8 +31,8 @@ namespace ecs::components
          * @return const std::type_index 
          */
         const std::type_index getType() const override;
-        const std::string getShipType(void) const;
-        void setShipType(std::string &type);
+        std::string getShipType(void) const;
+        void setShipType(const std::string &type);
         bool operator==(EnnemiesController &other);
     private:
         std::string _shipType;

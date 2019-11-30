@@ -77,16 +77,18 @@ void MovementSystem::updateAll(std::vector<data> &all)
     bool collide = false;
 
     for (auto &it : all) {
-        it.box->setCollinding(false);
-        it.box->clearTags();
+        if (it.box != nullptr) {
+            it.box->setCollinding(false);
+            it.box->clearTags();
+        }
     }
     for (size_t i = 0; i < all.size(); i++)
     {
         all[i].nextPos = getNextPos(all[i].pos, all[i].rot, all[i].speed);
-        for (size_t y = i + 1; y < all.size(); y++)
+        for (size_t y = i + 1; all[i].box != nullptr && y < all.size(); y++)
         {
             try {
-                if (isColliding(all[i], all[y])) {
+                if (all[i].box != nullptr && all[y].box != nullptr && isColliding(all[i], all[y])) {
                     all[i].box->addTag(all[y].entity->getID(), all[y].box->getTag());
                     all[y].box->addTag(all[i].entity->getID(), all[i].box->getTag());
                     // std::cout << "Collision HERE between " << all[i].box->getTag() << " and " << all[y].box->getTag() << std::endl;
