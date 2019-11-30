@@ -12,7 +12,7 @@ ecs::components::Text::Text() : _string("null") ,_size(15), _color(ecs::Color::W
 {
 }
 
-ecs::components::Text::Text(const std::string &str, int size) : _string(str) ,_size(size), _color(ecs::Color::WHITE)
+ecs::components::Text::Text(const std::string &str, int size, float posX, float posY) : _string(str) ,_size(size), _color(ecs::Color::WHITE), _pos(posX, posY)
 {
 }
 
@@ -79,4 +79,14 @@ ecs::Color ecs::components::Text::getColor(void) const
 bool ecs::components::Text::operator==(Text &other)
 {
     return other.getId() == this->_id;
+}
+
+const std::pair<float, float> &ecs::components::Text::getPostion() const
+{
+    return _pos;
+}
+
+void ecs::components::Text::setPostion(const std::pair<float, float> &pos)
+{
+    _pos = pos;
 }
