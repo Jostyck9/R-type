@@ -13,8 +13,8 @@
 
 using namespace ecs::system;
 
-MenuSystem::MenuSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete)
-        : ASystem(managerWrapper, entitiesToDelete) {
+MenuSystem::MenuSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete)
+        : ASystem(managerWrapper, entityFactory, entitiesToDelete) {
 }
 
 SystemResponse MenuSystem::update()

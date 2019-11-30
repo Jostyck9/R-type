@@ -18,7 +18,7 @@
 using namespace ecs::system;
 using namespace ecs::components;
 
-MovementSystem::MovementSystem(std::shared_ptr<ecs::ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete) : ASystem(managerWrapper, entitiesToDelete)
+MovementSystem::MovementSystem(std::shared_ptr<ecs::ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete) : ASystem(managerWrapper, entityFactory, entitiesToDelete)
 {
     _myTimer.start();
 }
@@ -34,9 +34,13 @@ std::pair<float, float> MovementSystem::getNextPos(std::shared_ptr<Position> &po
     std::pair<float, float> srcPos = pos->getPosition();
     std::pair<float, float> newPos = srcPos;
     int directionX = 1;
+    int directionY = 1;
 
-    if (speed->getVelocityX() < 0)
+    if (speed->getVelocityX() < 0) {
         directionX = -1;
+        if (speed->getVelocityY() != 0)
+            directionY = -1;
+    }
     newPos.first = newPos.first + (1 * speed->getVelocityX()) * _myTimer.getElapsedSeconds();
     newPos.second = newPos.second + (1 * speed->getVelocityY()) * _myTimer.getElapsedSeconds();
 
@@ -44,7 +48,7 @@ std::pair<float, float> MovementSystem::getNextPos(std::shared_ptr<Position> &po
     float angle = rot->getRadAngle() + std::atan((newPos.second - srcPos.second) / (newPos.first - srcPos.first));
 
     newPos.first = (directionX * radius * std::cos(angle)) + srcPos.first;
-    newPos.second = (radius * std::sin(angle)) + srcPos.second;
+    newPos.second = (directionY * radius * std::sin(angle)) + srcPos.second;
 
     return newPos;
 }

@@ -19,9 +19,10 @@ testSystem::~testSystem()
 }
 
 std::shared_ptr<ecs::system::ISystem> testSystem::create(std::shared_ptr<ecs::ManagerWrapper> &managerWrapper,
+    std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory,
     std::list<int> &entitiesToDelete)
 {
-    return std::make_shared<ecs::system::DisplaySystem>(managerWrapper, entitiesToDelete);
+    return std::make_shared<ecs::system::DisplaySystem>(managerWrapper, entityFactory, entitiesToDelete);
 }
 
 std::string testSystem::getName()

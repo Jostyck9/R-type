@@ -41,9 +41,10 @@ public:
      * @brief Construct a new Movement System object, Check the colision and move the entities
      * 
      * @param managerWrapper 
+     * @param entityFactory 
      * @param entitiesToDelete 
      */
-    MovementSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete);
+    MovementSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
     ~MovementSystem();
 
     /**

@@ -13,7 +13,7 @@
 namespace ecs::system
 {
 
-PlayerMovementSystem::PlayerMovementSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete) : ASystem(managerWrapper, entitiesToDelete)
+PlayerMovementSystem::PlayerMovementSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete) : ASystem(managerWrapper, entityFactory, entitiesToDelete)
 {
 }
 
@@ -39,19 +39,19 @@ SystemResponse PlayerMovementSystem::update()
 void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, IRenderManager::KEY_STATE> &keys, std::shared_ptr<ecs::components::Velocity> &velocityComp)
 {
     if (keys[ecs::input::LEFT] == IRenderManager::PRESSED)
-        velocityComp->setVelocityX(-2);
+        velocityComp->setVelocityX(-100);
     else if (keys[ecs::input::RIGHT] == IRenderManager::PRESSED)
     {
-        velocityComp->setVelocityX(2);
+        velocityComp->setVelocityX(100);
     }
     else
     {
         velocityComp->setVelocityX(0);
     }
     if (keys[ecs::input::UP] == IRenderManager::PRESSED)
-        velocityComp->setVelocityY(-2);
+        velocityComp->setVelocityY(-100);
     else if (keys[ecs::input::DOWN] == IRenderManager::PRESSED) {
-        velocityComp->setVelocityY(2);
+        velocityComp->setVelocityY(100);
     }
     else {
         velocityComp->setVelocityY(0);

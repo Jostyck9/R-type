@@ -13,7 +13,7 @@ namespace ecs
 FactoriesWrapper::FactoriesWrapper(
     std::shared_ptr<ManagerWrapper> &managerWrapper,
     std::shared_ptr<ecs::system::ISystemManager> &systemManager) : _entityFactory(std::make_shared<ecs::entities::EntityFactory>(managerWrapper->getEntityManager(), managerWrapper->getComponentManager())),
-                                                                   _systemFactory(std::make_shared<ecs::system::SystemFactory>(managerWrapper, systemManager))
+                                                                   _systemFactory(std::make_shared<ecs::system::SystemFactory>(managerWrapper, _entityFactory, systemManager))
 {
 }
 

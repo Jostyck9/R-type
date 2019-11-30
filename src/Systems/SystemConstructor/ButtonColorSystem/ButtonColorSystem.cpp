@@ -13,8 +13,8 @@
 
 using namespace ecs::system;
 
-ButtonColorSystem::ButtonColorSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete)
-        : ASystem(managerWrapper, entitiesToDelete) {
+ButtonColorSystem::ButtonColorSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete)
+        : ASystem(managerWrapper, entityFactory, entitiesToDelete) {
 }
 
 SystemResponse ButtonColorSystem::update()

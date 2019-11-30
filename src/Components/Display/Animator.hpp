@@ -10,6 +10,7 @@
 
 #include <typeindex>
 #include "IDisplay.hpp"
+#include "Rect.hpp"
 
 namespace ecs::components
 {
@@ -21,7 +22,7 @@ namespace ecs::components
 
     {
     public:
-        Animator();
+        Animator(Rect &rect, int maxRep);
         Animator(const Animator &oldAnimator); 
         ~Animator();
 
@@ -45,8 +46,17 @@ namespace ecs::components
         
         bool operator==(Animator &other);
         
+        const ecs::Rect &getRect() const;
+
+        const int &getMaxRep() const;
+        const int &getCurrentRep() const;
+        void setCurrentRep(int currentRep);
+
     private:
         unsigned int _id;
+        ecs::Rect _rect;
+        int _maxRep;
+        int _currentRep;
     };
 }
 

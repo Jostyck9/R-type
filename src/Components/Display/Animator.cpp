@@ -7,19 +7,22 @@
 
 #include "Animator.hpp"
 
-namespace ecs::components {
+namespace ecs::components
+{
 
-Animator::Animator()
+Animator::Animator(Rect &rect, int maxRep) : _rect(rect), _maxRep(maxRep), _currentRep(0)
 {
 }
 
 Animator::Animator(const Animator &oldAnimator)
 {
     this->_id = oldAnimator.getId();
+    this->_rect = oldAnimator.getRect();
+    this->_maxRep = oldAnimator.getMaxRep();
 }
 
 Animator::~Animator()
-{    
+{
 }
 
 void Animator::setId(const unsigned int &newId)
@@ -44,4 +47,24 @@ bool Animator::operator==(Animator &other)
         return true;
     return false;
 }
+
+const ecs::Rect &Animator::getRect() const
+{
+    return _rect;
 }
+
+const int &Animator::getMaxRep() const
+{
+    return _maxRep;
+}
+
+const int &Animator::getCurrentRep() const
+{
+    return _currentRep;
+}
+
+void Animator::setCurrentRep(int currentRep)
+{
+    _currentRep = currentRep;
+}
+} // namespace ecs::components

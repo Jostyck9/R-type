@@ -44,9 +44,11 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/EntityConstructor/
         src/Entities/EntityConstructor/TestEntity/
         src/Entities/EntityConstructor/TestEntity2/
-        src/Entities/EntityConstructor/TestPlayerEntity/
+        src/Entities/EntityConstructor/PlayerEntity/
         src/Entities/EntityConstructor/PlayEntity/
         src/Entities/EntityConstructor/StopEntity/
+        src/Entities/EntityConstructor/EnnemyEntity/
+        src/Entities/EntityConstructor/BulletEntity/
         src/Entities/EntityConstructor/BackgroundMenuEntity/
         src/Entities/EntityManager/
         src/Entities/Factories/
@@ -58,7 +60,9 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/SystemConstructor/MovementSystem
         src/Systems/SystemConstructor/MenuSystem
         src/Systems/SystemConstructor/ButtonColorSystem
+        src/Systems/SystemConstructor/PlayerMovementSystem
         src/Systems/SystemConstructor/testSystem
+        src/Systems/SystemConstructor/AnimationSystem
         src/Systems/Factories
         src/Systems/SystemResponse/
         src/Render/
@@ -90,6 +94,7 @@ set(SOURCE_CLIENT
         "src/Components/GameLogic/Scale.cpp"
         "src/Components/GameLogic/Timer.cpp"
         "src/Components/GameLogic/PlayerController.cpp"
+        "src/Components/GameLogic/EnnemiesController.cpp"
         "src/Components/IO/Controller.cpp"
         "src/Components/IO/DummyInput.cpp"
         "src/Components/IO/GameController.cpp"
@@ -114,9 +119,11 @@ set(SOURCE_CLIENT
         "src/Entities/Entity.cpp"
         "src/Entities/EntityConstructor/TestEntity/TestEntity.cpp"
         "src/Entities/EntityConstructor/TestEntity2/TestEntity2.cpp"
-        "src/Entities/EntityConstructor/TestPlayerEntity/TestPlayerEntity.cpp"
+        "src/Entities/EntityConstructor/PlayerEntity/PlayerEntity.cpp"
         "src/Entities/EntityConstructor/PlayEntity/PlayEntity.cpp"
         "src/Entities/EntityConstructor/StopEntity/StopEntity.cpp"
+        "src/Entities/EntityConstructor/BulletEntity/BulletEntity.cpp"
+        "src/Entities/EntityConstructor/EnnemyEntity/EnnemyEntity.cpp"
         "src/Entities/EntityConstructor/BackgroundMenuEntity/BakgroundMenuEntity.cpp"
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
@@ -135,13 +142,15 @@ set(SOURCE_CLIENT
         "src/Systems/SystemConstructor/testSystem/testSystem.cpp"
         "src/Systems/Factories/SystemFactory.cpp"
         "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
-        "src/Systems/SystemConstructor/MovementSystem/PlayerMovementSystem.cpp"
         "src/Systems/SystemResponse/SystemResponse.cpp"
+        "src/Systems/SystemConstructor/PlayerMovementSystem/PlayerMovementSystem.cpp"
+        "src/Systems/SystemConstructor/AnimationSystem/AnimationSystem.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
         "src/Network/PacketManager.cpp"
         "src/Scenes/SceneManager.cpp"
         "src/Scenes/MenuScene.cpp"
+        "src/Scenes/GameScene.cpp"
         "src/Rtype.cpp"
         "src/Utils/Rect.cpp"
         "src/FactoriesWrapper/FactoriesWrapper.cpp"

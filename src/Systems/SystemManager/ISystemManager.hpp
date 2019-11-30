@@ -8,6 +8,7 @@
 #ifndef ISYSTEMMANAGER_HPP__
 #define ISYSTEMMANAGER_HPP__
 
+#include "IEntityFactory.hpp"
 #include "ISystem.hpp"
 
 namespace ecs::system
@@ -40,6 +41,13 @@ namespace ecs::system
          * 
          */
         virtual void deleteAll() = 0;
+
+        /**
+         * @brief Set the Entity Factory object, it's MANDATORY for using systemManager
+         * 
+         * @param entityFactory 
+         */
+        virtual void setEntityFactory(std::shared_ptr<ecs::entities::IEntityFactory> entityFactory) = 0;
 
     };
 }
