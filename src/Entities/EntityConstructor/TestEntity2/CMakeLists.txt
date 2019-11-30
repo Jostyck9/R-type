@@ -145,9 +145,6 @@ conan_basic_setup()
 
 
 include_directories(${CMAKE_INCLUDE_PATH}
-        src/Loader/
-        src/Loader/EntitiesLoader/
-        src/Loader/SystemLoader/
         src/Components/
         src/Components/ComponentManager/
         src/Components/Display/
@@ -190,7 +187,6 @@ include_directories(${CMAKE_INCLUDE_PATH}
 
 #r-type_client
 add_library(TestEntity2 SHARED
-        "src/main_dlloader.cpp"
         "src/Ecs.cpp"
         "src/Components/ComponentManager/ComponentManager.cpp"
         "src/Components/Display/Animator.cpp"
@@ -254,8 +250,6 @@ add_library(TestEntity2 SHARED
         "src/Exceptions/ServerExceptions.cpp"
         "src/Exceptions/SystemExceptions.cpp"
         "src/Systems/Factories/SystemFactory.cpp"
-        "src/Loader/SystemLoader/SystemLoader.cpp"
-        "src/Loader/EntitiesLoader/EntitiesLoader.cpp"
         "src/Systems/SystemResponse/SystemResponse.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
