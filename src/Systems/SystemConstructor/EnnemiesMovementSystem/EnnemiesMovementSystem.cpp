@@ -20,17 +20,17 @@ EnnemiesMovementSystem::EnnemiesMovementSystem(std::shared_ptr<IManagerWrapper> 
 SystemResponse EnnemiesMovementSystem::update()
 {
     std::shared_ptr<ecs::components::Velocity> velocityComp;
-    auto keys = _managerWrapper->getRenderManager()->getKeysMap();
     for (auto &it : _managerWrapper->getEntityManager()->getAllEntities())
     {
         try
         {
+            std::dynamic_pointer_cast<ecs::components::EnnemiesController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::EnnemiesController))));
             std::shared_ptr<ecs::components::EnnemiesController> controller = std::dynamic_pointer_cast<ecs::components::EnnemiesController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::EnnemiesController))));
             velocityComp = std::dynamic_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::Velocity))));
             updateVelocityOnPattern(controller, velocityComp);
         }
         catch (const ComponentExceptions &e)
-        {
+        {           
         }
     }
     return SystemResponse();
@@ -38,9 +38,16 @@ SystemResponse EnnemiesMovementSystem::update()
 
 void EnnemiesMovementSystem::updateVelocityOnPattern(std::shared_ptr<ecs::components::EnnemiesController> &controller, std::shared_ptr<ecs::components::Velocity> &velocityComp)
 {
-    //clock 2 sec + check pattern via shipType
+    // switch (controller->getShipType()) {
+    //     case "Basic" :
+    //         return;
+    //     case "Wave" : 
+            velocityComp->setVelocityY(50);
+    //         break;
+    //     case default:
+    //         break;
+    // }//clock 2 sec + check pattern via shipType
     // if ()
     //sinus pour avoi rl'offset ? mais pas envie de toucher au position donc jsp peut etre juste inverser les velocity toutes les 2 s
-    velocityComp->setVelocityY(50);
 }
 } // namespace ecs::system
