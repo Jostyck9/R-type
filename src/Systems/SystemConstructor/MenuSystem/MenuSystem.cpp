@@ -9,11 +9,12 @@
 #include <ComponentExceptions.hpp>
 #include <Display/Button.hpp>
 #include "DisplaySystem.hpp"
+#include "ManagerWrapper.hpp"
 #include "MenuSystem.hpp"
 
 using namespace ecs::system;
 
-MenuSystem::MenuSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete)
+MenuSystem::MenuSystem(std::shared_ptr<ecs::ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete)
         : ASystem(managerWrapper, entityFactory, entitiesToDelete) {
 }
 
