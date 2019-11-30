@@ -10,8 +10,9 @@
 namespace ecs::components
 {
 
-Animator::Animator(Rect &rect, int maxRep) : _rect(rect), _maxRep(maxRep), _currentRep(0)
+Animator::Animator(Rect &rect, int maxRep, double intervalSecond) : _rect(rect), _maxRep(maxRep), _currentRep(0), _interval(intervalSecond)
 {
+    _timer.start();
 }
 
 Animator::Animator(const Animator &oldAnimator)
@@ -67,4 +68,20 @@ void Animator::setCurrentRep(int currentRep)
 {
     _currentRep = currentRep;
 }
+
+double Animator::getInterval() const
+{
+    return _interval;
+}
+
+void Animator::setInterval(double intervalSecond)
+{
+    _interval = intervalSecond;
+}
+
+Timer &Animator::getTimer()
+{
+    return _timer;
+}
+
 } // namespace ecs::components

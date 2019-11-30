@@ -61,7 +61,6 @@ namespace ecs {
         while (isPlaying) {
             res = _ecs->getSystemManager()->updateAll();
             if (res.getAction() != ecs::system::SystemResponse::CMD::NOACTION) {
-                std::cout << "Hello" << std::endl;
                 if (res.getAction() == ecs::system::SystemResponse::CMD::QUIT)
                     return;
                 else if (res.getAction() == ecs::system::SystemResponse::CMD::LOADSCENE) {

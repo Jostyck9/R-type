@@ -28,6 +28,10 @@ SystemResponse AnimationSystem::update()
         try
         {
             animatorComp = std::dynamic_pointer_cast<ecs::components::Animator>(_managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::Animator))));
+            if (animatorComp->getTimer().getElapsedSeconds() < animatorComp->getInterval()) {
+                continue;
+            }
+            
             rect = animatorComp->getRect();
             if (animatorComp->getCurrentRep() < animatorComp->getMaxRep()) {
                 spriteComp = std::dynamic_pointer_cast<ecs::components::Sprite>(_managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::Sprite))));
@@ -40,6 +44,7 @@ SystemResponse AnimationSystem::update()
                 spriteComp->setRect(rect);
                 animatorComp->setCurrentRep(0);
             }
+            animatorComp->getTimer().restart();
         }
         catch (const ComponentExceptions &e)
         {

@@ -40,7 +40,6 @@ namespace ecs::system
         for (auto &it : _systems) {
             current = it->update();
             if (current.getAction() != ecs::system::SystemResponse::NOACTION) {
-                std::cout << "Test" << std::endl;
                 break;
             }
         }

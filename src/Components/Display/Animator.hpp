@@ -10,6 +10,7 @@
 
 #include <typeindex>
 #include "IDisplay.hpp"
+#include "Timer.hpp"
 #include "Rect.hpp"
 
 namespace ecs::components
@@ -22,7 +23,7 @@ namespace ecs::components
 
     {
     public:
-        Animator(Rect &rect, int maxRep);
+        Animator(Rect &rect, int maxRep, double intervalSecond = 0.5);
         Animator(const Animator &oldAnimator); 
         ~Animator();
 
@@ -46,17 +47,62 @@ namespace ecs::components
         
         bool operator==(Animator &other);
         
+        /**
+         * @brief Get the Rect object
+         * 
+         * @return const ecs::Rect& 
+         */
         const ecs::Rect &getRect() const;
 
+        /**
+         * @brief Get the Max Rep object
+         * 
+         * @return const int& 
+         */
         const int &getMaxRep() const;
+
+        /**
+         * @brief Get the Current Rep object
+         * 
+         * @return const int& 
+         */
         const int &getCurrentRep() const;
+
+        /**
+         * @brief Set the Current Rep object
+         * 
+         * @param currentRep 
+         */
         void setCurrentRep(int currentRep);
+
+        /**
+         * @brief Get the Interval object
+         * 
+         * @return double 
+         */
+        double getInterval() const;
+
+        /**
+         * @brief Set the Interval object
+         * 
+         * @param intervalSecond 
+         */
+        void setInterval(double intervalSecond);
+
+        /**
+         * @brief Get the Timer object
+         * 
+         * @return Timer& 
+         */
+        Timer &getTimer();
 
     private:
         unsigned int _id;
         ecs::Rect _rect;
         int _maxRep;
         int _currentRep;
+        double _interval;
+        Timer _timer;
     };
 }
 
