@@ -7,7 +7,11 @@
 
 #include "Damage.hpp"
 
-ecs::components::Damage::Damage()
+ecs::components::Damage::Damage() : _value(0)
+{
+}
+
+ecs::components::Damage::Damage(int dmg) : _value(dmg)
 {
 }
 

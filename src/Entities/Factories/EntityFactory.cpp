@@ -74,13 +74,13 @@ void EntityFactory::addEntityConstructor(
     _creationFunction[constructor->getName()] = constructor;
 }
 
-std::shared_ptr<Entity> EntityFactory::createEntity(const std::string &name)
+std::shared_ptr<Entity> EntityFactory::createEntity(const std::string &name, std::pair<float, float> pos, std::pair<float, float> velocity, float rotation)
 {
     if (!isExisting(name)) {
         throw EntityExceptions("Error: Could not add Entity \'" + name + '\'',
             std::string(__FILE__) + ' ' + std::to_string(__LINE__));
     }
-    return (_creationFunction[name])->create(_entityManager, _componentManager);
+    return (_creationFunction[name])->create(_entityManager, _componentManager, pos, velocity, rotation);
 }
 
 std::shared_ptr<Entity> EntityFactory::createEntity(

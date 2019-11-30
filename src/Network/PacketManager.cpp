@@ -147,6 +147,7 @@ void PacketManager::setMsg(const std::string &msg)
 {
     size_t size = MAX_MSG_LENGTH;
 
+    setRes(false);
     if (msg.size() < MAX_MSG_LENGTH)
         size = msg.size();
     std::strncpy(packet.data._msg, msg.c_str(), size);
@@ -158,6 +159,21 @@ const std::string PacketManager::getMsg()
 
     msg = packet.data._msg;
     return msg;
+}
+
+const PacketManager::KeysPressed PacketManager::getKeys() const
+{
+    return packet.data._keys;
+}
+
+int PacketManager::addKey(const ecs::input::Key keyPressed)
+{
+    setCmd(UPDATE);
+    setRes(true);
+    if (packet.data._keys.size == MAX_KEYS)
+        return -1;
+    packet.data._keys.list[static_cast<int>(packet.data._keys.size)] = keyPressed;
+    return packet.data._keys.size++;
 }
 
 } // namespace ecs::network

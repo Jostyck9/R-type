@@ -26,6 +26,10 @@ public:
     int getHeight() const;
     int getPosX() const;
     int getPosY()const;
+    void setWidth(int width);
+    void setHeight(int height);
+    void setPosX(int posX);
+    void setPosY(int posY);
     bool operator==(const Rect &other) const;
 
 };

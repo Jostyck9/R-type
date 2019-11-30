@@ -31,6 +31,7 @@ public:
      * @return std::shared_ptr<ecs::system::ISystem> 
      */
     virtual std::shared_ptr<ecs::system::ISystem> create(std::shared_ptr<ManagerWrapper> &managerWrapper,
+        std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory,
         std::list<int> &entitiesToDelete) = 0;
     /**
      * @brief Get the Name of the entity

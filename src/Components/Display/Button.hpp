@@ -10,6 +10,7 @@
 
 #include <typeindex>
 #include "IUserInterface.hpp"
+#include "SystemResponse.hpp"
 
 namespace ecs::components
 {
@@ -21,20 +22,46 @@ namespace ecs::components
 
     {
     public:
-        Button();        
-        Button(const Button &oldButton); 
-        ~Button();
-         /**
-         * @brief Set new value to the component id
-         * 
-         * @param newId 
+        Button(bool isSelected = false, ecs::system::SystemResponse::CMD cmd = ecs::system::SystemResponse::CMD::NOACTION, const std::string &parameter = "");
+        Button(const Button &oldButton);
+        ~Button() = default;
+
+        /**
+         * @brief Set the isSelected object
+         *
+         * @param newState
          */
-        void setId(const unsigned int &newId);
-         /**
-         * @brief return the component id
-         * 
+        void setIsSelected(bool newState);
+        /**
+        * @brief Get the isSelected object
+        *
+        * @return bool
+        */
+        bool getIsSelected() const;
+        /**
+         * @brief Set the cmd object
+         *
+         * @param newCmd
          */
-         unsigned int getId(void) const;
+        void setCmd(const ecs::system::SystemResponse::CMD &newCmd);
+        /**
+        * @brief Get the cmd object
+        *
+        * @return ecs::system::SystemResponse::CMD
+        */
+        const ecs::system::SystemResponse::CMD &getCmd() const;
+        /**
+         * @brief Set the parameter object
+         *
+         * @param newParameter
+         */
+        void setParameter(const std::string &newParameter);
+        /**
+        * @brief Get the parameter object
+        *
+        * @return std::string
+        */
+        const std::string &getParameter() const;
          /**
          * @brief Get the Type object
          * 
@@ -44,7 +71,9 @@ namespace ecs::components
         bool operator==(Button &other);
 
     private:
-        unsigned int _id;
+        bool _isSelected;
+        ecs::system::SystemResponse::CMD _cmd;
+        std::string _parameter;
     };
 }
 

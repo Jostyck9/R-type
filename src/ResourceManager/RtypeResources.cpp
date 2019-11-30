@@ -6,12 +6,16 @@
 
 namespace ecs {
 
-    RtypeResources::RtypeResources()
+    RtypeResources::RtypeResources() : ResourceManager()
     {
         try {
-            loadTexture("background", "../resources/background.png");
-            loadTexture("test", "../resources/r-typesheet1.gif");        
-            loadTexture("player", "../resources/player.png");
+            loadTexture("background", "resources/background.png");
+            loadTexture("test", "resources/r-typesheet1.gif");
+            loadTexture("player", "resources/player.png");
+            loadTexture("bullet", "resources/bullet.png");
+            loadTexture("ennemy", "resources/ennemy01.png");
+            loadTexture("backgroundMenu", "resources/menu_background.png");
+            loadFont("Pixeled", "resources/font.ttf");
         } catch (const std::exception &e) {
             throw e;
         }

@@ -7,9 +7,14 @@
 
 #include "Health.hpp"
 
-ecs::components::Health::Health()
+ecs::components::Health::Health() : _value(100)
 {
 }
+
+ecs::components::Health::Health(int hp) : _value(hp)
+{
+}
+
 
 ecs::components::Health::Health(const Health &oldHealth)
 {
