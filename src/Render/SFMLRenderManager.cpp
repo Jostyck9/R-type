@@ -132,6 +132,7 @@ SFMLRenderManager::SFMLRenderManager(std::shared_ptr<ResourceManager> &rtypeReso
 
 SFMLRenderManager::~SFMLRenderManager()
 {
+    terminate();
 }
 
 void SFMLRenderManager::init()
