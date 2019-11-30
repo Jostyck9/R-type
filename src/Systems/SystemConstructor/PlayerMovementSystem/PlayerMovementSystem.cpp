@@ -19,19 +19,25 @@ PlayerMovementSystem::PlayerMovementSystem(std::shared_ptr<ManagerWrapper> &mana
 
 SystemResponse PlayerMovementSystem::update()
 {
+    std::shared_ptr<ecs::components::PlayerController> playerControllerComp;
     std::shared_ptr<ecs::components::Velocity> velocityComp;
+    std::shared_ptr<ecs::components::Position> positionComp;
     auto keys = _managerWrapper->getRenderManager()->getKeysMap();
-    for (auto &it : _managerWrapper->getEntityManager()->getAllEntities())
-    {
-        try
-        {
-            std::dynamic_pointer_cast<ecs::components::PlayerController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::PlayerController))));
-            velocityComp = std::dynamic_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::Velocity))));
+    auto entities = _managerWrapper->getEntityManager()->getAllEntities();
+
+    for (size_t i = 0; i < entities.size(); i++) {
+        try {
+            playerControllerComp = std::reinterpret_pointer_cast<ecs::components::PlayerController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::PlayerController))));
+            velocityComp = std::reinterpret_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Velocity))));
+            positionComp = std::reinterpret_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Position))));
             updateVelocityOnInput(keys, velocityComp);
-        }
-        catch (const ComponentExceptions &e)
-        {
-        }
+            if (keys[ecs::input::SPACE] == IRenderManager::PRESSED) {
+                if (playerControllerComp->getTimer().getElapsedMilliseconds() >= playerControllerComp->getTimer().getEndTime()) {
+                    _entityFactory->createEntity("Bullet", std::make_pair(positionComp->getPosition().first + 50, positionComp->getPosition().second + 20));
+                    playerControllerComp->getTimer().restart(500);
+                }
+            }
+        } catch (const ComponentExceptions &e) {}
     }
     return SystemResponse();
 }
@@ -41,20 +47,14 @@ void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, IRend
     if (keys[ecs::input::LEFT] == IRenderManager::PRESSED)
         velocityComp->setVelocityX(-100);
     else if (keys[ecs::input::RIGHT] == IRenderManager::PRESSED)
-    {
         velocityComp->setVelocityX(100);
-    }
     else
-    {
         velocityComp->setVelocityX(0);
-    }
     if (keys[ecs::input::UP] == IRenderManager::PRESSED)
         velocityComp->setVelocityY(-100);
-    else if (keys[ecs::input::DOWN] == IRenderManager::PRESSED) {
+    else if (keys[ecs::input::DOWN] == IRenderManager::PRESSED)
         velocityComp->setVelocityY(100);
-    }
-    else {
+    else
         velocityComp->setVelocityY(0);
-    }
 }
 } // namespace ecs::system

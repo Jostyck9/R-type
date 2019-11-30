@@ -163,14 +163,11 @@ void SFMLRenderManager::updatePressedKeys()
             {
                 if (!sf::Keyboard::isKeyPressed(it.first)) {
                     if (key.second == PRESSED) {
-                        // std::cout << "RELEASED" << std::endl;
                         key.second = RELEASED;
                     } else {
-                        // std::cout << "NONE" << std::endl;
                         key.second = NONE;
                     }
                 } else {
-                    // std::cout << "PRESSED" << std::endl;
                     key.second = PRESSED;
                 }
             }
