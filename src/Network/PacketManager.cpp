@@ -160,4 +160,18 @@ const std::string PacketManager::getMsg()
     return msg;
 }
 
+const PacketManager::KeysPressed PacketManager::getKeys() const
+{
+    return packet.data._keys;
+}
+
+int PacketManager::addKey(const ecs::input::Key keyPressed)
+{
+    setCmd(UPDATE);
+    if (packet.data._keys.size == MAX_KEYS)
+        return -1;
+    packet.data._keys.list[static_cast<int>(packet.data._keys.size)] = keyPressed;
+    return packet.data._keys.size++;
+}
+
 } // namespace ecs::network
