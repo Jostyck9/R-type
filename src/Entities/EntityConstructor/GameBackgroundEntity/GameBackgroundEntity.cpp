@@ -10,6 +10,7 @@
 #include "Sprite.hpp"
 #include "Velocity.hpp"
 #include "Rotation.hpp"
+#include "Animator.hpp"
 
 using namespace ecs::entities;
 
@@ -32,6 +33,7 @@ std::shared_ptr<ecs::entities::Entity> GameBackgroundEntity::create(
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(0, 0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(0), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("gameBackground", spriteRect, true), toCreate);
+    componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 3, 0.3), toCreate);
     return toCreate;
 }
 
