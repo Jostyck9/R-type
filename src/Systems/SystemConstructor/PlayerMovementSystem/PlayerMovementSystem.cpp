@@ -50,7 +50,6 @@ namespace ecs::system {
                             auto sound = std::reinterpret_pointer_cast<ecs::components::Sound>(_managerWrapper->getComponentManager()->getIOComponentOfSpecifiedType(entities[i]->getID(),
                                                                                                   std::type_index(
                                                                                                           typeid(ecs::components::Sound))));
-                            _managerWrapper->getResourceManager()->getSound(sound->getNameSound())->stop();
                             _managerWrapper->getResourceManager()->getSound(sound->getNameSound())->play();
                         } catch (const ComponentExceptions &e) {}
                         playerControllerComp->getTimer().restart(500);
