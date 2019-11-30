@@ -4,7 +4,7 @@
 
 #include "UDPServer.hpp"
 
-ecs::network::UDPServer::UDPServer(const std::string &port) : _sessionId(0),
+ecs::network::UDPServer::UDPServer(const std::string &port) : _sessionId(0), _roomManager(8),
     AUDPNetwork(port)
 {
 }
@@ -22,7 +22,7 @@ void ecs::network::UDPServer::handle_receive(boost::system::error_code ec,
             _sessions.emplace(
                 std::make_pair(std::make_pair(++_sessionId, sender_endpoint_),
                     std::make_shared<ServerSession>(_socket,
-                        sender_endpoint_)));
+                        sender_endpoint_, _roomManager)));
             getSession(sender_endpoint_)->manage_data(data_);
             std::cout << "sessions size : " << _sessions.size() << std::endl;
         }

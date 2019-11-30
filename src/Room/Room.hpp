@@ -13,7 +13,7 @@ struct PlayerInfo {
 
 class Room {
     private:
-
+// TODO Add ecs
     size_t _id;
     bool _isOpen;
     size_t _nbPlayer;

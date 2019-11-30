@@ -6,6 +6,7 @@
 #define R_TYPE_CLIENTSESSION_HPP
 
 #include "ISession.hpp"
+#include "PacketManager.hpp"
 
 namespace ecs::network {
     class ClientSession : public  std::enable_shared_from_this<ClientSession>,
@@ -13,6 +14,8 @@ namespace ecs::network {
         private:
         udp::socket &_socket;
         boost::asio::ip::udp::resolver::results_type _endpoints;
+
+        ecs::network::PacketManager _packet;
 
         enum {
             max_length = 1024

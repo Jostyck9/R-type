@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <PacketManager.hpp>
 #include "ClientSession.hpp"
 
 ecs::network::ClientSession::ClientSession(udp::socket &socket,
@@ -35,11 +36,10 @@ void ecs::network::ClientSession::handle_write(boost::system::error_code ec,
 
 void ecs::network::ClientSession::manage_data(const char *rawData)
 {
-    std::cout << "received : " << std::endl;
-    for (size_t i = 0; i < max_length; i++)
-    {
-        printf("%02X ", rawData[i]);
-    }
+    std::cout << "Packet received" << std::endl;
+
+    std::memcpy(_packet.packet.rawData, rawData, max_length);
+
     do_write(rawData);
 }
 

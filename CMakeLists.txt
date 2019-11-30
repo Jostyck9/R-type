@@ -72,7 +72,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
 #r-type_client
 set(SOURCE_CLIENT
         "src/main_client.cpp"
-        #[["src/Components/ComponentManager/ComponentManager.cpp"
+        "src/Components/ComponentManager/ComponentManager.cpp"
         "src/Components/Display/Animator.cpp"
         "src/Components/Display/Button.cpp"
         "src/Components/Display/Image.cpp"
@@ -133,7 +133,7 @@ set(SOURCE_CLIENT
         "src/ManagerWrapper/ManagerWrapper.cpp"
         "src/Rtype.cpp"
         "src/Utils/Rect.cpp"
-        "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"]]
+        "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
         src/Network/Client/UDPClient.cpp
         src/Network/Client/UDPClient.hpp
         src/Network/PacketManager.cpp

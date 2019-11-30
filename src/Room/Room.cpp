@@ -43,6 +43,8 @@ void Room::addPlayer(const std::string &pseudo)
 
 void Room::run()
 {
+    //TODO implement game in here
+
     while (_isOpen) {
         std::unique_lock<std::mutex> Lock(_mLock);
         displayRoomStatus();

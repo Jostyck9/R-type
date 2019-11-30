@@ -8,6 +8,7 @@
 #include <ServerSession.hpp>
 #include "ServerExceptions.hpp"
 #include <AUDPNetwork.hpp>
+#include <Room/RoomManager.hpp>
 
 namespace ecs::network {
     class UDPServer : public AUDPNetwork {
@@ -16,6 +17,7 @@ namespace ecs::network {
         size_t _sessionId;
         std::map<std::pair<size_t, udp::endpoint>, std::shared_ptr<ISession>> _sessions;
 
+        RoomManager _roomManager;
         public:
         explicit UDPServer(const std::string &port);
 
