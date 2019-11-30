@@ -12,6 +12,7 @@
 #include <list>
 #include "ISystem.hpp"
 #include "ISystemManager.hpp"
+#include "IEntityFactory.hpp"
 #include "ManagerWrapper.hpp"
 
 namespace ecs::system
@@ -20,8 +21,15 @@ namespace ecs::system
     {
     private:
         std::shared_ptr<ManagerWrapper> _managerWrapper;
+        std::shared_ptr<ecs::entities::IEntityFactory> _entityFactory;
         std::list<std::shared_ptr<ISystem>> _systems;
         std::list<int> _entitiesToDelete;
+
+        /**
+         * @brief Throw a SystemEsception if no entityFactcory was given
+         * 
+         */
+        void checkIfEntityFactory();
 
     public:
         /**
@@ -40,7 +48,7 @@ namespace ecs::system
          */
         std::list<int> &getEntitiesToDelete() override;
 
-        void updateAll() override;
+        SystemResponse updateAll() override;
 
         /**
          * @brief Add a system inside the system manager
@@ -54,6 +62,13 @@ namespace ecs::system
          * 
          */
         void deleteAll() override;
+
+        /**
+         * @brief Set the Entity Factory object, it's MANDATORY for using systemManager
+         * 
+         * @param entityFactory 
+         */
+        void setEntityFactory(std::shared_ptr<ecs::entities::IEntityFactory> entityFactory);
     };
 }
 

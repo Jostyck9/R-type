@@ -45,6 +45,26 @@ int Rect::getPosY()const
     return _posY;
 }
 
+void Rect::setWidth(int width)
+{
+    _width = width;
+}
+
+void Rect::setHeight(int height)
+{
+    _height = height;
+}
+
+void Rect::setPosX(int posX)
+{
+    _posX = posX;
+}
+
+void Rect::setPosY(int posY)
+{
+    _posY = posY;
+}
+
 bool ecs::Rect::operator==(const Rect &other) const
 {
     if (other.getHeight() != this->_height)

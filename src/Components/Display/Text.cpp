@@ -5,13 +5,14 @@
 ** Text.cpp
 */
 
+#include "Color.hpp"
 #include "Text.hpp"
 
-ecs::components::Text::Text() : _string("null") ,_size(15)
+ecs::components::Text::Text() : _string("null") ,_size(15), _color(ecs::Color::WHITE)
 {
 }
 
-ecs::components::Text::Text(const std::string &str, int size) : _string(str) ,_size(size)
+ecs::components::Text::Text(const std::string &str, int size) : _string(str) ,_size(size), _color(ecs::Color::WHITE)
 {
 }
 
@@ -20,6 +21,7 @@ ecs::components::Text::Text(const Text &oldText)
     this->_id = oldText.getId();
     this->_size = oldText.getSize();
     this->_string = oldText.getStr();
+    this->_color = oldText.getColor();
 }
 
 ecs::components::Text::~Text()
@@ -65,6 +67,7 @@ int ecs::components::Text::getSize(void) const
 void ecs::components::Text::setColor(const ecs::Color &newColor)
 {
     this->_color = newColor;
+
 }
 
 ecs::Color ecs::components::Text::getColor(void) const

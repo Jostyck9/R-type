@@ -8,6 +8,7 @@
 #ifndef ISYSTEMMANAGER_HPP__
 #define ISYSTEMMANAGER_HPP__
 
+#include "IEntityFactory.hpp"
 #include "ISystem.hpp"
 
 namespace ecs::system
@@ -19,7 +20,7 @@ namespace ecs::system
          * @brief Update the game with all the systems inside the manager
          * 
          */
-        virtual void updateAll() = 0;
+        virtual SystemResponse updateAll() = 0;
 
         /**
          * @brief Get the Entities To Delete object
@@ -40,6 +41,13 @@ namespace ecs::system
          * 
          */
         virtual void deleteAll() = 0;
+
+        /**
+         * @brief Set the Entity Factory object, it's MANDATORY for using systemManager
+         * 
+         * @param entityFactory 
+         */
+        virtual void setEntityFactory(std::shared_ptr<ecs::entities::IEntityFactory> entityFactory) = 0;
 
     };
 }

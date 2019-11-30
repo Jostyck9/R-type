@@ -15,7 +15,7 @@
 
 namespace ecs::system
 {
-DisplaySystem::DisplaySystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::list<int> &entitiesToDelete) : ASystem(managerWrapper, entitiesToDelete), _elapsedTime(0)
+DisplaySystem::DisplaySystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete) : ASystem(managerWrapper, entityFactory, entitiesToDelete), _elapsedTime(0)
 {
 }
 
@@ -23,7 +23,7 @@ DisplaySystem::~DisplaySystem()
 {
 }
 
-void DisplaySystem::update()
+SystemResponse DisplaySystem::update()
 {
     std::shared_ptr<ecs::components::Sprite> spriteComp;
     std::shared_ptr<ecs::components::Position> posComp;
@@ -43,7 +43,8 @@ void DisplaySystem::update()
         try
         {
             spriteComp = std::dynamic_pointer_cast<ecs::components::Sprite>(_managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::Sprite))));
-            _managerWrapper->getRenderManager()->graphicsUpdate(spriteComp, posComp);
+            if (spriteComp->getIsVisible())
+                _managerWrapper->getRenderManager()->graphicsUpdate(spriteComp, posComp);
         }
         catch (const ComponentExceptions &e)
         {
@@ -58,5 +59,6 @@ void DisplaySystem::update()
         }
     }
     _managerWrapper->getRenderManager()->display();
+    return SystemResponse();
 }
 } // namespace ecs::system

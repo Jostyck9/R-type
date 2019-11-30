@@ -24,6 +24,12 @@ namespace ecs {
      */
     class IRenderManager {
     public:
+        enum KEY_STATE{
+            PRESSED,
+            RELEASED,
+            NONE
+        };
+    public:
         /*!
          * @brief dtor
          */
@@ -36,7 +42,7 @@ namespace ecs {
         virtual bool eventUpdate() = 0;
         virtual void clear() = 0;
         virtual void display() = 0;
-        virtual std::map<ecs::input::Key, bool> &getKeysMap() = 0;
+        virtual std::map<ecs::input::Key, KEY_STATE> &getKeysMap() = 0;
     };
 }
 

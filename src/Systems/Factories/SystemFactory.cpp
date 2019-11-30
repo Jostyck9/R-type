@@ -10,8 +10,11 @@
 
 using namespace ecs::system;
 
-SystemFactory::SystemFactory(std::shared_ptr<ecs::ManagerWrapper> &_managerWrapper, std::shared_ptr<ISystemManager> systemManager) : _managerWrapper(_managerWrapper),
-                                                                                                                  _systemManager(systemManager)
+SystemFactory::SystemFactory(std::shared_ptr<ecs::ManagerWrapper> &_managerWrapper,
+                             std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory,
+                             std::shared_ptr<ISystemManager> systemManager) : _managerWrapper(_managerWrapper),
+                                                                              _systemManager(systemManager),
+                                                                              _entityFactory(entityFactory)
 {
 }
 
@@ -41,7 +44,7 @@ std::shared_ptr<ISystem> SystemFactory::createSystem(const std::string &name)
     {
         throw SystemExceptions("Error: Could not create system \'" + name + '\'', std::string(__FILE__) + ' ' + std::to_string(__LINE__));
     }
-    return (_createFunction[name])->create(_managerWrapper, _systemManager->getEntitiesToDelete());
+    return (_createFunction[name])->create(_managerWrapper, _entityFactory, _systemManager->getEntitiesToDelete());
 }
 
 bool SystemFactory::remove(const std::string &name)
