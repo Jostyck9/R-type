@@ -20,7 +20,7 @@ namespace ecs::system
     class ASystem : public ISystem
     {
     protected:
-        std::shared_ptr<ManagerWrapper> &_managerWrapper;
+        std::shared_ptr<IManagerWrapper> &_managerWrapper;
         std::shared_ptr<ecs::entities::IEntityFactory> &_entityFactory;
         std::list<int> &_entitiesToDelete;
 
@@ -32,7 +32,7 @@ namespace ecs::system
          * @param componentManager 
          * @param entitiesToDelete List of entities to delete after the update
          */
-        ASystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
+        ASystem(std::shared_ptr<IManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
         ~ASystem();
     };
 }

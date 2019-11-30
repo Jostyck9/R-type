@@ -11,7 +11,7 @@ using namespace ecs::components;
     {
     }
 
-    EnnemiesController::EnnemiesController(std::string &type) : _shipType(type)
+    EnnemiesController::EnnemiesController(const std::string &type) : _shipType(type)
     {
     }
 
@@ -25,12 +25,12 @@ using namespace ecs::components;
         return (std::type_index(typeid(EnnemiesController)));
     }
 
-    const std::string EnnemiesController::getShipType() const
+    std::string EnnemiesController::getShipType(void) const
     {
-        return _shipType;
+        return this->_shipType;
     }
 
-    void EnnemiesController::setShipType(std::string & type)
+    void EnnemiesController::setShipType(const std::string &type)
     {
         _shipType = type;
     }

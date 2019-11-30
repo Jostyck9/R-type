@@ -8,12 +8,15 @@
 #include "GameScene.hpp"
 #include "SceneManager.hpp"
 #include "BackgroundMenuEntity.hpp"
+#include "GameBackgroundEntity.hpp"
+#include "TestBackground.hpp"
 #include "PlayEntity.hpp"
 #include "StopEntity.hpp"
 #include "PlayerEntity.hpp"
 #include "StopEntity.hpp"
 #include "BulletEntity.hpp"
 #include "EnnemyEntity.hpp"
+#include "EnnemyType01Entity.hpp"
 
 namespace ecs {
 
@@ -22,14 +25,15 @@ namespace ecs {
         _ecs->getRenderManager()->init();
 
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::BackgroundMenuEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::GameBackgroundEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlayerEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::BulletEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::EnnemyEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::EnnemyType01Entity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlayEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::StopEntity>());
 
         createMenu();
-        // createGame();
         run();
     }
 

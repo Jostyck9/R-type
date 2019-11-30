@@ -2,84 +2,80 @@
 ** EPITECH PROJECT, 2019
 ** R-type
 ** File description:
-** Ecs.hpp
+** IEcs.hpp
 */
 
-#ifndef ECS_HPP__
-#define ECS_HPP__
+#ifndef IECS_HPP__
+#define IECS_HPP__
 
-#include "IEcs.hpp"
+#include "ResourceManager.hpp"
+#include "ManagerWrapper.hpp"
+#include "SystemManager.hpp"
+#include "FactoriesWrapper.hpp"
 
 namespace ecs
 {
-class Ecs : public IEcs
+class IEcs
 {
-private:
-    std::shared_ptr<IManagerWrapper> _managerWrapper;
-    std::shared_ptr<ecs::system::ISystemManager> _systemManager;
-    std::shared_ptr<ecs::FactoriesWrapper> _factoriesWrapper;
-
 public:
-    Ecs(/* args */);
-    ~Ecs();
-
     /**
      * @brief Get the Component Manager object
      * 
      * @return std::shared_ptr<components::IComponentManager>& 
      */
-    std::shared_ptr<components::IComponentManager> &getComponentManager() override;
+    virtual std::shared_ptr<components::IComponentManager> &getComponentManager() = 0;
 
     /**
      * @brief Get the Render Manager object
      * 
      * @return std::shared_ptr<IRenderManager>& 
      */
-    std::shared_ptr<IRenderManager> &getRenderManager() override;
+    virtual std::shared_ptr<IRenderManager> &getRenderManager() = 0;
 
     /**
      * @brief Get the Entity Manager object
      * 
      * @return std::shared_ptr<entities::IEntityManager>& 
      */
-    std::shared_ptr<entities::IEntityManager> &getEntityManager() override;
+    virtual std::shared_ptr<entities::IEntityManager> &getEntityManager() = 0;
 
     /**
      * @brief Get the Rtype Resource Manager object
      * 
      * @return std::shared_ptr<RtypeResources>& 
      */
-    std::shared_ptr<ecs::ResourceManager> &getResourceManager() override;
+    virtual std::shared_ptr<ecs::ResourceManager> &getResourceManager() = 0;
 
     /**
      * @brief Get the System Manager object
      * 
      * @return std::shared_ptr<ecs::system::ISystemManager>& 
      */
-    std::shared_ptr<ecs::system::ISystemManager> &getSystemManager() override;
+    virtual std::shared_ptr<ecs::system::ISystemManager> &getSystemManager() = 0;
 
     /**
      * @brief Get the System Factory object
      * 
      * @return std::shared_ptr<ecs::system::ISystemFactory>& 
      */
-    std::shared_ptr<ecs::system::ISystemFactory> &getSystemFactory() override;
+    virtual std::shared_ptr<ecs::system::ISystemFactory> &getSystemFactory() = 0;
 
     /**
      * @brief Get the Entity Factory object
      * 
      * @return std::shared_ptr<ecs::entities::IEntityFactory>& 
      */
-    std::shared_ptr<ecs::entities::IEntityFactory> &getEntityFactory() override;
+    virtual std::shared_ptr<ecs::entities::IEntityFactory> &getEntityFactory() = 0;
 
     /**
      * @brief Return the manager wrapper
      * 
      * @return std::shared_ptr<ecs::IManagerWrapper>& 
      */
-    std::shared_ptr<ecs::IManagerWrapper> &getManagerWrapper() override;
+    virtual std::shared_ptr<ecs::IManagerWrapper> &getManagerWrapper() = 0;
 };
 
 } // namespace ecs
 
-#endif //ECS_HPP__
+
+#endif //IECS_HPP__

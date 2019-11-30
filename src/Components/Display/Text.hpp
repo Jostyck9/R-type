@@ -24,7 +24,7 @@ class Text : public IUserInterface
 {
 public:
     Text();
-    Text(const std::string &str, int size);
+    Text(const std::string &str, int size, float posX = 0, float posY = 0);
     Text(const Text &oldText);
     ~Text();
     /**
@@ -78,13 +78,28 @@ public:
          */
     ecs::Color getColor(void) const;
 
-    bool operator==(Text &other);
+     /**
+      * @brief Get the Postion object
+      * 
+      * @return const std::pair<float, float> 
+      */
+     const std::pair<float, float> &getPostion() const;
+
+     /**
+      * @brief Set the Postion object
+      * 
+      * @param pos 
+      */
+     void setPostion(const std::pair<float, float> &pos);
+
+     bool operator==(Text &other);
 
 private:
     unsigned int _id;
     std::string _string;
     int _size;
     ecs::Color _color;
+    std::pair<float, float> _pos;
 };
 } // namespace ecs::components
 
