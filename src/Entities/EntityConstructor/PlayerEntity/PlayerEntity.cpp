@@ -11,6 +11,7 @@
 #include "Physics/Velocity.hpp"
 #include "Physics/Collision.hpp"
 #include "Display/Sprite.hpp"
+#include "Display/Animator.hpp"
 #include "Display/Text.hpp"
 #include "GameLogic/Health.hpp"
 #include "PlayerController.hpp"
@@ -31,7 +32,7 @@ std::shared_ptr<ecs::entities::Entity> PlayerEntity::create(
 
     std::shared_ptr<Entity> toCreate = std::make_shared<Entity>();
 
-    Rect spriteRect(50, 50, 0, 0);
+    Rect spriteRect(80, 40, 0, 0);
     entityManager->addEntity(toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(30, 30), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(0, 0), toCreate);
@@ -40,6 +41,7 @@ std::shared_ptr<ecs::entities::Entity> PlayerEntity::create(
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("player", spriteRect, true), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Text>("P1", 15), toCreate);
     componentsManager->addGameLogicComponent(std::make_shared<ecs::components::PlayerController>(), toCreate);
+    componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 5), toCreate);
     return toCreate;
 }
 
