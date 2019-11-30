@@ -74,6 +74,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/SystemConstructor/EnnemiesMovementSystem
         src/Systems/SystemConstructor/testSystem
         src/Systems/SystemConstructor/AnimationSystem
+        src/Systems/SystemConstructor/ParallaxSystem
         src/Systems/Factories
         src/Systems/SystemResponse/
         src/Render/
@@ -94,6 +95,7 @@ set(SOURCE_CLIENT
         "src/Ecs.cpp"
         "src/Components/ComponentManager/ComponentManager.cpp"
         "src/Components/Display/Animator.cpp"
+        "src/Components/Display/Parallax.cpp"
         "src/Components/Display/Button.cpp"
         "src/Components/Display/Image.cpp"
         "src/Components/Display/PopUp.cpp"
@@ -163,6 +165,7 @@ set(SOURCE_CLIENT
         "src/Systems/SystemConstructor/PlayerMovementSystem/PlayerMovementSystem.cpp"
         "src/Systems/SystemConstructor/EnnemiesMovementSystem/EnnemiesMovementSystem.cpp"
         "src/Systems/SystemConstructor/AnimationSystem/AnimationSystem.cpp"
+        "src/Systems/SystemConstructor/ParallaxSystem/ParallaxSystem.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
         "src/Network/PacketManager.cpp"

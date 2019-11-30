@@ -10,6 +10,7 @@
 #include "Sprite.hpp"
 #include "Velocity.hpp"
 #include "Rotation.hpp"
+#include "Parallax.hpp"
 #include "Animator.hpp"
 
 using namespace ecs::entities;
@@ -27,12 +28,13 @@ std::shared_ptr<ecs::entities::Entity> StarsEntity::create(
 
     std::shared_ptr<Entity> toCreate = std::make_shared<Entity>();
 
-    Rect starsRect(900, 529, 0, 0);
+    Rect starsRect(1500, 900, 0, 0);
     entityManager->addEntity(toCreate);
-    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(100, 700), toCreate);
+    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(0, 0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(0, 0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(0), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("space-stars-parallax", starsRect, true), toCreate);
+    componentsManager->addDisplayComponent(std::make_shared<ecs::components::Parallax>(0.01, 5, 1500, starsRect), toCreate);
     return toCreate;
 }
 
