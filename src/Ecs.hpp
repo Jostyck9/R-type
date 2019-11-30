@@ -18,7 +18,7 @@ namespace ecs
 class Ecs
 {
 private:
-    std::shared_ptr<ManagerWrapper> _managerWrapper;
+    std::shared_ptr<IManagerWrapper> _managerWrapper;
     std::shared_ptr<ecs::system::ISystemManager> _systemManager;
     std::shared_ptr<ecs::FactoriesWrapper> _factoriesWrapper;
 
@@ -78,9 +78,9 @@ public:
     /**
      * @brief Return the manager wrapper
      * 
-     * @return std::shared_ptr<ecs::ManagerWrapper>& 
+     * @return std::shared_ptr<ecs::IManagerWrapper>& 
      */
-    std::shared_ptr<ecs::ManagerWrapper> &getManagerWrapper();
+    std::shared_ptr<ecs::IManagerWrapper> &getManagerWrapper();
 };
 
 } // namespace ecs

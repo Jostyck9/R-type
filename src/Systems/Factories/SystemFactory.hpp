@@ -20,7 +20,7 @@ namespace ecs::system
 class SystemFactory : public ISystemFactory
 {
 private:
-    std::shared_ptr<ManagerWrapper> _managerWrapper;
+    std::shared_ptr<IManagerWrapper> _managerWrapper;
     std::shared_ptr<ISystemManager> _systemManager;
     std::shared_ptr<ecs::entities::IEntityFactory> &_entityFactory;
     std::map<std::string, std::shared_ptr<ISystemConstructor>> _createFunction;
@@ -31,7 +31,7 @@ public:
          * 
          * @param componentsManager : System manager
          */
-    SystemFactory(std::shared_ptr<ManagerWrapper> &_managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::shared_ptr<ISystemManager>);
+    SystemFactory(std::shared_ptr<IManagerWrapper> &_managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::shared_ptr<ISystemManager>);
     ~SystemFactory();
 
     /**

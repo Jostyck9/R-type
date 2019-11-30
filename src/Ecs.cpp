@@ -37,7 +37,7 @@ std::shared_ptr<entities::IEntityManager> &Ecs::getEntityManager()
 
 std::shared_ptr<ecs::ResourceManager> &Ecs::getResourceManager()
 {
-    return _managerWrapper->getRtypeResourceManager();
+    return _managerWrapper->getResourceManager();
 }
 
 std::shared_ptr<ecs::system::ISystemManager> &Ecs::getSystemManager()
@@ -55,7 +55,7 @@ std::shared_ptr<ecs::entities::IEntityFactory> &Ecs::getEntityFactory()
     return _factoriesWrapper->getEntityFactory();
 }
 
-std::shared_ptr<ecs::ManagerWrapper> &Ecs::getManagerWrapper()
+std::shared_ptr<ecs::IManagerWrapper> &Ecs::getManagerWrapper()
 {
     return _managerWrapper;
 }
