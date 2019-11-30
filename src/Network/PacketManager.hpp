@@ -10,6 +10,7 @@
 
 #include <string>
 #include <list>
+#include "Render/Input.hpp"
 
 namespace ecs::network
 {
@@ -45,7 +46,8 @@ public:
         MAX_PSEUDO_SIZE = 10,
         MAX_PLAYER = 4,
         MAX_COMPONENTS = 7,
-        MAX_ROOM = 8
+        MAX_ROOM = 8,
+        MAX_KEYS = 15
     };
 
     enum CMD : char
@@ -114,6 +116,12 @@ private:
         struct Room listRoom[MAX_ROOM];
     };
 
+    struct KeysPressed
+    {
+        char size;
+        ecs::input::Key list[MAX_KEYS];
+    };
+
     struct Data
     {
         bool res;
@@ -124,6 +132,7 @@ private:
             struct JoinRoom _join;
             struct GetRooms _getRoom;
             struct Entities _entities;
+            struct KeysPressed _keys;
             char _msg[MAX_MSG_LENGTH];
         };
     };
@@ -293,6 +302,21 @@ public:
      * @return std::string 
      */
     const std::string getMsg();
+
+    /**
+     * @brief Get the Keys object
+     * 
+     * @return const KeysPressed 
+     */
+    const KeysPressed getKeys() const;
+
+    /**
+     * @brief Add a key to the packet
+     * 
+     * @param keyPressed 
+     * @return int : index  of the key add, -1 if full
+     */
+    int addKey(const ecs::input::Key keyPressed);
 };
 
 } // namespace ecs::network

@@ -99,7 +99,6 @@ set(SOURCE_CLIENT
         "src/Components/IO/Controller.cpp"
         "src/Components/IO/DummyInput.cpp"
         "src/Components/IO/GameController.cpp"
-        "src/Components/IO/Input.cpp"
         "src/Components/IO/Keyboard.cpp"
         "src/Components/IO/Output.cpp"
         "src/Components/IO/Sound.cpp"

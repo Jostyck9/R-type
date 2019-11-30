@@ -9,7 +9,7 @@
 #define Keyboard_HPP
 
 #include <map>
-#include "Controller.hpp"
+#include <typeindex>
 
 namespace ecs::components
 {
