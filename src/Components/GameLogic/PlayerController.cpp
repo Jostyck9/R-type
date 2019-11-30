@@ -7,8 +7,9 @@
 
 #include "PlayerController.hpp"
 
-ecs::components::PlayerController::PlayerController()
+ecs::components::PlayerController::PlayerController() : _timer(500)
 {
+    _timer.start();
 }
 
 ecs::components::PlayerController::PlayerController(const PlayerController &oldPlayerController)
@@ -18,6 +19,11 @@ ecs::components::PlayerController::PlayerController(const PlayerController &oldP
 const std::type_index ecs::components::PlayerController::getType() const
 {
     return (std::type_index(typeid(PlayerController)));
+}
+
+ecs::components::Timer &ecs::components::PlayerController::getTimer()
+{
+    return _timer;
 }
 
 bool ecs::components::PlayerController::operator==(PlayerController &other)

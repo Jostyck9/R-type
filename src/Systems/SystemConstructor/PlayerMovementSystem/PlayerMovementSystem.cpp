@@ -19,23 +19,23 @@ PlayerMovementSystem::PlayerMovementSystem(std::shared_ptr<ManagerWrapper> &mana
 
 SystemResponse PlayerMovementSystem::update()
 {
+    std::shared_ptr<ecs::components::PlayerController> playerControllerComp;
     std::shared_ptr<ecs::components::Velocity> velocityComp;
     std::shared_ptr<ecs::components::Position> positionComp;
     auto keys = _managerWrapper->getRenderManager()->getKeysMap();
-    for (auto &it : _managerWrapper->getEntityManager()->getAllEntities())
-    {
-        try
-        {
-            std::dynamic_pointer_cast<ecs::components::PlayerController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::PlayerController))));
+    for (auto &it : _managerWrapper->getEntityManager()->getAllEntities()) {
+        try {
+            playerControllerComp = std::dynamic_pointer_cast<ecs::components::PlayerController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::PlayerController))));
             velocityComp = std::dynamic_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::Velocity))));
             positionComp = std::dynamic_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::Position))));
             updateVelocityOnInput(keys, velocityComp);
-            if (keys[ecs::input::SPACE] == IRenderManager::RELEASED)
-                _entityFactory->createEntity("Bullet", positionComp->getPosition());
-        }
-        catch (const ComponentExceptions &e)
-        {
-        }
+            if (keys[ecs::input::SPACE] == IRenderManager::PRESSED) {
+                if (playerControllerComp->getTimer().getElapsedMilliseconds() >= playerControllerComp->getTimer().getEndTime()) {
+                    _entityFactory->createEntity("Bullet", std::make_pair(positionComp->getPosition().first + 50, positionComp->getPosition().second + 20));
+                    playerControllerComp->getTimer().restart(500);
+                }
+            }
+        } catch (const ComponentExceptions &e) {}
     }
     return SystemResponse();
 }
