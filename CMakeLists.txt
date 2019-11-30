@@ -58,6 +58,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/SystemManager
         src/Systems/SystemConstructor
         src/Systems/SystemConstructor/MovementSystem
+        src/Systems/SystemConstructor/PlayerMovementSystem
         src/Systems/SystemConstructor/testSystem
         src/Systems/Factories
         src/Render/
@@ -136,7 +137,7 @@ set(SOURCE_CLIENT
         "src/Systems/SystemConstructor/testSystem/testSystem.cpp"
         "src/Systems/Factories/SystemFactory.cpp"
         "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp"
-        "src/Systems/SystemConstructor/MovementSystem/PlayerMovementSystem.cpp"
+        "src/Systems/SystemConstructor/PlayerMovementSystem/PlayerMovementSystem.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
         "src/Network/PacketManager.cpp"
