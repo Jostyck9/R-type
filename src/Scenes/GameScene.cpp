@@ -29,7 +29,7 @@ ecs::GameScene::GameScene(std::shared_ptr<Ecs> &ecs) : _ecs(ecs)
     _ecs->getSystemManager()->addSystem(std::make_shared<system::EnnemiesMovementSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
     _ecs->getSystemManager()->addSystem(std::make_shared<system::AnimationSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
   
-    // _ecs->getEntityFactory()->createEntity("TestBackground");
+    _ecs->getEntityFactory()->createEntity("TestBackground");
     _ecs->getEntityFactory()->createEntity("Player");
     _ecs->getEntityFactory()->createEntity("Bullet");
     _ecs->getEntityFactory()->createEntity("Ennemy");
