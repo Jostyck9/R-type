@@ -33,8 +33,8 @@ std::shared_ptr<ecs::entities::Entity> EnnemyType01Entity::create(
 
     Rect spriteRect(159, 160, 0, 0);
     entityManager->addEntity(toCreate);
-    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(700, 90), toCreate);
-    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(-60, 0), toCreate);
+    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(1500, 90), toCreate);
+    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(-100, 0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(true, 0, 0, 1, 1, "Test"), toCreate);
     componentsManager->addGameLogicComponent(std::make_shared<ecs::components::EnnemiesController>("Basic"), toCreate);

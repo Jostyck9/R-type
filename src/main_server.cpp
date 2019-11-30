@@ -26,6 +26,10 @@ int main(int ac, char *av[])
 
         std::thread network([&](){serverNetwork.run();});
 
+        std::cout << "SERVER\n";
+
+        network.join();
+
     } catch (std::exception &e) {
         std::cerr << "Exception: " << e.what() << "\n";
     }

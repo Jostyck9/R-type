@@ -26,13 +26,8 @@ public:
     ~Rtype() = default;
 
     void start();
-    void stop();
 
 private:
-    std::shared_ptr<ISystemManager> _systemManager;
-    std::shared_ptr<IEntityFactory> _entityFactory;
-    std::shared_ptr<IRenderManager> _renderManager;
-    std::shared_ptr<ManagerWrapper> _managerWrapper;
     std::shared_ptr<SceneManager> _sceneManager;
 };
 

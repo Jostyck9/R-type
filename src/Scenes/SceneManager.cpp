@@ -20,6 +20,9 @@
 #include "EnnemyEntity.hpp"
 #include "ChooseRoomScene.hpp"
 #include "EnnemyType01Entity.hpp"
+#include "PlanetEntity.hpp"
+#include "PlanetRingEntity.hpp"
+#include "StarsEntity.hpp"
 
 namespace ecs {
 
@@ -30,6 +33,9 @@ namespace ecs {
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::BackgroundWithoutTitleEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::BackEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::GameBackgroundEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlanetEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlanetRingEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::StarsEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlayerEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::BulletEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::EnnemyEntity>());

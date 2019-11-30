@@ -54,6 +54,9 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/EntityConstructor/BulletEntity/
         src/Entities/EntityConstructor/BackgroundMenuEntity/
         src/Entities/EntityConstructor/GameBackgroundEntity/
+        src/Entities/EntityConstructor/PlanetEntity/
+        src/Entities/EntityConstructor/PlanetRingEntity/
+        src/Entities/EntityConstructor/StarsEntity/
         src/Entities/EntityConstructor/TestBackground/
         src/Entities/EntityConstructor/NameRoomEntity/
         src/Entities/EntityConstructor/NumberPlayersEntity/
@@ -145,6 +148,9 @@ set(SOURCE_CLIENT
         "src/Entities/EntityConstructor/NumberPlayersEntity/NumberPlayersEntity.cpp"
         "src/Entities/EntityConstructor/BackgroundWithoutTitleEntity/BackgroundWithoutTitleEntity.cpp"
         "src/Entities/EntityConstructor/BackEntity/BackEntity.cpp"
+        "src/Entities/EntityConstructor/PlanetEntity/PlanetEntity.cpp"
+        "src/Entities/EntityConstructor/PlanetRingEntity/PlanetRingEntity.cpp"
+        "src/Entities/EntityConstructor/StarsEntity/StarsEntity.cpp"
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
         "src/Entities/Serializer/Serializer.cpp"
