@@ -69,7 +69,7 @@ int main()
     factory->addEntityConstructor(test2);
     factory->createEntity("Test");
     factory->createEntity("Test2");
-   managerWrapper->getRenderManager()->init();
+    managerWrapper->getRenderManager()->init();
     while (isPlaying == true) {
         managerWrapper->getRenderManager()->graphicsUpdate();
         systemManager->updateAll();
