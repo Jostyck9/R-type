@@ -29,7 +29,10 @@ elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W -Wall")
 endif()
 
-
+if (WIN32)
+  find_package(dlfcn-win32 REQUIRED)
+  set(CMAKE_DL_LIBS dlfcn-win32::dl)
+endif ()
 
 # Compilation
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
