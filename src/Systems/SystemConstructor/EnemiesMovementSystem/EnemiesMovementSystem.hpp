@@ -31,7 +31,7 @@ public:
     EnemiesMovementSystem(std::shared_ptr<IManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
     ~EnemiesMovementSystem() = default;
     SystemResponse update() override;
-    void updateVelocityOnPattern(std::shared_ptr<ecs::components::EnemiesController> &controller, std::shared_ptr<ecs::components::Velocity> &velocityComp);
+    void updateVelocityOnPattern(std::shared_ptr<ecs::components::EnemiesController> &controller, std::shared_ptr<ecs::components::Velocity> &velocityComp, std::shared_ptr<ecs::components::Position> playerPos, std::shared_ptr<ecs::components::Position> pos);
     void spawnRandomEnnemies(std::shared_ptr<ecs::components::PlayerController> &controller);
 };
 

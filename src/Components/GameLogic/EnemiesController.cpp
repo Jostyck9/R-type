@@ -19,6 +19,8 @@ EnemiesController::EnemiesController(const std::string &type) : _shipType(type),
     _timer.start();
     if (_shipType == "Wave")
         _interval = 3;
+    if (_shipType == "Kamikaze")
+        _interval = 0.5;
 }
 
 EnemiesController::EnemiesController(const EnemiesController &oldEnemiesController)

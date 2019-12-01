@@ -21,13 +21,16 @@ EnemiesMovementSystem::EnemiesMovementSystem(std::shared_ptr<IManagerWrapper> &m
 SystemResponse EnemiesMovementSystem::update()
 {
     std::shared_ptr<ecs::components::Velocity> velocityComp;
+    std::shared_ptr<ecs::components::Position> playerPos;
     auto entities = _managerWrapper->getEntityManager()->getAllEntities();
 
     for (size_t i = 0; i < entities.size(); i++)
     {
         try {
             std::shared_ptr<ecs::components::PlayerController> playerCtrl = std::dynamic_pointer_cast<ecs::components::PlayerController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::PlayerController))));
+            playerPos = std::dynamic_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Position))));
             spawnRandomEnnemies(playerCtrl);
+
         }
         catch (const ComponentExceptions &e)
         {}
@@ -44,7 +47,7 @@ SystemResponse EnemiesMovementSystem::update()
             else
             {
                 velocityComp = std::dynamic_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Velocity))));
-                updateVelocityOnPattern(controller, velocityComp);
+                updateVelocityOnPattern(controller, velocityComp, playerPos, pos);
                 controller->getTimer().restart();
             }
         }
@@ -55,13 +58,30 @@ SystemResponse EnemiesMovementSystem::update()
     return SystemResponse();
 }
 
-void EnemiesMovementSystem::updateVelocityOnPattern(std::shared_ptr<ecs::components::EnemiesController> &controller, std::shared_ptr<ecs::components::Velocity> &velocityComp)
+void EnemiesMovementSystem::updateVelocityOnPattern(std::shared_ptr<ecs::components::EnemiesController> &controller, std::shared_ptr<ecs::components::Velocity> &velocityComp, std::shared_ptr<ecs::components::Position> playerPos, std::shared_ptr<ecs::components::Position> pos)
 {
     if (controller->getShipType() == "Basic")
         return;
     if (controller->getShipType() == "Wave")
     {
         velocityComp->setVelocityY(velocityComp->getVelocityY() * (-1));
+    }
+    if (controller->getShipType() == "Kamikaze")
+    {
+        if (playerPos == nullptr) {
+            velocityComp->setVelocityY(velocityComp->getVelocityY() * (-1));
+            return;
+        }
+        if (playerPos->getY() == pos->getY())
+            velocityComp->setVelocityX(-666);
+        if (playerPos->getY() < pos->getY()) {
+            velocityComp->setVelocityY((pos->getY() * (-1)));
+            velocityComp->setVelocityX(-200);
+        }
+        else if (playerPos->getY() > pos->getY()) {
+            velocityComp->setVelocityY((playerPos->getY() - pos->getY()));
+            velocityComp->setVelocityX(-200);
+        }
     }
 }
 
@@ -95,16 +115,16 @@ void EnemiesMovementSystem::spawnRandomEnnemies(std::shared_ptr<ecs::components:
             _entityFactory->createEntity("EnemyType02", pos);
             break;
         case 7:
-            _entityFactory->createEntity("Enemy", pos);
+            _entityFactory->createEntity("EnemyType03", pos);
             break;
         case 8:
-            _entityFactory->createEntity("Enemy", pos);
+            _entityFactory->createEntity("EnemyType03", pos);
             break;
         case 9:
-            _entityFactory->createEntity("Enemy", pos);
+            _entityFactory->createEntity("EnemyType03", pos);
             break;
         case 10:
-            _entityFactory->createEntity("Enemy", pos);
+            _entityFactory->createEntity("EnemyType03", pos);
             break;
         default:
             break;

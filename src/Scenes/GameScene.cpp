@@ -35,4 +35,5 @@ ecs::GameScene::GameScene(std::shared_ptr<Ecs> &ecs) : _ecs(ecs)
     _ecs->getEntityFactory()->createEntity("Enemy");
     _ecs->getEntityFactory()->createEntity("EnemyType01");
     _ecs->getEntityFactory()->createEntity("EnemyType02");
+    _ecs->getEntityFactory()->createEntity("EnemyType03");
 }
