@@ -55,10 +55,19 @@ namespace ecs::components
          * @return Timer& 
          */
         Timer &getTimer();
+
+        /**
+         * @brief Get the bullet Timer object
+         *
+         * @return Timer&
+         */
+        Timer &getBulletTimer();
+
     private:
         std::string _shipType;
         double _interval;
         Timer _timer;
+        Timer _timerBullet;
     };
 }
 

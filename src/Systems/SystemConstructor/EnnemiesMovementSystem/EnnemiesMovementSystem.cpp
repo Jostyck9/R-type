@@ -20,15 +20,25 @@ EnnemiesMovementSystem::EnnemiesMovementSystem(std::shared_ptr<IManagerWrapper> 
 SystemResponse EnnemiesMovementSystem::update()
 {
     std::shared_ptr<ecs::components::Velocity> velocityComp;
-    for (auto &it : _managerWrapper->getEntityManager()->getAllEntities())
-    {
-        try
-        {
-            std::shared_ptr<ecs::components::EnnemiesController> controller = std::dynamic_pointer_cast<ecs::components::EnnemiesController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::EnnemiesController))));
+    auto entities = _managerWrapper->getEntityManager()->getAllEntities();
+
+    for (size_t i = 0; i < entities.size(); i++) {
+        try {
+            auto positionComp = std::reinterpret_pointer_cast<ecs::components::Position>(
+                    _managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(),
+                                                                                              std::type_index(
+                                                                                                      typeid(ecs::components::Position))));
+            std::shared_ptr<ecs::components::EnnemiesController> controller = std::dynamic_pointer_cast<ecs::components::EnnemiesController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::EnnemiesController))));
+            if (controller->getBulletTimer().getElapsedMilliseconds() >=
+                controller->getBulletTimer().getEndTime()) {
+                _entityFactory->createEntity("EnemyBullet", std::make_pair(positionComp->getPosition().first,
+                                                                      positionComp->getPosition().second));
+                controller->getBulletTimer().restart(2000);
+            }
             if (controller->getTimer().getElapsedSeconds() < controller->getInterval()) {
                 continue;
             } else {
-            velocityComp = std::dynamic_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::Velocity))));
+            velocityComp = std::dynamic_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Velocity))));
             updateVelocityOnPattern(controller, velocityComp);
             controller->getTimer().restart();
             }

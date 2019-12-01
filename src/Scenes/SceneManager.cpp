@@ -8,6 +8,7 @@
 #include <EntityConstructor/BackgroundWithoutTitleEntity/BackgroundWithoutTitleEntity.hpp>
 #include <EntityConstructor/BackEntity/BackEntity.hpp>
 #include <RTypeExceptions.hpp>
+#include <EntityConstructor/EnemyBulletEntity/EnemyBulletEntity.hpp>
 #include "SystemResponse.hpp"
 #include "MenuScene.hpp"
 #include "GameScene.hpp"
@@ -45,12 +46,12 @@ namespace ecs {
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::StopEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::NameRoomEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::NumberPlayersEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::EnemyBulletEntity>());
 
         try {
             _ecs->getResourceManager()->getMusic("GameMusic")->play();
             _ecs->getResourceManager()->getMusic("GameMusic")->loop(true);
         } catch (const RTypeExceptions &e) {}
-
         createMenu();
         run();
     }
