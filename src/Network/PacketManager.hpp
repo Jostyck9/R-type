@@ -10,7 +10,7 @@
 
 #include <string>
 #include <list>
-#include "Render/Input.hpp"
+#include "Input.hpp"
 
 namespace ecs::network
 {

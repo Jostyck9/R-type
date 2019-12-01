@@ -39,3 +39,11 @@ std::string BackgroundMenuEntity::getName()
 {
     return std::string("BackgroundMenu");
 }
+
+extern "C"
+{
+    ecs::entities::IEntityConstructor *entryPoint()
+    {
+        return (new ecs::entities::BackgroundMenuEntity());
+    }
+}

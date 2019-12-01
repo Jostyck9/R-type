@@ -45,3 +45,11 @@ std::string BulletEntity::getName()
 {
     return std::string("Bullet");
 }
+
+extern "C"
+{
+    ecs::entities::IEntityConstructor *entryPoint()
+    {
+        return (new ecs::entities::BulletEntity());
+    }
+}

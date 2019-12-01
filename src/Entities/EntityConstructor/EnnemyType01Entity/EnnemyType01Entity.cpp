@@ -47,3 +47,11 @@ std::string EnnemyType01Entity::getName()
 {
     return std::string("EnnemyType01");
 }
+
+extern "C"
+{
+    ecs::entities::IEntityConstructor *entryPoint()
+    {
+        return (new ecs::entities::EnnemyType01Entity());
+    }
+}

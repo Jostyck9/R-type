@@ -7,10 +7,10 @@
 #include "ComponentManager.hpp"
 #include "Entity.hpp"
 #include "EntityManager.hpp"
-#include "Display/Sprite.hpp"
-#include "Physics/Position.hpp"
-#include "Display/Text.hpp"
-#include "Render/Input.hpp"
+#include "Sprite.hpp"
+#include "Position.hpp"
+#include "Text.hpp"
+#include "Input.hpp"
 
 #ifndef IRENDERMANAGER_HPP__
 #define IRENDERMANAGER_HPP__

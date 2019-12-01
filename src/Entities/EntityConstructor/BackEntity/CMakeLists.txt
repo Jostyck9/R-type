@@ -42,7 +42,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/ResourceManager/
         src/Entities/
         src/Entities/EntityConstructor/
-        src/Entities/EntityConstructor/TestEntity/ #This one added
+        src/Entities/EntityConstructor/BackEntity/ #This one added
         src/Entities/EntityManager/
         src/Entities/Factories/
         src/Entities/Serializer/
@@ -66,7 +66,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/)
 
 #r-type_client
-add_library(TestEntity SHARED
+add_library(BackEntity SHARED
         "src/Ecs.cpp"
         "src/Components/ComponentManager/ComponentManager.cpp"
         "src/Components/Display/Animator.cpp"
@@ -104,7 +104,7 @@ add_library(TestEntity SHARED
         "src/ResourceManager/Font.cpp"
         "src/ResourceManager/RtypeResources.cpp"
         "src/Entities/Entity.cpp"
-        "src/Entities/EntityConstructor/TestEntity/TestEntity.cpp" #This one added
+        "src/Entities/EntityConstructor/BackEntity/BackEntity.cpp" #This one added
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
         "src/Entities/Serializer/Serializer.cpp"
@@ -125,7 +125,7 @@ add_library(TestEntity SHARED
         "src/FactoriesWrapper/FactoriesWrapper.cpp"
         "src/Systems/SystemResponse/SystemResponse.cpp"
         )
-target_link_libraries(TestEntity ${CONAN_LIBS})
+target_link_libraries(BackEntity ${CONAN_LIBS})
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

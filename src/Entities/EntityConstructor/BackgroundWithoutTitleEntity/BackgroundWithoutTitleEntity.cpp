@@ -39,3 +39,11 @@ std::string BackgroundWithoutTitleEntity::getName()
 {
     return std::string("BackgroundWithoutTitle");
 }
+
+extern "C"
+{
+    ecs::entities::IEntityConstructor *entryPoint()
+    {
+        return (new ecs::entities::BackgroundWithoutTitleEntity());
+    }
+}

@@ -53,9 +53,7 @@ int main()
     std::shared_ptr<ISystemFactory> sysFactory = std::make_shared<SystemFactory>(managerWrapper, factory, systemManager);
 
     auto display = displaySystem.getInstance();
-    std::cout << "lol1" << std::endl;
     auto movement = movementSystem.getInstance();
-    std::cout << "lol2" << std::endl;
     sysFactory->addSystemConstructor(display);
     sysFactory->addSystemConstructor(movement);
     systemManager->addSystem(sysFactory->createSystem(display->create(managerWrapper, factory, systemManager->getEntitiesToDelete())->getName()));
@@ -70,12 +68,12 @@ int main()
     factory->createEntity("Test");
     factory->createEntity("Test2");
     managerWrapper->getRenderManager()->init();
-    while (isPlaying == true) {
-        managerWrapper->getRenderManager()->graphicsUpdate();
-        systemManager->updateAll();
-        isPlaying = managerWrapper->getRenderManager()->eventUpdate();
-    }
-    return 0;
+    // while (isPlaying == true) {
+    //     managerWrapper->getRenderManager()->graphicsUpdate();
+    //     systemManager->updateAll();
+    //     isPlaying = managerWrapper->getRenderManager()->eventUpdate();
+    // }
+    // return 0;
 }
 
 // #include <cstdlib>

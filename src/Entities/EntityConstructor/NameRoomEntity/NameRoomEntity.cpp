@@ -35,3 +35,11 @@ std::string NameRoomEntity::getName()
 {
     return std::string("ListRoom");
 }
+
+extern "C"
+{
+    ecs::entities::IEntityConstructor *entryPoint()
+    {
+        return (new ecs::entities::NameRoomEntity());
+    }
+}

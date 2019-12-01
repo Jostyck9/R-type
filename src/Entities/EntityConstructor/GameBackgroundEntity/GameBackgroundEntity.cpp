@@ -39,3 +39,11 @@ std::string GameBackgroundEntity::getName()
 {
     return std::string("GameBackground");
 }
+
+extern "C"
+{
+    ecs::entities::IEntityConstructor *entryPoint()
+    {
+        return (new ecs::entities::GameBackgroundEntity());
+    }
+}

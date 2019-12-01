@@ -49,3 +49,11 @@ std::string PlayerEntity::getName()
 {
     return std::string("Player");
 }
+
+extern "C"
+{
+    ecs::entities::IEntityConstructor *entryPoint()
+    {
+        return (new ecs::entities::PlayerEntity());
+    }
+}

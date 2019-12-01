@@ -37,6 +37,20 @@ conan_basic_setup()
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/TestEntity/CMakeLists.txt)
 include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/TestEntity2/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/BackEntity/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/BackgroundMenuEntity/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/BackgroundWithoutTitleEntity/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/BulletEntity/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/EnnemyEntity/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/EnnemyType01Entity/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/GameBackgroundEntity/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/NameRoomEntity/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/NumberPlayersEntity/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/PlayEntity/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/PlayerEntity/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/StopEntity/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/TestBackground/CMakeLists.txt)
+
 include(${CMAKE_CURRENT_SOURCE_DIR}/src/Systems/SystemConstructor/MovementSystem/CMakeLists.txt)
 include(${CMAKE_CURRENT_SOURCE_DIR}/src/Systems/SystemConstructor/Display/CMakeLists.txt)
 
@@ -57,6 +71,45 @@ set_property(TARGET DisplaySystem PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOU
 set_target_properties(DisplaySystem PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/systems)
 #set_property(TARGET Display PROPERTY IMPORTED_IMPLIB c:/path/to/bar.lib)
 
+set_property(TARGET BackEntity PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libBackEntity.so)
+set_target_properties(BackEntity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
+
+set_property(TARGET BackgroundMenuEntity PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libBackgroundMenuEntity.so)
+set_target_properties(BackgroundMenuEntity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
+
+set_property(TARGET BackgroundWithoutTitleEntity PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libBackgroundWithoutTitleEntity.so)
+set_target_properties(BackgroundWithoutTitleEntity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
+
+set_property(TARGET GameBackgroundEntity PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libGameBackgroundEntity.so)
+set_target_properties(GameBackgroundEntity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
+
+set_property(TARGET BulletEntity PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libBulletEntity.so)
+set_target_properties(BulletEntity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
+
+set_property(TARGET EnnemyEntity PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libEnnemyEntity.so)
+set_target_properties(EnnemyEntity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
+
+set_property(TARGET EnnemyType01Entity PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libEnnemyType01Entity.so)
+set_target_properties(EnnemyType01Entity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
+
+set_property(TARGET NameRoomEntity PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libNameRoomEntity.so)
+set_target_properties(NameRoomEntity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
+
+set_property(TARGET NumberPlayersEntity PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libNumberPlayersEntity.so)
+set_target_properties(NumberPlayersEntity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
+
+set_property(TARGET PlayEntity PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libPlayEntity.so)
+set_target_properties(PlayEntity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
+
+set_property(TARGET PlayerEntity PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libPlayerEntity.so)
+set_target_properties(PlayerEntity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
+
+set_property(TARGET StopEntity PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libStopEntity.so)
+set_target_properties(StopEntity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
+
+set_property(TARGET TestBackGround PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libTestBackGround.so)
+set_target_properties(TestBackGround PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
+
 
 include_directories(${CMAKE_INCLUDE_PATH}
         src/Loader/
@@ -71,21 +124,6 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/ResourceManager/
         src/Entities/
         src/Entities/EntityConstructor/
-        src/Entities/EntityConstructor/TestEntity/
-        src/Entities/EntityConstructor/TestEntity2/
-        src/Entities/EntityConstructor/PlayerEntity/
-        src/Entities/EntityConstructor/PlayEntity/
-        src/Entities/EntityConstructor/StopEntity/
-        src/Entities/EntityConstructor/EnnemyEntity/
-        src/Entities/EntityConstructor/EnnemyType01Entity/
-        src/Entities/EntityConstructor/BulletEntity/
-        src/Entities/EntityConstructor/BackgroundMenuEntity/
-        src/Entities/EntityConstructor/GameBackgroundEntity/
-        src/Entities/EntityConstructor/TestBackground/
-        src/Entities/EntityConstructor/NameRoomEntity/
-        src/Entities/EntityConstructor/NumberPlayersEntity/
-        src/Entities/EntityConstructor/BackgroundWithoutTitleEntity/
-        src/Entities/EntityConstructor/BackEntity/
         src/Entities/EntityManager/
         src/Entities/Factories/
         src/Entities/Serializer/
@@ -156,19 +194,6 @@ set(SOURCE_CLIENT
         "src/ResourceManager/Font.cpp"
         "src/ResourceManager/RtypeResources.cpp"
         "src/Entities/Entity.cpp"
-        "src/Entities/EntityConstructor/PlayerEntity/PlayerEntity.cpp"
-        "src/Entities/EntityConstructor/PlayEntity/PlayEntity.cpp"
-        "src/Entities/EntityConstructor/StopEntity/StopEntity.cpp"
-        "src/Entities/EntityConstructor/BulletEntity/BulletEntity.cpp"
-        "src/Entities/EntityConstructor/EnnemyEntity/EnnemyEntity.cpp"
-        "src/Entities/EntityConstructor/EnnemyType01Entity/EnnemyType01Entity.cpp"
-        "src/Entities/EntityConstructor/BackgroundMenuEntity/BackgroundMenuEntity.cpp"
-        "src/Entities/EntityConstructor/TestBackground/TestBackground.cpp"
-        "src/Entities/EntityConstructor/GameBackgroundEntity/GameBackgroundEntity.cpp"
-        "src/Entities/EntityConstructor/NameRoomEntity/NameRoomEntity.cpp"
-        "src/Entities/EntityConstructor/NumberPlayersEntity/NumberPlayersEntity.cpp"
-        "src/Entities/EntityConstructor/BackgroundWithoutTitleEntity/BackgroundWithoutTitleEntity.cpp"
-        "src/Entities/EntityConstructor/BackEntity/BackEntity.cpp"
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
         "src/Entities/Serializer/Serializer.cpp"
@@ -208,7 +233,7 @@ set(SOURCE_CLIENT
         "src/Network/Session/ClientSession.cpp"
         )
 add_executable(r-type_client ${SOURCE_CLIENT})
-target_link_libraries(r-type_client ${CONAN_LIBS} TestEntity TestEntity2 DisplaySystem MovementSystem ${CMAKE_DL_LIBS} "stdc++fs")
+target_link_libraries(r-type_client ${CONAN_LIBS} TestEntity TestEntity2 BulletEntity DisplaySystem MovementSystem BackEntity BackgroundMenuEntity BackgroundWithoutTitleEntity GameBackgroundEntity EnnemyEntity EnnemyType01Entity NameRoomEntity NumberPlayersEntity PlayEntity PlayerEntity StopEntity TestBackGround ${CMAKE_DL_LIBS} "stdc++fs")
 
 #r-type_server
 set(SOURCE_SERVER

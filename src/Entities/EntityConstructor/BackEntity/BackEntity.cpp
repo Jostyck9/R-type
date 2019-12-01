@@ -36,3 +36,11 @@ std::string BackEntity::getName()
 {
     return std::string("Back");
 }
+
+extern "C"
+{
+    ecs::entities::IEntityConstructor *entryPoint()
+    {
+        return (new ecs::entities::BackEntity());
+    }
+}

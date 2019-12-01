@@ -45,3 +45,11 @@ std::string TestBackground::getName()
 {
     return std::string("TestBackground");
 }
+
+extern "C"
+{
+    ecs::entities::IEntityConstructor *entryPoint()
+    {
+        return (new ecs::entities::TestBackground());
+    }
+}

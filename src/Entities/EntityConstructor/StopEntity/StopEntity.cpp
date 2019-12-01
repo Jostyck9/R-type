@@ -36,3 +36,11 @@ std::string StopEntity::getName()
 {
     return std::string("Stop");
 }
+
+extern "C"
+{
+    ecs::entities::IEntityConstructor *entryPoint()
+    {
+        return (new ecs::entities::StopEntity());
+    }
+}

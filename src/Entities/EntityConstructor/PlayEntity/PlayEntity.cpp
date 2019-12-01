@@ -36,3 +36,11 @@ std::string PlayEntity::getName()
 {
     return std::string("Play");
 }
+
+extern "C"
+{
+    ecs::entities::IEntityConstructor *entryPoint()
+    {
+        return (new ecs::entities::PlayEntity());
+    }
+}
