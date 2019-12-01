@@ -31,8 +31,8 @@ ecs::GameScene::GameScene(std::shared_ptr<Ecs> &ecs) : _ecs(ecs)
     _ecs->getEntityFactory()->createEntity("PlanetRing");
     _ecs->getEntityFactory()->createEntity("Stars");
     _ecs->getEntityFactory()->createEntity("Player");
-    _ecs->getEntityFactory()->createEntity("Enemy");
-    _ecs->getEntityFactory()->createEntity("EnemyType01");
-    _ecs->getEntityFactory()->createEntity("EnemyType02");
-    _ecs->getEntityFactory()->createEntity("EnemyType03");
+    _ecs->getEntityFactory()->createEntity("Enemy", std::make_pair(1600, 400));
+    _ecs->getEntityFactory()->createEntity("EnemyType01", std::make_pair(1650, 100));
+    _ecs->getEntityFactory()->createEntity("EnemyType02", std::make_pair(1650, 700));
+    _ecs->getEntityFactory()->createEntity("EnemyType03", std::make_pair(1650, 100));
 }

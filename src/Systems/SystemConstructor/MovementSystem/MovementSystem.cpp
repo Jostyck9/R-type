@@ -15,6 +15,7 @@
 #include "Rotation.hpp"
 #include "Velocity.hpp"
 #include "Sprite.hpp"
+#include "EnemiesController.hpp"
 
 using namespace ecs::system;
 using namespace ecs::components;
@@ -72,8 +73,7 @@ bool MovementSystem::isColliding(const data &box1, const data &box2) const
         box1.nextPos.first + box1.box->getX() + width > box2.pos->getX() + box2.box->getX() &&
         box2.pos->getX() + box2.box->getX() + box2.box->getWidth() > box1.nextPos.first + box1.box->getX() &&
         box1.nextPos.second + box1.box->getY() + height > box2.pos->getY() + box2.box->getY() &&
-        box2.pos->getY() + box2.box->getY() + box2.box->getHeight() > box1.nextPos.second + box1.box->getY()
-    )
+        box2.pos->getY() + box2.box->getY() + box2.box->getHeight() > box1.nextPos.second + box1.box->getY())
     {
         return true;
     }
@@ -114,15 +114,18 @@ void MovementSystem::updateAll(std::vector<data> &all)
             {
             }
         }
-		if (all[i].box != nullptr) {
-			if (all[i].box->getCollidedTags().size() != 0) {
-				collide = true;
-			}
-		}
-		if (!collide) {
-			all[i].pos->setPosition(all[i].nextPos);
-		}
-		collide = false;
+        if (all[i].box != nullptr)
+        {
+            if (all[i].box->getCollidedTags().size() != 0)
+            {
+                collide = true;
+            }
+        }
+        if (!collide)
+        {
+            all[i].pos->setPosition(all[i].nextPos);
+        }
+        collide = false;
     }
     _myTimer.restart();
 }
@@ -130,20 +133,35 @@ void MovementSystem::updateAll(std::vector<data> &all)
 void MovementSystem::deleteIfOutOfWindow(void)
 {
     auto entities = _managerWrapper->getEntityManager()->getAllEntities();
+    std::shared_ptr<ecs::components::Sprite> sprite;
+    std::shared_ptr<ecs::components::Position> pos;
+    std::shared_ptr<ecs::components::EnemiesController> ennemyCtrl;
     for (size_t i = 0; i < entities.size(); i++)
     {
         try
-        {   
-            std::shared_ptr<ecs::components::Sprite> sprite = std::dynamic_pointer_cast<ecs::components::Sprite>(_managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Sprite))));
-            std::shared_ptr<ecs::components::Position> pos = std::dynamic_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Position))));
-            if ((pos->getX() < (0 - sprite->getRect().getWidth())) || (pos->getX() > (1510)))
-            {
-                _entitiesToDelete.push_front(entities[i]->getID());
-            }
+        {
+            sprite = std::dynamic_pointer_cast<ecs::components::Sprite>(_managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Sprite))));
+            pos = std::dynamic_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Position))));
         }
         catch (ComponentExceptions &e)
         {
             continue;
+        }
+        try
+        {
+            ennemyCtrl = std::dynamic_pointer_cast<ecs::components::EnemiesController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::EnemiesController))));
+            if ((pos->getX() < (0 - sprite->getRect().getWidth())) || (pos->getX() > (1700)))
+            {
+                _entitiesToDelete.push_front(entities[i]->getID());
+            }
+            continue;
+        }
+        catch (ComponentExceptions &e)
+        {
+        }
+        if ((pos->getX() < (0 - sprite->getRect().getWidth())) || (pos->getX() > (1510)))
+        {
+            _entitiesToDelete.push_front(entities[i]->getID());
         }
     }
 }
