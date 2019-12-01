@@ -93,6 +93,74 @@ bool PacketManager::addRotation(int entityIndex, float angleRad)
     return true;
 }
 
+bool PacketManager::addSprite(int entityIndex, bool visible, Rect rect, std::string &idTexture)
+{
+    size_t size = MAX_ID_SIZE;
+
+    setCmd(UPDATE);
+    setRes(true);
+    if (entityIndex < 0 || entityIndex >= packet.data._entities.size || packet.data._entities.list[entityIndex].nbrComponents >= MAX_COMPONENTS)
+        return false;
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)].type = SPRITE;
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._sprite.visible = visible;
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._sprite._rect = rect;
+    if (idTexture.size() < MAX_ID_SIZE)
+        size = idTexture.size();
+    std::strncpy(packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._sprite._id, idTexture.c_str(), size);
+    return true;
+}
+
+bool PacketManager::addText(int entityIndex, ecs::Color color, int size, std::pair<int, int> pos, std::string &id)
+{
+    size_t sizeMsg = MAX_ID_SIZE;
+
+    setCmd(UPDATE);
+    setRes(true);
+    if (entityIndex < 0 || entityIndex >= packet.data._entities.size || packet.data._entities.list[entityIndex].nbrComponents >= MAX_COMPONENTS)
+        return false;
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)].type = TEXT;
+
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._text._color = color;
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._text._posX = pos.first;
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._text._posY = pos.second;
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._text._size = size;
+    if (id.size() < MAX_ID_SIZE)
+        sizeMsg = id.size();
+    std::strncpy(packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._text._str, id.c_str(), sizeMsg);
+    return true;
+}
+
+bool PacketManager::addParralax(int entityIndex, Rect rect, int move, float interval, int offset)
+{
+    setCmd(UPDATE);
+    setRes(true);
+    if (entityIndex < 0 || entityIndex >= packet.data._entities.size || packet.data._entities.list[entityIndex].nbrComponents >= MAX_COMPONENTS)
+        return false;
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)].type = PARRALAX;
+
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._parallax._interval = interval;
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._parallax._move = move;
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._parallax._offset = offset;
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._parallax._rect = rect;
+    return true;
+}
+
+bool PacketManager::addAnimator(int entityIndex, Rect rect, int maxRep, int currentRep, float interval, int offset)
+{
+    setCmd(UPDATE);
+    setRes(true);
+    if (entityIndex < 0 || entityIndex >= packet.data._entities.size || packet.data._entities.list[entityIndex].nbrComponents >= MAX_COMPONENTS)
+        return false;
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)].type = ANIMATOR;
+
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._animator._currentRep = currentRep;
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._animator._interval = interval;
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._animator._maxRep = maxRep;
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._animator._offset = offset;
+    packet.data._entities.list[entityIndex].components[static_cast<int>(packet.data._entities.list[entityIndex].nbrComponents)]._animator._rect = rect;
+    return true;
+}
+
 int PacketManager::addRoom(const Room &room)
 {
     setCmd(GETROOMS);

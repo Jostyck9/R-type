@@ -10,6 +10,7 @@
 
 #include <string>
 #include <list>
+#include "Color.hpp"
 #include "Render/Input.hpp"
 
 namespace ecs::network
@@ -17,12 +18,48 @@ namespace ecs::network
 enum ComponentType : char
 {
     POSITION,
-    ROTATION
+    ROTATION,
+    SPRITE,
+    TEXT,
+    ANIMATOR,
+    PARRALAX
 };
 
 class PacketManager
 {
 public:
+    enum
+    {
+        MAX_LENGTH = 1024,
+        MAX_PSEUDO_SIZE = 10,
+        MAX_PLAYER = 4,
+        MAX_COMPONENTS = 6,
+        MAX_ROOM = 8,
+        MAX_KEYS = 15,
+        MAX_ID_SIZE = 15
+    };
+
+    enum CMD : char
+    {
+        HANDSHAKE,
+        ISREADY,
+        JOINROOM,
+        GETROOMS,
+        LEAVEROOM,
+
+        ISALIVE,
+        LAUNCHGAME,
+        UPDATE
+    };
+
+    struct Rect
+    {
+        int _width;
+        int _height;
+        int _posX;
+        int _posY;
+    };
+
     struct Component
     {
         ComponentType type;
@@ -37,30 +74,42 @@ public:
             {
                 int radAngle;
             } _rotation;
+
+            struct
+            {
+                bool visible;
+                Rect _rect;
+                char _id[MAX_ID_SIZE];
+            } _sprite;
+
+            struct
+            {
+                ecs::Color _color;
+                int _size;
+                int _posX;
+                int _posY;
+                char _str[MAX_ID_SIZE];
+            } _text;
+
+            struct
+            {
+                Rect _rect;
+                int _move;
+                float _interval;
+                int _offset;
+            } _parallax;
+
+            struct
+            {
+                Rect _rect;
+                int _maxRep;
+                int _currentRep;
+                float _interval;
+                int _offset;
+            } _animator;
+            
+
         };
-    };
-
-    enum
-    {
-        MAX_LENGTH = 1024,
-        MAX_PSEUDO_SIZE = 10,
-        MAX_PLAYER = 4,
-        MAX_COMPONENTS = 7,
-        MAX_ROOM = 8,
-        MAX_KEYS = 15
-    };
-
-    enum CMD : char
-    {
-        HANDSHAKE,
-        ISREADY,
-        JOINROOM,
-        GETROOMS,
-        LEAVEROOM,
-
-        ISALIVE,
-        LAUNCHGAME,
-        UPDATE
     };
 
     struct Entity
@@ -136,13 +185,11 @@ private:
             char _msg[MAX_MSG_LENGTH];
         };
     };
-    
+
     union PacketData {
         char rawData[MAX_LENGTH];
         struct Data data;
     };
-    
-    
 
 public:
     PacketData packet;
@@ -226,6 +273,54 @@ public:
     bool addRotation(int entityIndex, float angleRad);
 
     /**
+     * @brief Add a sprite component, returns false if the number of components to add is atteint
+     * 
+     * @param visible 
+     * @param rect 
+     * @param idTexture 
+     * @return true 
+     * @return false 
+     */
+    bool addSprite(int entityIndex, bool visible, Rect rect, std::string &idTexture);
+
+    /**
+     * @brief Add a Text component, returns false if the number of components to add is atteint
+     * 
+     * @param color 
+     * @param size 
+     * @param pos 
+     * @param id 
+     * @return true 
+     * @return false 
+     */
+    bool addText(int entityIndex, ecs::Color color, int size, std::pair<int, int> pos, std::string &id);
+
+    /**
+     * @brief Add a parralax component, returns false if the number of components to add is atteint
+     * 
+     * @param rect 
+     * @param move 
+     * @param interval 
+     * @param offset 
+     * @return true 
+     * @return false 
+     */
+    bool addParralax(int entityIndex, Rect rect, int move, float interval, int offset);
+
+    /**
+     * @brief Add an animator, returns false if the number of components to add is atteint
+     * 
+     * @param rect 
+     * @param maxRep 
+     * @param currentRep 
+     * @param interval 
+     * @param offset 
+     * @return true 
+     * @return false 
+     */
+    bool addAnimator(int entityIndex, Rect rect, int maxRep, int currentRep, float interval, int offset);
+
+    /**
      * @brief Add a room in the packet and returns his index
      * 
      * @param room 
@@ -296,7 +391,7 @@ public:
      * @param msg 
      */
     void setMsg(const std::string &msg);
-    
+
     /**
      * @brief Get the Msg object
      * 
