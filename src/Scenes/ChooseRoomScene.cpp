@@ -3,6 +3,7 @@
 //
 
 #include <memory>
+#include <SystemConstructor/ParallaxSystem/ParallaxSystem.hpp>
 #include "ButtonColorSystem.hpp"
 #include "ChooseRoomSystem.hpp"
 #include "ChooseRoomScene.hpp"
@@ -17,8 +18,10 @@ ecs::ChooseRoomScene::ChooseRoomScene(std::shared_ptr<Ecs> &ecs) : _ecs(ecs)
     _ecs->getSystemManager()->addSystem(std::make_shared<system::DisplaySystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
     _ecs->getSystemManager()->addSystem(std::make_shared<system::ChooseRoomSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
     _ecs->getSystemManager()->addSystem(std::make_shared<system::ButtonColorSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
+    _ecs->getSystemManager()->addSystem(std::make_shared<system::ParallaxSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
 
     _ecs->getEntityFactory()->createEntity("BackgroundWithoutTitle");
+    _ecs->getEntityFactory()->createEntity("Stars");
     _ecs->getEntityFactory()->createEntity("ListRoom", std::make_pair(525, 100));
     _ecs->getEntityFactory()->createEntity("NumberPlayers", std::make_pair(850, 100));
     _ecs->getEntityFactory()->createEntity("ListRoom", std::make_pair(525, 200));
