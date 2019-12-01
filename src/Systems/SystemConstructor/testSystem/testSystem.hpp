@@ -21,10 +21,23 @@ namespace ecs::system
         testSystem();
         ~testSystem();
 
+        /**
+         * @brief create the test System
+         * 
+         * @param managerWrapper 
+         * @param entityFactory 
+         * @param entitiesToDelete 
+         * @return std::shared_ptr<ecs::system::ISystem> 
+         */
         std::shared_ptr<ecs::system::ISystem> create(std::shared_ptr<IManagerWrapper> &managerWrapper,
             std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory,
             std::list<int> &entitiesToDelete) override;
 
+        /**
+         * @brief Get the Name object
+         * 
+         * @return std::string 
+         */
         std::string getName() override;
     };
 }

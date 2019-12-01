@@ -45,10 +45,36 @@ namespace ecs::components
          */
         const std::type_index getType() const;
         bool operator==(Sprite &other);
+        /**
+         * @brief Get the Name object
+         * 
+         * @return std::string 
+         */
         std::string getName() const;
+        /**
+         * @brief Get the Rect object
+         * 
+         * @return const ecs::Rect& 
+         */
         const ecs::Rect &getRect() const;    
+        /**
+         * @brief Set the Rect object
+         * 
+         * @param rect 
+         */
         void setRect(const Rect &rect);
+        /**
+         * @brief Get the Is Visible object
+         * 
+         * @return true 
+         * @return false 
+         */
         const bool &getIsVisible() const;
+        /**
+         * @brief Set the Is Visible object
+         * 
+         * @param state 
+         */
         void setIsVisible(bool &state);
         
     private:

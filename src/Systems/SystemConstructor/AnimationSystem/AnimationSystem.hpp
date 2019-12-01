@@ -15,7 +15,6 @@
 #include "ASystem.hpp"
 #include "SystemResponse.hpp"
 
-
 namespace ecs::system
 {
 class AnimationSystem : public ASystem
@@ -30,6 +29,11 @@ public:
      */
     AnimationSystem(std::shared_ptr<IManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
     ~AnimationSystem() = default;
+    /**
+     * @brief update
+     * 
+     * @return SystemResponse 
+     */
     SystemResponse update() override;
 };
 

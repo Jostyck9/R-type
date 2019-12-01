@@ -30,8 +30,8 @@ public:
     virtual std::shared_ptr<ecs::entities::Entity> create(
         std::shared_ptr<IEntityManager> &entityManager,
         std::shared_ptr<ecs::components::IComponentManager> &componentsManager,
-        std::pair<float, float> pos = std::make_pair(0,0),
-        std::pair<float, float> velocity = std::make_pair(0,0),
+        std::pair<float, float> pos = std::make_pair(0, 0),
+        std::pair<float, float> velocity = std::make_pair(0, 0),
         float rotation = 0) = 0;
 
     /**

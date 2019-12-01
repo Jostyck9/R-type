@@ -30,6 +30,11 @@ public:
      */
     ParallaxSystem(std::shared_ptr<IManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
     ~ParallaxSystem() = default;
+    /**
+     * @brief update
+     * 
+     * @return SystemResponse 
+     */
     SystemResponse update() override;
 };
 

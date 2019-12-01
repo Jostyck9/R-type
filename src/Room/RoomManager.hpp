@@ -41,6 +41,11 @@ class RoomManager {
      */
     std::vector<std::shared_ptr<Room>> &getRooms();
 
+    /**
+     * @brief Get the Nb Room object
+     * 
+     * @return size_t 
+     */
     size_t getNbRoom() const;
 
     /**

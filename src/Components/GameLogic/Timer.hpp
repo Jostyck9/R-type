@@ -60,9 +60,30 @@ namespace ecs::components
          */
         double getElapsedSeconds();
 
+        /**
+         * @brief Get the Start object
+         * 
+         * @return const std::chrono::time_point<std::chrono::system_clock>& 
+         */
         const std::chrono::time_point<std::chrono::system_clock> &getStart() const;
+        /**
+         * @brief Get the Stop object
+         * 
+         * @return const std::chrono::time_point<std::chrono::system_clock>& 
+         */
         const std::chrono::time_point<std::chrono::system_clock> &getStop() const;
+        /**
+         * @brief Get the End Time object
+         * 
+         * @return double 
+         */
         double getEndTime() const;
+        /**
+         * @brief get if this is the end time (#Endgame)
+         * 
+         * @return true 
+         * @return false 
+         */
         bool isRunning();
 
         /**

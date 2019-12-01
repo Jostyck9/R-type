@@ -21,6 +21,12 @@ namespace ecs::system
         ButtonColorSystem(std::shared_ptr<ecs::IManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
         ~ButtonColorSystem() = default;
 
+        /**
+         * @brief update
+         * 
+         * @return SystemResponse 
+         */
+
         SystemResponse update() override;
 
     };

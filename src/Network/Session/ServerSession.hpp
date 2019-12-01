@@ -56,12 +56,54 @@ namespace ecs::network {
         bool isPacketValid();
         bool setMsgPacket(const std::string &msg);
 
+        /**
+         * @brief check if a player leave the room
+         * 
+         * @return true 
+         * @return false 
+         */
         bool manageLeaveRoom();
+        /**
+         * @brief check if a player join the room
+         * 
+         * @return true 
+         * @return false 
+         */
         bool manageJoinRoom();
+        /**
+         * @brief check all the rooms
+         * 
+         * @return true 
+         * @return false 
+         */
         bool manageGetRooms();
+        /**
+         * @brief check if player and the server are always connected
+         * 
+         * @return true 
+         * @return false 
+         */
         bool manageHandShake();
+        /**
+         * @brief check if the player is ready
+         * 
+         * @return true 
+         * @return false 
+         */
         bool manageIsReady();
+        /**
+         * @brief check if the server can launch the game
+         * 
+         * @return true 
+         * @return false 
+         */
         bool manageLaunchGame();
+        /**
+         * @brief Manage all updates
+         * 
+         * @return true 
+         * @return false 
+         */
         bool manageUpdate();
     };
 }
