@@ -96,6 +96,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Utils/
         src/FactoriesWrapper/
         src/Scenes/
+        src/TestNetwork/
         src/)
 
 #r-type_client
@@ -195,10 +196,11 @@ set(SOURCE_CLIENT
         "src/Utils/Rect.cpp"
         "src/FactoriesWrapper/FactoriesWrapper.cpp"
         "src/Systems/SystemResponse/SystemResponse.cpp"
-        src/Network/Client/UDPClient.cpp
-        src/Network/PacketManager.cpp
-        src/Network/AUDPNetwork.cpp
-        src/Network/Session/ClientSession.cpp
+        "src/Network/Client/UDPClient.cpp"
+        "src/Network/PacketManager.cpp"
+        "src/Network/AUDPNetwork.cpp"
+        "src/Network/Session/ClientSession.cpp"
+        "src/TestNetwork/TestNetwork.cpp"
         )
 add_executable(r-type_client ${SOURCE_CLIENT})
 target_link_libraries(r-type_client ${CONAN_LIBS})
