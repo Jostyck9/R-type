@@ -116,12 +116,15 @@ void MovementSystem::updateAll(std::vector<data> &all)
         }
         if (all[i].box != nullptr)
         {
-            if (all[i].box->getCollidedTags().size() != 0 && !all[i].box->isTriggered())
+			if (all[i].box->isTriggered()) {
+				collide = false;
+			}
+            else if (all[i].box->getCollidedTags().size() != 0)
             {
                 collide = true;
             }
         }
-        if (!collide)
+        if (all[i].box == nullptr || !collide)
         {
             all[i].pos->setPosition(all[i].nextPos);
         }
