@@ -6,6 +6,7 @@
 */
 
 #include <iostream>
+#include <GameLogic/EnemyShoot.hpp>
 #include "Physics/Velocity.hpp"
 #include "ComponentExceptions.hpp"
 #include "PlayerController.hpp"
@@ -24,36 +25,32 @@ SystemResponse EnemiesMovementSystem::update()
     std::shared_ptr<ecs::components::Position> playerPos;
     auto entities = _managerWrapper->getEntityManager()->getAllEntities();
 
-    for (size_t i = 0; i < entities.size(); i++)
-    {
+    for (size_t i = 0; i < entities.size(); i++) {
         try {
             std::shared_ptr<ecs::components::PlayerController> playerCtrl = std::dynamic_pointer_cast<ecs::components::PlayerController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::PlayerController))));
             playerPos = std::dynamic_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Position))));
             spawnRandomEnemies(playerCtrl);
-
-        }
-        catch (const ComponentExceptions &e)
-        {}
-        try
-        {
+        } catch (const ComponentExceptions &e) {}
+        try {
             std::shared_ptr<ecs::components::EnemiesController> controller = std::dynamic_pointer_cast<ecs::components::EnemiesController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::EnemiesController))));
             std::shared_ptr<ecs::components::Position> pos = std::dynamic_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Position))));
             std::shared_ptr<ecs::components::Sprite> sprite = std::dynamic_pointer_cast<ecs::components::Sprite>(_managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Sprite))));
 
-            if (controller->getTimer().getElapsedSeconds() < controller->getInterval())
-            {
-                continue;
+            auto positionComp = std::reinterpret_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Position))));
+            auto enemyShootComp = std::reinterpret_pointer_cast<ecs::components::EnemyShoot>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::EnemyShoot))));
+            if (enemyShootComp->getCanShoot() && enemyShootComp->getBulletTimer().getElapsedMilliseconds() >= enemyShootComp->getBulletTimer().getEndTime()) {
+                _entityFactory->createEntity("EnemyBullet", std::make_pair(positionComp->getPosition().first,
+                                                                           positionComp->getPosition().second + 50));
+                enemyShootComp->getBulletTimer().restart(enemyShootComp->getEndTime());
             }
-            else
-            {
+            if (controller->getTimer().getElapsedSeconds() < controller->getInterval())
+                continue;
+            else {
                 velocityComp = std::dynamic_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Velocity))));
                 updateVelocityOnPattern(controller, velocityComp, playerPos, pos);
                 controller->getTimer().restart();
             }
-        }
-        catch (const ComponentExceptions &e)
-        {
-        }
+        } catch (const ComponentExceptions &e) {}
     }
     return SystemResponse();
 }

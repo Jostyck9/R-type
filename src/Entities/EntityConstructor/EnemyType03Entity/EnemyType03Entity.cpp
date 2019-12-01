@@ -5,6 +5,7 @@
 ** EnemyType03Entity.cpp
 */
 
+#include <GameLogic/EnemyShoot.hpp>
 #include "EnemyType03Entity.hpp"
 #include "Physics/Rotation.hpp"
 #include "Physics/Position.hpp"
@@ -42,6 +43,7 @@ std::shared_ptr<ecs::entities::Entity> EnemyType03Entity::create(
     componentsManager->addGameLogicComponent(std::make_shared<ecs::components::Health>(1), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("enemyType03", spriteRect, true), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 16, 0.01), toCreate);
+    componentsManager->addGameLogicComponent(std::make_shared<ecs::components::EnemyShoot>(false), toCreate);
     return toCreate;
 }
 

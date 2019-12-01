@@ -55,6 +55,13 @@ namespace ecs::system {
                         playerControllerComp->getTimer().restart(500);
                     }
                 }
+                auto collisionComp = std::reinterpret_pointer_cast<ecs::components::Collision>(
+                        _managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(),
+                                                                                                  std::type_index(
+                                                                                                          typeid(ecs::components::Collision))));
+                if (!collisionComp->getCollidedTags().empty()) {
+                    std::cout << "coucou" << std::endl;
+                }
             } catch (const ComponentExceptions &e) {}
         }
         return SystemResponse();

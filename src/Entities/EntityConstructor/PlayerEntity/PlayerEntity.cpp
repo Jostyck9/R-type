@@ -35,7 +35,7 @@ std::shared_ptr<ecs::entities::Entity> PlayerEntity::create(
 
     Rect spriteRect(80, 40, 0, 0);
     entityManager->addEntity(toCreate);
-    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(30, 30), toCreate);
+    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(300, 300), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(0, 0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(true, 0, 0, 20, 20, "Player"), toCreate);

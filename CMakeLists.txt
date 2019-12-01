@@ -120,6 +120,7 @@ set(SOURCE_CLIENT
         "src/Components/GameLogic/Timer.cpp"
         "src/Components/GameLogic/PlayerController.cpp"
         "src/Components/GameLogic/EnemiesController.cpp"
+        "src/Components/GameLogic/EnemyShoot.cpp"
         "src/Components/IO/GameController.cpp"
         "src/Components/IO/Keyboard.cpp"
         "src/Components/IO/Output.cpp"
