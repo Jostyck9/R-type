@@ -40,7 +40,7 @@ namespace ecs::system {
                         _managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(),
                                                                                                   std::type_index(
                                                                                                           typeid(ecs::components::Position))));
-                updateVelocityOnInput(keys, velocityComp);
+                updateVelocityOnInput(keys, velocityComp, positionComp);
                 if (keys[ecs::input::SPACE] == IRenderManager::PRESSED) {
                     if (playerControllerComp->getTimer().getElapsedMilliseconds() >=
                         playerControllerComp->getTimer().getEndTime()) {
@@ -60,17 +60,18 @@ namespace ecs::system {
         return SystemResponse();
     }
 
-void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, IRenderManager::KEY_STATE> &keys,
-                                                     std::shared_ptr<ecs::components::Velocity> &velocityComp) {
-        if (keys[ecs::input::LEFT] == IRenderManager::PRESSED)
+    void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, IRenderManager::KEY_STATE> &keys,
+                                                     std::shared_ptr<ecs::components::Velocity> &velocityComp,
+                                                     std::shared_ptr<ecs::components::Position> &positionComp) {
+        if (keys[ecs::input::LEFT] == IRenderManager::PRESSED && positionComp->getX() > 5)
             velocityComp->setVelocityX(-180);
-        else if (keys[ecs::input::RIGHT] == IRenderManager::PRESSED)
+        else if (keys[ecs::input::RIGHT] == IRenderManager::PRESSED && positionComp->getX() < 1400)
             velocityComp->setVelocityX(180);
         else
             velocityComp->setVelocityX(0);
-        if (keys[ecs::input::UP] == IRenderManager::PRESSED)
+        if (keys[ecs::input::UP] == IRenderManager::PRESSED && positionComp->getY() > 20)
             velocityComp->setVelocityY(-180);
-        else if (keys[ecs::input::DOWN] == IRenderManager::PRESSED)
+        else if (keys[ecs::input::DOWN] == IRenderManager::PRESSED && positionComp->getY() < 850)
             velocityComp->setVelocityY(180);
         else
             velocityComp->setVelocityY(0);
