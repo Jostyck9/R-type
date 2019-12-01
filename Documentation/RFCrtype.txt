@@ -1,0 +1,430 @@
+
+
+
+
+Network Working Group                                         H. Beaupel
+Internet-Draft                                              R-Type, Inc.
+Intended status: Informational                         November 19, 2019
+Expires: May 22, 2020
+
+
+                         A R-Type UDP Protocol
+                          R-Type RFC Protocol
+
+Abstract
+
+   abstract here
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at http://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on May 22, 2020.
+
+Copyright Notice
+
+   Copyright (c) 2019 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+
+
+
+
+
+
+Beaupel                   Expires May 22, 2020                  [Page 1]
+
+Internet-Draft                    UDP-P                    November 2019
+
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+     1.1.  Terminology . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  R-Type Protocol . . . . . . . . . . . . . . . . . . . . . . .   2
+     2.1.  UDP Packet  . . . . . . . . . . . . . . . . . . . . . . .   3
+     2.2.  Client Response . . . . . . . . . . . . . . . . . . . . .   3
+     2.3.  Server Response . . . . . . . . . . . . . . . . . . . . .   3
+   3.  Server to Client Command  . . . . . . . . . . . . . . . . . .   3
+     3.1.  ISALIVE . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     3.2.  ISREADY . . . . . . . . . . . . . . . . . . . . . . . . .   4
+     3.3.  JOINROOM  . . . . . . . . . . . . . . . . . . . . . . . .   4
+     3.4.  GETROOMS  . . . . . . . . . . . . . . . . . . . . . . . .   4
+     3.5.  LEAVEROOM . . . . . . . . . . . . . . . . . . . . . . . .   4
+     3.6.  LAUNCHGAME  . . . . . . . . . . . . . . . . . . . . . . .   4
+     3.7.  UPDATE  . . . . . . . . . . . . . . . . . . . . . . . . .   5
+   4.  Client to Server Command  . . . . . . . . . . . . . . . . . .   5
+     4.1.  ISALIVE . . . . . . . . . . . . . . . . . . . . . . . . .   5
+     4.2.  HANDSHAKE . . . . . . . . . . . . . . . . . . . . . . . .   6
+     4.3.  JOINROOM  . . . . . . . . . . . . . . . . . . . . . . . .   6
+     4.4.  LEAVEROOM . . . . . . . . . . . . . . . . . . . . . . . .   6
+     4.5.  ISREADY . . . . . . . . . . . . . . . . . . . . . . . . .   6
+     4.6.  GETROOMS  . . . . . . . . . . . . . . . . . . . . . . . .   6
+     4.7.  UPDATE  . . . . . . . . . . . . . . . . . . . . . . . . .   6
+   5.  Error . . . . . . . . . . . . . . . . . . . . . . . . . . . .   7
+   6.  Normative References  . . . . . . . . . . . . . . . . . . . .   7
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   7
+
+1.  Introduction
+
+   This document is here to provide the protocol used in our R-Type You
+   can find the project here : https://github.com/Jostyck9/R-type
+
+1.1.  Terminology
+
+   In this document, the key words "MUST", "MUST NOT", "REQUIRED",
+   "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY",
+   and "OPTIONAL" are to be interpreted as described in BCP 14, RFC 2119
+   [RFC2119].
+
+2.  R-Type Protocol
+
+   protocol
+
+
+
+
+
+
+
+
+Beaupel                   Expires May 22, 2020                  [Page 2]
+
+Internet-Draft                    UDP-P                    November 2019
+
+
+2.1.  UDP Packet
+
+   The packet is of size 1024 bytes, he is define like this:
+
+       0       7 8     15 16
+       +--------+--------+
+       |  RES   |   CMD  |
+       |        |        |
+       +--------+--------+
+       |                 |
+       |   MAGIC NUMBER  |
+       +                 +
+       |                 |
+       |                 |
+       +------------------
+       |                 |
+       |  data bytes ..  |
+       +------------------
+
+   Res is a byte defining the result of the request, 0x00 for false and
+   0x01 for true, (if the res is false a message will be given)
+
+   CMD is a byte defining the CMD use in the packet HANDSHAKE : 0x00,
+   ISREADY : 0x01, JOINROOM : 0x02, GETROOMS : 0x03, LEAVEROOM : 0x04,
+   ISALIVE : 0x05, LAUNCHGAME : 0x06, UPDATE : 0x07
+
+   MAGIC Number = 42; it's on 8 bytes
+
+2.2.  Client Response
+
+   Client MAY send a response after receiving a packet.  The response
+   SHOULD be composed of the magic number and a response OK / KO.
+   Optionally we can add a message to detail the answer.
+
+   If it's an UPDATE cmd, no responses is required
+
+2.3.  Server Response
+
+   Server MUST send a response after receiving a packet.  The response
+   SHOULD be composed of the magic number and a response OK / KO.
+   Optionally we can add a message to detail the answer.
+
+   If it's an UPDATE cmd, no responses is required
+
+3.  Server to Client Command
+
+3.1.  ISALIVE
+
+   The client MUST respond when asking if the server is Alive
+
+   No data SHOULD be given after the MAGIC NUMBER
+
+
+
+
+Beaupel                   Expires May 22, 2020                  [Page 3]
+
+Internet-Draft                    UDP-P                    November 2019
+
+
+3.2.  ISREADY
+
+   The server MUST respond to the client with a ISREADY cmd
+
+   No data SHOULD be given after the MAGIC NUMBER
+
+3.3.  JOINROOM
+
+   The server MUST respond to the client if the cmd is a success with a
+   JOINROOM packet.
+
+   No data SHOULD be given after the MAGIC NUMBER
+
+3.4.  GETROOMS
+
+   The server must respond to the server the list of rooms available on
+   ther server
+
+   DATA: 
+   - The number of room sent on 8 bytes - A list of n room
+
+   A room is define like this: 
+   - IsOpen indicates if the room is open on
+   a byte, true (0x01) or false (0x00) 
+   - IsStarted indicates if the game
+   is started on the room on a byte true (0x01) or false (0x00) 
+   - Id of the room to use for joining on 1 byte 
+   - NumberOfPlayers currently in
+   the room on 1 byte 
+   - NumberOfPlayers max in the room on 1 byte - A
+   list of 4 players info
+
+   A player is define by : 
+   - IsReady state tells if the player is ready
+   to play, true (0x01) or false (0x00) 
+   - A string on 10 bytes for his
+   pseudo
+
+3.5.  LEAVEROOM
+
+   The server MUST respond to the client when receiving a LEAVEROOM
+   request
+
+   No data SHOULD be given after the MAGIC NUMBER
+
+3.6.  LAUNCHGAME
+
+   Notify the clients when the game is launching the clients MUST
+   respond with a LAUNCHGAME packet
+
+   No data SHOULD be given after the MAGIC NUMBER
+
+
+
+
+
+
+
+Beaupel                   Expires May 22, 2020                  [Page 4]
+
+Internet-Draft                    UDP-P                    November 2019
+
+
+3.7.  UPDATE
+
+   Send all the entities to the clients to display
+
+   DATA: 
+   - The number of entities sent in the packet on 1 byte - A list
+   of n Entity
+
+   An entitiy is defined by : 
+   - An unsigned number on 8 byte for his id
+   - The number of components in the entity on 1 byte 
+   - A list of n components
+
+   A component is defined by : 
+   - The type of the component on 1 byte 
+   - The data of the component...
+
+   For a POSITION component (0x00) 
+   - The position on x on 8 bytes 
+   - The position on y on 8 bytes
+
+   For a ROTATION component (0x01) 
+   - The angle in radian on 8 bytes
+
+   For a SPRITE component (0x02) 
+   - A state to say if the sprite is
+   visible on 1 byte, true (0x01) or false (0x00) 
+   - The width on 8 bytes
+   - The height on 8 bytes 
+   - The position on x on 8 bytes 
+   - The position
+   on y on 8 bytes 
+   - A string for the id of the texture to use on 15
+   bytes
+
+   For a TEXT component (0x03) 
+   - A color on 4 bytes (see documentation
+   to see the colors available) 
+   - The offset for the animation to move
+   on 8 bytes 
+   - The interval of time to move on 
+   - The position on y on 8
+   bytes 
+   - A string for the id of the texture to use on 15 bytes
+
+   For a PARALLAX component (0x04) 
+   - The width on 8 bytes 
+   - The height on 8 bytes 
+   - The position on x on 8 bytes 
+   - The position on y on 8 bytes 
+   - The offset on 8 bytes 
+   - The interval of time to animate on 8 bytes 
+   - The limit of the animation on 8 bytes
+
+   For a ANIMATOR component (0x05) 
+   - The width on 8 bytes 
+   - The height on 8 bytes 
+   - The position on x on 8 bytes 
+   - The position on y on 8 bytes 
+   - The limit of animation on 8 bytes 
+   - The index of the current frame on 8 bytes 
+   - The interval of time on 8 bytes 
+   - The offset on 8 bytes
+
+4.  Client to Server Command
+
+4.1.  ISALIVE
+
+   The client MUST respond when asking if the server isAlive
+
+   No data SHOULD be given after the MAGIC NUMBER
+
+
+
+Beaupel                   Expires May 22, 2020                  [Page 5]
+
+Internet-Draft                    UDP-P                    November 2019
+
+
+4.2.  HANDSHAKE
+
+   To authentificate the connection, the client MUST send a HANDSHAKE
+   packet to athentificate to the serveur, and the server SHALL respond
+   to the request.
+
+   No data SHOULD be given after the MAGIC NUMBER
+
+4.3.  JOINROOM
+
+   Ask to join a room.
+
+   DATA: 
+   - Id of the room 1 byte for a signed integer
+
+4.4.  LEAVEROOM
+
+   Leave the room.
+
+   No data SHOULD be given after the MAGIC NUMBER
+
+4.5.  ISREADY
+
+   To say to server when a player is ready to play, the client MUST join
+   a room before and then he SHOULD say that he is ready.
+
+   DATA : 
+   - IsReady 1 byte: true '0x00' if the player is ready,
+
+    false '0x01' if the player isn't ready
+
+4.6.  GETROOMS
+
+   Ask the server to give the list of the rooms available with their
+   description
+
+4.7.  UPDATE
+
+   The Game MUST hhave been launch or it ill be an error
+
+   The client send the keys input of the game for the server management,
+   the server SHOULD not response to the update of the keyInput
+
+   DATA: 
+   - The nbr of keys sent on 1 byte 
+   - A list of keys on 4 bytes
+   each key (see keys in the documentation)
+
+
+
+
+
+
+
+
+Beaupel                   Expires May 22, 2020                  [Page 6]
+
+Internet-Draft                    UDP-P                    November 2019
+
+
+5.  Error
+
+   When an error occurs the packet MUST be filled with false as result
+   and the packet SHOULD have a message error
+
+6.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
+
+Author's Address
+
+   R-Type
+   R-Type, Inc.
+
+   Email: R@type.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Beaupel                   Expires May 22, 2020                  [Page 7]

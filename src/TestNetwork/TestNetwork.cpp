@@ -87,6 +87,7 @@ void TestNetwork::doSend()
 
 void TestNetwork::handleSend(boost::system::error_code ec, std::size_t bytes_recvd)
 {
+    (void) bytes_recvd;
     if (!ec)
     {
         // printf("%u bytes sent\n", bytes_recvd);

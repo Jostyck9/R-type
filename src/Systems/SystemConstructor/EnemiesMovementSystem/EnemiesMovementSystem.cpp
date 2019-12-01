@@ -134,7 +134,7 @@ void EnemiesMovementSystem::spawnRandomEnemies(std::shared_ptr<ecs::components::
             _entityFactory->createEntity("EnemyType02", pos);
             break;
         case 5:
-            _entityFactory->createEntity("EnemyType01", pos);
+            _entityFactory->createEntity("Enemy", pos);
             break;
         case 6:
             _entityFactory->createEntity("Enemy", pos);
@@ -143,11 +143,13 @@ void EnemiesMovementSystem::spawnRandomEnemies(std::shared_ptr<ecs::components::
             _entityFactory->createEntity("EnemyType03", pos);
             break;
         case 8:
-            _entityFactory->createEntity("EnemyType03", pos);
+            _entityFactory->createEntity("Enemy", pos);
             break;
         case 9:
             _entityFactory->createEntity("Enemy", pos);
             break;
+        case 10:
+            _entityFactory->createEntity("EnemyType02", pos);
             break;
         default:
             break;
