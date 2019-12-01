@@ -5,8 +5,8 @@
 ** EnemyShoot.hpp
 */
 
-#ifndef DAMAGE_HPP
-#define DAMAGE_HPP
+#ifndef ENEMYSHOOT_HHP
+#define ENEMYSHOOT_HHP
 
 #include <typeindex>
 #include "IGameLogic.hpp"
@@ -55,4 +55,4 @@ namespace ecs::components
     };
 }
 
-#endif //DAMAGE_HPP
+#endif //ENEMYSHOOT_HHP
