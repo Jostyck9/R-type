@@ -73,7 +73,9 @@ void EnemiesMovementSystem::spawnRandomEnnemies(std::shared_ptr<ecs::components:
 {
     if (controller->getCreationTimer().getElapsedSeconds() > controller->getCreationInterval())
     {
-        _entityFactory->createEntity("Enemy", std::make_pair(800, 400));
+        std::pair<int, int> pos(1500, 400);
+        pos.second = (rand() % 700 + 100);
+        _entityFactory->createEntity("Enemy", pos);
         controller->getCreationTimer().restart();
         return;
     }
