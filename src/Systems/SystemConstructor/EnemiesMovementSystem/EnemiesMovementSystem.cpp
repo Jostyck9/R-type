@@ -6,8 +6,12 @@
 */
 
 #include <iostream>
+#include <GameLogic/Damage.hpp>
 #include <GameLogic/EnemyShoot.hpp>
-#include "Physics/Velocity.hpp"
+#include "EnemyShoot.hpp"
+#include "Damage.hpp"
+#include "Health.hpp"
+#include "Velocity.hpp"
 #include "ComponentExceptions.hpp"
 #include "PlayerController.hpp"
 #include "EnemiesMovementSystem.hpp"
@@ -52,9 +56,23 @@ SystemResponse EnemiesMovementSystem::update()
             }
             std::map<size_t, std::string> collidedTags = std::reinterpret_pointer_cast<ecs::components::Collision>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Collision))))->getCollidedTags();
             for (auto it = collidedTags.begin(); it != collidedTags.end(); it ++) {
-                if (it->second == "Bullet")
-                    _entitiesToDelete.push_front(entities[i]->getID());
-                //BAISSER LA VIE
+                if (it->second == "Bullet") {
+                    auto healthComp = std::reinterpret_pointer_cast<ecs::components::Health>(
+                            _managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(
+                                    entities[i]->getID(),
+                                    std::type_index(typeid(ecs::components::Health))));
+                    try {
+                        auto damage = std::reinterpret_pointer_cast<ecs::components::Damage>(
+                                _managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(
+                                        it->first, std::type_index(typeid(ecs::components::Damage))));
+                        healthComp->setValue(healthComp->getValue() - damage->getValue());
+                    } catch (const ComponentExceptions &e) {
+                        healthComp->setValue(healthComp->getValue() - 1);
+                        continue;
+                    }
+                    if (healthComp->getValue() <= 0)
+                        _entitiesToDelete.push_front(entities[i]->getID());
+                }
                 if (it->second == "Player")
                     _entitiesToDelete.push_front(entities[i]->getID());
             }
