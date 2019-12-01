@@ -47,13 +47,7 @@ SystemResponse EnemiesMovementSystem::update()
                                                                            positionComp->getPosition().second + 50));
                 enemyShootComp->getBulletTimer().restart(enemyShootComp->getEndTime());
             }
-            if (controller->getTimer().getElapsedSeconds() < controller->getInterval())
-                continue;
-            else {
-                velocityComp = std::dynamic_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Velocity))));
-                updateVelocityOnPattern(controller, velocityComp, playerPos, pos);
-                controller->getTimer().restart();
-            }
+
             std::map<size_t, std::string> collidedTags = std::reinterpret_pointer_cast<ecs::components::Collision>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Collision))))->getCollidedTags();
             for (auto it = collidedTags.begin(); it != collidedTags.end(); it ++) {
                 if (it->second == "Bullet") {
@@ -77,6 +71,13 @@ SystemResponse EnemiesMovementSystem::update()
                 if (it->second == "Player")
                     _entitiesToDelete.push_front(entities[i]->getID());
             }
+			if (controller->getTimer().getElapsedSeconds() < controller->getInterval())
+				continue;
+			else {
+				velocityComp = std::dynamic_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Velocity))));
+				updateVelocityOnPattern(controller, velocityComp, playerPos, pos);
+				controller->getTimer().restart();
+			}
         } catch (const ComponentExceptions &e) {}
     }
     return SystemResponse();
