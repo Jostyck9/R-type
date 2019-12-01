@@ -107,7 +107,6 @@ void TestNetwork::checkTimeOut()
 
 void TestNetwork::handleTimeOut()
 {
-    std::cout << "timeouttyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy" << std::endl;
     checkTimeOut();
 }
 

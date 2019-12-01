@@ -60,8 +60,7 @@ ecs::components::Timer &ecs::components::PlayerController::getCreationTimer()
 
 bool ecs::components::PlayerController::operator==(PlayerController &other)
 {
-    (void) other;
-	return true;
+    return _movementKeys == other.getMovementKeys();
 }
 
 const std::map<ecs::actions::Action, ecs::input::Key> &ecs::components::PlayerController::getMovementKeys(void) const

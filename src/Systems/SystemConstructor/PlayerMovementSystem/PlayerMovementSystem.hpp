@@ -44,7 +44,7 @@ public:
      * @param velocityComp
      * @param playerComp
      */
-    void updateVelocityOnInput(std::map<ecs::input::Key, IRenderManager::KEY_STATE> &keys, std::shared_ptr<ecs::components::Velocity> &velocityComp, std::shared_ptr<ecs::components::PlayerController> &playerComp);
+    void updateVelocityOnInput(std::map<ecs::input::Key, IRenderManager::KEY_STATE> &keys, std::shared_ptr<ecs::components::Velocity> &velocityComp, std::shared_ptr<ecs::components::PlayerController> &playerComp, std::shared_ptr<ecs::components::Position> &positionComp);
 };
 
 } // namespace ecs::system

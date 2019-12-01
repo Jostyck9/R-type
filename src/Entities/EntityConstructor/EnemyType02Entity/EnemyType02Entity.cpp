@@ -5,6 +5,7 @@
 ** EnemyType02Entity.cpp
 */
 
+#include <GameLogic/EnemyShoot.hpp>
 #include "EnemyType02Entity.hpp"
 #include "Physics/Rotation.hpp"
 #include "Physics/Position.hpp"
@@ -37,11 +38,12 @@ std::shared_ptr<ecs::entities::Entity> EnemyType02Entity::create(
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(pos.first, pos.second), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(-150, -100), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(0), toCreate);
-    // componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(true, 0, 0, 1, 1, "Test"), toCreate);
+     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(true, 0, 0, 139, 144, "Enemy"), toCreate);
     componentsManager->addGameLogicComponent(std::make_shared<ecs::components::EnemiesController>("Wave"), toCreate);
-    componentsManager->addGameLogicComponent(std::make_shared<ecs::components::Health>(200), toCreate);
+    componentsManager->addGameLogicComponent(std::make_shared<ecs::components::Health>(300), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("enemyType02", spriteRect, true), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 2, 0.2), toCreate);
+    componentsManager->addGameLogicComponent(std::make_shared<ecs::components::EnemyShoot>(true, 1000), toCreate);
     return toCreate;
 }
 

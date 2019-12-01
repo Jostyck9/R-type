@@ -10,7 +10,7 @@ if [ $UID -eq "0" ]; then
     echo "[no sudo for root]"
 fi
 
-cd /tmp
+cd /tmp.cpp
 rm -f $TARBALL
 rm -fr $DIR
 

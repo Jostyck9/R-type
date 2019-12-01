@@ -22,7 +22,7 @@ namespace ecs {
         /**
          * @brief load the scene from a name
          * 
-         * @param name 
+         * @param name
          */
         void loadScene(const std::string& name);
         /**
@@ -30,6 +30,11 @@ namespace ecs {
          * 
          */
         void createMenu();
+        /**
+         * @brief Create a Defeat object
+         *
+         */
+        void createDefeat();
         /**
          * @brief Create a Game object
          * 

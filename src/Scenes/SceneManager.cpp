@@ -9,7 +9,6 @@
 #include "NumberPlayersEntity.hpp"
 #include "BackgroundWithoutTitleEntity.hpp"
 #include "BackEntity.hpp"
-#include "WallSideEntity.hpp"
 #include "SystemResponse.hpp"
 #include "MenuScene.hpp"
 #include "GameScene.hpp"
@@ -29,6 +28,9 @@
 #include "PlanetEntity.hpp"
 #include "PlanetRingEntity.hpp"
 #include "StarsEntity.hpp"
+#include "DefeatEntity.hpp"
+#include "MenuEntity.hpp"
+#include "DefeatScene.hpp"
 
 namespace ecs {
 
@@ -51,6 +53,8 @@ namespace ecs {
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::EnemyType03Entity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlayEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::StopEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::DefeatEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::MenuEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::NameRoomEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::NumberPlayersEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::EnemyBulletEntity>());
@@ -66,6 +70,11 @@ namespace ecs {
     void SceneManager::createMenu()
     {
         _current = std::make_shared<MenuScene>(_ecs);
+    }
+
+    void SceneManager::createDefeat()
+    {
+        _current = std::make_shared<DefeatScene>(_ecs);
     }
 
     void SceneManager::createGame()
@@ -84,8 +93,10 @@ namespace ecs {
             createGame();
         else if (name == "Menu")
             createMenu();
-        else if (name == "ChooseRoomSystem")
+        else if (name == "ChooseRoom")
             createChooseRoom();
+        else if (name == "Defeat")
+            createDefeat();
         else
             std::cerr << "Unable to create scene : " << name << std::endl;
     }

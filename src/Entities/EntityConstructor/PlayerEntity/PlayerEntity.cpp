@@ -35,15 +35,16 @@ std::shared_ptr<ecs::entities::Entity> PlayerEntity::create(
 
     Rect spriteRect(80, 40, 0, 0);
     entityManager->addEntity(toCreate);
-    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(30, 30), toCreate);
+    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(300, 300), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(0, 0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(0), toCreate);
-    // componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(false, 0, 0, 20, 20, "Player"), toCreate);
+    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(true, 0, 0, 80, 40, "Player"), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("player", spriteRect, true), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Text>("P1", 15, 0, -20), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 5), toCreate);
     componentsManager->addIOComponent(std::make_shared<ecs::components::Sound>("laser"), toCreate);
     componentsManager->addGameLogicComponent(std::make_shared<ecs::components::PlayerController>(true), toCreate);
+    componentsManager->addGameLogicComponent(std::make_shared<ecs::components::Health>(500), toCreate);
     return toCreate;
 }
 
