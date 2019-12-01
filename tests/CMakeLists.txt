@@ -134,5 +134,6 @@ add_executable(unit_test_graphic
     ${SOURCE_ROOT}/Components/Display/Sprite.cpp
     ${SOURCE_ROOT}/Components/Display/Text.cpp
     ${SOURCE_ROOT}/Utils/Rect.cpp
+    ${SOURCE_ROOT}/Network/PacketManager.cpp
 )
 target_link_libraries(unit_test_graphic criterion ${CONAN_LIBS})
