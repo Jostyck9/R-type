@@ -47,6 +47,7 @@ void EnemiesController::setShipType(const std::string &type)
 
 bool EnemiesController::operator==(EnemiesController &other)
 {
+    (void) other;
     return true;
 }
 

@@ -79,7 +79,7 @@ void EnemiesMovementSystem::updateVelocityOnPattern(std::shared_ptr<ecs::compone
             velocityComp->setVelocityX(-200);
         }
         else if (playerPos->getY() > pos->getY()) {
-            velocityComp->setVelocityY((playerPos->getY() - pos->getY()) * (1,02));
+            velocityComp->setVelocityY((playerPos->getY() - pos->getY()) * (1.02));
             velocityComp->setVelocityX(-200);
         }
     }
