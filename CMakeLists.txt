@@ -67,6 +67,8 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/EntityConstructor/BackEntity/
         src/Entities/EntityConstructor/WallSideEntity/
         src/Entities/EntityConstructor/EnemyBulletEntity/
+        src/Entities/EntityConstructor/DefeatEntity
+        src/Entities/EntityConstructor/MenuEntity
         src/Entities/EntityManager/
         src/Entities/Factories/
         src/Entities/Serializer/
@@ -85,6 +87,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Systems/SystemConstructor/AnimationSystem
         src/Systems/SystemConstructor/ParallaxSystem
         src/Systems/SystemConstructor/ChooseRoomSystem
+        src/Systems/SystemConstructor/DefeatSystem
         src/Systems/Factories
         src/Systems/SystemResponse/
         src/Render/
@@ -166,6 +169,8 @@ set(SOURCE_CLIENT
         "src/Entities/EntityConstructor/PlanetRingEntity/PlanetRingEntity.cpp"
         "src/Entities/EntityConstructor/StarsEntity/StarsEntity.cpp"
         "src/Entities/EntityConstructor/EnemyBulletEntity/EnemyBulletEntity.cpp"
+        "src/Entities/EntityConstructor/DefeatEntity/DefeatEntity.cpp"
+        "src/Entities/EntityConstructor/MenuEntity/MenuEntity.cpp"
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
         "src/Entities/Serializer/Serializer.cpp"
@@ -173,6 +178,7 @@ set(SOURCE_CLIENT
         "src/Systems/SystemConstructor/DisplaySystem/DisplaySystem.cpp"
         "src/Systems/SystemConstructor/MenuSystem/MenuSystem.cpp"
         "src/Systems/SystemConstructor/ButtonColorSystem/ButtonColorSystem.cpp"
+        "src/Systems/SystemConstructor/DefeatSystem/DefeatSystem.cpp"
         "src/Systems/SystemManager/SystemManager.cpp"
         "src/Exceptions/ComponentExceptions.cpp"
         "src/Exceptions/ECSExceptions.cpp"
@@ -196,6 +202,7 @@ set(SOURCE_CLIENT
         "src/Scenes/MenuScene.cpp"
         "src/Scenes/GameScene.cpp"
         "src/Scenes/ChooseRoomScene.cpp"
+        "src/Scenes/DefeatScene.cpp"
         "src/Rtype.cpp"
         "src/Utils/Rect.cpp"
         "src/FactoriesWrapper/FactoriesWrapper.cpp"

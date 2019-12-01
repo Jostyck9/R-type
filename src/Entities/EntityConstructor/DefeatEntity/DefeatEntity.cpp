@@ -2,17 +2,17 @@
 ** EPITECH PROJECT, 2019
 ** Untitled (Workspace)
 ** File description:
-** PlayEntity.cpp
+** DefeatEntity.cpp
 */
 
-#include <Display/Button.hpp>
-#include "PlayEntity.hpp"
+#include "Button.hpp"
+#include "DefeatEntity.hpp"
 #include "Position.hpp"
 #include "Text.hpp"
 
 using namespace ecs::entities;
 
-std::shared_ptr<ecs::entities::Entity> PlayEntity::create(
+std::shared_ptr<ecs::entities::Entity> DefeatEntity::create(
     std::shared_ptr<IEntityManager> &entityManager,
     std::shared_ptr<ecs::components::IComponentManager> &componentsManager,
     std::pair<float, float> pos,
@@ -26,13 +26,12 @@ std::shared_ptr<ecs::entities::Entity> PlayEntity::create(
     std::shared_ptr<Entity> toCreate = std::make_shared<Entity>();
 
     entityManager->addEntity(toCreate);
-    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(300, 700), toCreate);
-    componentsManager->addDisplayComponent(std::make_shared<ecs::components::Text>("PLAY", 50), toCreate);
-    componentsManager->addDisplayComponent(std::make_shared<ecs::components::Button>(true, ecs::system::SystemResponse::CMD::LOADSCENE, "ChooseRoom"), toCreate);
+    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(360, 0), toCreate);
+    componentsManager->addDisplayComponent(std::make_shared<ecs::components::Text>("DEFEAT", 150), toCreate);
     return toCreate;
 }
 
-std::string PlayEntity::getName()
+std::string DefeatEntity::getName()
 {
-    return std::string("Play");
+    return std::string("Defeat");
 }

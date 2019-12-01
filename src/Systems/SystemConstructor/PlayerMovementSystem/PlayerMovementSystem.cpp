@@ -64,6 +64,7 @@ namespace ecs::system {
                                 _managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(
                                         entities[i]->getID(),
                                         std::type_index(typeid(ecs::components::Health))));
+                        _entitiesToDelete.push_front(it->first);
                         try {
                             auto damage = std::reinterpret_pointer_cast<ecs::components::Damage>(
                                     _managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(
@@ -73,11 +74,15 @@ namespace ecs::system {
                             healthComp->setValue(healthComp->getValue() - 1);
                             continue;
                         }
-                        if (healthComp->getValue() <= 0)
+                        if (healthComp->getValue() <= 0) {
                             _entitiesToDelete.push_front(entities[i]->getID());
+                            return SystemResponse(SystemResponse::LOADSCENE, "Defeat");
+                        }
                     }
-                    if (it->second == "Enemy")
+                    if (it->second == "Enemy") {
                         _entitiesToDelete.push_front(entities[i]->getID());
+                        return SystemResponse(SystemResponse::LOADSCENE, "Defeat");
+                    }
                 }
             } catch (const ComponentExceptions &e) {}
         }

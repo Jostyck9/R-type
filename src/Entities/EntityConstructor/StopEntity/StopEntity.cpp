@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** Untitled (Workspace)
 ** File description:
-** PlayEntity.cpp
+** StopEntity.cpp
 */
 
 #include <Display/Button.hpp>

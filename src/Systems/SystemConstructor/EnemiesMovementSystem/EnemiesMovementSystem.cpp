@@ -61,6 +61,7 @@ SystemResponse EnemiesMovementSystem::update()
                             _managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(
                                     entities[i]->getID(),
                                     std::type_index(typeid(ecs::components::Health))));
+                    _entitiesToDelete.push_front(it->first);
                     try {
                         auto damage = std::reinterpret_pointer_cast<ecs::components::Damage>(
                                 _managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(
@@ -102,7 +103,7 @@ void EnemiesMovementSystem::updateVelocityOnPattern(std::shared_ptr<ecs::compone
             velocityComp->setVelocityX(-200);
         }
         else if (playerPos->getY() > pos->getY()) {
-            velocityComp->setVelocityY((playerPos->getY() - pos->getY()) * (1,02));
+            velocityComp->setVelocityY((playerPos->getY() - pos->getY()) * (1.02));
             velocityComp->setVelocityX(-200);
         }
     }
@@ -131,6 +132,7 @@ void EnemiesMovementSystem::spawnRandomEnemies(std::shared_ptr<ecs::components::
             break;
         case 4:
             _entityFactory->createEntity("EnemyType02", pos);
+            break;
         case 5:
             _entityFactory->createEntity("EnemyType01", pos);
             break;
