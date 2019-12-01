@@ -70,7 +70,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/Factories/
         src/Entities/Serializer/
         src/Systems/
-        src/Systems/Display
+        src/Systems/SystemConstructor/DisplaySystem
         src/Systems/SystemManager
         src/Exceptions
         src/Network/Session
@@ -165,7 +165,7 @@ set(SOURCE_CLIENT
         "src/Entities/Factories/EntityFactory.cpp"
         "src/Entities/Serializer/Serializer.cpp"
         "src/Systems/ASystem.cpp"
-        "src/Systems/Display/DisplaySystem.cpp"
+        "src/Systems/SystemConstructor/DisplaySystem/DisplaySystem.cpp"
         "src/Systems/SystemConstructor/MenuSystem/MenuSystem.cpp"
         "src/Systems/SystemConstructor/ButtonColorSystem/ButtonColorSystem.cpp"
         "src/Systems/SystemManager/SystemManager.cpp"

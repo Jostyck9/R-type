@@ -60,7 +60,8 @@ namespace ecs::entities
          */
         void updatePosition(const std::shared_ptr<entities::Entity> &entity, const ecs::network::PacketManager::Component toAdd);
         /**
-         * @brief update the rotation of an Entity
+         * @brief update the rotation
+         *  of an Entity
          * 
          * @param entity 
          * @param toAdd 
