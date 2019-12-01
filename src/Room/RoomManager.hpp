@@ -41,12 +41,19 @@ class RoomManager {
      */
     std::vector<std::shared_ptr<Room>> &getRooms();
 
+    /**
+     * @brief Get the Nb Room object
+     * 
+     * @return size_t 
+     */
     size_t getNbRoom() const;
 
     /**
      * @brief stop the threadpool and the room
      */
     void stop();
+
+    std::shared_ptr<Room> &getRoomById(const size_t &id);
 
 };
 

@@ -32,7 +32,17 @@ namespace ecs::components
          * @return const std::type_index 
          */
         const std::type_index getType() const override;
+        /**
+         * @brief Get the Ship Type object
+         * 
+         * @return std::string 
+         */
         std::string getShipType(void) const;
+        /**
+         * @brief Set the Ship Type object
+         * 
+         * @param type 
+         */
         void setShipType(const std::string &type);
         bool operator==(EnemiesController &other);
         /**

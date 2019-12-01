@@ -25,7 +25,17 @@ namespace ecs::components
         Health(int hp);
         Health(const Health &oldHealth);
         ~Health();
+        /**
+         * @brief Set the Value object
+         * 
+         * @param newValue 
+         */
         void setValue(const float &newValue);
+        /**
+         * @brief Get the Value object
+         * 
+         * @return float 
+         */
         float getValue(void) const;
         /**
          * @brief Get the Type object

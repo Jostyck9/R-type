@@ -48,6 +48,11 @@ namespace ecs::system
          */
         std::list<int> &getEntitiesToDelete() override;
 
+        /**
+         * @brief Update all System
+         * 
+         * @return SystemResponse 
+         */
         SystemResponse updateAll() override;
 
         /**

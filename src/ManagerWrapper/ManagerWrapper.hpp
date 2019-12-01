@@ -26,9 +26,29 @@ private:
 public:
     ManagerWrapper(/* args */);
     ~ManagerWrapper();
+    /**
+     * @brief Get the Component Manager object
+     * 
+     * @return std::shared_ptr<components::IComponentManager>& 
+     */
     std::shared_ptr<components::IComponentManager> &getComponentManager() override;
+    /**
+     * @brief Get the Render Manager object
+     * 
+     * @return std::shared_ptr<IRenderManager>& 
+     */
     std::shared_ptr<IRenderManager> &getRenderManager() override;
+    /**
+     * @brief Get the Entity Manager object
+     * 
+     * @return std::shared_ptr<entities::IEntityManager>& 
+     */
     std::shared_ptr<entities::IEntityManager> &getEntityManager() override;
+    /**
+     * @brief Get the Resource Manager object
+     * 
+     * @return std::shared_ptr<ecs::ResourceManager>& 
+     */
     std::shared_ptr<ecs::ResourceManager> &getResourceManager() override;
 };
 } // namespace ecs

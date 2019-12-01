@@ -10,6 +10,7 @@ branches:
 addons:
   apt:
     packages:
+      - graphviz
       - doxygen
 
 # Build your code e.g. by calling make

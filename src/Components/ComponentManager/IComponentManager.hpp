@@ -232,7 +232,7 @@ namespace ecs::components
         /**
          * @brief Delete all the ecs::components from an entity
          * 
-         * @param idEntity 
+         * @param entity 
          */
         virtual void deleteComponents(const std::shared_ptr<entities::Entity> &entity) = 0;
 

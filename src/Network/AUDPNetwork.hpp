@@ -15,6 +15,11 @@ namespace ecs::network {
 
     class AUDPNetwork {
         public:
+        /**
+         * @brief Construct a new AUDPNetwork object
+         * 
+         * @param port 
+         */
         explicit AUDPNetwork(const std::string &port) : _socket(_ioContext,
             udp::endpoint(udp::v4(), (short)std::stoi(port))), _port(port)
         {
@@ -22,6 +27,12 @@ namespace ecs::network {
             memset(data_, 0, max_length);
         }
 
+        /**
+         * @brief Construct a new AUDPNetwork object
+         * 
+         * @param ip 
+         * @param port 
+         */
         AUDPNetwork(const std::string &ip, const std::string &port) : _socket(
             _ioContext, udp::endpoint(udp::v4(), 0)), _ip(ip), _port(port)
         {
@@ -29,10 +40,22 @@ namespace ecs::network {
             memset(data_, 0, max_length);
         }
 
+        /**
+         * @brief handle to receive data
+         * 
+         * @param ec 
+         * @param bytes_recvd 
+         */
         virtual void handle_receive(boost::system::error_code ec,
             std::size_t bytes_recvd
         ) = 0;
 
+        /**
+         * @brief send packet
+         * 
+         * @param packet 
+         * @param id 
+         */
         virtual void send(const ecs::network::PacketManager &packet,
             const size_t &id
         ) = 0;
@@ -40,16 +63,14 @@ namespace ecs::network {
         void run()
         {
             do_receive();
-            while (!_ioContext.stopped()) {
-                try {
-                    _ioContext.run();
-                } catch (const std::exception &e) {
-                    std::cerr << "Client: network exception: " << e.what()
-                        << std::endl;
-                } catch (...) {
-                    std::cerr << "Unknown exception in client network"
-                        << std::endl;
-                }
+            try {
+                _ioContext.run();
+            } catch (const std::exception &e) {
+                std::cerr << "Client: network exception: " << e.what()
+                    << std::endl;
+            } catch (...) {
+                std::cerr << "Unknown exception in client network"
+                    << std::endl;
             }
         }
 

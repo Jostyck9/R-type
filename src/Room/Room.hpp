@@ -13,12 +13,16 @@ struct PlayerInfo {
 
 class Room {
     private:
-// TODO Add ecs
+    // TODO Add ecs
     size_t _id;
     bool _isOpen;
     size_t _nbPlayer;
     size_t _nbPlayerMax;
     size_t _lastIdAvailable = 0;
+
+    //TODO add queue in / out
+    //TODO Change or add session in room one way or another
+
 
     std::map<size_t, PlayerInfo> _playerStatus;
 
@@ -27,6 +31,11 @@ class Room {
     std::mutex _mLock;
     std::condition_variable _cVar;
 
+    /**
+     * @brief Get the New Player Id object
+     * 
+     * @return size_t 
+     */
     size_t getNewPlayerId();
 
     public:
@@ -59,7 +68,9 @@ class Room {
      * @brief add a player to the room up to nbPlayerMax
      * @param pseudo
      */
-    void addPlayer(const std::string &pseudo = "");
+    void addPlayer(const size_t &id, const std::string &pseudo = "");
+
+    void deletePlayer(const size_t &id);
 
     /**
      * @brief stop room
@@ -67,26 +78,83 @@ class Room {
     void stop();
     //GETTERS & SETTERS
 
+    /**
+     * @brief Get the Id object
+     * 
+     * @return size_t 
+     */
     size_t getId() const;
 
+    /**
+     * @brief Set the Id object
+     * 
+     * @param id 
+     */
     void setId(size_t id);
 
+    /**
+     * @brief check if the room is open
+     * 
+     * @return true 
+     * @return false 
+     */
     bool isIsOpen() const;
 
+    /**
+     * @brief Set the Is Open object
+     * 
+     * @param isOpen 
+     */
     void setIsOpen(bool isOpen);
 
+    /**
+     * @brief Get the Nbplayer object
+     * 
+     * @return size_t 
+     */
     size_t getNbplayer() const;
 
+    /**
+     * @brief Set the Nbplayer object
+     * 
+     * @param nbplayer 
+     */
     void setNbplayer(size_t nbplayer);
 
+    /**
+     * @brief Get the Nbplayer Max object
+     * 
+     * @return size_t 
+     */
     size_t getNbplayerMax() const;
 
+    /**
+     * @brief Set the Nbplayer Max object
+     * 
+     * @param nbplayerMax 
+     */
     void setNbplayerMax(size_t nbplayerMax);
 
+    /**
+     * @brief Get the Player Status object
+     * 
+     * @return const std::map<size_t, PlayerInfo>& 
+     */
     const std::map<size_t, PlayerInfo> &getPlayerStatus() const;
 
+    /**
+     * @brief Check if the game is started
+     * 
+     * @return true 
+     * @return false 
+     */
     bool isIsGameStarted() const;
 
+    /**
+     * @brief Set the Is Game Started object
+     * 
+     * @param isGameStarted 
+     */
     void setIsGameStarted(bool isGameStarted);
 
     /**
@@ -100,6 +168,10 @@ class Room {
      * @return
      */
     bool isGameReady();
+
+    void setPlayerStatus(const size_t & id, bool ready);
+
+    PlayerInfo &getPlayerById(const size_t &id);
 };
 
 #endif //R_TYPE_ROOM_HPP

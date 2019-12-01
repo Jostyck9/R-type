@@ -12,22 +12,27 @@
 #include "ComponentExceptions.hpp"
 #include "PlayerMovementSystem.hpp"
 
-namespace ecs::system {
+namespace ecs::system
+{
 
-    PlayerMovementSystem::PlayerMovementSystem(std::shared_ptr<IManagerWrapper> &managerWrapper,
-                                               std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory,
-                                               std::list<int> &entitiesToDelete) : ASystem(managerWrapper,
-                                                                                           entityFactory,
-                                                                                           entitiesToDelete) {
-    }
+PlayerMovementSystem::PlayerMovementSystem(std::shared_ptr<IManagerWrapper> &managerWrapper,
+                                           std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory,
+                                           std::list<int> &entitiesToDelete) : ASystem(managerWrapper,
+                                                                                       entityFactory,
+                                                                                       entitiesToDelete)
+{
+}
 
-    SystemResponse PlayerMovementSystem::update() {
-        std::shared_ptr<ecs::components::PlayerController> playerControllerComp;
-        std::shared_ptr<ecs::components::Velocity> velocityComp;
-        std::shared_ptr<ecs::components::Position> positionComp;
-        auto keys = _managerWrapper->getRenderManager()->getKeysMap();
-        auto entities = _managerWrapper->getEntityManager()->getAllEntities();
+SystemResponse PlayerMovementSystem::update()
+{
+    std::shared_ptr<ecs::components::PlayerController> playerControllerComp;
+    std::shared_ptr<ecs::components::Velocity> velocityComp;
+    std::shared_ptr<ecs::components::Position> positionComp;
+    auto keys = _managerWrapper->getRenderManager()->getKeysMap();
+    auto entities = _managerWrapper->getEntityManager()->getAllEntities();
 
+     if (keys[keyMap[ecs::actions::SHOOT]] == IRenderManager::PRESSED) {
+         playerControllerComp->getTimer().restart(500);
         for (size_t i = 0; i < entities.size(); i++) {
             try {
                 playerControllerComp = std::reinterpret_pointer_cast<ecs::components::PlayerController>(
@@ -41,8 +46,9 @@ namespace ecs::system {
                         _managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(),
                                                                                                   std::type_index(
                                                                                                           typeid(ecs::components::Position))));
-                updateVelocityOnInput(keys, velocityComp, positionComp);
-                if (keys[ecs::input::SPACE] == IRenderManager::PRESSED) {
+            updateVelocityOnInput(keys, velocityComp, playerControllerComp, positionComp);
+            std::map<ecs::actions::Action, ecs::input::Key> keyMap = playerControllerComp->getMovementKeys();
+            if (keys[keyMap[ecs::actions::SHOOT]] == IRenderManager::PRESSED) {
                     if (playerControllerComp->getTimer().getElapsedMilliseconds() >=
                         playerControllerComp->getTimer().getEndTime()) {
                         _entityFactory->createEntity("Bullet", std::make_pair(positionComp->getPosition().first + 50,
@@ -54,8 +60,9 @@ namespace ecs::system {
                             _managerWrapper->getResourceManager()->getSound(sound->getNameSound())->play();
                         } catch (const ComponentExceptions &e) {}
                         playerControllerComp->getTimer().restart(500);
-                    }
+                        }
                 }
+            } catch (const ComponentExceptions &e) {}
                 std::map<size_t, std::string> collidedTags = std::reinterpret_pointer_cast<ecs::components::Collision>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Collision))))->getCollidedTags();
                 for (auto it = collidedTags.begin(); it != collidedTags.end(); it ++) {
                     if (it->second == "EnemyBullet") {
@@ -80,23 +87,24 @@ namespace ecs::system {
                 }
             } catch (const ComponentExceptions &e) {}
         }
-        return SystemResponse();
-    }
-
-    void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, IRenderManager::KEY_STATE> &keys,
-                                                     std::shared_ptr<ecs::components::Velocity> &velocityComp,
-                                                     std::shared_ptr<ecs::components::Position> &positionComp) {
-        if (keys[ecs::input::LEFT] == IRenderManager::PRESSED && positionComp->getX() > 5)
-            velocityComp->setVelocityX(-180);
-        else if (keys[ecs::input::RIGHT] == IRenderManager::PRESSED && positionComp->getX() < 1400)
-            velocityComp->setVelocityX(180);
-        else
-            velocityComp->setVelocityX(0);
-        if (keys[ecs::input::UP] == IRenderManager::PRESSED && positionComp->getY() > 20)
-            velocityComp->setVelocityY(-180);
-        else if (keys[ecs::input::DOWN] == IRenderManager::PRESSED && positionComp->getY() < 850)
-            velocityComp->setVelocityY(180);
-        else
-            velocityComp->setVelocityY(0);
-    }
+    return SystemResponse();
 }
+
+void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, IRenderManager::KEY_STATE> &keys,
+                                                 std::shared_ptr<ecs::components::Velocity> &velocityComp, std::shared_ptr<ecs::components::PlayerController> &playerComp, std::shared_ptr<ecs::components::Position> &positionComp))
+{
+    std::map<ecs::actions::Action, ecs::input::Key> keyMap = playerComp->getMovementKeys();
+    if (keys[keyMap[ecs::actions::LEFT]] == IRenderManager::PRESSED && positionComp->getX() > 5)
+        velocityComp->setVelocityX(-180);
+    else if (keys[keyMap[ecs::actions::RIGHT]] == IRenderManager::PRESSED && positionComp->getX() < 1400)
+        velocityComp->setVelocityX(180);
+    else
+        velocityComp->setVelocityX(0);
+    if (keys[keyMap[ecs::actions::UP]] == IRenderManager::PRESSED && positionComp->getY() > 20)
+        velocityComp->setVelocityY(-180);
+    else if (keys[keyMap[ecs::actions::DOWN]] == IRenderManager::PRESSED && positionComp->getY() < 850)
+        velocityComp->setVelocityY(180);
+    else
+        velocityComp->setVelocityY(0);
+}
+} // namespace ecs::system

@@ -11,6 +11,9 @@
 #include <typeindex>
 #include "IGameLogic.hpp"
 #include "Timer.hpp"
+#include <map>
+#include "Input.hpp"
+#include "Actions.hpp"
 
 namespace ecs::components
 {
@@ -21,7 +24,7 @@ namespace ecs::components
     class PlayerController : public IGameLogic
     {
     public:
-        PlayerController();
+        PlayerController(bool isPlayerOne);
         PlayerController(const PlayerController &oldPlayerController);
         ~PlayerController() = default;
         /**
@@ -58,10 +61,27 @@ namespace ecs::components
          */
         Timer &getCreationTimer();
         bool operator==(PlayerController &other);
+            
+        /**
+         * @brief Get the movementsKeys map
+         * 
+         * @return a map of the playerMovementKeys 
+         */
+        const std::map<ecs::actions::Action, ecs::input::Key> &getMovementKeys(void) const;
+
+        /**
+         * @brief Set the movementsKeys map
+         * 
+         * @param newPlayerMovementKeys
+         */
+        void setMovementKeys(std::map<ecs::actions::Action, ecs::input::Key> &newPlayerMovementKeys);
+
     private:
         Timer _timer;
         double _creationInterval;
         Timer _creationTimer;
+        bool _isPlayerOne;
+        std::map<ecs::actions::Action, ecs::input::Key> _movementKeys;
     };
 }
 

@@ -30,6 +30,7 @@ namespace ecs::network {
         };
         SessionInfo _info;
 
+        size_t _id;
         using ptrFunc = bool (ecs::network::ServerSession::*)();
         std::map<ecs::network::PacketManager::CMD, ptrFunc> _functionsProtocol;
 
@@ -42,7 +43,7 @@ namespace ecs::network {
         size_t recv;
         public:
 
-        ServerSession(udp::socket &_socket, udp::endpoint &senderEndpoint, RoomManager &roomManager);
+        ServerSession(udp::socket &_socket, udp::endpoint &senderEndpoint, RoomManager &roomManager, const size_t &id);
         ~ServerSession();
 
         void do_write(const char data[max_length]) override;
@@ -56,12 +57,54 @@ namespace ecs::network {
         bool isPacketValid();
         bool setMsgPacket(const std::string &msg);
 
+        /**
+         * @brief check if a player leave the room
+         * 
+         * @return true 
+         * @return false 
+         */
         bool manageLeaveRoom();
+        /**
+         * @brief check if a player join the room
+         * 
+         * @return true 
+         * @return false 
+         */
         bool manageJoinRoom();
+        /**
+         * @brief check all the rooms
+         * 
+         * @return true 
+         * @return false 
+         */
         bool manageGetRooms();
+        /**
+         * @brief check if player and the server are always connected
+         * 
+         * @return true 
+         * @return false 
+         */
         bool manageHandShake();
+        /**
+         * @brief check if the player is ready
+         * 
+         * @return true 
+         * @return false 
+         */
         bool manageIsReady();
+        /**
+         * @brief check if the server can launch the game
+         * 
+         * @return true 
+         * @return false 
+         */
         bool manageLaunchGame();
+        /**
+         * @brief Manage all updates
+         * 
+         * @return true 
+         * @return false 
+         */
         bool manageUpdate();
     };
 }

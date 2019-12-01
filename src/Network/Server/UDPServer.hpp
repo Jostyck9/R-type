@@ -24,7 +24,19 @@ namespace ecs::network {
         void handle_receive(boost::system::error_code ec,
             std::size_t bytes_recvd) override;
 
+        /**
+         * @brief Get the Session object
+         * 
+         * @param id 
+         * @return std::shared_ptr<ISession>& 
+         */
         std::shared_ptr<ISession> &getSession(const size_t &id);
+        /**
+         * @brief Get the Session object
+         * 
+         * @param endpoint 
+         * @return std::shared_ptr<ISession>& 
+         */
         std::shared_ptr<ISession> &getSession(const udp::endpoint &endpoint);
 
         void send(const ecs::network::PacketManager &packet, const size_t &id

@@ -52,7 +52,20 @@ namespace ecs::entities
         using ptrFunc = void (EntityManager::*)(const std::shared_ptr<entities::Entity> &entity, const ecs::network::PacketManager::Component toAdd);
         std::map<ecs::network::ComponentType, ptrFunc> _functionsUpdate;
 
+        /**
+         * @brief update the position of an Entity
+         * 
+         * @param entity 
+         * @param toAdd 
+         */
         void updatePosition(const std::shared_ptr<entities::Entity> &entity, const ecs::network::PacketManager::Component toAdd);
+        /**
+         * @brief update the rotation
+         *  of an Entity
+         * 
+         * @param entity 
+         * @param toAdd 
+         */
         void updateRotation(const std::shared_ptr<entities::Entity> &entity, const ecs::network::PacketManager::Component toAdd);
 
     public:
