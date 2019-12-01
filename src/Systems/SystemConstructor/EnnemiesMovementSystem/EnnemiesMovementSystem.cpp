@@ -13,21 +13,35 @@
 namespace ecs::system
 {
 
-EnnemiesMovementSystem::EnnemiesMovementSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete) : ASystem(managerWrapper, entityFactory, entitiesToDelete)
+EnnemiesMovementSystem::EnnemiesMovementSystem(std::shared_ptr<IManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete) : ASystem(managerWrapper, entityFactory, entitiesToDelete)
 {
 }
 
 SystemResponse EnnemiesMovementSystem::update()
 {
     std::shared_ptr<ecs::components::Velocity> velocityComp;
-    for (auto &it : _managerWrapper->getEntityManager()->getAllEntities())
-    {
-        try
-        {
-            std::dynamic_pointer_cast<ecs::components::EnnemiesController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::EnnemiesController))));
-            std::shared_ptr<ecs::components::EnnemiesController> controller = std::dynamic_pointer_cast<ecs::components::EnnemiesController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::EnnemiesController))));
-            velocityComp = std::dynamic_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(it->getID(), std::type_index(typeid(ecs::components::Velocity))));
+    auto entities = _managerWrapper->getEntityManager()->getAllEntities();
+
+    for (size_t i = 0; i < entities.size(); i++) {
+        try {
+            auto positionComp = std::reinterpret_pointer_cast<ecs::components::Position>(
+                    _managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(),
+                                                                                              std::type_index(
+                                                                                                      typeid(ecs::components::Position))));
+            std::shared_ptr<ecs::components::EnnemiesController> controller = std::dynamic_pointer_cast<ecs::components::EnnemiesController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::EnnemiesController))));
+            if (controller->getBulletTimer().getElapsedMilliseconds() >=
+                controller->getBulletTimer().getEndTime()) {
+                _entityFactory->createEntity("EnemyBullet", std::make_pair(positionComp->getPosition().first,
+                                                                      positionComp->getPosition().second));
+                controller->getBulletTimer().restart(2000);
+            }
+            if (controller->getTimer().getElapsedSeconds() < controller->getInterval()) {
+                continue;
+            } else {
+            velocityComp = std::dynamic_pointer_cast<ecs::components::Velocity>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Velocity))));
             updateVelocityOnPattern(controller, velocityComp);
+            controller->getTimer().restart();
+            }
         }
         catch (const ComponentExceptions &e)
         {           
@@ -38,16 +52,10 @@ SystemResponse EnnemiesMovementSystem::update()
 
 void EnnemiesMovementSystem::updateVelocityOnPattern(std::shared_ptr<ecs::components::EnnemiesController> &controller, std::shared_ptr<ecs::components::Velocity> &velocityComp)
 {
-    // switch (controller->getShipType()) {
-    //     case "Basic" :
-    //         return;
-    //     case "Wave" : 
-            velocityComp->setVelocityY(50);
-    //         break;
-    //     case default:
-    //         break;
-    // }//clock 2 sec + check pattern via shipType
-    // if ()
-    //sinus pour avoi rl'offset ? mais pas envie de toucher au position donc jsp peut etre juste inverser les velocity toutes les 2 s
+    if (controller->getShipType() == "Basic")
+        return;
+    if (controller->getShipType() == "Wave") {
+        velocityComp->setVelocityY(velocityComp->getVelocityY() * (-1));
+    }
 }
 } // namespace ecs::system

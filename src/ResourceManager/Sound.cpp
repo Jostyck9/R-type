@@ -10,10 +10,9 @@ namespace ecs {
 Sound::Sound(const std::string &name, const std::string &filePath)
 {
     _name = name;
-    sf::SoundBuffer buffer;
-    if (!buffer.loadFromFile(filePath))
+    if (!_buffer.loadFromFile(filePath))
         throw ECSExceptions("Error: Could not load sound \'" + name + '\'', std::string(__FILE__) + ' ' + std::to_string(__LINE__));
-    _sound.setBuffer(buffer);}
+    _sound.setBuffer(_buffer);}
 
 Sound::~Sound()
 {
@@ -42,6 +41,16 @@ void Sound::loop(bool state)
 const std::string &Sound::getName()
 {
     return _name;
+}
+
+IAudio::State Sound::getState()
+{
+    return _state;
+}
+
+void Sound::setState(ecs::IAudio::State state)
+{
+    _state = state;
 }
 
 sf::Sound &Sound::getSFMLSound()

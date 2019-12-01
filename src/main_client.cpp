@@ -26,14 +26,14 @@ int main(int ac, char **av)
         ecs::network::UDPClient clientNetwork(av[1], av[2]);
         ecs::network::PacketManager packet;
         packet.setCmd(ecs::network::PacketManager::HANDSHAKE);
-        // std::thread network([&]() {
-        //     clientNetwork.run();
-        // });
-        clientNetwork.send(packet);
+        //  std::thread network([&]() {
+        //      clientNetwork.run();
+        //      });
+        // clientNetwork.send(packet);
 
         packet.setCmd(ecs::network::PacketManager::ISALIVE);
         rtype.start();
-        rtype.stop();
+        // network.join();
 
     } catch (const RTypeExceptions &e) {
         std::cerr << e.what() << std::endl;

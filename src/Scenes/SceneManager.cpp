@@ -3,6 +3,8 @@
 //
 
 #include <iostream>
+#include "RTypeExceptions.hpp"
+#include "EnemyBulletEntity.hpp"
 #include "NameRoomEntity.hpp"
 #include "NumberPlayersEntity.hpp"
 #include "BackgroundWithoutTitleEntity.hpp"
@@ -21,6 +23,9 @@
 #include "EnnemyEntity.hpp"
 #include "ChooseRoomScene.hpp"
 #include "EnnemyType01Entity.hpp"
+#include "PlanetEntity.hpp"
+#include "PlanetRingEntity.hpp"
+#include "StarsEntity.hpp"
 
 namespace ecs {
 
@@ -31,6 +36,9 @@ namespace ecs {
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::BackgroundWithoutTitleEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::BackEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::GameBackgroundEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlanetEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlanetRingEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::StarsEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::PlayerEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::BulletEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::EnnemyEntity>());
@@ -39,8 +47,12 @@ namespace ecs {
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::StopEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::NameRoomEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::NumberPlayersEntity>());
-        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::WallSideEntity>());
+        _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::EnemyBulletEntity>());
 
+        try {
+            _ecs->getResourceManager()->getMusic("GameMusic")->play();
+            _ecs->getResourceManager()->getMusic("GameMusic")->loop(true);
+        } catch (const RTypeExceptions &e) {}
         createMenu();
         run();
     }

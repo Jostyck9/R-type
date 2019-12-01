@@ -21,6 +21,7 @@ namespace ecs::network {
         udp::socket &_socket;
         RoomManager &_roomManager;
         ecs::network::PacketManager _packet;
+        //ecs::network::PacketManager _packet;
 
         struct SessionInfo {
             bool isConnected;

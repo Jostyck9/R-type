@@ -83,5 +83,4 @@ Timer &Animator::getTimer()
 {
     return _timer;
 }
-
 } // namespace ecs::components

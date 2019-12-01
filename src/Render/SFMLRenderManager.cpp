@@ -132,6 +132,7 @@ SFMLRenderManager::SFMLRenderManager(std::shared_ptr<ResourceManager> &rtypeReso
 
 SFMLRenderManager::~SFMLRenderManager()
 {
+    terminate();
 }
 
 void SFMLRenderManager::init()
@@ -198,11 +199,6 @@ void SFMLRenderManager::graphicsUpdate(std::shared_ptr<components::Sprite> &spri
         _rectangle.setPosition(pos->getX(), pos->getY());
         _window.draw(_rectangle);
     }
-}
-
-void SFMLRenderManager::audioUpdate()
-{
-    // play/pause en fonction du state de l'audio
 }
 
 void SFMLRenderManager::textUpdate(std::shared_ptr<components::Text> &Text, std::shared_ptr<components::Position> &pos)

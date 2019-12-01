@@ -8,6 +8,7 @@
 #ifndef SOUND_HPP
 #define SOUND_HPP
 
+#include <string>
 #include "Output.hpp"
 
 namespace ecs::components
@@ -17,23 +18,16 @@ namespace ecs::components
     private:
         unsigned int _id;
     public:
-        Sound();
+        Sound(std::string nameSound);
         Sound(const Sound &oldSound);
         ~Sound();
 
         /**
-         * @brief Set the Id object
-         * 
-         * @param int 
+         * @brief Get the name of the sound
+         *
+         * @return const std::string &
          */
-        void setId(const unsigned int &);
-
-        /**
-         * @brief Get the Id object
-         * 
-         * @return unsigned int 
-         */
-        unsigned int getId() const;
+        const std::string &getNameSound() const;
         /**
          * @brief Get the Type object
          * 
@@ -41,7 +35,10 @@ namespace ecs::components
          */
         const std::type_index getType() const;
 
-        bool operator==(Sound const& other) const;
+        bool operator==(const Sound &other) const;
+
+    private:
+        std::string _nameSound;
     };
 }
 

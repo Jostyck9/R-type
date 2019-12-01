@@ -18,7 +18,7 @@ namespace ecs::system
     {
     private:
     public:
-        ChooseRoomSystem(std::shared_ptr<ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
+        ChooseRoomSystem(std::shared_ptr<IManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
         ~ChooseRoomSystem() = default;
 
         SystemResponse update() override;
