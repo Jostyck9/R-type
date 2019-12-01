@@ -5,6 +5,7 @@
 ** main_client.cpp
 */
 
+#include <boost/thread/thread.hpp>
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
@@ -12,6 +13,7 @@
 #include <Client/UDPClient.hpp>
 #include <RTypeExceptions.hpp>
 #include "Rtype.hpp"
+#include "TestNetwork.hpp"
 
 int main(int ac, char **av)
 {
@@ -23,17 +25,19 @@ int main(int ac, char **av)
             return 1;
         }
         Rtype rtype;
-        ecs::network::UDPClient clientNetwork(av[1], av[2]);
+        auto clientNetwork = std::make_shared<TestNetwork>(av[1], av[2]);
+
         ecs::network::PacketManager packet;
         packet.setCmd(ecs::network::PacketManager::HANDSHAKE);
-        //  std::thread network([&]() {
-        //      clientNetwork.run();
-        //      });
-        // clientNetwork.send(packet);
 
+        boost::thread networkthread([&]() {
+            clientNetwork->start();
+        });
+        clientNetwork->doSend();
+
+        
         packet.setCmd(ecs::network::PacketManager::ISALIVE);
         rtype.start();
-        // network.join();
     } catch (const RTypeExceptions &e) {
         std::cerr << e.what() << std::endl;
         std::cerr << "In file: " << e.where() << std::endl;

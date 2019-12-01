@@ -40,16 +40,14 @@ namespace ecs::network {
         void run()
         {
             do_receive();
-            while (!_ioContext.stopped()) {
-                try {
-                    _ioContext.run();
-                } catch (const std::exception &e) {
-                    std::cerr << "Client: network exception: " << e.what()
-                        << std::endl;
-                } catch (...) {
-                    std::cerr << "Unknown exception in client network"
-                        << std::endl;
-                }
+            try {
+                _ioContext.run();
+            } catch (const std::exception &e) {
+                std::cerr << "Client: network exception: " << e.what()
+                    << std::endl;
+            } catch (...) {
+                std::cerr << "Unknown exception in client network"
+                    << std::endl;
             }
         }
 
