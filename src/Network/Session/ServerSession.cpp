@@ -33,7 +33,7 @@ void ecs::network::ServerSession::handle_write(boost::system::error_code ec,
             setMsgPacket("Error command not found");
             do_write(_packet.packet.rawData);
         } else {
-            (this->*(_functionsProtocol[_packet.getCmd()]))();
+            (this->*(_functionsProtocol[_packet.getCmd()]))(); // TODO inside the handle write ????
         }
     }
 }

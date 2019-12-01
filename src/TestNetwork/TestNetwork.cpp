@@ -61,6 +61,7 @@ void TestNetwork::handleReceive(boost::system::error_code ec, std::size_t bytes_
         //     printf("%02x ", data_[i]);
         // }
         // printf("\n");
+        printf("Check\n");
         doSend();
     }
     else
