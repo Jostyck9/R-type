@@ -9,14 +9,16 @@
 #include "EnnemiesController.hpp"
 
 using namespace ecs::components;
-EnnemiesController::EnnemiesController() : _shipType("Basic"), _interval(0)
+EnnemiesController::EnnemiesController() : _shipType("Basic"), _interval(0), _timerBullet(2000)
 {
     _timer.start();
+    _timerBullet.start();
 }
 
-EnnemiesController::EnnemiesController(const std::string &type) : _shipType(type), _interval(1)
+EnnemiesController::EnnemiesController(const std::string &type) : _shipType(type), _interval(1), _timerBullet(1000)
 {
     _timer.start();
+    _timerBullet.start();
     if (_shipType == "Wave")
         _interval = 3;
 }
@@ -59,4 +61,9 @@ void EnnemiesController::setInterval(double intervalSecond)
 Timer &EnnemiesController::getTimer()
 {
     return _timer;
+}
+
+Timer &EnnemiesController::getBulletTimer()
+{
+    return _timerBullet;
 }
