@@ -26,11 +26,24 @@ public:
      * @brief Construct a new Movement System object, Check the colision and move the entities
      * 
      * @param managerWrapper 
+     * @param entityFactory
      * @param entitiesToDelete 
      */
     PlayerMovementSystem(std::shared_ptr<IManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
     ~PlayerMovementSystem() = default;
+    /**
+     * @brief update
+     * 
+     * @return SystemResponse 
+     */
     SystemResponse update() override;
+    /**
+     * @brief update the player velocity from his inputs
+     * 
+     * @param keys 
+     * @param velocityComp
+     * @param playerComp
+     */
     void updateVelocityOnInput(std::map<ecs::input::Key, IRenderManager::KEY_STATE> &keys, std::shared_ptr<ecs::components::Velocity> &velocityComp, std::shared_ptr<ecs::components::PlayerController> &playerComp);
 };
 

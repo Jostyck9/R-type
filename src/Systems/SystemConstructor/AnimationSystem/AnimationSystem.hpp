@@ -15,7 +15,6 @@
 #include "ASystem.hpp"
 #include "SystemResponse.hpp"
 
-
 namespace ecs::system
 {
 class AnimationSystem : public ASystem
@@ -26,10 +25,16 @@ public:
      * @brief Construct a new Movement System object, Check the colision and move the entities
      * 
      * @param managerWrapper 
+     * @param entityFactory
      * @param entitiesToDelete 
      */
     AnimationSystem(std::shared_ptr<IManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete);
     ~AnimationSystem() = default;
+    /**
+     * @brief update
+     * 
+     * @return SystemResponse 
+     */
     SystemResponse update() override;
 };
 

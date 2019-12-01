@@ -24,7 +24,17 @@ namespace ecs::components
         Scale();
         Scale(const Scale &oldScale);
         ~Scale();
+        /**
+         * @brief Set the Value object
+         * 
+         * @param newValue 
+         */
         void setValue(const float &newValue);
+        /**
+         * @brief Get the Value object
+         * 
+         * @return float 
+         */
         float getValue(void) const;
         /**
          * @brief Get the Type object

@@ -37,6 +37,14 @@ namespace ecs::components
          * @return std::list<std::shared_ptr<IComponent>> 
          */
         std::list<std::shared_ptr<IComponent>> extractComponentsFrom(std::multimap<size_t, std::shared_ptr<IComponent>> &map, size_t idEntity);
+        /**
+         * @brief Extract the ecs::components from the map given with the Type
+         * 
+         * @param map 
+         * @param idEntity 
+         * @param type 
+         * @return std::shared_ptr<IComponent> 
+         */
         std::shared_ptr<IComponent> extractComponentsOfType(std::multimap<size_t, std::shared_ptr<IComponent>> &map, size_t idEntity, const std::type_index type);
 
     public:
@@ -253,7 +261,7 @@ namespace ecs::components
         /**
          * @brief Delete all the ecs::components from an entity
          * 
-         * @param idEntity 
+         * @param entity 
          */
         void deleteComponents(const std::shared_ptr<entities::Entity> &entity) override;
 

@@ -19,10 +19,31 @@ namespace ecs {
         SceneManager();
         ~SceneManager() = default;
 
+        /**
+         * @brief load the scene from a name
+         * 
+         * @param name 
+         */
         void loadScene(const std::string& name);
+        /**
+         * @brief Create a Menu object
+         * 
+         */
         void createMenu();
+        /**
+         * @brief Create a Game object
+         * 
+         */
         void createGame();
+        /**
+         * @brief Create a Choose Room object
+         * 
+         */
         void createChooseRoom();
+        /**
+         * @brief run the scene manager
+         * 
+         */
         void run();
 
     private:

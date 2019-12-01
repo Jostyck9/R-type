@@ -31,7 +31,7 @@ include_directories(
     ${SOURCE_ROOT}/ResourceManager/
     ${SOURCE_ROOT}/ManagerWrapper/
     ${SOURCE_ROOT}/Systems/
-    ${SOURCE_ROOT}/Systems/Display/
+    ${SOURCE_ROOT}/Systems/SystemConstructor/DisplaySystem/
     ${SOURCE_ROOT}/Systems/Factories/
     ${SOURCE_ROOT}/Systems/SystemConstructor/
     ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/
@@ -79,7 +79,7 @@ add_executable(unit_test
     ${SOURCE_ROOT}/Systems/ASystem.cpp
     ${SOURCE_ROOT}/Systems/SystemManager/SystemManager.cpp
     ${SOURCE_ROOT}/Systems/Factories/SystemFactory.cpp
-    ${SOURCE_ROOT}/Systems/Display/DisplaySystem.cpp
+    ${SOURCE_ROOT}/Systems/SystemConstructor/DisplaySystem/DisplaySystem.cpp
     ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/testSystem.cpp
     ${SOURCE_ROOT}/Systems/SystemResponse/SystemResponse.cpp
     ${SOURCE_ROOT}/ManagerWrapper/ManagerWrapper.cpp
@@ -115,7 +115,7 @@ add_executable(unit_test_graphic
     ${SOURCE_ROOT}/Systems/ASystem.cpp
     ${SOURCE_ROOT}/Systems/SystemManager/SystemManager.cpp
     ${SOURCE_ROOT}/Systems/Factories/SystemFactory.cpp
-    ${SOURCE_ROOT}/Systems/Display/DisplaySystem.cpp
+    ${SOURCE_ROOT}/Systems/SystemConstructor/DisplaySystem/DisplaySystem.cpp
     ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/testSystem.cpp
     ${SOURCE_ROOT}/Systems/SystemResponse/SystemResponse.cpp
     ${SOURCE_ROOT}/Exceptions/ComponentExceptions.cpp

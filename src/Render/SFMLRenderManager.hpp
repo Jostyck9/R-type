@@ -22,67 +22,82 @@ namespace ecs
      * @brief Manager gameRendering of the game
      *
      */
-    class SFMLRenderManager : public IRenderManager {
-    public:
-        SFMLRenderManager(std::shared_ptr<ResourceManager> &rtypeResources);
-        ~SFMLRenderManager();
-        /**
+class SFMLRenderManager : public IRenderManager
+{
+public:
+     SFMLRenderManager(std::shared_ptr<ResourceManager> &rtypeResources);
+     ~SFMLRenderManager();
+     /**
          * @brief initialize sfml window etc
          *
          */
-    void init() override;
-    void terminate() override;
+     void init() override;
+     /**
+     * @brief terminate the sfml window
+     * 
+     */
+     void terminate() override;
 
-    /**
+     /**
          * @brief display a graphical component
          *
          */
-    void graphicsUpdate(std::shared_ptr<components::Sprite> &sprite, std::shared_ptr<components::Position> &pos) override;
+     void graphicsUpdate(std::shared_ptr<components::Sprite> &sprite, std::shared_ptr<components::Position> &pos) override;
 
-    /**
+     /**
          * @brief update text component
          *
          */
-    void textUpdate(std::shared_ptr<components::Text> &Text, std::shared_ptr<components::Position> &pos) override;
-    /**
+     void textUpdate(std::shared_ptr<components::Text> &Text, std::shared_ptr<components::Position> &pos) override;
+     /**
          * @brief update event and return type of event
          *
          */
-    bool eventUpdate() override;
-    /**
+     bool eventUpdate() override;
+     /**
          * @brief clear the window of all rendered objects
          *
          */
-    void clear() override;
-    /**
+     void clear() override;
+     /**
          * @brief displayy the window and all rendered objects
          *
          */
-    void display() override;
-    /**
+     void display() override;
+     /**
          * @brief update what key are pressed
          *
          */
      void updatePressedKeys();
 
+     /**
+      * @brief Get the Keys Map object
+      * 
+      * @return std::map<ecs::input::Key, KEY_STATE>& 
+      */
      std::map<ecs::input::Key, KEY_STATE> &getKeysMap() override;
 
+     /**
+      * @brief Get the Key To Packet object
+      * 
+      * @return ecs::network::PacketManager 
+      */
      ecs::network::PacketManager getKeyToPacket() override;
-     
+
 private:
-    sf::RenderWindow _window;             /*!< Internal window used by SFML functions */
-    sf::Music _music;                     /*!<Music of the program */
-    sf::Event _event;                     /*!<Events of the program */
-    sf::Sprite _sprite;                   /*!<Sprite of the program */
-    std::map<ecs::Color, sf::Color> _colors; /*!<Color mapping*/
-    sf::Texture _texture;                 /*!<Texture of the program */
-    std::shared_ptr<ResourceManager> _rtypeResources;
-    sf::RectangleShape _rectangle; /*!<Shape of the program */
-    sf::Font _font;                /*!<Font of the program */
-    sf::Text _text;                /*<Text of the program */
-    sf::IntRect _rect;
-    std::map<sf::Keyboard::Key, ecs::input::Key> _keys; /*!<Key mapping*/
-    std::map<ecs::input::Key, KEY_STATE> _keysMap; /*<Contains name of key and if it is pressed or not */
+     sf::RenderWindow _window;                /*!< Internal window used by SFML functions */
+     sf::Music _music;                        /*!<Music of the program */
+     sf::Event _event;                        /*!<Events of the program */
+     sf::Sprite _sprite;                      /*!<Sprite of the program */
+     std::map<ecs::Color, sf::Color> _colors; /*!<Color mapping*/
+     sf::Texture _texture;                    /*!<Texture of the program */
+     std::shared_ptr<ResourceManager> _rtypeResources;
+     sf::RectangleShape _rectangle; /*!<Shape of the program */
+     sf::Font _font;                /*!<Font of the program */
+     sf::Text _text;                /*<Text of the program */
+     sf::IntRect _rect;
+     std::map<sf::Keyboard::Key, ecs::input::Key> _keys; /*!<Key mapping*/
+     std::map<ecs::input::Key, KEY_STATE> _keysMap;      /*<Contains name of key and if it is pressed or not */
 };
 } // namespace ecs
 
