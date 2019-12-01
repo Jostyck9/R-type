@@ -48,13 +48,10 @@ namespace ecs {
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::NumberPlayersEntity>());
         _ecs->getEntityFactory()->addEntityConstructor(std::make_shared<entities::EnemyBulletEntity>());
 
-/*
         try {
             _ecs->getResourceManager()->getMusic("GameMusic")->play();
             _ecs->getResourceManager()->getMusic("GameMusic")->loop(true);
         } catch (const RTypeExceptions &e) {}
-*/
-
         createMenu();
         run();
     }
