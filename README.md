@@ -55,6 +55,12 @@ You can choose your room and be ready for the space battle.
 To win, you have to be the last one alive. You can shoot enemies by pressing space bar and move using directional arrows.
 Be careful, each ennemies have differents properties.
 
+### Code documentation
+
+The [UML](https://jostyck9.github.io/R-type/inherits.html) and the [CodeDescription](https://jostyck9.github.io/R-type/) id always up to date with the master branch
+
+You can also find in the folder documentation, a wiki that explains how is working our project
+
 Licence
 ----
 Hugo Berthome, Romane Bézier, Esther Bailloux, Clément Dumaine and Hugo Beaupel
