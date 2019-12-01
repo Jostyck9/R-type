@@ -15,6 +15,7 @@
 #include "GameLogic/EnemiesController.hpp"
 #include "Rect.hpp"
 #include "Animator.hpp"
+#include "Health.hpp"
 
 using namespace ecs::entities;
 
@@ -38,6 +39,7 @@ std::shared_ptr<ecs::entities::Entity> EnemyType03Entity::create(
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(true, 0, 0, 1, 1, "Test"), toCreate);
     componentsManager->addGameLogicComponent(std::make_shared<ecs::components::EnemiesController>("Kamikaze"), toCreate);
+    componentsManager->addGameLogicComponent(std::make_shared<ecs::components::Health>(1), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("enemyType03", spriteRect, true), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 16), toCreate);
     return toCreate;

@@ -79,7 +79,7 @@ void EnemiesMovementSystem::updateVelocityOnPattern(std::shared_ptr<ecs::compone
             velocityComp->setVelocityX(-200);
         }
         else if (playerPos->getY() > pos->getY()) {
-            velocityComp->setVelocityY((playerPos->getY() - pos->getY()));
+            velocityComp->setVelocityY((playerPos->getY() - pos->getY()) * (1,02));
             velocityComp->setVelocityX(-200);
         }
     }
@@ -121,10 +121,10 @@ void EnemiesMovementSystem::spawnRandomEnnemies(std::shared_ptr<ecs::components:
             _entityFactory->createEntity("EnemyType03", pos);
             break;
         case 9:
-            _entityFactory->createEntity("EnemyType03", pos);
+            _entityFactory->createEntity("Enemy", pos);
             break;
         case 10:
-            _entityFactory->createEntity("EnemyType03", pos);
+            _entityFactory->createEntity("Enemy", pos);
             break;
         default:
             break;
