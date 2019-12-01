@@ -1,3 +1,4 @@
+#include <ServerExceptions.hpp>
 #include "RoomManager.hpp"
 
 RoomManager::~RoomManager()
@@ -10,7 +11,6 @@ RoomManager::RoomManager(size_t nbRoom, size_t nbPlayer) : _nbRoom(nbRoom), _poo
     for (size_t i = 0; i < _nbRoom; ++i) {
         _rooms.emplace_back(std::make_shared<Room>(i+1, nbPlayer));
     }
-
 }
 
 void RoomManager::addTask(const std::function<void()> &f)
@@ -36,4 +36,15 @@ void RoomManager::stop()
 
     _pool.stop();
 }
+
+std::shared_ptr<Room> &RoomManager::getRoomById(const size_t &id)
+{
+    for (auto &r : getRooms()) {
+        if (r->getId() == id) {
+            return r;
+        }
+    }
+    throw ServerExceptions("Invalid room id", "getRoomById RoomManager");
+}
+
 

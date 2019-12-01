@@ -16,7 +16,6 @@
 #include "Render/Input.hpp"
 #include "PlayerController.hpp"
 
-
 namespace ecs::system
 {
 
@@ -42,9 +41,10 @@ public:
      * @brief update the player velocity from his inputs
      * 
      * @param keys 
-     * @param velocityComp 
+     * @param velocityComp
+     * @param playerComp
      */
-    void updateVelocityOnInput(std::map<ecs::input::Key, IRenderManager::KEY_STATE> &keys, std::shared_ptr<ecs::components::Velocity> &velocityComp);
+    void updateVelocityOnInput(std::map<ecs::input::Key, IRenderManager::KEY_STATE> &keys, std::shared_ptr<ecs::components::Velocity> &velocityComp, std::shared_ptr<ecs::components::PlayerController> &playerComp);
 };
 
 } // namespace ecs::system

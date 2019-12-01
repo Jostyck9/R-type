@@ -42,7 +42,7 @@ std::shared_ptr<ecs::entities::Entity> EnemyEntity::create(
     componentsManager->addGameLogicComponent(std::make_shared<ecs::components::EnemiesController>("Wave"), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("enemy", spriteRect, true), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 14), toCreate);
-    return toCreate;
+    return toCreate;   
 }
 
 std::string EnemyEntity::getName()

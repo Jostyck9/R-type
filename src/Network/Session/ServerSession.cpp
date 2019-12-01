@@ -33,7 +33,7 @@ void ecs::network::ServerSession::handle_write(boost::system::error_code ec,
             setMsgPacket("Error command not found");
             do_write(_packet.packet.rawData);
         } else {
-            (this->*(_functionsProtocol[_packet.getCmd()]))();
+            (this->*(_functionsProtocol[_packet.getCmd()]))(); // TODO inside the handle write ????
         }
     }
 }
@@ -54,8 +54,9 @@ const ecs::network::ServerSession::SessionInfo &ecs::network::ServerSession::get
 }
 
 ecs::network::ServerSession::ServerSession(udp::socket &socket,
-    udp::endpoint &senderEndpoint, RoomManager &roomManager
-) : _sender_endpoint(senderEndpoint), _socket(socket), _roomManager(roomManager)
+    udp::endpoint &senderEndpoint, RoomManager &roomManager, const size_t &id
+) : _sender_endpoint(senderEndpoint), _socket(socket),
+    _roomManager(roomManager), _id(id)
 {
     _info.isConnected = false;
     _info.isInRoom = false;
@@ -74,6 +75,9 @@ bool ecs::network::ServerSession::manageLeaveRoom()
 {
     if (_info.isConnected) {
         if (_info.isInRoom) {
+            _roomManager.getRoomById(_info.roomId)->deletePlayer(_id);
+            _info.roomId = 0;
+            _info.isInRoom = false;
             return true;
         }
         setMsgPacket("Error not inside a room");
@@ -89,11 +93,10 @@ bool ecs::network::ServerSession::manageJoinRoom()
 {
     if (_info.isConnected) {
         if (!_info.isInRoom) {
-            //TODO getroom by id
-            for (auto &r : _roomManager.getRooms()) {
-                if (r->getId() == _packet.getJoinRoom().id) {
-                }
-            }
+            auto r = _roomManager.getRoomById(_packet.getJoinRoom().id);
+            r->addPlayer(_id);
+            _info.roomId = _packet.getJoinRoom().id;
+            _info.isInRoom = true;
             return true;
         }
         setMsgPacket("Error already in a room");
@@ -103,7 +106,6 @@ bool ecs::network::ServerSession::manageJoinRoom()
     setMsgPacket("Error not connected");
     do_write(_packet.packet.rawData);
     return false;
-
 }
 
 bool ecs::network::ServerSession::manageGetRooms()
@@ -145,7 +147,8 @@ bool ecs::network::ServerSession::manageIsReady()
 {
     if (_info.isConnected) {
         if (_info.isInRoom) {
-            //TODO get player status
+            _roomManager.getRoomById(_info.roomId)->setPlayerStatus(_id,
+                _packet.packet.data._isReady.isReady);
             return true;
         }
         setMsgPacket("Error not inside a room");
@@ -161,8 +164,15 @@ bool ecs::network::ServerSession::manageLaunchGame()
 {
     if (_info.isConnected) {
         if (_info.isInRoom) {
-            //TODO if ready else false
-            return true;
+            if (_roomManager.getRoomById(_info.roomId)->getPlayerReady() ==
+                _roomManager.getRoomById(_info.roomId)->getNbplayer()) {
+                _roomManager.getRoomById(_info.roomId)->setIsGameStarted(true);
+                return true;
+            } else {
+                setMsgPacket("Error all player are not ready");
+                do_write(_packet.packet.rawData);
+                return false;
+            }
         }
         setMsgPacket("Error not inside a room");
         do_write(_packet.packet.rawData);

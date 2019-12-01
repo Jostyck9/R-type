@@ -53,6 +53,8 @@ class RoomManager {
      */
     void stop();
 
+    std::shared_ptr<Room> &getRoomById(const size_t &id);
+
 };
 
 #endif //R_TYPE_ROOMMANAGER_HPP

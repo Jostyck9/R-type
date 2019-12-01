@@ -16,6 +16,7 @@ namespace ecs {
             loadTexture("ring-planet-parallax", "./resources/parallax-ring-planet.png");
             loadTexture("test", "./resources/r-typesheet1.gif");
             loadTexture("player", "./resources/player.png");
+            loadTexture("playerTwo", "./resources/playerTwo.png");
             loadTexture("bullet", "./resources/bullet.png");
             loadTexture("enemyBullet", "./resources/enemyBullet.png");
             loadTexture("enemyType02", "./resources/enemytype02.png");

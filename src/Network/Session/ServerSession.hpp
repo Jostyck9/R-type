@@ -30,6 +30,7 @@ namespace ecs::network {
         };
         SessionInfo _info;
 
+        size_t _id;
         using ptrFunc = bool (ecs::network::ServerSession::*)();
         std::map<ecs::network::PacketManager::CMD, ptrFunc> _functionsProtocol;
 
@@ -42,7 +43,7 @@ namespace ecs::network {
         size_t recv;
         public:
 
-        ServerSession(udp::socket &_socket, udp::endpoint &senderEndpoint, RoomManager &roomManager);
+        ServerSession(udp::socket &_socket, udp::endpoint &senderEndpoint, RoomManager &roomManager, const size_t &id);
         ~ServerSession();
 
         void do_write(const char data[max_length]) override;
