@@ -38,7 +38,7 @@ std::shared_ptr<ecs::entities::Entity> PlayerTwoEntity::create(
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(pos.first, pos.second), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(0, 0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(0), toCreate);
-    // componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(false, 0, 0, 20, 20, "Player"), toCreate);
+     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(true, 0, 0, 80, 40, "Player"), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("playerTwo", spriteRect, true), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Text>("P2", 15, 0, -20), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 5), toCreate);

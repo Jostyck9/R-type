@@ -5,6 +5,7 @@
 ** PlayerMovementSystem.cpp
 */
 
+#include <iostream>
 #include <IO/Sound.hpp>
 #include "Health.hpp"
 #include "Damage.hpp"
@@ -57,14 +58,15 @@ namespace ecs::system {
                         playerControllerComp->getTimer().restart(500);
                     }
                 }
+
                 std::map<size_t, std::string> collidedTags = std::reinterpret_pointer_cast<ecs::components::Collision>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Collision))))->getCollidedTags();
                 for (auto it = collidedTags.begin(); it != collidedTags.end(); it ++) {
                     if (it->second == "EnemyBullet") {
+						_entitiesToDelete.push_front(it->first);
                         auto healthComp = std::reinterpret_pointer_cast<ecs::components::Health>(
                                 _managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(
                                         entities[i]->getID(),
                                         std::type_index(typeid(ecs::components::Health))));
-                        _entitiesToDelete.push_front(it->first);
                         try {
                             auto damage = std::reinterpret_pointer_cast<ecs::components::Damage>(
                                     _managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(
@@ -80,6 +82,7 @@ namespace ecs::system {
                         }
                     }
                     if (it->second == "Enemy") {
+						_entitiesToDelete.push_front(it->first);
                         _entitiesToDelete.push_front(entities[i]->getID());
                         return SystemResponse(SystemResponse::LOADSCENE, "Defeat");
                     }
