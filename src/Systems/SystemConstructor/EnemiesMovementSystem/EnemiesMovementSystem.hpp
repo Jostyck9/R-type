@@ -16,7 +16,6 @@
 #include "Render/Input.hpp"
 #include "EnemiesController.hpp"
 
-
 namespace ecs::system
 {
 
@@ -33,6 +32,7 @@ public:
     ~EnemiesMovementSystem() = default;
     SystemResponse update() override;
     void updateVelocityOnPattern(std::shared_ptr<ecs::components::EnemiesController> &controller, std::shared_ptr<ecs::components::Velocity> &velocityComp);
+    void spawnRandomEnnemies(std::shared_ptr<ecs::components::PlayerController> &controller);
 };
 
 } // namespace ecs::system
