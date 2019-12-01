@@ -40,11 +40,6 @@ namespace ecs
     void graphicsUpdate(std::shared_ptr<components::Sprite> &sprite, std::shared_ptr<components::Position> &pos) override;
 
     /**
-         * @brief update audio
-         *
-         */
-    void audioUpdate() override;
-    /**
          * @brief update text component
          *
          */

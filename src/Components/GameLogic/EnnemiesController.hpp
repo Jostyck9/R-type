@@ -10,6 +10,7 @@
 
 #include <typeindex>
 #include <string>
+#include "Timer.hpp"
 #include "IGameLogic.hpp"
 
 namespace ecs::components
@@ -22,7 +23,7 @@ namespace ecs::components
     {
     public:
         EnnemiesController();
-        EnnemiesController(std::string &type);
+        EnnemiesController(const std::string &type);
         EnnemiesController(const EnnemiesController &oldEnnemiesController);
         ~EnnemiesController() = default;
         /**
@@ -31,12 +32,42 @@ namespace ecs::components
          * @return const std::type_index 
          */
         const std::type_index getType() const override;
-        const std::string getShipType(void) const;
-        void setShipType(std::string &type);
+        std::string getShipType(void) const;
+        void setShipType(const std::string &type);
         bool operator==(EnnemiesController &other);
+        /**
+         * @brief Get the Interval object
+         * 
+         * @return double 
+         */
+        double getInterval() const;
+
+        /**
+         * @brief Set the Interval object
+         * 
+         * @param intervalSecond 
+         */
+        void setInterval(double intervalSecond);
+
+        /**
+         * @brief Get the Timer object
+         * 
+         * @return Timer& 
+         */
+        Timer &getTimer();
+
+        /**
+         * @brief Get the bullet Timer object
+         *
+         * @return Timer&
+         */
+        Timer &getBulletTimer();
+
     private:
         std::string _shipType;
-        //futur enum pour les patterns ?
+        double _interval;
+        Timer _timer;
+        Timer _timerBullet;
     };
 }
 

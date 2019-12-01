@@ -23,7 +23,7 @@ using namespace ecs::system;
 
 Test(SystemConstructor, Factory)
 {
-    std::shared_ptr<ecs::ManagerWrapper> managers = std::make_shared<ecs::ManagerWrapper>();
+    std::shared_ptr<ecs::IManagerWrapper> managers = std::make_shared<ecs::ManagerWrapper>();
     std::list <int>idToDel;
     std::shared_ptr<ecs::entities::IEntityFactory> entityFactory = std::make_shared<ecs::entities::EntityFactory>(managers->getEntityManager(), managers->getComponentManager());
     std::shared_ptr<ISystemManager> systemManager = std::make_shared<SystemManager>(managers);
@@ -41,7 +41,7 @@ Test(SystemConstructor, Factory)
 
 Test(SystemConstructor, DeleteAll)
 {
-    std::shared_ptr<ecs::ManagerWrapper> managers = std::make_shared<ecs::ManagerWrapper>();
+    std::shared_ptr<ecs::IManagerWrapper> managers = std::make_shared<ecs::ManagerWrapper>();
     std::list <int>idToDel;
     std::shared_ptr<ecs::entities::IEntityFactory> entityFactory = std::make_shared<ecs::entities::EntityFactory>(managers->getEntityManager(), managers->getComponentManager());
     std::shared_ptr<ISystemManager> systemManager = std::make_shared<SystemManager>(managers);

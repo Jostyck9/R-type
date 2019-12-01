@@ -50,6 +50,19 @@ namespace ecs {
          * 
          */
         void loop(bool state) override;
+
+        /**
+         * @brief Get state of the music
+         *
+         */
+        IAudio::State getState() override;
+
+        /**
+         * @brief Set state of the sound
+         *
+         */
+        void setState(IAudio::State) override;
+
         /**
          * @brief Get SFML music of the Music
          *
@@ -60,6 +73,7 @@ namespace ecs {
     private:
         std::string _name;
         sf::Music _music;
+        State _state;
     };
 }
 

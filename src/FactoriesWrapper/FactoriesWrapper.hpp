@@ -23,7 +23,7 @@ private:
     std::shared_ptr<ecs::system::ISystemFactory> _systemFactory;
 public:
     FactoriesWrapper(
-        std::shared_ptr<ManagerWrapper> &managerWrapper,
+        std::shared_ptr<IManagerWrapper> &managerWrapper,
         std::shared_ptr<ecs::system::ISystemManager> &systemManager
         );
     ~FactoriesWrapper();

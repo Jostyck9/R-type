@@ -14,7 +14,7 @@
 
 using namespace ecs::system;
 
-MenuSystem::MenuSystem(std::shared_ptr<ecs::ManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete)
+MenuSystem::MenuSystem(std::shared_ptr<ecs::IManagerWrapper> &managerWrapper, std::shared_ptr<ecs::entities::IEntityFactory> &entityFactory, std::list<int> &entitiesToDelete)
         : ASystem(managerWrapper, entityFactory, entitiesToDelete) {
 }
 
@@ -29,7 +29,6 @@ SystemResponse MenuSystem::update()
         } catch (const ComponentExceptions &e) {
         }
     }
-    // std::cout << (keys[ecs::input::ENTER] == IRenderManager::PRESSED) << std::endl;
     size_t i = 0;
     for (; i < allButtons.size(); i++) {
         if (allButtons[i]->getIsSelected()) {
@@ -41,6 +40,8 @@ SystemResponse MenuSystem::update()
                 allButtons[i]->setIsSelected(false);
                 if (i != 0)
                     allButtons[i - 1]->setIsSelected(true);
+                else
+                    allButtons[allButtons.size() - 1]->setIsSelected(true);
             } else if (keys[ecs::input::SPACE] == IRenderManager::RELEASED) {
                 return SystemResponse(allButtons[i]->getCmd(), allButtons[i]->getParameter());
             }

@@ -12,7 +12,7 @@
 
 namespace ecs::system
 {
-    SystemManager::SystemManager(std::shared_ptr<ManagerWrapper> managerWrapper) :
+    SystemManager::SystemManager(std::shared_ptr<IManagerWrapper> managerWrapper) :
     _managerWrapper(managerWrapper),
     _entityFactory(nullptr)
     {

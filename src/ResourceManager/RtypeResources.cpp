@@ -9,13 +9,22 @@ namespace ecs {
     RtypeResources::RtypeResources() : ResourceManager()
     {
         try {
-            loadTexture("background", "resources/background.png");
-            loadTexture("test", "resources/r-typesheet1.gif");
-            loadTexture("player", "resources/player.png");
-            loadTexture("bullet", "resources/bullet.png");
-            loadTexture("ennemy", "resources/ennemy01.png");
-            loadTexture("backgroundMenu", "resources/menu_background.png");
-            loadFont("Pixeled", "resources/font.ttf");
+            loadTexture("background-parallax", "./resources/parallax-background.png");
+            loadTexture("planet-parallax", "./resources/parallax-planet.png");
+            loadTexture("far-planet-parallax", "./resources/parallax-far-planets.png");
+            loadTexture("space-stars-parallax", "./resources/parallax-space-stars.png");
+            loadTexture("ring-planet-parallax", "./resources/parallax-ring-planet.png");
+            loadTexture("test", "./resources/r-typesheet1.gif");
+            loadTexture("player", "./resources/player.png");
+            loadTexture("bullet", "./resources/bullet.png");
+            loadTexture("enemyBullet", "./resources/enemyBullet.png");
+            loadTexture("ennemy", "./resources/ennemy01.png");
+            loadTexture("ennemyType01", "./resources/ennemytype01.png");
+            loadTexture("backgroundMenu", "./resources/menu_background.png");
+            loadTexture("backgroundWithoutTitle", "./resources/background_without_title.png");
+            loadFont("Pixeled", "./resources/font.ttf");
+            loadMusic("GameMusic", "./resources/music.ogg");
+            loadSound("laser", "./resources/laser.wav");
         } catch (const std::exception &e) {
             throw e;
         }
