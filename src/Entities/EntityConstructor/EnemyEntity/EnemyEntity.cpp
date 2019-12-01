@@ -31,7 +31,7 @@ std::shared_ptr<ecs::entities::Entity> EnemyEntity::create(
 
     std::shared_ptr<Entity> toCreate = std::make_shared<Entity>();
 
-    Rect spriteRect(99, 90, 0, 0);
+    Rect spriteRect(100, 91, 0, 0);
     entityManager->addEntity(toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(pos.first, pos.second), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(-150, 50), toCreate);
@@ -39,7 +39,7 @@ std::shared_ptr<ecs::entities::Entity> EnemyEntity::create(
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(true, 0, 0, 1, 1, "Test"), toCreate);
     componentsManager->addGameLogicComponent(std::make_shared<ecs::components::EnemiesController>("Wave"), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("enemy", spriteRect, true), toCreate);
-    componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 7), toCreate);
+    componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 14), toCreate);
     return toCreate;
 }
 
