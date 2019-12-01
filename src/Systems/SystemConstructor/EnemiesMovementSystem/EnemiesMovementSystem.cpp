@@ -50,6 +50,14 @@ SystemResponse EnemiesMovementSystem::update()
                 updateVelocityOnPattern(controller, velocityComp, playerPos, pos);
                 controller->getTimer().restart();
             }
+            std::map<size_t, std::string> collidedTags = std::reinterpret_pointer_cast<ecs::components::Collision>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Collision))))->getCollidedTags();
+            for (auto it = collidedTags.begin(); it != collidedTags.end(); it ++) {
+                if (it->second == "Bullet")
+                    _entitiesToDelete.push_front(entities[i]->getID());
+                //BAISSER LA VIE
+                if (it->second == "Player")
+                    _entitiesToDelete.push_front(entities[i]->getID());
+            }
         } catch (const ComponentExceptions &e) {}
     }
     return SystemResponse();

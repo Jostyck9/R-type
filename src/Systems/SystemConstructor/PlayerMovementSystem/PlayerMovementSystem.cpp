@@ -55,12 +55,13 @@ namespace ecs::system {
                         playerControllerComp->getTimer().restart(500);
                     }
                 }
-                auto collisionComp = std::reinterpret_pointer_cast<ecs::components::Collision>(
-                        _managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(),
-                                                                                                  std::type_index(
-                                                                                                          typeid(ecs::components::Collision))));
-                if (!collisionComp->getCollidedTags().empty()) {
-                    std::cout << "coucou" << std::endl;
+                std::map<size_t, std::string> collidedTags = std::reinterpret_pointer_cast<ecs::components::Collision>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Collision))))->getCollidedTags();
+                for (auto it = collidedTags.begin(); it != collidedTags.end(); it ++) {
+                    if (it->second == "EnemyBullet")
+                       _entitiesToDelete.push_front(entities[i]->getID());
+                    //BAISSER LA VIE
+                    if (it->second == "Enemy")
+                        _entitiesToDelete.push_front(entities[i]->getID());
                 }
             } catch (const ComponentExceptions &e) {}
         }

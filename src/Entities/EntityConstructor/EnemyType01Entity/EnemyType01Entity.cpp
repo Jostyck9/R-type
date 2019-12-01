@@ -44,6 +44,7 @@ std::shared_ptr<ecs::entities::Entity> EnemyType01Entity::create(
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("enemyType01", spriteRect, true), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 5), toCreate);
     componentsManager->addGameLogicComponent(std::make_shared<ecs::components::EnemyShoot>(true, 2000), toCreate);
+
     return toCreate;
 }
 

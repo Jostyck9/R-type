@@ -38,9 +38,9 @@ std::shared_ptr<ecs::entities::Entity> EnemyType03Entity::create(
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(pos.first, pos.second), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(-300, -100), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(0), toCreate);
-     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(true, 0, 0, 35, 35, "Ennemy"), toCreate);
+     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(true, 0, 0, 33, 35, "Enemy"), toCreate);
     componentsManager->addGameLogicComponent(std::make_shared<ecs::components::EnemiesController>("Kamikaze"), toCreate);
-    componentsManager->addGameLogicComponent(std::make_shared<ecs::components::Health>(1), toCreate);
+    componentsManager->addGameLogicComponent(std::make_shared<ecs::components::Health>(100), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("enemyType03", spriteRect, true), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 16, 0.01), toCreate);
     componentsManager->addGameLogicComponent(std::make_shared<ecs::components::EnemyShoot>(false), toCreate);
