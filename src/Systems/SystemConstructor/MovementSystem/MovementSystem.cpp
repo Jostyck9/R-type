@@ -41,8 +41,8 @@ std::pair<float, float> MovementSystem::getNextPos(std::shared_ptr<Position> &po
         if (speed->getVelocityY() != 0)
             directionY = -1;
     }
-    newPos.first = newPos.first + (1 * speed->getVelocityX()) * _myTimer.getElapsedSeconds();
-    newPos.second = newPos.second + (1 * speed->getVelocityY()) * _myTimer.getElapsedSeconds();
+    newPos.first = newPos.first + (speed->getVelocityX()) * _myTimer.getElapsedSeconds();
+    newPos.second = newPos.second + (speed->getVelocityY()) * _myTimer.getElapsedSeconds();
 
     float radius = std::sqrt(std::pow(newPos.first - srcPos.first, 2) + std::pow(newPos.second - srcPos.second, 2));
     float angle = rot->getRadAngle() + std::atan((newPos.second - srcPos.second) / (newPos.first - srcPos.first));
@@ -55,16 +55,22 @@ std::pair<float, float> MovementSystem::getNextPos(std::shared_ptr<Position> &po
 
 bool MovementSystem::isColliding(const data &box1, const data &box2) const
 {
-    float width = ((box1.nextPos.first + box1.box->getX()) - (box1.pos->getX() + box1.box->getX())) + box1.box->getWidth();
-    float height = ((box1.nextPos.second + box1.box->getY()) - (box1.pos->getY() + box1.box->getY())) + box1.box->getHeight();
-
     if (box1.box == nullptr || box2.box == nullptr)
         throw SystemExceptions("No box collision to check", "MovementSystem::isColliding");
+    // float width = ((box1.nextPos.first + box1.box->getX()) - (box1.pos->getX() + box1.box->getX())) + box1.box->getWidth();
+    // float height = ((box1.nextPos.second + box1.box->getY()) - (box1.pos->getY() + box1.box->getY())) + box1.box->getHeight();
+    float width = box1.box->getWidth();
+    float height = box1.box->getHeight();
+
     if (
-        box1.pos->getX() + box1.box->getX() + width > box2.pos->getX() + box2.box->getX() &&
-        box2.pos->getX() + box2.box->getX() + box2.box->getWidth() > box1.pos->getX() + box1.box->getX() &&
-        box1.pos->getY() + box1.box->getY() + height > box2.pos->getY() + box2.box->getY() &&
-        box2.pos->getY() + box2.box->getY() + box2.box->getHeight() > box1.pos->getY() + box1.box->getY()
+        // box1.pos->getX() + box1.box->getX() + width > box2.pos->getX() + box2.box->getX() &&
+        // box2.pos->getX() + box2.box->getX() + box2.box->getWidth() > box1.pos->getX() + box1.box->getX() &&
+        // box1.pos->getY() + box1.box->getY() + height > box2.pos->getY() + box2.box->getY() &&
+        // box2.pos->getY() + box2.box->getY() + box2.box->getHeight() > box1.pos->getY() + box1.box->getY()
+        box1.nextPos.first + box1.box->getX() + width > box2.pos->getX() + box2.box->getX() &&
+        box2.pos->getX() + box2.box->getX() + box2.box->getWidth() > box1.nextPos.first + box1.box->getX() &&
+        box1.nextPos.second + box1.box->getY() + height > box2.pos->getY() + box2.box->getY() &&
+        box2.pos->getY() + box2.box->getY() + box2.box->getHeight() > box1.nextPos.second + box1.box->getY()
     )
     {
         return true;
@@ -85,13 +91,12 @@ void MovementSystem::updateAll(std::vector<data> &all)
     for (size_t i = 0; i < all.size(); i++)
     {
         all[i].nextPos = getNextPos(all[i].pos, all[i].rot, all[i].speed);
-        for (size_t y = i + 1; all[i].box != nullptr && y < all.size(); y++)
+        for (size_t y = i + 1; y < all.size(); y++)
         {
             try {
                 if (all[i].box != nullptr && all[y].box != nullptr && isColliding(all[i], all[y])) {
                     all[i].box->addTag(all[y].entity->getID(), all[y].box->getTag());
                     all[y].box->addTag(all[i].entity->getID(), all[i].box->getTag());
-                    // std::cout << "Collision HERE between " << all[i].box->getTag() << " and " << all[y].box->getTag() << std::endl;
                     if (!all[i].box->isTriggered() && !all[y].box->isTriggered())
                         collide = true;
                     all[i].box->setCollinding(true);
@@ -101,10 +106,15 @@ void MovementSystem::updateAll(std::vector<data> &all)
             } catch (SystemExceptions &e) {
             }
         }
-        if (!collide) {
-            all[i].pos->setPosition(all[i].nextPos);
-            collide = false;
-        }
+		if (all[i].box != nullptr) {
+			if (all[i].box->getCollidedTags().size() != 0) {
+				collide = true;
+			}
+		}
+		if (!collide) {
+			all[i].pos->setPosition(all[i].nextPos);
+		}
+		collide = false;
     }
     _myTimer.restart();
 }

@@ -3,12 +3,13 @@
 //
 
 #include <iostream>
-#include <EntityConstructor/NameRoomEntity/NameRoomEntity.hpp>
-#include <EntityConstructor/NumberPlayersEntity/NumberPlayersEntity.hpp>
-#include <EntityConstructor/BackgroundWithoutTitleEntity/BackgroundWithoutTitleEntity.hpp>
-#include <EntityConstructor/BackEntity/BackEntity.hpp>
-#include <RTypeExceptions.hpp>
-#include <EntityConstructor/EnemyBulletEntity/EnemyBulletEntity.hpp>
+#include "RTypeExceptions.hpp"
+#include "EnemyBulletEntity.hpp"
+#include "NameRoomEntity.hpp"
+#include "NumberPlayersEntity.hpp"
+#include "BackgroundWithoutTitleEntity.hpp"
+#include "BackEntity.hpp"
+#include "WallSideEntity.hpp"
 #include "SystemResponse.hpp"
 #include "MenuScene.hpp"
 #include "GameScene.hpp"
