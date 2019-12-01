@@ -34,7 +34,7 @@ std::shared_ptr<ecs::entities::Entity> BulletEntity::create(
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Position>(pos.first, pos.second), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Velocity>(500, 0), toCreate);
     componentsManager->addPhysicComponent(std::make_shared<ecs::components::Rotation>(0), toCreate);
-    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(true, 0, 0, 1, 1, "Test"), toCreate);
+    componentsManager->addPhysicComponent(std::make_shared<ecs::components::Collision>(true, 0, 0, 1, 1, "Bullet"), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("bullet", spriteRect, true), toCreate);
     componentsManager->addGameLogicComponent(std::make_shared<ecs::components::Damage>(10), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 3), toCreate);

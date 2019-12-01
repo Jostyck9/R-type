@@ -30,6 +30,19 @@ namespace ecs::components
          * @return const std::type_index 
          */
         const std::type_index getType() const override;
+        /**
+         * @brief Get the Interval object
+         * 
+         * @return double 
+         */
+        double getCreationInterval() const;
+
+        /**
+         * @brief Set the Interval object
+         * 
+         * @param intervalSecond 
+         */
+        void setCreationInterval(double intervalSecond);
 
         /**
          * @brief Get the Timer object
@@ -37,9 +50,18 @@ namespace ecs::components
          * @return Timer&
          */
         Timer &getTimer();
+
+        /**
+         * @brief Get the Timer object
+         * 
+         * @return Timer& 
+         */
+        Timer &getCreationTimer();
         bool operator==(PlayerController &other);
     private:
         Timer _timer;
+        double _creationInterval;
+        Timer _creationTimer;
     };
 }
 

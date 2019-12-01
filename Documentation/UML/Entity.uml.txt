@@ -16,7 +16,7 @@ Projectile <|-- Rocket
 Projectile <|-- Plasma
 
 
-Entity <|-- Ennemy
+Entity <|-- Enemy
 
 Entity <|-- Allie
 
