@@ -7,7 +7,7 @@
 
 #include "PlayerController.hpp"
 
-ecs::components::PlayerController::PlayerController() : _timer(500), _creationInterval(3)
+ecs::components::PlayerController::PlayerController() : _timer(500), _creationInterval(2)
 {
     _timer.start();
     _creationTimer.start();

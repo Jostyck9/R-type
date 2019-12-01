@@ -74,9 +74,9 @@ void EnemiesMovementSystem::spawnRandomEnnemies(std::shared_ptr<ecs::components:
     if (controller->getCreationTimer().getElapsedSeconds() > controller->getCreationInterval())
     {
         std::pair<int, int> pos(1500, 400);
-        pos.second = (rand() % 700 + 100);
-        int i = (rand() % 5);
-        switch (i)
+        pos.second = (rand() % 700 + 50);
+        int i = (rand() % 10);
+         switch (i)
         {
         case 0:
             _entityFactory->createEntity("Enemy", pos);
@@ -91,7 +91,24 @@ void EnemiesMovementSystem::spawnRandomEnnemies(std::shared_ptr<ecs::components:
             _entityFactory->createEntity("Enemy", pos);
             break;
         case 4:
+            _entityFactory->createEntity("EnemyType02", pos);
+        case 5:
             _entityFactory->createEntity("EnemyType01", pos);
+            break;
+        case 6:
+            _entityFactory->createEntity("EnemyType02", pos);
+            break;
+        case 7:
+            _entityFactory->createEntity("Enemy", pos);
+            break;
+        case 8:
+            _entityFactory->createEntity("Enemy", pos);
+            break;
+        case 9:
+            _entityFactory->createEntity("Enemy", pos);
+            break;
+        case 10:
+            _entityFactory->createEntity("Enemy", pos);
             break;
         default:
             break;

@@ -19,6 +19,7 @@ namespace ecs {
             loadTexture("bullet", "./resources/bullet.png");
             loadTexture("enemy", "./resources/enemy01.png");
             loadTexture("enemyType01", "./resources/enemytype01.png");
+            loadTexture("enemyType02", "./resources/enemytype02.png");
             loadTexture("backgroundMenu", "./resources/menu_background.png");
             loadTexture("backgroundWithoutTitle", "./resources/background_without_title.png");
             loadFont("Pixeled", "./resources/font.ttf");
