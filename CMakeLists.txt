@@ -51,8 +51,15 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/PlayerEntity/
 include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/StopEntity/CMakeLists.txt)
 include(${CMAKE_CURRENT_SOURCE_DIR}/src/Entities/EntityConstructor/TestBackground/CMakeLists.txt)
 
+
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Systems/SystemConstructor/AnimationSystem/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Systems/SystemConstructor/ButtonColorSystem/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Systems/SystemConstructor/ChooseRoomSystem/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Systems/SystemConstructor/DisplaySystem/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Systems/SystemConstructor/EnnemiesMovementSystem/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Systems/SystemConstructor/MenuSystem/CMakeLists.txt)
 include(${CMAKE_CURRENT_SOURCE_DIR}/src/Systems/SystemConstructor/MovementSystem/CMakeLists.txt)
-include(${CMAKE_CURRENT_SOURCE_DIR}/src/Systems/SystemConstructor/Display/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/src/Systems/SystemConstructor/PlayerMovementSystem/CMakeLists.txt)
 
 #Link shared libraries
 set_property(TARGET TestEntity PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libTestEntity.so)
@@ -62,14 +69,6 @@ set_target_properties(TestEntity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_B
 set_property(TARGET TestEntity2 PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libTestEntity2.so)
 set_target_properties(TestEntity2 PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
 #set_property(TARGET testEntity2 PROPERTY IMPORTED_IMPLIB c:/path/to/bar.lib)
-
-set_property(TARGET MovementSystem PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libMovementSystem.so)
-set_target_properties(MovementSystem PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/systems)
-#set_property(TARGET Movement PROPERTY IMPORTED_IMPLIB c:/path/to/bar.lib)
-
-set_property(TARGET DisplaySystem PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libDisplaySystem.so)
-set_target_properties(DisplaySystem PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/systems)
-#set_property(TARGET Display PROPERTY IMPORTED_IMPLIB c:/path/to/bar.lib)
 
 set_property(TARGET BackEntity PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libBackEntity.so)
 set_target_properties(BackEntity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
@@ -111,6 +110,37 @@ set_property(TARGET TestBackGround PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SO
 set_target_properties(TestBackGround PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/entities)
 
 
+
+
+set_property(TARGET AnimationSystem PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libAnimationSystem.so)
+set_target_properties(AnimationSystem PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/systems)
+
+set_property(TARGET ButtonColorSystem PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libButtonColorSystem.so)
+set_target_properties(ButtonColorSystem PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/systems)
+
+set_property(TARGET ChooseRoomSystem PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libChooseRoomSystem.so)
+set_target_properties(ChooseRoomSystem PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/systems)
+
+set_property(TARGET DisplaySystem PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libDisplaySystem.so)
+set_target_properties(DisplaySystem PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/systems)
+#set_property(TARGET Display PROPERTY IMPORTED_IMPLIB c:/path/to/bar.lib)
+
+set_property(TARGET EnnemiesMovementSystem PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libEnnemiesMovementSystem.so)
+set_target_properties(EnnemiesMovementSystem PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/systems)
+
+set_property(TARGET MenuSystem PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libMenuSystem.so)
+set_target_properties(MenuSystem PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/systems)
+
+set_property(TARGET MovementSystem PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libMovementSystem.so)
+set_target_properties(MovementSystem PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/systems)
+#set_property(TARGET Movement PROPERTY IMPORTED_IMPLIB c:/path/to/bar.lib)
+
+set_property(TARGET PlayerMovementSystem PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libPlayerMovementSystem.so)
+set_target_properties(PlayerMovementSystem PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib/systems)
+
+
+
+
 include_directories(${CMAKE_INCLUDE_PATH}
         src/Loader/
         src/Loader/EntitiesLoader/
@@ -132,14 +162,6 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Exceptions
         src/Network/Session
         src/Systems/SystemConstructor
-        src/Systems/SystemConstructor/MovementSystem
-        src/Systems/SystemConstructor/MenuSystem
-        src/Systems/SystemConstructor/ButtonColorSystem
-        src/Systems/SystemConstructor/PlayerMovementSystem
-        src/Systems/SystemConstructor/EnnemiesMovementSystem
-        src/Systems/SystemConstructor/testSystem
-        src/Systems/SystemConstructor/AnimationSystem
-        src/Systems/SystemConstructor/ChooseRoomSystem
         src/Systems/Factories
         src/Systems/SystemResponse/
         src/Render/
@@ -199,8 +221,6 @@ set(SOURCE_CLIENT
         "src/Entities/Serializer/Serializer.cpp"
         "src/Systems/ASystem.cpp"
         "src/Systems/SystemManager/SystemManager.cpp"
-        "src/Systems/SystemConstructor/MenuSystem/MenuSystem.cpp"
-        "src/Systems/SystemConstructor/ButtonColorSystem/ButtonColorSystem.cpp"
         "src/Systems/SystemManager/SystemManager.cpp"
         "src/Exceptions/ComponentExceptions.cpp"
         "src/Exceptions/ECSExceptions.cpp"
@@ -212,10 +232,6 @@ set(SOURCE_CLIENT
         "src/Loader/SystemLoader/SystemLoader.cpp"
         "src/Loader/EntitiesLoader/EntitiesLoader.cpp"
         "src/Systems/SystemResponse/SystemResponse.cpp"
-        "src/Systems/SystemConstructor/PlayerMovementSystem/PlayerMovementSystem.cpp"
-        "src/Systems/SystemConstructor/EnnemiesMovementSystem/EnnemiesMovementSystem.cpp"
-        "src/Systems/SystemConstructor/AnimationSystem/AnimationSystem.cpp"
-        "src/Systems/SystemConstructor/ChooseRoomSystem/ChooseRoomSystem.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
         "src/Network/PacketManager.cpp"
@@ -233,7 +249,7 @@ set(SOURCE_CLIENT
         "src/Network/Session/ClientSession.cpp"
         )
 add_executable(r-type_client ${SOURCE_CLIENT})
-target_link_libraries(r-type_client ${CONAN_LIBS} TestEntity TestEntity2 BulletEntity DisplaySystem MovementSystem BackEntity BackgroundMenuEntity BackgroundWithoutTitleEntity GameBackgroundEntity EnnemyEntity EnnemyType01Entity NameRoomEntity NumberPlayersEntity PlayEntity PlayerEntity StopEntity TestBackGround ${CMAKE_DL_LIBS} "stdc++fs")
+target_link_libraries(r-type_client ${CONAN_LIBS} TestEntity TestEntity2 BulletEntity DisplaySystem MovementSystem BackEntity BackgroundMenuEntity BackgroundWithoutTitleEntity GameBackgroundEntity EnnemyEntity EnnemyType01Entity NameRoomEntity NumberPlayersEntity PlayEntity PlayerEntity StopEntity TestBackGround AnimationSystem ButtonColorSystem ChooseRoomSystem EnnemiesMovementSystem MenuSystem PlayerMovementSystem ${CMAKE_DL_LIBS} "stdc++fs")
 
 #r-type_server
 set(SOURCE_SERVER

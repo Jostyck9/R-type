@@ -78,7 +78,7 @@ add_executable(unit_test
     ${SOURCE_ROOT}/Systems/ASystem.cpp
     ${SOURCE_ROOT}/Systems/SystemManager/SystemManager.cpp
     ${SOURCE_ROOT}/Systems/Factories/SystemFactory.cpp
-    ${SOURCE_ROOT}/Systems/SystemConstructor/Display/DisplaySystem.cpp
+    ${SOURCE_ROOT}/Systems/SystemConstructor/DisplaySystem/DisplaySystem.cpp
     ${SOURCE_ROOT}/Systems/SystemConstructor/testSystem/testSystem.cpp
     ${SOURCE_ROOT}/Systems/SystemResponse/SystemResponse.cpp
     ${SOURCE_ROOT}/ManagerWrapper/ManagerWrapper.cpp

@@ -33,29 +33,41 @@ endif()
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 include_directories(${CMAKE_INCLUDE_PATH}
-        ./
-        ../
-        ../../
         src/Components/
         src/Components/ComponentManager/
         src/Components/Display/
+        src/Components/GameLogic/
+        src/Components/IO/
         src/Components/Physics/
-        src/RessourceManager/
+        src/ResourceManager/
         src/Entities/
+        src/Entities/EntityConstructor/
+        src/Systems/SystemConstructor/DisplaySystem/ #This one added
         src/Entities/EntityManager/
+        src/Entities/Factories/
+        src/Entities/Serializer/
         src/Systems/
-        src/Systems/SystemConstructor/Display
         src/Systems/SystemManager
         src/Exceptions
+        src/Network/Session
         src/Systems/SystemConstructor
         src/Systems/Factories
+        src/Systems/SystemResponse/
         src/Render/
         src/ManagerWrapper
-        src/DlLoader
-)
+        src/Network/
+        src/Network/Client
+        src/Network/Server
+        src/Network/Session
+        src/Exceptions
+        src/Utils/
+        src/FactoriesWrapper/
+        src/Scenes/
+        src/)
 
 #Display librairy
 add_library(DisplaySystem SHARED
+        "src/Ecs.cpp"
         "src/Components/ComponentManager/ComponentManager.cpp"
         "src/Components/Display/Animator.cpp"
         "src/Components/Display/Button.cpp"
@@ -64,50 +76,56 @@ add_library(DisplaySystem SHARED
         "src/Components/Display/Sprite.cpp"
         "src/Components/Display/StaticText.cpp"
         "src/Components/Display/Text.cpp"
+        "src/Components/GameLogic/Damage.cpp"
+        "src/Components/GameLogic/Health.cpp"
+        "src/Components/GameLogic/Item.cpp"
+        "src/Components/GameLogic/Level.cpp"
+        "src/Components/GameLogic/Power.cpp"
+        "src/Components/GameLogic/Scale.cpp"
+        "src/Components/GameLogic/Timer.cpp"
+        "src/Components/GameLogic/PlayerController.cpp"
+        "src/Components/GameLogic/EnnemiesController.cpp"
+        "src/Components/IO/GameController.cpp"
+        "src/Components/IO/Keyboard.cpp"
+        "src/Components/IO/Output.cpp"
+        "src/Components/IO/Sound.cpp"
+        "src/Components/Physics/Acceleration.cpp"
         "src/Components/Physics/Collision.cpp"
+        "src/Components/Physics/Gravity.cpp"
+        "src/Components/Physics/Motion.cpp"
+        "src/Components/Physics/Rotation.cpp"
+        "src/Components/Physics/Transform.cpp"
+        "src/Components/Physics/Velocity.cpp"
         "src/Components/Physics/Position.cpp"
+        "src/ResourceManager/ResourceManager.cpp"
+        "src/ResourceManager/Music.cpp"
+        "src/ResourceManager/Sound.cpp"
+        "src/ResourceManager/Texture.cpp"
+        "src/ResourceManager/Font.cpp"
+        "src/ResourceManager/RtypeResources.cpp"
         "src/Entities/Entity.cpp"
+        "src/Systems/SystemConstructor/DisplaySystem/DisplaySystem.cpp" #This one added
         "src/Entities/EntityManager/EntityManager.cpp"
+        "src/Entities/Factories/EntityFactory.cpp"
+        "src/Entities/Serializer/Serializer.cpp"
+        "src/Systems/ASystem.cpp"
+        "src/Systems/SystemManager/SystemManager.cpp"
         "src/Exceptions/ComponentExceptions.cpp"
         "src/Exceptions/ECSExceptions.cpp"
+        "src/Exceptions/EntityExceptions.cpp"
         "src/Exceptions/RTypeExceptions.cpp"
+        "src/Exceptions/ServerExceptions.cpp"
         "src/Exceptions/SystemExceptions.cpp"
-        "src/Systems/ASystem.cpp"
-        "src/Systems/SystemConstructor/Display/DisplaySystem.cpp"
-        "src/Systems/SystemManager/SystemManager.cpp"
         "src/Systems/Factories/SystemFactory.cpp"
+        "src/Systems/SystemResponse/SystemResponse.cpp"
         "src/Render/SFMLRenderManager.cpp"
         "src/ManagerWrapper/ManagerWrapper.cpp"
+        "src/Network/PacketManager.cpp"
+        "src/Utils/Rect.cpp"
+        "src/FactoriesWrapper/FactoriesWrapper.cpp"
+        "src/Systems/SystemResponse/SystemResponse.cpp"
 )
 target_link_libraries(DisplaySystem ${CONAN_LIBS})
-
-#Display librairy
-# add_executable(DisplaySystem
-#         "../../../main_client.cpp"
-#         "../../../Components/ComponentManager/ComponentManager.cpp"
-#         "../../../Components/Display/Animator.cpp"
-#         "../../../Components/Display/Button.cpp"
-#         "../../../Components/Display/Image.cpp"
-#         "../../../Components/Display/PopUp.cpp"
-#         "../../../Components/Display/Sprite.cpp"
-#         "../../../Components/Display/StaticText.cpp"
-#         "../../../Components/Display/Text.cpp"
-#         "../../../Components/Physics/Collision.cpp"
-#         "../../../Components/Physics/Position.cpp"
-#         "../../../Entities/Entity.cpp"
-#         "../../../Entities/EntityManager/EntityManager.cpp"
-#         "../../../Exceptions/ComponentExceptions.cpp"
-#         "../../../Exceptions/ECSExceptions.cpp"
-#         "../../../Exceptions/RTypeExceptions.cpp"
-#         "../../../Exceptions/SystemExceptions.cpp"
-#         "../../ASystem.cpp"
-#         "./DisplaySystem.cpp"
-#         "../../SystemManager/SystemManager.cpp"
-#         "../../Factories/SystemFactory.cpp"
-#         "../../../Render/SFMLRenderManager.cpp"
-#         "../../../ManagerWrapper/ManagerWrapper.cpp"
-# )
-# target_link_libraries(DisplaySystem ${CONAN_LIBS})
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

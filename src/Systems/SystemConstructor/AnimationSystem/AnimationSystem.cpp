@@ -10,6 +10,7 @@
 #include "Sprite.hpp"
 #include "ComponentExceptions.hpp"
 #include "AnimationSystem.hpp"
+#include "SystemConstructor.hpp"
 
 namespace ecs::system
 {
@@ -58,4 +59,13 @@ const std::string AnimationSystem::getName() const
     return ("Animation");
 }
 
+extern "C"
+{
+    ecs::system::ISystemConstructor *entryPoint()
+    {
+        return (new ecs::system::SystemConstructor<ecs::system::AnimationSystem>());
+    }
 }
+
+}
+

@@ -155,14 +155,6 @@ const std::string MovementSystem::getName() const
     return ("Movement");
 }
 
-// extern "C"
-// {
-//     std::shared_ptr<ecs::system::ISystemConstructor> entryPoint()
-//     {
-//         return (std::make_shared<ecs::system::SystemConstructor<ecs::system::MovementSystem>>());
-//     }
-// }
-
 extern "C"
 {
     ecs::system::ISystemConstructor *entryPoint()

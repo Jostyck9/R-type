@@ -7,8 +7,9 @@
 
 #include <iostream>
 #include <ComponentExceptions.hpp>
-#include <Display/Button.hpp>
+#include <Button.hpp>
 #include "DisplaySystem.hpp"
+#include "SystemConstructor.hpp"
 #include "ButtonColorSystem.hpp"
 
 using namespace ecs::system;
@@ -39,4 +40,12 @@ SystemResponse ButtonColorSystem::update()
 const std::string ButtonColorSystem::getName() const
 {
     return ("ButtonColor");
+}
+
+extern "C"
+{
+    ecs::system::ISystemConstructor *entryPoint()
+    {
+        return (new ecs::system::SystemConstructor<ecs::system::ButtonColorSystem>());
+    }
 }

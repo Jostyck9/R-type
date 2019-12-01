@@ -7,10 +7,11 @@
 
 #include <iostream>
 #include <ComponentExceptions.hpp>
-#include <Display/Button.hpp>
+#include <Button.hpp>
 #include "DisplaySystem.hpp"
 #include "ManagerWrapper.hpp"
 #include "ChooseRoomSystem.hpp"
+#include "SystemConstructor.hpp"
 
 using namespace ecs::system;
 
@@ -62,4 +63,12 @@ SystemResponse ChooseRoomSystem::update()
 const std::string ChooseRoomSystem::getName() const
 {
     return ("ChooseRoom");
+}
+
+extern "C"
+{
+    ecs::system::ISystemConstructor *entryPoint()
+    {
+        return (new ecs::system::SystemConstructor<ecs::system::ChooseRoomSystem>());
+    }
 }

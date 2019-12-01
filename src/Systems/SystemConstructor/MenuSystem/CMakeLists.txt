@@ -32,7 +32,6 @@ endif()
 # Compilation
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
-
 include_directories(${CMAKE_INCLUDE_PATH}
         src/Components/
         src/Components/ComponentManager/
@@ -43,7 +42,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/ResourceManager/
         src/Entities/
         src/Entities/EntityConstructor/
-        src/Systems/SystemConstructor/MovementSystem/ #This one added
+        src/Systems/SystemConstructor/MenuSystem/ #This one added
         src/Entities/EntityManager/
         src/Entities/Factories/
         src/Entities/Serializer/
@@ -67,7 +66,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/)
 
 #Display librairy
-add_library(MovementSystem SHARED
+add_library(MenuSystem SHARED
         "src/Ecs.cpp"
         "src/Components/ComponentManager/ComponentManager.cpp"
         "src/Components/Display/Animator.cpp"
@@ -105,7 +104,7 @@ add_library(MovementSystem SHARED
         "src/ResourceManager/Font.cpp"
         "src/ResourceManager/RtypeResources.cpp"
         "src/Entities/Entity.cpp"
-        "src/Systems/SystemConstructor/MovementSystem/MovementSystem.cpp" #This one added
+        "src/Systems/SystemConstructor/MenuSystem/MenuSystem.cpp" #This one added
         "src/Entities/EntityManager/EntityManager.cpp"
         "src/Entities/Factories/EntityFactory.cpp"
         "src/Entities/Serializer/Serializer.cpp"
@@ -126,7 +125,7 @@ add_library(MovementSystem SHARED
         "src/FactoriesWrapper/FactoriesWrapper.cpp"
         "src/Systems/SystemResponse/SystemResponse.cpp"
 )
-target_link_libraries(MovementSystem ${CONAN_LIBS})
+target_link_libraries(MenuSystem ${CONAN_LIBS})
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

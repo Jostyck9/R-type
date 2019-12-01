@@ -15,7 +15,7 @@
 #include "SystemManager.hpp"
 #include "SystemFactory.hpp"
 #include "ISystemFactory.hpp"
-#include "Display/DisplaySystem.hpp"
+#include "DisplaySystem.hpp"
 #include "Physics/Position.hpp"
 #include "IRenderManager.hpp"
 #include "SFMLRenderManager.hpp"

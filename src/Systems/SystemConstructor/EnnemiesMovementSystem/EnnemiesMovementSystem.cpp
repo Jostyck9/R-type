@@ -9,6 +9,7 @@
 #include "Physics/Velocity.hpp"
 #include "ComponentExceptions.hpp"
 #include "EnnemiesMovementSystem.hpp"
+#include "SystemConstructor.hpp"
 
 namespace ecs::system
 {
@@ -57,3 +58,12 @@ const std::string EnnemiesMovementSystem::getName() const
 }
 
 } // namespace ecs::system
+
+
+extern "C"
+{
+    ecs::system::ISystemConstructor *entryPoint()
+    {
+        return (new ecs::system::SystemConstructor<ecs::system::EnnemiesMovementSystem>());
+    }
+}
