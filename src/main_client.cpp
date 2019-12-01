@@ -11,6 +11,8 @@
 #include <boost/asio.hpp>
 #include <Client/UDPClient.hpp>
 #include <RTypeExceptions.hpp>
+#include <cstdlib>
+#include <ctime>
 #include "Rtype.hpp"
 
 int main(int ac, char **av)
@@ -32,6 +34,7 @@ int main(int ac, char **av)
         // clientNetwork.send(packet);
 
         packet.setCmd(ecs::network::PacketManager::ISALIVE);
+        srand(time(NULL));
         rtype.start();
         // network.join();
 
