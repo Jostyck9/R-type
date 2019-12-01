@@ -41,7 +41,7 @@ std::shared_ptr<ecs::entities::Entity> EnemyType02Entity::create(
     componentsManager->addGameLogicComponent(std::make_shared<ecs::components::EnemiesController>("Wave"), toCreate);
     componentsManager->addGameLogicComponent(std::make_shared<ecs::components::Health>(200), toCreate);
     componentsManager->addDisplayComponent(std::make_shared<ecs::components::Sprite>("enemyType02", spriteRect, true), toCreate);
-    componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 2), toCreate);
+    componentsManager->addDisplayComponent(std::make_shared<ecs::components::Animator>(spriteRect, 2, 0.2), toCreate);
     return toCreate;
 }
 
