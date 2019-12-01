@@ -29,7 +29,7 @@ SystemResponse EnemiesMovementSystem::update()
         try {
             std::shared_ptr<ecs::components::PlayerController> playerCtrl = std::dynamic_pointer_cast<ecs::components::PlayerController>(_managerWrapper->getComponentManager()->getGameLogicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::PlayerController))));
             playerPos = std::dynamic_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Position))));
-            spawnRandomEnnemies(playerCtrl);
+            spawnRandomEnemies(playerCtrl);
 
         }
         catch (const ComponentExceptions &e)
@@ -85,7 +85,7 @@ void EnemiesMovementSystem::updateVelocityOnPattern(std::shared_ptr<ecs::compone
     }
 }
 
-void EnemiesMovementSystem::spawnRandomEnnemies(std::shared_ptr<ecs::components::PlayerController> &controller)
+void EnemiesMovementSystem::spawnRandomEnemies(std::shared_ptr<ecs::components::PlayerController> &controller)
 {
     if (controller->getCreationTimer().getElapsedSeconds() > controller->getCreationInterval())
     {
@@ -112,7 +112,7 @@ void EnemiesMovementSystem::spawnRandomEnnemies(std::shared_ptr<ecs::components:
             _entityFactory->createEntity("EnemyType01", pos);
             break;
         case 6:
-            _entityFactory->createEntity("EnemyType02", pos);
+            _entityFactory->createEntity("Enemy", pos);
             break;
         case 7:
             _entityFactory->createEntity("EnemyType03", pos);

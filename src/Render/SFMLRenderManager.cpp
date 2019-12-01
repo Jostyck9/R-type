@@ -219,8 +219,6 @@ bool SFMLRenderManager::eventUpdate()
             _window.close();
             return false;
         }
-        //if (_event.type == sf::Event::KeyPressed)
-        // updatePressedKeys();
     }
     updatePressedKeys();
     return true;
@@ -234,6 +232,20 @@ void SFMLRenderManager::clear()
 void SFMLRenderManager::display()
 {
     _window.display();
+}
+
+ecs::network::PacketManager SFMLRenderManager::getKeyToPacket()
+{
+    ecs::network::PacketManager toFill;
+
+    toFill.setCmd(ecs::network::PacketManager::UPDATE);
+    for (auto &it : _keysMap) {
+        if (it.second == PRESSED) {
+            if (toFill.addKey(it.first) == -1)
+                return toFill;
+        }
+    }
+    return toFill;
 }
 
 } // namespace ecs

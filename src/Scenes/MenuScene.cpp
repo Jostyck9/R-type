@@ -5,6 +5,7 @@
 #include <memory>
 #include <SystemConstructor/MenuSystem/MenuSystem.hpp>
 #include <SystemConstructor/ButtonColorSystem/ButtonColorSystem.hpp>
+#include <SystemConstructor/ParallaxSystem/ParallaxSystem.hpp>
 #include "MenuScene.hpp"
 #include "DisplaySystem.hpp"
 
@@ -17,8 +18,10 @@ ecs::MenuScene::MenuScene(std::shared_ptr<Ecs> &ecs) : _ecs(ecs)
     _ecs->getSystemManager()->addSystem(std::make_shared<system::DisplaySystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
     _ecs->getSystemManager()->addSystem(std::make_shared<system::MenuSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
     _ecs->getSystemManager()->addSystem(std::make_shared<system::ButtonColorSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
+    _ecs->getSystemManager()->addSystem(std::make_shared<system::ParallaxSystem>(_ecs->getManagerWrapper(), _ecs->getEntityFactory(), _ecs->getSystemManager()->getEntitiesToDelete()));
 
     _ecs->getEntityFactory()->createEntity("BackgroundMenu");
+    _ecs->getEntityFactory()->createEntity("Stars");
     _ecs->getEntityFactory()->createEntity("Play");
     _ecs->getEntityFactory()->createEntity("Stop");
 }

@@ -60,7 +60,7 @@ namespace ecs::system {
         return SystemResponse();
     }
 
-    void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, IRenderManager::KEY_STATE> &keys,
+void PlayerMovementSystem::updateVelocityOnInput(std::map<ecs::input::Key, IRenderManager::KEY_STATE> &keys,
                                                      std::shared_ptr<ecs::components::Velocity> &velocityComp) {
         if (keys[ecs::input::LEFT] == IRenderManager::PRESSED)
             velocityComp->setVelocityX(-180);

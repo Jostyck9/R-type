@@ -17,10 +17,11 @@ namespace ecs {
             loadTexture("test", "./resources/r-typesheet1.gif");
             loadTexture("player", "./resources/player.png");
             loadTexture("bullet", "./resources/bullet.png");
-            loadTexture("enemy", "./resources/enemy01.png");
-            loadTexture("enemyType01", "./resources/enemytype01.png");
+            loadTexture("enemyBullet", "./resources/enemyBullet.png");
             loadTexture("enemyType02", "./resources/enemytype02.png");
             loadTexture("enemyType03", "./resources/enemytype03.png");
+            loadTexture("enemyType01", "./resources/enemytype01.png");
+            loadTexture("enemy", "./resources/enemy01.png");
             loadTexture("backgroundMenu", "./resources/menu_background.png");
             loadTexture("backgroundWithoutTitle", "./resources/background_without_title.png");
             loadFont("Pixeled", "./resources/font.ttf");
