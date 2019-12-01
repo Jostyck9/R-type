@@ -47,6 +47,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
         src/Entities/EntityConstructor/TestEntity/
         src/Entities/EntityConstructor/TestEntity2/
         src/Entities/EntityConstructor/PlayerEntity/
+        src/Entities/EntityConstructor/PlayerTwoEntity/
         src/Entities/EntityConstructor/PlayEntity/
         src/Entities/EntityConstructor/StopEntity/
         src/Entities/EntityConstructor/EnemyEntity/
@@ -142,6 +143,7 @@ set(SOURCE_CLIENT
         "src/Entities/EntityConstructor/TestEntity/TestEntity.cpp"
         "src/Entities/EntityConstructor/TestEntity2/TestEntity2.cpp"
         "src/Entities/EntityConstructor/PlayerEntity/PlayerEntity.cpp"
+        "src/Entities/EntityConstructor/PlayerTwoEntity/PlayerTwoEntity.cpp"
         "src/Entities/EntityConstructor/PlayEntity/PlayEntity.cpp"
         "src/Entities/EntityConstructor/StopEntity/StopEntity.cpp"
         "src/Entities/EntityConstructor/BulletEntity/BulletEntity.cpp"
