@@ -4,6 +4,7 @@
 Room::Room(const size_t &id) : _id(id), _isOpen(true), _nbPlayer(0),
     _nbPlayerMax(4), _isGameStarted(false)
 {
+
 }
 
 Room::~Room()
@@ -28,11 +29,10 @@ size_t Room::getPlayerReady()
     return nbrp;
 }
 
-void Room::addPlayer(const std::string &pseudo)
+void Room::addPlayer(const size_t &id, const std::string &pseudo)
 {
     std::lock_guard<std::mutex> lock(_mLock);
     PlayerInfo pInfo;
-    size_t id = getNewPlayerId();
 
     pInfo._isReady = false;
     pInfo._pseudo = pseudo;
@@ -45,7 +45,10 @@ void Room::run()
 {
     //TODO implement game in here
 
+    //TODO Init ecs here and do update in here
+
     while (_isOpen) {
+        //TODO do the flop and the game
         std::unique_lock<std::mutex> Lock(_mLock);
         displayRoomStatus();
         _cVar.wait(Lock);
@@ -137,4 +140,22 @@ void Room::stop()
 bool Room::isGameReady()
 {
     return getPlayerReady() == getNbplayer();
+}
+
+void Room::deletePlayer(const size_t &id)
+{
+    std::lock_guard<std::mutex> lock(_mLock);
+    _playerStatus.erase(id);
+    _nbPlayer--;
+    _cVar.notify_one();
+}
+
+PlayerInfo &Room::getPlayerById(const size_t &id)
+{
+    return _playerStatus[id];
+}
+
+void Room::setPlayerStatus(const size_t &id, bool ready)
+{
+    getPlayerById(id)._isReady = ready;
 }

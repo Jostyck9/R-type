@@ -34,7 +34,6 @@ int main(int ac, char **av)
         packet.setCmd(ecs::network::PacketManager::ISALIVE);
         rtype.start();
         // network.join();
-
     } catch (const RTypeExceptions &e) {
         std::cerr << e.what() << std::endl;
         std::cerr << "In file: " << e.where() << std::endl;
