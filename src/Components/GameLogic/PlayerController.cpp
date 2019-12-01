@@ -60,6 +60,7 @@ ecs::components::Timer &ecs::components::PlayerController::getCreationTimer()
 
 bool ecs::components::PlayerController::operator==(PlayerController &other)
 {
+    (void) other;
 	return true;
 }
 

@@ -1,18 +1,15 @@
 #include <iostream>
 #include "Room.hpp"
 
-Room::Room(const size_t &id) : _id(id), _isOpen(true), _nbPlayer(0),
-    _nbPlayerMax(4), _isGameStarted(false)
+Room::Room(const size_t &id) : _id(id), _isOpen(true), _nbPlayer(0), _nbPlayerMax(4), _isGameStarted(false)
 {
-
 }
 
 Room::~Room()
 {
 }
 
-Room::Room(size_t id, size_t nbPlayerMax) : _id(id), _nbPlayerMax(nbPlayerMax),
-    _isOpen(true), _nbPlayer(0), _isGameStarted(false)
+Room::Room(size_t id, size_t nbPlayerMax) : _id(id), _isOpen(true), _nbPlayer(0), _nbPlayerMax(nbPlayerMax), _isGameStarted(false)
 {
 }
 
@@ -22,7 +19,8 @@ size_t Room::getPlayerReady()
 
     if (getNbplayer() == 0)
         return 0;
-    for (auto &p : _playerStatus) {
+    for (auto &p : _playerStatus)
+    {
         if (p.second._isReady == true)
             nbrp++;
     }
@@ -47,7 +45,8 @@ void Room::run()
 
     //TODO Init ecs here and do update in here
 
-    while (_isOpen) {
+    while (_isOpen)
+    {
         //TODO do the flop and the game
         std::unique_lock<std::mutex> Lock(_mLock);
         displayRoomStatus();
@@ -60,11 +59,11 @@ void Room::displayRoomStatus()
     std::cout << "Room id : " << getId() << std::endl;
     std::cout << "Status : " << (_isOpen ? "Open" : "Close") << std::endl;
     std::cout << "\tPlayer : " << getNbplayer() << "/" << getNbplayerMax()
-        << std::endl;
+              << std::endl;
     std::cout << "\tPlayer ready: " << getPlayerReady() << "/" << getNbplayer()
-        << std::endl;
+              << std::endl;
     std::cout << "\t" << (_isGameStarted ? "Started" : "Waiting for player")
-        << std::endl;
+              << std::endl;
 }
 
 size_t Room::getNbplayer() const
