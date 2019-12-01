@@ -14,6 +14,7 @@
 #include "Position.hpp"
 #include "Rotation.hpp"
 #include "Velocity.hpp"
+#include "Sprite.hpp"
 
 using namespace ecs::system;
 using namespace ecs::components;
@@ -36,7 +37,8 @@ std::pair<float, float> MovementSystem::getNextPos(std::shared_ptr<Position> &po
     int directionX = 1;
     int directionY = 1;
 
-    if (speed->getVelocityX() < 0) {
+    if (speed->getVelocityX() < 0)
+    {
         directionX = -1;
         if (speed->getVelocityY() != 0)
             directionY = -1;
@@ -64,8 +66,7 @@ bool MovementSystem::isColliding(const data &box1, const data &box2) const
         box1.pos->getX() + box1.box->getX() + width > box2.pos->getX() + box2.box->getX() &&
         box2.pos->getX() + box2.box->getX() + box2.box->getWidth() > box1.pos->getX() + box1.box->getX() &&
         box1.pos->getY() + box1.box->getY() + height > box2.pos->getY() + box2.box->getY() &&
-        box2.pos->getY() + box2.box->getY() + box2.box->getHeight() > box1.pos->getY() + box1.box->getY()
-    )
+        box2.pos->getY() + box2.box->getY() + box2.box->getHeight() > box1.pos->getY() + box1.box->getY())
     {
         return true;
     }
@@ -76,8 +77,10 @@ void MovementSystem::updateAll(std::vector<data> &all)
 {
     bool collide = false;
 
-    for (auto &it : all) {
-        if (it.box != nullptr) {
+    for (auto &it : all)
+    {
+        if (it.box != nullptr)
+        {
             it.box->setCollinding(false);
             it.box->clearTags();
         }
@@ -87,8 +90,10 @@ void MovementSystem::updateAll(std::vector<data> &all)
         all[i].nextPos = getNextPos(all[i].pos, all[i].rot, all[i].speed);
         for (size_t y = i + 1; all[i].box != nullptr && y < all.size(); y++)
         {
-            try {
-                if (all[i].box != nullptr && all[y].box != nullptr && isColliding(all[i], all[y])) {
+            try
+            {
+                if (all[i].box != nullptr && all[y].box != nullptr && isColliding(all[i], all[y]))
+                {
                     all[i].box->addTag(all[y].entity->getID(), all[y].box->getTag());
                     all[y].box->addTag(all[i].entity->getID(), all[i].box->getTag());
                     // std::cout << "Collision HERE between " << all[i].box->getTag() << " and " << all[y].box->getTag() << std::endl;
@@ -98,10 +103,13 @@ void MovementSystem::updateAll(std::vector<data> &all)
                     all[y].box->setCollinding(true);
                     break;
                 }
-            } catch (SystemExceptions &e) {
+            }
+            catch (SystemExceptions &e)
+            {
             }
         }
-        if (!collide) {
+        if (!collide)
+        {
             all[i].pos->setPosition(all[i].nextPos);
             collide = false;
         }
@@ -109,10 +117,32 @@ void MovementSystem::updateAll(std::vector<data> &all)
     _myTimer.restart();
 }
 
-SystemResponse   MovementSystem::update()
+void MovementSystem::deleteIfOutOfWindow(void)
+{
+    auto entities = _managerWrapper->getEntityManager()->getAllEntities();
+    for (size_t i = 0; i < entities.size(); i++)
+    {
+        try
+        {   
+            std::shared_ptr<ecs::components::Sprite> sprite = std::dynamic_pointer_cast<ecs::components::Sprite>(_managerWrapper->getComponentManager()->getDisplayComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Sprite))));
+            std::shared_ptr<ecs::components::Position> pos = std::dynamic_pointer_cast<ecs::components::Position>(_managerWrapper->getComponentManager()->getPhysicComponentOfSpecifiedType(entities[i]->getID(), std::type_index(typeid(ecs::components::Position))));
+            if ((pos->getX() < (0 - sprite->getRect().getWidth())) || (pos->getX() > (1510)))
+            {
+                _entitiesToDelete.push_front(entities[i]->getID());
+            }
+        }
+        catch (ComponentExceptions &e)
+        {
+            continue;
+        }
+    }
+}
+
+SystemResponse MovementSystem::update()
 {
     std::vector<data> allData;
 
+    deleteIfOutOfWindow();
     for (auto &it : _managerWrapper->getEntityManager()->getAllEntities())
     {
         data current;

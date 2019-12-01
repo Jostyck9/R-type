@@ -82,6 +82,12 @@ public:
      * 
      */
     SystemResponse update() override;
+
+    /**
+     * @brief Delete entities that goes out of the window
+     * 
+     */
+    void deleteIfOutOfWindow();
 };
 
 } // namespace ecs::system
