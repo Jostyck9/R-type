@@ -33,9 +33,10 @@ int main(int ac, char **av)
         boost::thread networkthread([&]() {
             clientNetwork->start();
         });
-        clientNetwork->doSend();
+        // clientNetwork->doSend();
+        clientNetwork->askListRoom();
 
-        
+
         packet.setCmd(ecs::network::PacketManager::ISALIVE);
         rtype.start();
     } catch (const RTypeExceptions &e) {

@@ -5,30 +5,62 @@
 ** TestNetwork.cpp
 */
 
+#include <cstring>
 #include "TestNetwork.hpp"
 
 TestNetwork::TestNetwork(const std::string &ip, const std::string &port) : _socket(_ioContext, udp::endpoint(udp::v4(), 0)),
                                                                            _resolver(_ioContext),
                                                                            _endpoints(_resolver.resolve(udp::v4(), ip, port)),
+                                                                           _timer(_ioContext),
                                                                            _ip(ip),
                                                                            _port(port)
 {
-    memset(data_, 0, max_length);
+    std::memset(data_, 0, max_length);
 }
 
 TestNetwork::~TestNetwork()
 {
 }
 
+void TestNetwork::manageListRoom()
+{
+    for (size_t i = 0; i < (size_t)_ecs_packet.getListRooms().size; i++) {
+        // _ecs_packet.getListRooms().listRoom[i].
+        printf("Room %i :\n", _ecs_packet.getListRooms().listRoom[i].id);
+        printf("\topen : %i\n", _ecs_packet.getListRooms().listRoom[i].isOpen);
+        printf("\tstarted : %i\n", _ecs_packet.getListRooms().listRoom[i].isStarted);
+        printf("\n max players : %i\n", _ecs_packet.getListRooms().listRoom[i].nbPlayerMax);
+        printf("\tcurrent players : %i\n", _ecs_packet.getListRooms().listRoom[i].nbPlayers);
+        printf("\n");
+    }
+    doReceive();
+}
+
 void TestNetwork::handleReceive(boost::system::error_code ec, std::size_t bytes_recvd)
 {
     if (!ec)
     {
-        for (size_t i = 0; i < bytes_recvd; i++)
-        {
-            printf("%02x ", data_[i]);
+        std::memcpy(_ecs_packet.packet.rawData, data_, bytes_recvd);
+        if (_ecs_packet.getMagicNumber() != 42) {
+            printf("Unknown packet");
+            doReceive();
+            return;
         }
-        printf("\n");
+        if (!_ecs_packet.isSuccessful()) {
+            printf("Error : %s\n", _ecs_packet.getMsg().c_str());
+            doReceive();
+            return;
+        }
+        if (_ecs_packet.getCmd() == ecs::network::PacketManager::GETROOMS) {
+            manageListRoom();
+            doReceive();
+            return;
+        }
+        // for (size_t i = 0; i < bytes_recvd; i++)
+        // {
+        //     printf("%02x ", data_[i]);
+        // }
+        // printf("\n");
         doSend();
     }
     else
@@ -56,7 +88,7 @@ void TestNetwork::handleSend(boost::system::error_code ec, std::size_t bytes_rec
 {
     if (!ec)
     {
-        printf("%u bytes sent\n", bytes_recvd);
+        // printf("%u bytes sent\n", bytes_recvd);
         doReceive();
     }
     else
@@ -65,8 +97,34 @@ void TestNetwork::handleSend(boost::system::error_code ec, std::size_t bytes_rec
     }
 }
 
+void TestNetwork::checkTimeOut()
+{
+    _timer.expires_after(std::chrono::seconds(5));
+    _timer.async_wait(std::bind(&TestNetwork::handleTimeOut, shared_from_this()));
+}
+
+void TestNetwork::handleTimeOut()
+{
+    std::cout << "timeouttyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy" << std::endl;
+    checkTimeOut();
+}
+
+void TestNetwork::askListRoom()
+{
+    _ecs_packet.clear();
+    _ecs_packet.setCmd(ecs::network::PacketManager::GETROOMS);
+    doSend();
+}
+
 void TestNetwork::start()
 {
     // doSend();
+    // _timer.expires_after(std::chrono::seconds(5));
+    // _timer.async_wait(
+    //     [](const boost::system::error_code& /*error*/) {
+    //         std::cout << "timeouttyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy" << std::endl;
+    //     }
+    // );
+    checkTimeOut();
     _ioContext.run();
 }
