@@ -1,0 +1,9 @@
+<map id="src/Network/AUDPNetwork.hpp" name="src/Network/AUDPNetwork.hpp">
+<area shape="rect" id="node2" href="$AUDPNetwork_8cpp.html" title="src/Network/AUDPNetwork.cpp" alt="" coords="5,87,223,114"/>
+<area shape="rect" id="node3" href="$UDPClient_8hpp.html" title="src/Network/Client\l/UDPClient.hpp" alt="" coords="247,80,384,121"/>
+<area shape="rect" id="node6" href="$UDPServer_8hpp.html" title="src/Network/Server\l/UDPServer.hpp" alt="" coords="412,80,555,121"/>
+<area shape="rect" id="node4" href="$main__client_8cpp.html" title="src/main_client.cpp" alt="" coords="77,177,223,203"/>
+<area shape="rect" id="node5" href="$UDPClient_8cpp.html" title="src/Network/Client\l/UDPClient.cpp" alt="" coords="247,169,384,211"/>
+<area shape="rect" id="node7" href="$main__server_8cpp.html" title="src/main_server.cpp" alt="" coords="408,177,559,203"/>
+<area shape="rect" id="node8" href="$UDPServer_8cpp.html" title="src/Network/Server\l/UDPServer.cpp" alt="" coords="583,169,725,211"/>
+</map>

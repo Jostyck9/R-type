@@ -1,0 +1,6 @@
+<map id="ecs::components::Text" name="ecs::components::Text">
+<area shape="rect" id="node5" href="$classecs_1_1components_1_1StaticText.html" title="StaticText describes an attribute that is a StaticText. " alt="" coords="19,727,221,848"/>
+<area shape="rect" id="node2" href="$classecs_1_1components_1_1IUserInterface.html" title="UserInterface describes an attribute that is part of the User Interface. " alt="" coords="5,256,235,333"/>
+<area shape="rect" id="node3" href="$classecs_1_1components_1_1IDisplay.html" title="IDisplay describes an attribute of an Entity that is displayable. " alt="" coords="25,131,215,208"/>
+<area shape="rect" id="node4" href="$classecs_1_1components_1_1IComponent.html" title="Icomponent describes an attribute of an Entity. " alt="" coords="11,5,229,83"/>
+</map>

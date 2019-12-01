@@ -1,0 +1,6 @@
+<map id="ecs::components::Motion" name="ecs::components::Motion">
+<area shape="rect" id="node4" href="$classecs_1_1components_1_1Acceleration.html" title="Acceleration describes the Acceleration of an Entity. " alt="" coords="5,440,224,605"/>
+<area shape="rect" id="node5" href="$classecs_1_1components_1_1Velocity.html" title="Velocity describes the Velocity of an Entity. " alt="" coords="248,411,437,635"/>
+<area shape="rect" id="node2" href="$classecs_1_1components_1_1IPhysics.html" title="IPhysics describes the physics of an Entity. " alt="" coords="133,131,323,208"/>
+<area shape="rect" id="node3" href="$classecs_1_1components_1_1IComponent.html" title="Icomponent describes an attribute of an Entity. " alt="" coords="119,5,337,83"/>
+</map>

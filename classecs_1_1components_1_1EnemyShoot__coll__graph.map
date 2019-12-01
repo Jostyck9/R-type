@@ -1,0 +1,4 @@
+<map id="ecs::components::EnemyShoot" name="ecs::components::EnemyShoot">
+<area shape="rect" id="node2" href="$classecs_1_1components_1_1IGameLogic.html" title="IGameLogic describes an attribute of an Entity that represent an ingame value. " alt="" coords="9,131,224,208"/>
+<area shape="rect" id="node3" href="$classecs_1_1components_1_1IComponent.html" title="Icomponent describes an attribute of an Entity. " alt="" coords="7,5,226,83"/>
+</map>

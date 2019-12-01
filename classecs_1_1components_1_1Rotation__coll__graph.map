@@ -1,0 +1,4 @@
+<map id="ecs::components::Rotation" name="ecs::components::Rotation">
+<area shape="rect" id="node2" href="$classecs_1_1components_1_1IPhysics.html" title="IPhysics describes the physics of an Entity. " alt="" coords="19,131,210,208"/>
+<area shape="rect" id="node3" href="$classecs_1_1components_1_1IComponent.html" title="Icomponent describes an attribute of an Entity. " alt="" coords="5,5,224,83"/>
+</map>

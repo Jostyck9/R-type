@@ -1,0 +1,4 @@
+<map id="ecs::network::AUDPNetwork" name="ecs::network::AUDPNetwork">
+<area shape="rect" id="node2" href="$classecs_1_1network_1_1UDPClient.html" title="{ecs::network::UDPClient\n||+ UDPClient()\l+ handle_receive()\l+ send()\l}" alt="" coords="5,292,180,399"/>
+<area shape="rect" id="node3" href="$classecs_1_1network_1_1UDPServer.html" title="{ecs::network::UDPServer\n||+ UDPServer()\l+ handle_receive()\l+ getSession()\l+ getSession()\l+ send()\l}" alt="" coords="204,277,384,413"/>
+</map>

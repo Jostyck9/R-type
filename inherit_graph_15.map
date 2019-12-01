@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classecs_1_1IScene.html" title="Scene for the game. " alt="" coords="5,81,100,108"/>
+<area shape="rect" id="node2" href="$classecs_1_1ChooseRoomScene.html" title="ecs::ChooseRoomScene" alt="" coords="148,5,324,32"/>
+<area shape="rect" id="node3" href="$classecs_1_1DefeatScene.html" title="ecs::DefeatScene" alt="" coords="169,56,303,83"/>
+<area shape="rect" id="node4" href="$classecs_1_1GameScene.html" title="ecs::GameScene" alt="" coords="171,107,301,133"/>
+<area shape="rect" id="node5" href="$classecs_1_1MenuScene.html" title="ecs::MenuScene" alt="" coords="173,157,299,184"/>
+</map>

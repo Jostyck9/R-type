@@ -1,0 +1,12 @@
+<map id="src/Entities/Serializer/Serializer.hpp" name="src/Entities/Serializer/Serializer.hpp">
+<area shape="rect" id="node2" href="$Position_8hpp.html" title="Position.hpp" alt="" coords="627,95,727,121"/>
+<area shape="rect" id="node7" href="$Rotation_8hpp.html" title="Rotation.hpp" alt="" coords="453,95,555,121"/>
+<area shape="rect" id="node8" href="$EntityManager_8hpp.html" title="EntityManager.hpp" alt="" coords="192,95,333,121"/>
+<area shape="rect" id="node11" href="$PacketManager_8hpp.html" title="PacketManager.hpp" alt="" coords="20,244,167,271"/>
+<area shape="rect" id="node4" href="$IPhysics_8hpp.html" title="IPhysics.hpp" alt="" coords="627,169,727,196"/>
+<area shape="rect" id="node5" href="$IComponent_8hpp.html" title="IComponent.hpp" alt="" coords="581,244,709,271"/>
+<area shape="rect" id="node15" href="$IComponentManager_8hpp.html" title="IComponentManager.hpp" alt="" coords="421,169,603,196"/>
+<area shape="rect" id="node18" href="$IEntityManager_8hpp.html" title="IEntityManager.hpp" alt="" coords="252,169,396,196"/>
+<area shape="rect" id="node14" href="$Input_8hpp.html" title="Render/Input.hpp" alt="" coords="88,319,219,345"/>
+<area shape="rect" id="node17" href="$Entity_8hpp.html" title="Entity.hpp" alt="" coords="283,244,367,271"/>
+</map>

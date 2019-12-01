@@ -1,0 +1,8 @@
+<map id="src/Entities/EntityManager/EntityManager.hpp" name="src/Entities/EntityManager/EntityManager.hpp">
+<area shape="rect" id="node4" href="$PacketManager_8hpp.html" title="PacketManager.hpp" alt="" coords="100,169,247,196"/>
+<area shape="rect" id="node8" href="$IComponentManager_8hpp.html" title="IComponentManager.hpp" alt="" coords="350,95,533,121"/>
+<area shape="rect" id="node13" href="$IEntityManager_8hpp.html" title="IEntityManager.hpp" alt="" coords="181,95,325,121"/>
+<area shape="rect" id="node7" href="$Input_8hpp.html" title="Render/Input.hpp" alt="" coords="160,244,291,271"/>
+<area shape="rect" id="node10" href="$IComponent_8hpp.html" title="IComponent.hpp" alt="" coords="531,169,659,196"/>
+<area shape="rect" id="node12" href="$Entity_8hpp.html" title="Entity.hpp" alt="" coords="371,169,455,196"/>
+</map>

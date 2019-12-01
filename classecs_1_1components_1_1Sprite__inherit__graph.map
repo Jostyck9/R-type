@@ -1,0 +1,4 @@
+<map id="ecs::components::Sprite" name="ecs::components::Sprite">
+<area shape="rect" id="node2" href="$classecs_1_1components_1_1IDisplay.html" title="IDisplay describes an attribute of an Entity that is displayable. " alt="" coords="20,131,209,208"/>
+<area shape="rect" id="node3" href="$classecs_1_1components_1_1IComponent.html" title="Icomponent describes an attribute of an Entity. " alt="" coords="5,5,224,83"/>
+</map>

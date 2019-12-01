@@ -1,0 +1,3 @@
+<map id="ecs::entities::IEntityManager" name="ecs::entities::IEntityManager">
+<area shape="rect" id="node2" href="$classecs_1_1entities_1_1EntityManager.html" title="{ecs::entities::EntityManager\n||+ EntityManager()\l+ ~EntityManager()\l+ updateEntity()\l+ getAllEntities()\l+ getEntityById()\l+ addEntity()\l+ deleteEntity()\l+ deleteEntity()\l+ deleteAll()\l}" alt="" coords="7,219,206,413"/>
+</map>

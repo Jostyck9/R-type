@@ -1,0 +1,21 @@
+<map id="src/Systems/SystemManager/SystemManager.hpp" name="src/Systems/SystemManager/SystemManager.hpp">
+<area shape="rect" id="node2" href="$IEcs_8hpp.html" title="src/IEcs.hpp" alt="" coords="1010,191,1109,218"/>
+<area shape="rect" id="node15" href="$Rtype_8hpp.html" title="src/Rtype.hpp" alt="" coords="1237,423,1346,449"/>
+<area shape="rect" id="node17" href="$Rtype_8cpp.html" title="src/Rtype.cpp" alt="" coords="1329,497,1437,524"/>
+<area shape="rect" id="node18" href="$FactoriesWrapper_8hpp.html" title="src/FactoriesWrapper\l/FactoriesWrapper.hpp" alt="" coords="1133,95,1295,136"/>
+<area shape="rect" id="node20" href="$SystemManager_8cpp.html" title="src/Systems/SystemManager\l/SystemManager.cpp" alt="" coords="1421,95,1631,136"/>
+<area shape="rect" id="node3" href="$Ecs_8hpp.html" title="src/Ecs.hpp" alt="" coords="635,273,729,300"/>
+<area shape="rect" id="node4" href="$Ecs_8cpp.html" title="src/Ecs.cpp" alt="" coords="5,348,100,375"/>
+<area shape="rect" id="node5" href="$ChooseRoomScene_8hpp.html" title="src/Scenes/ChooseRoomScene.hpp" alt="" coords="805,348,1053,375"/>
+<area shape="rect" id="node8" href="$DefeatScene_8hpp.html" title="src/Scenes/DefeatScene.hpp" alt="" coords="124,348,331,375"/>
+<area shape="rect" id="node10" href="$GameScene_8hpp.html" title="src/Scenes/GameScene.hpp" alt="" coords="355,348,558,375"/>
+<area shape="rect" id="node12" href="$MenuScene_8hpp.html" title="src/Scenes/MenuScene.hpp" alt="" coords="583,348,781,375"/>
+<area shape="rect" id="node14" href="$SceneManager_8hpp.html" title="src/Scenes/SceneManager.hpp" alt="" coords="1077,348,1295,375"/>
+<area shape="rect" id="node6" href="$ChooseRoomScene_8cpp.html" title="src/Scenes/ChooseRoomScene.cpp" alt="" coords="965,423,1212,449"/>
+<area shape="rect" id="node7" href="$SceneManager_8cpp.html" title="src/Scenes/SceneManager.cpp" alt="" coords="499,423,718,449"/>
+<area shape="rect" id="node9" href="$DefeatScene_8cpp.html" title="src/Scenes/DefeatScene.cpp" alt="" coords="41,423,248,449"/>
+<area shape="rect" id="node11" href="$GameScene_8cpp.html" title="src/Scenes/GameScene.cpp" alt="" coords="273,423,475,449"/>
+<area shape="rect" id="node13" href="$MenuScene_8cpp.html" title="src/Scenes/MenuScene.cpp" alt="" coords="743,423,941,449"/>
+<area shape="rect" id="node16" href="$main__client_8cpp.html" title="src/main_client.cpp" alt="" coords="1160,497,1305,524"/>
+<area shape="rect" id="node19" href="$FactoriesWrapper_8cpp.html" title="src/FactoriesWrapper\l/FactoriesWrapper.cpp" alt="" coords="1133,184,1295,225"/>
+</map>

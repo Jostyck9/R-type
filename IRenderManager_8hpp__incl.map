@@ -1,0 +1,20 @@
+<map id="src/Render/IRenderManager.hpp" name="src/Render/IRenderManager.hpp">
+<area shape="rect" id="node6" href="$IComponent_8hpp.html" title="IComponent.hpp" alt="" coords="1105,304,1233,331"/>
+<area shape="rect" id="node8" href="$ComponentManager_8hpp.html" title="ComponentManager.hpp" alt="" coords="439,80,619,107"/>
+<area shape="rect" id="node11" href="$Entity_8hpp.html" title="Entity.hpp" alt="" coords="409,229,493,256"/>
+<area shape="rect" id="node12" href="$EntityManager_8hpp.html" title="EntityManager.hpp" alt="" coords="164,80,305,107"/>
+<area shape="rect" id="node13" href="$PacketManager_8hpp.html" title="PacketManager.hpp" alt="" coords="127,229,273,256"/>
+<area shape="rect" id="node14" href="$Input_8hpp.html" title="Render/Input.hpp" alt="" coords="5,304,136,331"/>
+<area shape="rect" id="node16" href="$Sprite_8hpp.html" title="Display/Sprite.hpp" alt="" coords="847,155,985,181"/>
+<area shape="rect" id="node19" href="$Position_8hpp.html" title="Physics/Position.hpp" alt="" coords="962,80,1113,107"/>
+<area shape="rect" id="node22" href="$Text_8hpp.html" title="Display/Text.hpp" alt="" coords="1283,80,1408,107"/>
+<area shape="rect" id="node25" href="$Music_8hpp.html" title="Music.hpp" alt="" coords="1625,80,1711,107"/>
+<area shape="rect" id="node9" href="$IComponentManager_8hpp.html" title="IComponentManager.hpp" alt="" coords="386,155,569,181"/>
+<area shape="rect" id="node15" href="$IEntityManager_8hpp.html" title="IEntityManager.hpp" alt="" coords="143,155,287,181"/>
+<area shape="rect" id="node17" href="$Rect_8hpp.html" title="Rect.hpp" alt="" coords="897,229,975,256"/>
+<area shape="rect" id="node18" href="$IDisplay_8hpp.html" title="IDisplay.hpp" alt="" coords="1277,229,1374,256"/>
+<area shape="rect" id="node21" href="$IPhysics_8hpp.html" title="IPhysics.hpp" alt="" coords="1050,229,1150,256"/>
+<area shape="rect" id="node23" href="$Color_8hpp.html" title="Color.hpp" alt="" coords="1500,155,1583,181"/>
+<area shape="rect" id="node24" href="$IUserInterface_8hpp.html" title="IUserInterface.hpp" alt="" coords="1276,155,1415,181"/>
+<area shape="rect" id="node27" href="$IAudio_8hpp.html" title="IAudio.hpp" alt="" coords="1754,155,1843,181"/>
+</map>

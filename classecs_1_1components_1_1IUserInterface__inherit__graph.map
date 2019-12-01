@@ -1,0 +1,9 @@
+<map id="ecs::components::IUserInterface" name="ecs::components::IUserInterface">
+<area shape="rect" id="node4" href="$classecs_1_1components_1_1Button.html" title="Button describes an attribute that is button. " alt="" coords="5,418,188,642"/>
+<area shape="rect" id="node5" href="$classecs_1_1components_1_1Image.html" title="Image describes an attribute that is an Image. " alt="" coords="212,447,392,613"/>
+<area shape="rect" id="node6" href="$classecs_1_1components_1_1PopUp.html" title="PopUp describes an attribute that is a popUp. " alt="" coords="416,447,599,613"/>
+<area shape="rect" id="node7" href="$classecs_1_1components_1_1Text.html" title="Text describes an attribute that is a Text. " alt="" coords="623,381,789,679"/>
+<area shape="rect" id="node2" href="$classecs_1_1components_1_1IDisplay.html" title="IDisplay describes an attribute of an Entity that is displayable. " alt="" coords="310,131,499,208"/>
+<area shape="rect" id="node3" href="$classecs_1_1components_1_1IComponent.html" title="Icomponent describes an attribute of an Entity. " alt="" coords="295,5,514,83"/>
+<area shape="rect" id="node8" href="$classecs_1_1components_1_1StaticText.html" title="StaticText describes an attribute that is a StaticText. " alt="" coords="605,727,807,848"/>
+</map>

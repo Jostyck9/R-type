@@ -1,0 +1,5 @@
+<map id="ecs::components::IIO" name="ecs::components::IIO">
+<area shape="rect" id="node3" href="$classecs_1_1components_1_1Output.html" title="Output describes the Output of an Component. " alt="" coords="23,256,207,348"/>
+<area shape="rect" id="node2" href="$classecs_1_1components_1_1IComponent.html" title="Icomponent describes an attribute of an Entity. " alt="" coords="5,5,224,83"/>
+<area shape="rect" id="node4" href="$classecs_1_1components_1_1Sound.html" title="{ecs::components::Sound\n||+ Sound()\l+ Sound()\l+ ~Sound()\l+ getNameSound()\l+ getType()\l+ operator==()\l}" alt="" coords="24,396,205,547"/>
+</map>

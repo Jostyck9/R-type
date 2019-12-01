@@ -1,0 +1,10 @@
+<map id="src/Room/Room.hpp" name="src/Room/Room.hpp">
+<area shape="rect" id="node2" href="$Room_8cpp.html" title="src/Room/Room.cpp" alt="" coords="5,80,153,107"/>
+<area shape="rect" id="node3" href="$RoomManager_8hpp.html" title="src/Room/RoomManager.hpp" alt="" coords="177,80,381,107"/>
+<area shape="rect" id="node4" href="$main__server_8cpp.html" title="src/main_server.cpp" alt="" coords="33,341,184,367"/>
+<area shape="rect" id="node5" href="$UDPServer_8hpp.html" title="src/Network/Server\l/UDPServer.hpp" alt="" coords="321,244,464,285"/>
+<area shape="rect" id="node7" href="$ServerSession_8hpp.html" title="src/Network/Session\l/ServerSession.hpp" alt="" coords="147,155,297,196"/>
+<area shape="rect" id="node9" href="$RoomManager_8cpp.html" title="src/Room/RoomManager.cpp" alt="" coords="373,162,575,189"/>
+<area shape="rect" id="node6" href="$UDPServer_8cpp.html" title="src/Network/Server\l/UDPServer.cpp" alt="" coords="321,333,464,375"/>
+<area shape="rect" id="node8" href="$ServerSession_8cpp.html" title="src/Network/Session\l/ServerSession.cpp" alt="" coords="147,244,297,285"/>
+</map>

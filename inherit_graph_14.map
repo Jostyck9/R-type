@@ -1,0 +1,4 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classecs_1_1IRenderManager.html" title="ecs::IRenderManager" alt="" coords="5,5,160,32"/>
+<area shape="rect" id="node2" href="$classecs_1_1SFMLRenderManager.html" title="Manager gameRendering of the game. " alt="" coords="208,5,395,32"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="ecs::system::ASystem" name="ecs::system::ASystem">
+<area shape="rect" id="node3" href="$classecs_1_1system_1_1AnimationSystem.html" title="{ecs::system::AnimationSystem\n||+ AnimationSystem()\l+ ~AnimationSystem()\l+ update()\l}" alt="" coords="5,329,227,436"/>
+<area shape="rect" id="node4" href="$classecs_1_1system_1_1ButtonColorSystem.html" title="{ecs::system::ButtonColor\lSystem\n||+ ButtonColorSystem()\l+ ~ButtonColorSystem()\l+ update()\l}" alt="" coords="251,322,434,443"/>
+<area shape="rect" id="node5" href="$classecs_1_1system_1_1ChooseRoomSystem.html" title="{ecs::system::ChooseRoomSystem\n||+ ChooseRoomSystem()\l+ ~ChooseRoomSystem()\l+ update()\l}" alt="" coords="459,329,699,436"/>
+<area shape="rect" id="node6" href="$classecs_1_1system_1_1DefeatSystem.html" title="{ecs::system::DefeatSystem\n||+ DefeatSystem()\l+ ~DefeatSystem()\l+ update()\l}" alt="" coords="723,329,922,436"/>
+<area shape="rect" id="node7" href="$classecs_1_1system_1_1DisplaySystem.html" title="{ecs::system::DisplaySystem\n||+ DisplaySystem()\l+ ~DisplaySystem()\l+ update()\l}" alt="" coords="947,329,1149,436"/>
+<area shape="rect" id="node8" href="$classecs_1_1system_1_1EnemiesMovementSystem.html" title="{ecs::system::EnemiesMovement\lSystem\n||+ EnemiesMovementSystem()\l+ ~EnemiesMovementSystem()\l+ update()\l+ updateVelocityOnPattern()\l+ spawnRandomEnemies()\l}" alt="" coords="1174,307,1405,458"/>
+<area shape="rect" id="node9" href="$classecs_1_1system_1_1MenuSystem.html" title="{ecs::system::MenuSystem\n||+ MenuSystem()\l+ ~MenuSystem()\l+ update()\l}" alt="" coords="1429,329,1619,436"/>
+<area shape="rect" id="node10" href="$classecs_1_1system_1_1MovementSystem.html" title="{ecs::system::MovementSystem\n||+ MovementSystem()\l+ ~MovementSystem()\l+ isColliding()\l+ getNextPos()\l+ updateAll()\l+ update()\l+ deleteIfOutOfWindow()\l}" alt="" coords="1644,300,1868,465"/>
+<area shape="rect" id="node11" href="$classecs_1_1system_1_1ParallaxSystem.html" title="{ecs::system::ParallaxSystem\n||+ ParallaxSystem()\l+ ~ParallaxSystem()\l+ update()\l}" alt="" coords="1892,329,2097,436"/>
+<area shape="rect" id="node12" href="$classecs_1_1system_1_1PlayerMovementSystem.html" title="{ecs::system::PlayerMovement\lSystem\n||+ PlayerMovementSystem()\l+ ~PlayerMovementSystem()\l+ update()\l+ updateVelocityOnInput()\l}" alt="" coords="2122,315,2337,451"/>
+<area shape="rect" id="node2" href="$classecs_1_1system_1_1ISystem.html" title="{ecs::system::ISystem\n||+ update()\l}" alt="" coords="1089,5,1247,83"/>
+</map>

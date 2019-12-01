@@ -1,0 +1,6 @@
+<map id="ecs::network::PacketManager" name="ecs::network::PacketManager">
+<area shape="rect" id="node7" href="$structecs_1_1network_1_1PacketManager_1_1Entity.html" title="{ecs::network::PacketManager\l::Entity\n||}" alt="" coords="955,407,1163,499"/>
+<area shape="rect" id="node17" href="$structecs_1_1network_1_1PacketManager_1_1Room.html" title="{ecs::network::PacketManager\l::Room\n||}" alt="" coords="415,407,623,499"/>
+<area shape="rect" id="node18" href="$structecs_1_1network_1_1PacketManager_1_1PlayerInfo.html" title="{ecs::network::PacketManager\l::PlayerInfo\n||}" alt="" coords="384,175,592,267"/>
+<area shape="rect" id="node8" href="$structecs_1_1network_1_1PacketManager_1_1Component.html" title="{ecs::network::PacketManager\l::Component\n||}" alt="" coords="1621,175,1829,267"/>
+</map>

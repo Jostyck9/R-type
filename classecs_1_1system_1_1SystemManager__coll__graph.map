@@ -1,0 +1,3 @@
+<map id="ecs::system::SystemManager" name="ecs::system::SystemManager">
+<area shape="rect" id="node2" href="$classecs_1_1system_1_1ISystemManager.html" title="{ecs::system::ISystemManager\n||+ updateAll()\l+ getEntitiesToDelete()\l+ addSystem()\l+ deleteAll()\l+ setEntityFactory()\l}" alt="" coords="5,5,220,141"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="ecs::components::IPhysics" name="ecs::components::IPhysics">
+<area shape="rect" id="node3" href="$classecs_1_1components_1_1Collision.html" title="Collision describes the collision of an Entity and an other Entity. " alt="" coords="5,256,197,641"/>
+<area shape="rect" id="node4" href="$classecs_1_1components_1_1Gravity.html" title="Gravity describes the gravity of an Entity. " alt="" coords="222,366,407,531"/>
+<area shape="rect" id="node5" href="$classecs_1_1components_1_1Motion.html" title="Motion describes the Motion like the Velocity and the Acceleration of an Entity. " alt="" coords="431,395,614,502"/>
+<area shape="rect" id="node8" href="$classecs_1_1components_1_1Position.html" title="{ecs::components::Position\n||+ Position()\l+ Position()\l+ ~Position()\l+ operator==()\l+ getX()\l+ getY()\l+ getPosition()\l+ setX()\l+ setY()\l+ setPosition()\l+ getType()\l}" alt="" coords="638,337,829,561"/>
+<area shape="rect" id="node9" href="$classecs_1_1components_1_1Rotation.html" title="Rotation describes the Rotation of an Entity. " alt="" coords="853,366,1045,531"/>
+<area shape="rect" id="node10" href="$classecs_1_1components_1_1Transform.html" title="Transform describes the Transform of an Entity. " alt="" coords="1069,366,1272,531"/>
+<area shape="rect" id="node2" href="$classecs_1_1components_1_1IComponent.html" title="Icomponent describes an attribute of an Entity. " alt="" coords="519,5,737,83"/>
+<area shape="rect" id="node6" href="$classecs_1_1components_1_1Acceleration.html" title="Acceleration describes the Acceleration of an Entity. " alt="" coords="300,719,519,884"/>
+<area shape="rect" id="node7" href="$classecs_1_1components_1_1Velocity.html" title="Velocity describes the Velocity of an Entity. " alt="" coords="543,689,732,913"/>
+</map>

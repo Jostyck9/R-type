@@ -1,0 +1,4 @@
+<map id="ecs::network::ISession" name="ecs::network::ISession">
+<area shape="rect" id="node2" href="$classecs_1_1network_1_1ClientSession.html" title="{ecs::network::ClientSession\n||+ ClientSession()\l+ ~ClientSession()\l+ do_write()\l+ handle_write()\l+ manage_data()\l}" alt="" coords="5,233,201,369"/>
+<area shape="rect" id="node3" href="$classecs_1_1network_1_1ServerSession.html" title="{ecs::network::ServerSession\n||+ ServerSession()\l+ ~ServerSession()\l+ do_write()\l+ handle_write()\l+ manage_data()\l+ getInfo()\l+ isPacketValid()\l+ setMsgPacket()\l+ manageLeaveRoom()\l+ manageJoinRoom()\l+ manageGetRooms()\l+ manageHandShake()\l+ manageIsReady()\l+ manageLaunchGame()\l+ manageUpdate()\l}" alt="" coords="226,160,429,443"/>
+</map>

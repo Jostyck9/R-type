@@ -1,0 +1,7 @@
+<map id="src/Components/Display/Parallax.hpp" name="src/Components/Display/Parallax.hpp">
+<area shape="rect" id="node2" href="$Parallax_8cpp.html" title="src/Components/Display\l/Parallax.cpp" alt="" coords="5,95,183,136"/>
+<area shape="rect" id="node3" href="$PlanetEntity_8cpp.html" title="src/Entities/EntityConstructor\l/PlanetEntity/PlanetEntity.cpp" alt="" coords="207,95,413,136"/>
+<area shape="rect" id="node4" href="$PlanetRingEntity_8cpp.html" title="src/Entities/EntityConstructor\l/PlanetRingEntity/PlanetRingEntity.cpp" alt="" coords="438,95,699,136"/>
+<area shape="rect" id="node5" href="$StarsEntity_8cpp.html" title="src/Entities/EntityConstructor\l/StarsEntity/StarsEntity.cpp" alt="" coords="724,95,931,136"/>
+<area shape="rect" id="node6" href="$ParallaxSystem_8cpp.html" title="src/Systems/SystemConstructor\l/ParallaxSystem/ParallaxSystem.cpp" alt="" coords="955,95,1209,136"/>
+</map>

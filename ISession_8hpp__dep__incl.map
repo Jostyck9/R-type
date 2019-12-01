@@ -1,0 +1,12 @@
+<map id="src/Network/Session/ISession.hpp" name="src/Network/Session/ISession.hpp">
+<area shape="rect" id="node2" href="$UDPClient_8hpp.html" title="src/Network/Client\l/UDPClient.hpp" alt="" coords="175,95,312,136"/>
+<area shape="rect" id="node5" href="$ClientSession_8hpp.html" title="src/Network/Session\l/ClientSession.hpp" alt="" coords="336,95,487,136"/>
+<area shape="rect" id="node7" href="$ServerSession_8hpp.html" title="src/Network/Session\l/ServerSession.hpp" alt="" coords="535,95,685,136"/>
+<area shape="rect" id="node3" href="$main__client_8cpp.html" title="src/main_client.cpp" alt="" coords="5,191,151,218"/>
+<area shape="rect" id="node4" href="$UDPClient_8cpp.html" title="src/Network/Client\l/UDPClient.cpp" alt="" coords="175,184,312,225"/>
+<area shape="rect" id="node6" href="$ClientSession_8cpp.html" title="src/Network/Session\l/ClientSession.cpp" alt="" coords="336,184,487,225"/>
+<area shape="rect" id="node8" href="$main__server_8cpp.html" title="src/main_server.cpp" alt="" coords="449,281,600,307"/>
+<area shape="rect" id="node9" href="$UDPServer_8hpp.html" title="src/Network/Server\l/UDPServer.hpp" alt="" coords="563,184,705,225"/>
+<area shape="rect" id="node11" href="$ServerSession_8cpp.html" title="src/Network/Session\l/ServerSession.cpp" alt="" coords="729,184,880,225"/>
+<area shape="rect" id="node10" href="$UDPServer_8cpp.html" title="src/Network/Server\l/UDPServer.cpp" alt="" coords="624,273,767,315"/>
+</map>

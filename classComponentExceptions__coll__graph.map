@@ -1,0 +1,4 @@
+<map id="ComponentExceptions" name="ComponentExceptions">
+<area shape="rect" id="node2" href="$classECSExceptions.html" title="ECS Class Esception which manage exceptions of Entity, Components and System. " alt="" coords="30,300,183,392"/>
+<area shape="rect" id="node3" href="$classRTypeExceptions.html" title="Rtype Class Exception which regroup all Exceptions. " alt="" coords="25,131,188,252"/>
+</map>

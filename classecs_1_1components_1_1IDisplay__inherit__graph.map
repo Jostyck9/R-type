@@ -1,0 +1,12 @@
+<map id="ecs::components::IDisplay" name="ecs::components::IDisplay">
+<area shape="rect" id="node3" href="$classecs_1_1components_1_1Animator.html" title="Animator describes that the entity is animated. " alt="" coords="67,256,265,553"/>
+<area shape="rect" id="node4" href="$classecs_1_1components_1_1IUserInterface.html" title="UserInterface describes an attribute that is part of the User Interface. " alt="" coords="290,366,519,443"/>
+<area shape="rect" id="node10" href="$classecs_1_1components_1_1Parallax.html" title="Parallax describes that the entity is animated. " alt="" coords="543,263,733,546"/>
+<area shape="rect" id="node11" href="$classecs_1_1components_1_1Sprite.html" title="Sprite describes an attribute that contains an image id. " alt="" coords="757,278,935,531"/>
+<area shape="rect" id="node2" href="$classecs_1_1components_1_1IComponent.html" title="Icomponent describes an attribute of an Entity. " alt="" coords="411,5,630,83"/>
+<area shape="rect" id="node5" href="$classecs_1_1components_1_1Button.html" title="Button describes an attribute that is button. " alt="" coords="5,638,188,862"/>
+<area shape="rect" id="node6" href="$classecs_1_1components_1_1Image.html" title="Image describes an attribute that is an Image. " alt="" coords="212,667,392,833"/>
+<area shape="rect" id="node7" href="$classecs_1_1components_1_1PopUp.html" title="PopUp describes an attribute that is a popUp. " alt="" coords="416,667,599,833"/>
+<area shape="rect" id="node8" href="$classecs_1_1components_1_1Text.html" title="Text describes an attribute that is a Text. " alt="" coords="623,601,789,899"/>
+<area shape="rect" id="node9" href="$classecs_1_1components_1_1StaticText.html" title="StaticText describes an attribute that is a StaticText. " alt="" coords="605,947,807,1068"/>
+</map>

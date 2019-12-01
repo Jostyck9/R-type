@@ -1,0 +1,35 @@
+<map id="ecs::components::IComponent" name="ecs::components::IComponent">
+<area shape="rect" id="node2" href="$classecs_1_1components_1_1IDisplay.html" title="IDisplay describes an attribute of an Entity that is displayable. " alt="" coords="543,131,733,208"/>
+<area shape="rect" id="node12" href="$classecs_1_1components_1_1IGameLogic.html" title="IGameLogic describes an attribute of an Entity that represent an ingame value. " alt="" coords="2024,131,2239,208"/>
+<area shape="rect" id="node23" href="$classecs_1_1components_1_1IIO.html" title="IIsO describes the input output of an Component. " alt="" coords="2704,131,2860,208"/>
+<area shape="rect" id="node26" href="$classecs_1_1components_1_1IPhysics.html" title="IPhysics describes the physics of an Entity. " alt="" coords="3760,131,3951,208"/>
+<area shape="rect" id="node3" href="$classecs_1_1components_1_1Animator.html" title="Animator describes that the entity is animated. " alt="" coords="67,300,265,597"/>
+<area shape="rect" id="node4" href="$classecs_1_1components_1_1IUserInterface.html" title="UserInterface describes an attribute that is part of the User Interface. " alt="" coords="290,410,519,487"/>
+<area shape="rect" id="node10" href="$classecs_1_1components_1_1Parallax.html" title="Parallax describes that the entity is animated. " alt="" coords="543,307,733,590"/>
+<area shape="rect" id="node11" href="$classecs_1_1components_1_1Sprite.html" title="Sprite describes an attribute that contains an image id. " alt="" coords="757,322,935,575"/>
+<area shape="rect" id="node5" href="$classecs_1_1components_1_1Button.html" title="Button describes an attribute that is button. " alt="" coords="5,726,188,950"/>
+<area shape="rect" id="node6" href="$classecs_1_1components_1_1Image.html" title="Image describes an attribute that is an Image. " alt="" coords="212,755,392,921"/>
+<area shape="rect" id="node7" href="$classecs_1_1components_1_1PopUp.html" title="PopUp describes an attribute that is a popUp. " alt="" coords="416,755,599,921"/>
+<area shape="rect" id="node8" href="$classecs_1_1components_1_1Text.html" title="Text describes an attribute that is a Text. " alt="" coords="623,689,789,987"/>
+<area shape="rect" id="node9" href="$classecs_1_1components_1_1StaticText.html" title="StaticText describes an attribute that is a StaticText. " alt="" coords="605,1035,807,1156"/>
+<area shape="rect" id="node13" href="$classecs_1_1components_1_1Damage.html" title="Damage describes an attribute that stores a numeric value representing Damage points. " alt="" coords="959,359,1154,539"/>
+<area shape="rect" id="node14" href="$classecs_1_1components_1_1EnemiesController.html" title="EnemiesController is used to recognize player entity. " alt="" coords="1178,329,1373,568"/>
+<area shape="rect" id="node15" href="$classecs_1_1components_1_1EnemyShoot.html" title="Damage describes an attribute that stores a numeric value representing Damage points. " alt="" coords="1397,344,1620,553"/>
+<area shape="rect" id="node16" href="$classecs_1_1components_1_1Health.html" title="Health describes an attribute that stores a numeric value representing Health points. " alt="" coords="1644,359,1827,539"/>
+<area shape="rect" id="node17" href="$classecs_1_1components_1_1Item.html" title="Item describes an attribute that stores a numeric value representing Item points. ..." alt="" coords="1851,366,2020,531"/>
+<area shape="rect" id="node18" href="$classecs_1_1components_1_1Level.html" title="Level describes an attribute that stores a numeric value representing Level points. " alt="" coords="2045,366,2218,531"/>
+<area shape="rect" id="node19" href="$classecs_1_1components_1_1PlayerController.html" title="PlayerController is used to recognize player entity. " alt="" coords="2243,337,2484,561"/>
+<area shape="rect" id="node20" href="$classecs_1_1components_1_1Power.html" title="Power describes an attribute that stores a numeric value representing Power points. " alt="" coords="2509,366,2687,531"/>
+<area shape="rect" id="node21" href="$classecs_1_1components_1_1Scale.html" title="Scale describes an attribute that stores a numeric value representing Scale points. " alt="" coords="2712,366,2887,531"/>
+<area shape="rect" id="node22" href="$classecs_1_1components_1_1Timer.html" title="Timer for all the game. " alt="" coords="2911,293,3106,605"/>
+<area shape="rect" id="node24" href="$classecs_1_1components_1_1Output.html" title="Output describes the Output of an Component. " alt="" coords="3130,403,3314,495"/>
+<area shape="rect" id="node25" href="$classecs_1_1components_1_1Sound.html" title="{ecs::components::Sound\n||+ Sound()\l+ Sound()\l+ ~Sound()\l+ getNameSound()\l+ getType()\l+ operator==()\l}" alt="" coords="3131,763,3313,913"/>
+<area shape="rect" id="node27" href="$classecs_1_1components_1_1Collision.html" title="Collision describes the collision of an Entity and an other Entity. " alt="" coords="3338,256,3530,641"/>
+<area shape="rect" id="node28" href="$classecs_1_1components_1_1Gravity.html" title="Gravity describes the gravity of an Entity. " alt="" coords="3555,366,3740,531"/>
+<area shape="rect" id="node29" href="$classecs_1_1components_1_1Motion.html" title="Motion describes the Motion like the Velocity and the Acceleration of an Entity. " alt="" coords="3764,395,3947,502"/>
+<area shape="rect" id="node32" href="$classecs_1_1components_1_1Position.html" title="{ecs::components::Position\n||+ Position()\l+ Position()\l+ ~Position()\l+ operator==()\l+ getX()\l+ getY()\l+ getPosition()\l+ setX()\l+ setY()\l+ setPosition()\l+ getType()\l}" alt="" coords="3971,337,4161,561"/>
+<area shape="rect" id="node33" href="$classecs_1_1components_1_1Rotation.html" title="Rotation describes the Rotation of an Entity. " alt="" coords="4186,366,4378,531"/>
+<area shape="rect" id="node34" href="$classecs_1_1components_1_1Transform.html" title="Transform describes the Transform of an Entity. " alt="" coords="4402,366,4605,531"/>
+<area shape="rect" id="node30" href="$classecs_1_1components_1_1Acceleration.html" title="Acceleration describes the Acceleration of an Entity. " alt="" coords="3631,755,3850,921"/>
+<area shape="rect" id="node31" href="$classecs_1_1components_1_1Velocity.html" title="Velocity describes the Velocity of an Entity. " alt="" coords="3874,726,4063,950"/>
+</map>

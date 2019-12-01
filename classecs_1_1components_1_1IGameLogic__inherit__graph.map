@@ -1,0 +1,13 @@
+<map id="ecs::components::IGameLogic" name="ecs::components::IGameLogic">
+<area shape="rect" id="node3" href="$classecs_1_1components_1_1Damage.html" title="Damage describes an attribute that stores a numeric value representing Damage points. " alt="" coords="5,322,200,502"/>
+<area shape="rect" id="node4" href="$classecs_1_1components_1_1EnemiesController.html" title="EnemiesController is used to recognize player entity. " alt="" coords="224,293,419,531"/>
+<area shape="rect" id="node5" href="$classecs_1_1components_1_1EnemyShoot.html" title="Damage describes an attribute that stores a numeric value representing Damage points. " alt="" coords="443,307,666,517"/>
+<area shape="rect" id="node6" href="$classecs_1_1components_1_1Health.html" title="Health describes an attribute that stores a numeric value representing Health points. " alt="" coords="690,322,873,502"/>
+<area shape="rect" id="node7" href="$classecs_1_1components_1_1Item.html" title="Item describes an attribute that stores a numeric value representing Item points. ..." alt="" coords="897,329,1066,495"/>
+<area shape="rect" id="node8" href="$classecs_1_1components_1_1Level.html" title="Level describes an attribute that stores a numeric value representing Level points. " alt="" coords="1091,329,1264,495"/>
+<area shape="rect" id="node9" href="$classecs_1_1components_1_1PlayerController.html" title="PlayerController is used to recognize player entity. " alt="" coords="1289,300,1530,524"/>
+<area shape="rect" id="node10" href="$classecs_1_1components_1_1Power.html" title="Power describes an attribute that stores a numeric value representing Power points. " alt="" coords="1555,329,1733,495"/>
+<area shape="rect" id="node11" href="$classecs_1_1components_1_1Scale.html" title="Scale describes an attribute that stores a numeric value representing Scale points. " alt="" coords="1758,329,1933,495"/>
+<area shape="rect" id="node12" href="$classecs_1_1components_1_1Timer.html" title="Timer for all the game. " alt="" coords="1957,256,2152,568"/>
+<area shape="rect" id="node2" href="$classecs_1_1components_1_1IComponent.html" title="Icomponent describes an attribute of an Entity. " alt="" coords="969,5,1188,83"/>
+</map>

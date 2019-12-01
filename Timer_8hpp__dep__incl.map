@@ -1,0 +1,36 @@
+<map id="src/Components/GameLogic/Timer.hpp" name="src/Components/GameLogic/Timer.hpp">
+<area shape="rect" id="node2" href="$Animator_8hpp.html" title="src/Components/Display\l/Animator.hpp" alt="" coords="2852,95,3029,136"/>
+<area shape="rect" id="node17" href="$Parallax_8hpp.html" title="src/Components/Display\l/Parallax.hpp" alt="" coords="4856,95,5033,136"/>
+<area shape="rect" id="node21" href="$EnemiesController_8hpp.html" title="src/Components/GameLogic\l/EnemiesController.hpp" alt="" coords="1349,95,1551,136"/>
+<area shape="rect" id="node27" href="$EnemyShoot_8hpp.html" title="src/Components/GameLogic\l/EnemyShoot.hpp" alt="" coords="862,95,1065,136"/>
+<area shape="rect" id="node29" href="$PlayerController_8hpp.html" title="src/Components/GameLogic\l/PlayerController.hpp" alt="" coords="4305,95,4507,136"/>
+<area shape="rect" id="node34" href="$Timer_8cpp.html" title="src/Components/GameLogic\l/Timer.cpp" alt="" coords="5058,95,5261,136"/>
+<area shape="rect" id="node35" href="$MovementSystem_8hpp.html" title="src/Systems/SystemConstructor\l/MovementSystem/MovementSystem.hpp" alt="" coords="4537,95,4829,136"/>
+<area shape="rect" id="node3" href="$Animator_8cpp.html" title="src/Components/Display\l/Animator.cpp" alt="" coords="2365,191,2543,233"/>
+<area shape="rect" id="node4" href="$BulletEntity_8cpp.html" title="src/Entities/EntityConstructor\l/BulletEntity/BulletEntity.cpp" alt="" coords="2567,191,2773,233"/>
+<area shape="rect" id="node5" href="$EnemyBulletEntity_8cpp.html" title="src/Entities/EntityConstructor\l/EnemyBulletEntity/EnemyBulletEntity.cpp" alt="" coords="2797,191,3084,233"/>
+<area shape="rect" id="node6" href="$EnemyEntity_8cpp.html" title="src/Entities/EntityConstructor\l/EnemyEntity/EnemyEntity.cpp" alt="" coords="1489,191,1704,233"/>
+<area shape="rect" id="node7" href="$EnemyType01Entity_8cpp.html" title="src/Entities/EntityConstructor\l/EnemyType01Entity/EnemyType01Entity.cpp" alt="" coords="812,191,1115,233"/>
+<area shape="rect" id="node8" href="$EnemyType02Entity_8cpp.html" title="src/Entities/EntityConstructor\l/EnemyType02Entity/EnemyType02Entity.cpp" alt="" coords="257,191,560,233"/>
+<area shape="rect" id="node9" href="$EnemyType03Entity_8cpp.html" title="src/Entities/EntityConstructor\l/EnemyType03Entity/EnemyType03Entity.cpp" alt="" coords="1728,191,2031,233"/>
+<area shape="rect" id="node10" href="$GameBackgroundEntity_8cpp.html" title="src/Entities/EntityConstructor\l/GameBackgroundEntity/GameBackground\lEntity.cpp" alt="" coords="3109,184,3405,240"/>
+<area shape="rect" id="node11" href="$PlanetRingEntity_8cpp.html" title="src/Entities/EntityConstructor\l/PlanetRingEntity/PlanetRingEntity.cpp" alt="" coords="4814,191,5075,233"/>
+<area shape="rect" id="node12" href="$PlayerEntity_8cpp.html" title="src/Entities/EntityConstructor\l/PlayerEntity/PlayerEntity.cpp" alt="" coords="4300,191,4507,233"/>
+<area shape="rect" id="node13" href="$PlayerTwoEntity_8cpp.html" title="src/Entities/EntityConstructor\l/PlayerTwoEntity/PlayerTwoEntity.cpp" alt="" coords="3744,191,3993,233"/>
+<area shape="rect" id="node14" href="$StarsEntity_8cpp.html" title="src/Entities/EntityConstructor\l/StarsEntity/StarsEntity.cpp" alt="" coords="4583,191,4789,233"/>
+<area shape="rect" id="node15" href="$TestBackground_8cpp.html" title="src/Entities/EntityConstructor\l/TestBackground/TestBackground.cpp" alt="" coords="4017,191,4275,233"/>
+<area shape="rect" id="node16" href="$AnimationSystem_8cpp.html" title="src/Systems/SystemConstructor\l/AnimationSystem/AnimationSystem.cpp" alt="" coords="2055,191,2341,233"/>
+<area shape="rect" id="node18" href="$Parallax_8cpp.html" title="src/Components/Display\l/Parallax.cpp" alt="" coords="5745,191,5923,233"/>
+<area shape="rect" id="node19" href="$PlanetEntity_8cpp.html" title="src/Entities/EntityConstructor\l/PlanetEntity/PlanetEntity.cpp" alt="" coords="5947,191,6153,233"/>
+<area shape="rect" id="node20" href="$ParallaxSystem_8cpp.html" title="src/Systems/SystemConstructor\l/ParallaxSystem/ParallaxSystem.cpp" alt="" coords="6178,191,6431,233"/>
+<area shape="rect" id="node22" href="$EnemiesController_8cpp.html" title="src/Components/GameLogic\l/EnemiesController.cpp" alt="" coords="585,191,787,233"/>
+<area shape="rect" id="node23" href="$EnemiesMovementSystem_8hpp.html" title="src/Systems/SystemConstructor\l/EnemiesMovementSystem/EnemiesMovement\lSystem.hpp" alt="" coords="1139,184,1465,240"/>
+<area shape="rect" id="node26" href="$MovementSystem_8cpp.html" title="src/Systems/SystemConstructor\l/MovementSystem/MovementSystem.cpp" alt="" coords="3429,191,3719,233"/>
+<area shape="rect" id="node24" href="$GameScene_8cpp.html" title="src/Scenes/GameScene.cpp" alt="" coords="5129,303,5331,329"/>
+<area shape="rect" id="node25" href="$EnemiesMovementSystem_8cpp.html" title="src/Systems/SystemConstructor\l/EnemiesMovementSystem/EnemiesMovement\lSystem.cpp" alt="" coords="1139,288,1465,344"/>
+<area shape="rect" id="node28" href="$EnemyShoot_8cpp.html" title="src/Components/GameLogic\l/EnemyShoot.cpp" alt="" coords="30,191,233,233"/>
+<area shape="rect" id="node30" href="$PlayerController_8cpp.html" title="src/Components/GameLogic\l/PlayerController.cpp" alt="" coords="5099,191,5302,233"/>
+<area shape="rect" id="node31" href="$PlayerMovementSystem_8hpp.html" title="src/Systems/SystemConstructor\l/PlayerMovementSystem/PlayerMovement\lSystem.hpp" alt="" coords="5377,184,5670,240"/>
+<area shape="rect" id="node32" href="$Rtype_8cpp.html" title="src/Rtype.cpp" alt="" coords="5673,303,5781,329"/>
+<area shape="rect" id="node33" href="$PlayerMovementSystem_8cpp.html" title="src/Systems/SystemConstructor\l/PlayerMovementSystem/PlayerMovement\lSystem.cpp" alt="" coords="5355,288,5649,344"/>
+</map>

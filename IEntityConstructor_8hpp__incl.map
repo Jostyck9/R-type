@@ -1,0 +1,8 @@
+<map id="src/Entities/EntityConstructor/IEntityConstructor.hpp" name="src/Entities/EntityConstructor/IEntityConstructor.hpp">
+<area shape="rect" id="node4" href="$Entity_8hpp.html" title="Entity.hpp" alt="" coords="309,169,393,196"/>
+<area shape="rect" id="node5" href="$IEntityManager_8hpp.html" title="IEntityManager.hpp" alt="" coords="388,95,532,121"/>
+<area shape="rect" id="node10" href="$IComponentManager_8hpp.html" title="IComponentManager.hpp" alt="" coords="79,95,262,121"/>
+<area shape="rect" id="node7" href="$PacketManager_8hpp.html" title="PacketManager.hpp" alt="" coords="504,169,651,196"/>
+<area shape="rect" id="node9" href="$Input_8hpp.html" title="Render/Input.hpp" alt="" coords="504,244,635,271"/>
+<area shape="rect" id="node11" href="$IComponent_8hpp.html" title="IComponent.hpp" alt="" coords="5,169,133,196"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="ecs::components::PlayerController" name="ecs::components::PlayerController">
+<area shape="rect" id="node2" href="$classecs_1_1components_1_1IGameLogic.html" title="IGameLogic describes an attribute of an Entity that represent an ingame value. " alt="" coords="19,131,233,208"/>
+<area shape="rect" id="node3" href="$classecs_1_1components_1_1IComponent.html" title="Icomponent describes an attribute of an Entity. " alt="" coords="17,5,235,83"/>
+</map>

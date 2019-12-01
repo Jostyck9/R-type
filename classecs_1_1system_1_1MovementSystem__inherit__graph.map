@@ -1,0 +1,4 @@
+<map id="ecs::system::MovementSystem" name="ecs::system::MovementSystem">
+<area shape="rect" id="node2" href="$classecs_1_1system_1_1ASystem.html" title="{ecs::system::ASystem\n|# _managerWrapper\l# _entityFactory\l# _entitiesToDelete\l|+ ASystem()\l+ ~ASystem()\l}" alt="" coords="35,131,200,252"/>
+<area shape="rect" id="node3" href="$classecs_1_1system_1_1ISystem.html" title="{ecs::system::ISystem\n||+ update()\l}" alt="" coords="38,5,197,83"/>
+</map>

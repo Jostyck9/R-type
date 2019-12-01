@@ -1,0 +1,4 @@
+<map id="ecs::components::IUserInterface" name="ecs::components::IUserInterface">
+<area shape="rect" id="node2" href="$classecs_1_1components_1_1IDisplay.html" title="IDisplay describes an attribute of an Entity that is displayable. " alt="" coords="25,131,215,208"/>
+<area shape="rect" id="node3" href="$classecs_1_1components_1_1IComponent.html" title="Icomponent describes an attribute of an Entity. " alt="" coords="11,5,229,83"/>
+</map>

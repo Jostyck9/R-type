@@ -1,0 +1,4 @@
+<map id="ecs::system::EnemiesMovementSystem" name="ecs::system::EnemiesMovementSystem">
+<area shape="rect" id="node2" href="$classecs_1_1system_1_1ASystem.html" title="{ecs::system::ASystem\n||+ ASystem()\l+ ~ASystem()\l}" alt="" coords="310,160,475,252"/>
+<area shape="rect" id="node3" href="$classecs_1_1system_1_1ISystem.html" title="{ecs::system::ISystem\n||+ update()\l}" alt="" coords="5,13,164,90"/>
+</map>
